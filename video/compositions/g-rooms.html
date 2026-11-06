@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; }
+    .scrim-top { position: absolute; left: 0; top: 0; width: 1080px; height: 860px;
+      background: linear-gradient(to bottom, rgba(6, 8, 14, 0.62), rgba(6, 8, 14, 0.3) 60%, rgba(6, 8, 14, 0)); }
+    .bar { position: absolute; left: 64px; top: 200px; width: 76px; height: 10px; border-radius: 6px; background: #ffc83d; }
+    #rm-t { position: absolute; left: 64px; top: 230px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 104px;
+      line-height: 0.95; letter-spacing: -0.02em; text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45); }
+    .badge { position: absolute; top: 368px; width: 168px; height: 168px; border-radius: 50%; background: #ffc83d; color: #15120a;
+      display: flex; align-items: center; justify-content: center; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 112px;
+      line-height: 1; box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+    #rm-k { position: absolute; left: 64px; top: 580px; display: flex; align-items: center; gap: 18px; padding: 14px 32px 14px 16px;
+      border-radius: 999px; background: rgba(12, 15, 22, 0.82); backdrop-filter: blur(18px); font-weight: 700; font-size: 44px; line-height: 1;
+      white-space: nowrap; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+    #rm-k .ico { width: 64px; height: 64px; border-radius: 50%; background: #ffc83d; color: #15120a; display: flex; align-items: center; justify-content: center; }
+    #rm-k svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <div id="root" data-composition-id="g-rooms" data-width="1080" data-height="1920">
+    <div id="rm-scrim" class="scrim-top"></div>
+    <div id="rm-bar" class="bar"></div>
+    <div id="rm-t">BILIK</div>
+    <div id="rm-b2" class="badge" style="left: 64px">2</div>
+    <div id="rm-b3" class="badge" style="left: 256px">3</div>
+    <div id="rm-b4" class="badge" style="left: 448px">4</div>
+    <div id="rm-k">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 10h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z" /><path d="M2 10h20M9.5 10V7.5c0-.8.7-1.5 1.5-1.5h2c.8 0 1.5.7 1.5 1.5V10" /></svg></span>
+      <span>+ Dapur</span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // "Bilik nombor 2, 3 dan 4 dengan kawasan kitchen dia"
+    tl.fromTo("#rm-scrim", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 0);
+    tl.fromTo("#rm-bar", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.35, ease: "expo.out" }, 0.02);
+    tl.fromTo("#rm-t", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power2.out" }, 0.06);
+    const badge = (sel, t) => {
+      tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 0.1, ease: "none" }, t);
+      tl.fromTo(sel, { scale: 0.35, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.9)" }, t);
+    };
+    badge("#rm-b2", 0.47);
+    badge("#rm-b3", 1.08);
+    badge("#rm-b4", 2.39);
+    tl.fromTo("#rm-k", { opacity: 0, x: -50, filter: "blur(6px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.5)" }, 3.86);
+    tl.to(["#rm-t", "#rm-bar", "#rm-b2", "#rm-b3", "#rm-b4", "#rm-k", "#rm-scrim"],
+      { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", stagger: 0.02 }, 4.3);
+    tl.set(["#rm-t", "#rm-bar", "#rm-b2", "#rm-b3", "#rm-b4", "#rm-k", "#rm-scrim"], { visibility: "hidden" }, 4.55);
+    window.__timelines["g-rooms"] = tl;
+  </script>
+</template>

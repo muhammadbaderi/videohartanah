@@ -1,0 +1,31 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; }
+    #es-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1000px;
+      background: linear-gradient(to bottom, rgba(6, 8, 14, 0.7), rgba(6, 8, 14, 0.45) 55%, rgba(6, 8, 14, 0)); }
+    .line { position: absolute; left: 72px; white-space: nowrap; }
+    #es-k { top: 300px; font-weight: 800; font-size: 40px; letter-spacing: 0.22em; color: #ffc83d; }
+    #es-1, #es-2 { font-family: "Montserrat", sans-serif; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
+      text-shadow: 0 10px 34px rgba(0, 0, 0, 0.5); }
+    #es-1 { top: 362px; font-size: 168px; }
+    #es-2 { top: 528px; font-size: 136px; color: #ffc83d; }
+  </style>
+  <div id="root" data-composition-id="g-est" data-width="1080" data-height="1920">
+    <div id="es-scrim"></div>
+    <div id="es-k" class="line">JOM TENGOK</div>
+    <div id="es-1" class="line">TERES</div>
+    <div id="es-2" class="line">SETINGKAT</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // whip in from the right, matching the pan of the shot
+    tl.fromTo("#es-scrim", { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power2.out" }, 0);
+    tl.fromTo(["#es-k", "#es-1", "#es-2"], { x: 180, opacity: 0, filter: "blur(14px)" },
+      { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.34, ease: "expo.out", stagger: 0.06 }, 0.02);
+    // leave in the same direction
+    tl.to(["#es-k", "#es-1", "#es-2"], { x: -140, opacity: 0, filter: "blur(12px)", duration: 0.18, ease: "power3.in", stagger: 0.03 }, 1.04);
+    tl.to("#es-scrim", { opacity: 0, duration: 0.2, ease: "power2.in" }, 1.08);
+    tl.set(["#es-k", "#es-1", "#es-2", "#es-scrim"], { visibility: "hidden" }, 1.29);
+    window.__timelines["g-est"] = tl;
+  </script>
+</template>

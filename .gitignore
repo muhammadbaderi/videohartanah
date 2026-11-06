@@ -1,0 +1,7 @@
+node_modules/
+# large / regenerable media (see scripts/prepare_media.sh)
+video/assets/footage/*.mp4
+video/renders/
+video/.hyperframes/
+*.MOV
+*.mov
