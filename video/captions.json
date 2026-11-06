@@ -1,5 +1,5 @@
 {
- "duration": 58.92,
+ "duration": 58.32,
  "segments": [
   {
    "id": "hook-a",
@@ -64,103 +64,109 @@
   {
    "id": "spec",
    "start": 17.51,
-   "end": 22.25,
-   "text": "Teres setingkat ni ada 4 bilik tidur dan 2 bilik air. Berkawasan 20x67."
+   "end": 20.05,
+   "text": "Teres setingkat ni ada 4 bilik tidur dan 2 bilik air."
+  },
+  {
+   "id": "spec-lot",
+   "start": 20.05,
+   "end": 21.650000000000002,
+   "text": ""
   },
   {
    "id": "living-a",
-   "start": 22.25,
-   "end": 23.65,
+   "start": 21.650000000000002,
+   "end": 23.05,
    "text": "Ini kawasan living hall dia."
   },
   {
    "id": "living-b",
-   "start": 23.65,
-   "end": 25.79,
+   "start": 23.05,
+   "end": 25.19,
    "text": "Ceiling tinggi, 15 kaki."
   },
   {
    "id": "living-c",
-   "start": 25.79,
-   "end": 29.71,
+   "start": 25.19,
+   "end": 29.11,
    "text": "Ada tingkap untuk ventilation, sliding door."
   },
   {
    "id": "bed-a",
-   "start": 29.71,
-   "end": 31.21,
+   "start": 29.11,
+   "end": 30.61,
    "text": "Ni master bedroom dia."
   },
   {
    "id": "bed-b",
-   "start": 31.21,
-   "end": 34.75,
+   "start": 30.61,
+   "end": 34.15,
    "text": "Kita tengok ni ada point untuk lampu, untuk kipas."
   },
   {
    "id": "bath-a",
-   "start": 34.75,
-   "end": 37.01,
+   "start": 34.15,
+   "end": 36.41,
    "text": "Ni dia punya master"
   },
   {
    "id": "bath-b",
-   "start": 37.01,
-   "end": 37.61,
+   "start": 36.41,
+   "end": 37.01,
    "text": "bathroom."
   },
   {
    "id": "bath-c",
-   "start": 37.61,
-   "end": 39.69,
+   "start": 37.01,
+   "end": 39.089999999999996,
    "text": "Belum pasang toilet bowl dengan sinki."
   },
   {
    "id": "bath-d",
-   "start": 39.69,
-   "end": 41.39,
+   "start": 39.089999999999996,
+   "end": 40.79,
    "text": "Ok, ni bilik air nombor 2."
   },
   {
    "id": "rooms",
-   "start": 41.39,
-   "end": 45.95,
+   "start": 40.79,
+   "end": 45.35,
    "text": "Bilik nombor 2, 3 dan 4 dengan kawasan kitchen dia."
   },
   {
    "id": "usp-a",
-   "start": 45.95,
-   "end": 49.550000000000004,
+   "start": 45.35,
+   "end": 48.95,
    "text": "So, dia privasi sikit sebab living hall tak"
   },
   {
    "id": "usp-b",
-   "start": 49.550000000000004,
-   "end": 51.510000000000005,
+   "start": 48.95,
+   "end": 50.910000000000004,
    "text": "bersambung dengan area"
   },
   {
    "id": "usp-c",
-   "start": 51.510000000000005,
-   "end": 52.38,
+   "start": 50.910000000000004,
+   "end": 51.78,
    "text": "dapur."
   },
   {
    "id": "usp-d",
-   "start": 52.38,
-   "end": 53.32,
+   "start": 51.78,
+   "end": 52.72,
    "text": "Senang sikit."
   },
   {
    "id": "cta-a",
-   "start": 53.32,
-   "end": 57.14,
+   "start": 52.72,
+   "end": 56.54,
    "text": "Kalau berminat dengan projek ni, korang boleh contact saya di 016"
   },
   {
    "id": "cta-b",
-   "start": 57.14,
-   "end": 58.92,
+   "start": 56.54,
+   "end": 58.32,
    "text": "370 8908."
   }
  ],
@@ -168,13 +174,13 @@
   {
    "text": "Selalunya",
    "start": 0.07,
-   "end": 0.48,
+   "end": 0.46,
    "seg": "hook-a",
    "id": "w0"
   },
   {
    "text": "orang",
-   "start": 0.48,
+   "start": 0.46,
    "end": 0.78,
    "seg": "hook-a",
    "id": "w1"
@@ -217,7 +223,7 @@
   {
    "text": "okey",
    "start": 3.67,
-   "end": 4.34,
+   "end": 4.36,
    "seg": "hook-c",
    "id": "w7"
   },
@@ -273,13 +279,13 @@
   {
    "text": "sekarang",
    "start": 6.41,
-   "end": 6.6,
+   "end": 6.62,
    "seg": "intro-b",
    "id": "w15"
   },
   {
    "text": "ni",
-   "start": 6.6,
+   "start": 6.62,
    "end": 6.84,
    "seg": "intro-b",
    "id": "w16"
@@ -420,7 +426,7 @@
   {
    "text": "kita",
    "start": 14.75,
-   "end": 14.92,
+   "end": 14.94,
    "seg": "intro-f",
    "id": "w36"
   },
@@ -462,20 +468,20 @@
   {
    "text": "ni",
    "start": 18.02,
-   "end": 18.14,
+   "end": 18.12,
    "seg": "spec",
    "id": "w42"
   },
   {
    "text": "ada",
-   "start": 18.15,
-   "end": 18.19,
+   "start": 18.12,
+   "end": 18.16,
    "seg": "spec",
    "id": "w43"
   },
   {
    "text": "4",
-   "start": 18.19,
+   "start": 18.16,
    "end": 18.5,
    "seg": "spec",
    "id": "w44"
@@ -523,592 +529,578 @@
    "id": "w50"
   },
   {
-   "text": "Berkawasan",
-   "start": 19.96,
-   "end": 20.52,
-   "seg": "spec",
+   "text": "Ini",
+   "start": 21.72,
+   "end": 21.76,
+   "seg": "living-a",
    "id": "w51"
   },
   {
-   "text": "20x67.",
-   "start": 20.6,
-   "end": 21.8,
-   "seg": "spec",
+   "text": "kawasan",
+   "start": 21.76,
+   "end": 22.1,
+   "seg": "living-a",
    "id": "w52"
   },
   {
-   "text": "Ini",
-   "start": 22.25,
+   "text": "living",
+   "start": 22.13,
    "end": 22.32,
    "seg": "living-a",
    "id": "w53"
   },
   {
-   "text": "kawasan",
-   "start": 22.32,
-   "end": 22.72,
+   "text": "hall",
+   "start": 22.4,
+   "end": 22.61,
    "seg": "living-a",
    "id": "w54"
   },
   {
-   "text": "living",
-   "start": 22.73,
-   "end": 22.92,
+   "text": "dia.",
+   "start": 22.61,
+   "end": 22.84,
    "seg": "living-a",
    "id": "w55"
   },
   {
-   "text": "hall",
-   "start": 23.0,
-   "end": 23.21,
-   "seg": "living-a",
+   "text": "Ceiling",
+   "start": 23.12,
+   "end": 23.16,
+   "seg": "living-b",
    "id": "w56"
   },
   {
-   "text": "dia.",
-   "start": 23.21,
-   "end": 23.44,
-   "seg": "living-a",
+   "text": "tinggi,",
+   "start": 23.16,
+   "end": 23.74,
+   "seg": "living-b",
    "id": "w57"
   },
   {
-   "text": "Ceiling",
-   "start": 23.72,
-   "end": 23.76,
+   "text": "15",
+   "start": 23.79,
+   "end": 24.32,
    "seg": "living-b",
    "id": "w58"
   },
   {
-   "text": "tinggi,",
-   "start": 23.76,
-   "end": 24.34,
+   "text": "kaki.",
+   "start": 24.46,
+   "end": 24.94,
    "seg": "living-b",
    "id": "w59"
   },
   {
-   "text": "15",
-   "start": 24.39,
-   "end": 24.92,
-   "seg": "living-b",
+   "text": "Ada",
+   "start": 25.19,
+   "end": 25.32,
+   "seg": "living-c",
    "id": "w60"
   },
   {
-   "text": "kaki.",
-   "start": 25.06,
-   "end": 25.5,
-   "seg": "living-b",
+   "text": "tingkap",
+   "start": 25.32,
+   "end": 25.94,
+   "seg": "living-c",
    "id": "w61"
   },
   {
-   "text": "Ada",
-   "start": 25.79,
-   "end": 25.96,
+   "text": "untuk",
+   "start": 25.94,
+   "end": 26.3,
    "seg": "living-c",
    "id": "w62"
   },
   {
-   "text": "tingkap",
-   "start": 25.96,
-   "end": 26.54,
+   "text": "ventilation,",
+   "start": 26.36,
+   "end": 27.08,
    "seg": "living-c",
    "id": "w63"
   },
   {
-   "text": "untuk",
-   "start": 26.54,
-   "end": 26.9,
+   "text": "sliding",
+   "start": 27.56,
+   "end": 28.22,
    "seg": "living-c",
    "id": "w64"
   },
   {
-   "text": "ventilation,",
-   "start": 26.96,
-   "end": 27.66,
+   "text": "door.",
+   "start": 28.22,
+   "end": 28.58,
    "seg": "living-c",
    "id": "w65"
   },
   {
-   "text": "sliding",
-   "start": 28.16,
-   "end": 28.82,
-   "seg": "living-c",
+   "text": "Ni",
+   "start": 29.18,
+   "end": 29.31,
+   "seg": "bed-a",
    "id": "w66"
   },
   {
-   "text": "door.",
-   "start": 28.82,
-   "end": 29.18,
-   "seg": "living-c",
+   "text": "master",
+   "start": 29.31,
+   "end": 29.72,
+   "seg": "bed-a",
    "id": "w67"
   },
   {
-   "text": "Ni",
-   "start": 29.78,
-   "end": 29.91,
+   "text": "bedroom",
+   "start": 29.73,
+   "end": 30.06,
    "seg": "bed-a",
    "id": "w68"
   },
   {
-   "text": "master",
-   "start": 29.91,
-   "end": 30.32,
+   "text": "dia.",
+   "start": 30.09,
+   "end": 30.4,
    "seg": "bed-a",
    "id": "w69"
   },
   {
-   "text": "bedroom",
-   "start": 30.33,
-   "end": 30.66,
-   "seg": "bed-a",
+   "text": "Kita",
+   "start": 30.61,
+   "end": 30.98,
+   "seg": "bed-b",
    "id": "w70"
   },
   {
-   "text": "dia.",
-   "start": 30.69,
-   "end": 31.0,
-   "seg": "bed-a",
+   "text": "tengok",
+   "start": 31.02,
+   "end": 31.3,
+   "seg": "bed-b",
    "id": "w71"
   },
   {
-   "text": "Kita",
-   "start": 31.21,
-   "end": 31.58,
+   "text": "ni",
+   "start": 31.32,
+   "end": 31.36,
    "seg": "bed-b",
    "id": "w72"
   },
   {
-   "text": "tengok",
-   "start": 31.62,
-   "end": 31.9,
+   "text": "ada",
+   "start": 31.36,
+   "end": 31.64,
    "seg": "bed-b",
    "id": "w73"
   },
   {
-   "text": "ni",
-   "start": 31.92,
-   "end": 31.96,
+   "text": "point",
+   "start": 31.73,
+   "end": 32.05,
    "seg": "bed-b",
    "id": "w74"
   },
   {
-   "text": "ada",
-   "start": 31.96,
-   "end": 32.24,
+   "text": "untuk",
+   "start": 32.05,
+   "end": 32.46,
    "seg": "bed-b",
    "id": "w75"
   },
   {
-   "text": "point",
-   "start": 32.33,
-   "end": 32.65,
+   "text": "lampu,",
+   "start": 32.49,
+   "end": 33.1,
    "seg": "bed-b",
    "id": "w76"
   },
   {
    "text": "untuk",
-   "start": 32.65,
-   "end": 33.06,
+   "start": 33.1,
+   "end": 33.4,
    "seg": "bed-b",
    "id": "w77"
   },
   {
-   "text": "lampu,",
-   "start": 33.09,
-   "end": 33.7,
+   "text": "kipas.",
+   "start": 33.44,
+   "end": 34.02,
    "seg": "bed-b",
    "id": "w78"
   },
   {
-   "text": "untuk",
-   "start": 33.7,
-   "end": 34.0,
-   "seg": "bed-b",
+   "text": "Ni",
+   "start": 34.22,
+   "end": 34.4,
+   "seg": "bath-a",
    "id": "w79"
   },
   {
-   "text": "kipas.",
-   "start": 34.04,
-   "end": 34.62,
-   "seg": "bed-b",
+   "text": "dia",
+   "start": 34.41,
+   "end": 34.64,
+   "seg": "bath-a",
    "id": "w80"
   },
   {
-   "text": "Ni",
-   "start": 34.82,
+   "text": "punya",
+   "start": 34.65,
    "end": 35.0,
    "seg": "bath-a",
    "id": "w81"
   },
   {
-   "text": "dia",
-   "start": 35.01,
-   "end": 35.24,
+   "text": "master",
+   "start": 35.0,
+   "end": 35.88,
    "seg": "bath-a",
    "id": "w82"
   },
   {
-   "text": "punya",
-   "start": 35.25,
-   "end": 35.6,
-   "seg": "bath-a",
+   "text": "bathroom.",
+   "start": 36.41,
+   "end": 37.01,
+   "seg": "bath-b",
    "id": "w83"
   },
   {
-   "text": "master",
-   "start": 35.6,
-   "end": 36.48,
-   "seg": "bath-a",
+   "text": "Belum",
+   "start": 37.06,
+   "end": 37.28,
+   "seg": "bath-c",
    "id": "w84"
   },
   {
-   "text": "bathroom.",
-   "start": 37.01,
-   "end": 37.61,
-   "seg": "bath-b",
+   "text": "pasang",
+   "start": 37.28,
+   "end": 37.66,
+   "seg": "bath-c",
    "id": "w85"
   },
   {
-   "text": "Belum",
-   "start": 37.66,
-   "end": 37.88,
+   "text": "toilet",
+   "start": 37.67,
+   "end": 37.86,
    "seg": "bath-c",
    "id": "w86"
   },
   {
-   "text": "pasang",
-   "start": 37.88,
-   "end": 38.26,
+   "text": "bowl",
+   "start": 37.86,
+   "end": 38.21,
    "seg": "bath-c",
    "id": "w87"
   },
   {
-   "text": "toilet",
-   "start": 38.27,
+   "text": "dengan",
+   "start": 38.21,
    "end": 38.46,
    "seg": "bath-c",
    "id": "w88"
   },
   {
-   "text": "bowl",
+   "text": "sinki.",
    "start": 38.46,
-   "end": 38.81,
+   "end": 38.94,
    "seg": "bath-c",
    "id": "w89"
   },
   {
-   "text": "dengan",
-   "start": 38.81,
-   "end": 39.06,
-   "seg": "bath-c",
+   "text": "Ok,",
+   "start": 39.14,
+   "end": 39.18,
+   "seg": "bath-d",
    "id": "w90"
   },
   {
-   "text": "sinki.",
-   "start": 39.06,
-   "end": 39.54,
-   "seg": "bath-c",
+   "text": "ni",
+   "start": 39.18,
+   "end": 39.39,
+   "seg": "bath-d",
    "id": "w91"
   },
   {
-   "text": "Ok,",
-   "start": 39.74,
-   "end": 39.78,
+   "text": "bilik",
+   "start": 39.39,
+   "end": 39.74,
    "seg": "bath-d",
    "id": "w92"
   },
   {
-   "text": "ni",
-   "start": 39.78,
-   "end": 39.99,
+   "text": "air",
+   "start": 39.74,
+   "end": 39.88,
    "seg": "bath-d",
    "id": "w93"
   },
   {
-   "text": "bilik",
-   "start": 39.99,
-   "end": 40.34,
+   "text": "nombor",
+   "start": 39.88,
+   "end": 39.98,
    "seg": "bath-d",
    "id": "w94"
   },
   {
-   "text": "air",
-   "start": 40.34,
-   "end": 40.48,
+   "text": "2.",
+   "start": 39.98,
+   "end": 40.52,
    "seg": "bath-d",
    "id": "w95"
   },
   {
-   "text": "nombor",
-   "start": 40.48,
-   "end": 40.58,
-   "seg": "bath-d",
+   "text": "Bilik",
+   "start": 40.79,
+   "end": 41.12,
+   "seg": "rooms",
    "id": "w96"
   },
   {
-   "text": "2.",
-   "start": 40.58,
-   "end": 41.12,
-   "seg": "bath-d",
+   "text": "nombor",
+   "start": 41.12,
+   "end": 41.3,
+   "seg": "rooms",
    "id": "w97"
   },
   {
-   "text": "Bilik",
-   "start": 41.39,
-   "end": 41.72,
+   "text": "2,",
+   "start": 41.31,
+   "end": 41.86,
    "seg": "rooms",
    "id": "w98"
   },
   {
-   "text": "nombor",
-   "start": 41.72,
-   "end": 41.9,
+   "text": "3",
+   "start": 41.92,
+   "end": 42.4,
    "seg": "rooms",
    "id": "w99"
   },
   {
-   "text": "2,",
-   "start": 41.91,
-   "end": 42.46,
+   "text": "dan",
+   "start": 42.41,
+   "end": 43.16,
    "seg": "rooms",
    "id": "w100"
   },
   {
-   "text": "3",
-   "start": 42.52,
-   "end": 43.0,
+   "text": "4",
+   "start": 43.23,
+   "end": 43.6,
    "seg": "rooms",
    "id": "w101"
   },
   {
-   "text": "dan",
-   "start": 43.01,
-   "end": 43.76,
+   "text": "dengan",
+   "start": 43.6,
+   "end": 44.24,
    "seg": "rooms",
    "id": "w102"
   },
   {
-   "text": "4",
-   "start": 43.83,
-   "end": 44.2,
+   "text": "kawasan",
+   "start": 44.24,
+   "end": 44.64,
    "seg": "rooms",
    "id": "w103"
   },
   {
-   "text": "dengan",
-   "start": 44.2,
-   "end": 44.84,
+   "text": "kitchen",
+   "start": 44.73,
+   "end": 44.94,
    "seg": "rooms",
    "id": "w104"
   },
   {
-   "text": "kawasan",
-   "start": 44.84,
-   "end": 45.24,
+   "text": "dia.",
+   "start": 44.94,
+   "end": 45.3,
    "seg": "rooms",
    "id": "w105"
   },
   {
-   "text": "kitchen",
-   "start": 45.33,
-   "end": 45.54,
-   "seg": "rooms",
+   "text": "So,",
+   "start": 45.38,
+   "end": 45.42,
+   "seg": "usp-a",
    "id": "w106"
   },
   {
-   "text": "dia.",
-   "start": 45.54,
-   "end": 45.9,
-   "seg": "rooms",
+   "text": "dia",
+   "start": 45.42,
+   "end": 45.88,
+   "seg": "usp-a",
    "id": "w107"
   },
   {
-   "text": "So,",
-   "start": 45.98,
-   "end": 46.02,
+   "text": "privasi",
+   "start": 45.88,
+   "end": 46.23,
    "seg": "usp-a",
    "id": "w108"
   },
   {
-   "text": "dia",
-   "start": 46.02,
-   "end": 46.48,
+   "text": "sikit",
+   "start": 46.23,
+   "end": 46.66,
    "seg": "usp-a",
    "id": "w109"
   },
   {
-   "text": "privasi",
-   "start": 46.48,
-   "end": 46.83,
+   "text": "sebab",
+   "start": 46.67,
+   "end": 47.34,
    "seg": "usp-a",
    "id": "w110"
   },
   {
-   "text": "sikit",
-   "start": 46.83,
-   "end": 47.26,
+   "text": "living",
+   "start": 47.34,
+   "end": 48.03,
    "seg": "usp-a",
    "id": "w111"
   },
   {
-   "text": "sebab",
-   "start": 47.27,
-   "end": 47.94,
+   "text": "hall",
+   "start": 48.03,
+   "end": 48.42,
    "seg": "usp-a",
    "id": "w112"
   },
   {
-   "text": "living",
-   "start": 47.94,
-   "end": 48.63,
+   "text": "tak",
+   "start": 48.42,
+   "end": 48.95,
    "seg": "usp-a",
    "id": "w113"
   },
   {
-   "text": "hall",
-   "start": 48.63,
-   "end": 49.02,
-   "seg": "usp-a",
+   "text": "bersambung",
+   "start": 49.0,
+   "end": 49.53,
+   "seg": "usp-b",
    "id": "w114"
   },
   {
-   "text": "tak",
-   "start": 49.02,
-   "end": 49.55,
-   "seg": "usp-a",
+   "text": "dengan",
+   "start": 49.53,
+   "end": 49.83,
+   "seg": "usp-b",
    "id": "w115"
   },
   {
-   "text": "bersambung",
-   "start": 49.6,
-   "end": 50.13,
+   "text": "area",
+   "start": 49.83,
+   "end": 50.91,
    "seg": "usp-b",
    "id": "w116"
   },
   {
-   "text": "dengan",
-   "start": 50.13,
-   "end": 50.43,
-   "seg": "usp-b",
+   "text": "dapur.",
+   "start": 50.99,
+   "end": 51.6,
+   "seg": "usp-c",
    "id": "w117"
   },
   {
-   "text": "area",
-   "start": 50.43,
-   "end": 51.51,
-   "seg": "usp-b",
+   "text": "Senang",
+   "start": 51.85,
+   "end": 52.42,
+   "seg": "usp-d",
    "id": "w118"
   },
   {
-   "text": "dapur.",
-   "start": 51.59,
-   "end": 52.2,
-   "seg": "usp-c",
+   "text": "sikit.",
+   "start": 52.42,
+   "end": 52.62,
+   "seg": "usp-d",
    "id": "w119"
   },
   {
-   "text": "Senang",
-   "start": 52.45,
-   "end": 53.02,
-   "seg": "usp-d",
+   "text": "Kalau",
+   "start": 52.8,
+   "end": 52.84,
+   "seg": "cta-a",
    "id": "w120"
   },
   {
-   "text": "sikit.",
-   "start": 53.02,
-   "end": 53.22,
-   "seg": "usp-d",
+   "text": "berminat",
+   "start": 52.84,
+   "end": 53.17,
+   "seg": "cta-a",
    "id": "w121"
   },
   {
-   "text": "Kalau",
-   "start": 53.4,
-   "end": 53.44,
+   "text": "dengan",
+   "start": 53.17,
+   "end": 53.46,
    "seg": "cta-a",
    "id": "w122"
   },
   {
-   "text": "berminat",
-   "start": 53.44,
-   "end": 53.77,
+   "text": "projek",
+   "start": 53.46,
+   "end": 53.82,
    "seg": "cta-a",
    "id": "w123"
   },
   {
-   "text": "dengan",
-   "start": 53.77,
-   "end": 54.06,
+   "text": "ni,",
+   "start": 53.82,
+   "end": 53.98,
    "seg": "cta-a",
    "id": "w124"
   },
   {
-   "text": "projek",
-   "start": 54.06,
-   "end": 54.42,
+   "text": "korang",
+   "start": 53.98,
+   "end": 54.3,
    "seg": "cta-a",
    "id": "w125"
   },
   {
-   "text": "ni,",
-   "start": 54.42,
-   "end": 54.58,
+   "text": "boleh",
+   "start": 54.3,
+   "end": 54.6,
    "seg": "cta-a",
    "id": "w126"
   },
   {
-   "text": "korang",
-   "start": 54.58,
-   "end": 54.9,
+   "text": "contact",
+   "start": 54.62,
+   "end": 54.92,
    "seg": "cta-a",
    "id": "w127"
   },
   {
-   "text": "boleh",
-   "start": 54.9,
-   "end": 55.2,
+   "text": "saya",
+   "start": 54.93,
+   "end": 55.14,
    "seg": "cta-a",
    "id": "w128"
   },
   {
-   "text": "contact",
-   "start": 55.22,
+   "text": "di",
+   "start": 55.14,
    "end": 55.52,
    "seg": "cta-a",
    "id": "w129"
   },
   {
-   "text": "saya",
-   "start": 55.53,
-   "end": 55.74,
+   "text": "016",
+   "start": 55.54,
+   "end": 56.12,
    "seg": "cta-a",
    "id": "w130"
   },
   {
-   "text": "di",
-   "start": 55.74,
-   "end": 56.12,
-   "seg": "cta-a",
+   "text": "370",
+   "start": 56.54,
+   "end": 57.09,
+   "seg": "cta-b",
    "id": "w131"
   },
   {
-   "text": "016",
-   "start": 56.14,
-   "end": 56.72,
-   "seg": "cta-a",
-   "id": "w132"
-  },
-  {
-   "text": "370",
-   "start": 57.14,
-   "end": 57.69,
-   "seg": "cta-b",
-   "id": "w133"
-  },
-  {
    "text": "8908.",
-   "start": 57.69,
-   "end": 58.8,
+   "start": 57.09,
+   "end": 58.2,
    "seg": "cta-b",
-   "id": "w134"
+   "id": "w132"
   }
  ]
 }

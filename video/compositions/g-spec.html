@@ -24,7 +24,7 @@
     </div>
     <div id="sp-c3" class="card" style="top: 930px">
       <div id="sp-i3" class="sq"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5" /><path d="M8 11V8h3M16 13v3h-3M8 8l3 3M16 16l-3-3" /></svg></div>
-      <div class="num"><span id="sp-a">20</span><span style="opacity: 0.55; font-weight: 800"> × </span><span id="sp-b">67</span></div>
+      <div class="num"><span id="sp-a">20</span><span style="opacity: 0.55; font-weight: 800"> × </span><span id="sp-b">82</span></div>
       <div class="lab">Keluasan<small>lot (kaki)</small></div>
     </div>
   </div>
@@ -36,18 +36,18 @@
     };
     cardIn("#sp-c1", "#sp-i1", 0.58); // "...ada 4 bilik tidur"
     cardIn("#sp-c2", "#sp-i2", 1.51); // "...dan 2 bilik air"
-    cardIn("#sp-c3", "#sp-i3", 2.35); // "Berkawasan 20x67"
-    // the lot size counts up and lands on "20x67"
+    cardIn("#sp-c3", "#sp-i3", 2.58); // lot size, shown on the card only (20 x 82)
+    // the lot size counts up and lands on 20 x 82
     const lot = { a: 0, b: 0 };
     tl.fromTo(lot, { a: 0, b: 0 }, {
-      a: 20, b: 67, duration: 0.7, ease: "power2.out",
+      a: 20, b: 82, duration: 0.7, ease: "power2.out",
       onUpdate: () => {
         document.getElementById("sp-a").textContent = Math.round(lot.a);
         document.getElementById("sp-b").textContent = Math.round(lot.b);
       },
-    }, 2.42);
-    tl.to(["#sp-c1", "#sp-c2", "#sp-c3"], { x: 60, opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power2.in", stagger: 0.05 }, 4.38);
-    tl.set(["#sp-c1", "#sp-c2", "#sp-c3"], { visibility: "hidden" }, 4.72);
+    }, 2.66);
+    tl.to(["#sp-c1", "#sp-c2", "#sp-c3"], { x: 60, opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power2.in", stagger: 0.05 }, 3.78);
+    tl.set(["#sp-c1", "#sp-c2", "#sp-c3"], { visibility: "hidden" }, 4.12);
     window.__timelines["g-spec"] = tl;
   </script>
 </template>

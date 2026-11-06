@@ -26,7 +26,7 @@ SR = 16000
 pieces, segmap, t = [], [], 0.0
 for s in edl["segments"]:
     x = a[int(s["a_in"] * SR):int(s["a_out"] * SR)].copy()
-    if s.get("ambient"):
+    if s.get("ambient") or s.get("silent"):
         x[:] = 0
     pieces.append(x)
     segmap.append({"id": s["id"], "start": t, "end": t + len(x) / SR, "text": s["text"]})

@@ -83,8 +83,17 @@
    "id": "spec",
    "sec": "spec",
    "a_in": 15.86,
-   "a_out": 20.6,
-   "text": "Teres setingkat ni ada 4 bilik tidur dan 2 bilik air. Berkawasan 20x67."
+   "a_out": 18.4,
+   "text": "Teres setingkat ni ada 4 bilik tidur dan 2 bilik air."
+  },
+  {
+   "id": "spec-lot",
+   "sec": "spec",
+   "a_in": 18.4,
+   "a_out": 20.0,
+   "text": "",
+   "silent": true,
+   "_note": "Picture only. The spoken lot size ('20x67') was wrong; the real lot is 20 x 82, shown on the card."
   },
   {
    "id": "living-a",

@@ -62,13 +62,13 @@ cues = [
     (word("jaga"), "pop", "hook: highlight sweeps under JAGA AURAT"),
     (at("intro-a"), "whoosh", "cut: hook -> intro (flash)"),
     (word("Jalan"), "pop", "location pill lands"),
-    (word("projek", 10), "tick", "'projek baru' tag"),
-    (word("teres", 12), "pop", "chip: teres setingkat"),
+    (word("projek", at("intro-d")), "tick", "'projek baru' tag"),
+    (word("teres", at("intro-e")), "pop", "chip: teres setingkat"),
     (word("semi-D"), "tick", "chip: semi-D"),
     (at("est"), "whoosh", "cut: establishing shot + title"),
     (word("4"), "pop", "stat card: 4 bilik tidur"),
-    (word("2", 18.5), "tick", "stat card: 2 bilik air"),
-    (word("20x67") + 0.55, "pop", "stat card: 20 x 67 counter lands"),
+    (word("2", at("spec")), "tick", "stat card: 2 bilik air"),
+    (at("spec-lot") + 0.86, "pop", "stat card: 20 x 82 counter lands"),
     (word("living") - 0.08, "whoosh", "label: LIVING HALL"),
     (word("15"), "ping", "dimension line lands on 15 kaki"),
     (word("tingkap"), "pop", "chip: tingkap"),
@@ -78,14 +78,14 @@ cues = [
     (word("kipas"), "pop", "check: point kipas"),
     (at("bath-a"), "whoosh", "cut: master bathroom"),
     (word("Belum"), "pop", "note chip: belum dipasang"),
-    (word("bilik", 39.5), "tick", "label: bilik air 2"),
-    (word("2", 41.5), "pop", "badge 2"),
-    (word("3", 42), "tick", "badge 3"),
-    (word("4", 43), "pop", "badge 4"),
+    (word("bilik", at("bath-d")), "tick", "label: bilik air 2"),
+    (word("2", at("rooms")), "pop", "badge 2"),
+    (word("3", at("rooms")), "tick", "badge 3"),
+    (word("4", at("rooms")), "pop", "badge 4"),
     (word("kitchen"), "tick", "chip: + dapur"),
     (word("privasi") - 0.1, "whoosh", "privacy card enters"),
-    (word("living", 47) , "pop", "box: living hall"),
-    (word("tak", 48.5), "impact", "wall + X: tak bersambung (the payoff)"),
+    (word("living", at("usp-a")), "pop", "box: living hall"),
+    (word("tak", at("usp-a")), "impact", "wall + X: tak bersambung (the payoff)"),
     (at("usp-b"), "whoosh", "cut: camera flip to selfie"),
     (word("dapur"), "pop", "box: dapur"),
     (word("Senang"), "sparkle", "badge: senang jaga aurat"),
@@ -142,6 +142,8 @@ w("""        </div>
 
       <!-- VOICE: cleaned + loudness-normalised take, same cuts as the picture -->""")
 for c in clips:
+    if c.get("silent"):
+        continue  # picture only (the spoken words here were cut)
     vol = 0.55 if c.get("ambient") else 1
     w(f'      <audio id="vo-{c["id"]}" class="clip" src="{VOICE}" data-start="{r3(c["start"])}" data-duration="{r3(c["dur"])}" data-media-start="{r3(c["a_in"])}" data-volume="{vol}" data-fade-in="0.012" data-fade-out="0.02" data-track-index="2"></audio>')
 w("\n      <!-- SOUND EFFECTS: each one lands one frame after the thing it belongs to -->")

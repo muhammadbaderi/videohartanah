@@ -1,19 +1,19 @@
 # Edit: Site visit teres setingkat, Meru (IMG_0725.MOV)
 
-Status: **FINAL rendered** (2026-11-06, after the preview was approved): `video/renders/FINAL-teres-setingkat-meru.mp4`
+Status: **v2 in progress**: real lot size 20 × 82 (the spoken "20x67" was cut) + background music, still to be rendered. v1 FINAL (2026-11-06): `video/renders/FINAL-teres-setingkat-meru.mp4`
 (1080×1920, 30 fps, 61.3 s, H.264 delivery quality, -16.7 LUFS, true peak -2.7 dB, no clipping) plus a
 `-share.mp4` copy (64 MB) for uploading. The render files are not in git (too big); render them again with the command below.
 
 - Source: `IMG_0725.MOV`, iPhone 4K HDR (Dolby Vision/HLG), portrait, 87.6 s
-- Edit: 1080×1920, 30 fps, **61.3 s** (58.9 s of speech + a 2.4 s end card)
+- Edit: 1080×1920, 30 fps, **60.7 s** (58.3 s of speech + a 2.4 s end card)
 - Edited in HyperFrames (`video/`), with the cut list in `scripts/edl.json`
 
 ## Points that were rendered with the current choices (change and re-render if any of them is wrong)
 
-1. **Street name.** The audio sounds like "Jalan **Nenas**, Meru" (Whisper also heard "Denas"). It's shown on the location pill and in the captions. You can change it in the Studio *Variables* panel (`location`) and in `video/compositions/captions.html`.
-2. **"dia privasi sikit"**: Whisper heard this as "practice" / "privacy". I chose **privasi** to fit the "jaga aurat" context. If you actually said "praktikal", let me know.
+1. **Street name (confirmed correct).** The audio sounds like "Jalan **Nenas**, Meru" (Whisper also heard "Denas"). It's shown on the location pill and in the captions. You can change it in the Studio *Variables* panel (`location`) and in `video/compositions/captions.html`.
+2. **"dia privasi sikit" (confirmed correct)**: Whisper heard this as "practice" / "privacy". I chose **privasi** to fit the "jaga aurat" context. If you actually said "praktikal", let me know.
 3. **"Selalunya orang kita ni nak jaga aurat"**: Whisper wrote "selanjutnya", but in context it should be "selalunya".
-4. **"20 × 67"**: shown as "Keluasan lot (kaki)". The unit isn't said in the audio.
+4. **Lot size: confirmed 20 × 82** (the owner corrected it). The audio said "20x67", so that phrase was cut from the voice and the size is shown only on the card, over 1.6 s of B-roll.
 5. **Phone number 016-370 8908**: checked in 3 separate transcription passes, all consistent.
 6. **Music**: no background music yet (there's no music source in this environment). Send me a track or sign in to HeyGen (free) for the music library.
 
@@ -45,8 +45,8 @@ The "jaga aurat" sentence was **moved** to the front as the hook (not duplicated
 | 0.00–5.34 | 72.16–78.20 | Selalunya orang kita ni nak jaga aurat, okey lah untuk rumah ni. | Hook title, yellow highlight on "jaga" (pop) |
 | 5.34–16.21 | 0.58–13.52 | Hai, Assalamualaikum… Jom kita tengok teres setingkat. | Flash + whoosh; 📍 location pill; "Projek perumahan baru"; chips Teres Setingkat / Semi-D |
 | 16.21–17.51 | 14.25–15.55 | (site shot) | Title "JOM TENGOK TERES SETINGKAT" (whoosh) |
-| 17.51–22.25 | 15.86–20.60 | 4 bilik tidur, 2 bilik air, 20x67 | 3 stat cards, the lot size counts up (pop ×3) |
-| 22.25–29.71 | 21.80–33.36 | Living hall, ceiling 15 kaki, tingkap, sliding door | LIVING HALL label; **dimension line 0→15 KAKI** over the room-corner shot (ping); chips |
+| 17.51–21.65 | 15.86–18.40 + picture 18.40–20.00 | 4 bilik tidur, 2 bilik air | 3 stat cards; lot size 20 × 82 counts up on the card (pop ×3) |
+| 21.65–29.11 (all later times −0.6 s) | 21.80–33.36 | Living hall, ceiling 15 kaki, tingkap, sliding door | LIVING HALL label; **dimension line 0→15 KAKI** over the room-corner shot (ping); chips |
 | 29.71–34.75 | 34.16–41.96 | Master bedroom, point lampu & kipas | Label; checklist ✓ Lampu ✓ Kipas |
 | 34.75–41.39 | 44.94–55.12 | Master bathroom, belum pasang, bilik air 2 | Label; note "belum dipasang"; BILIK AIR 2 |
 | 41.39–45.95 | 57.20–61.76 | Bilik 2, 3, 4 + kitchen | Number badges 2·3·4 pop with the speech; "+ Dapur" |
