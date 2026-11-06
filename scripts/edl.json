@@ -1,0 +1,215 @@
+{
+ "_comment": "Edit decision list. Times are SOURCE seconds in IMG_0725.MOV. a_in/a_out = the stretch kept; v_in = where the picture starts when it differs from the sound (B-roll laid over the line). Order here = order in the edit. punch = camera scale for that shot (jump-cut punch-in).",
+ "source": "IMG_0725.MOV",
+ "end_hold": 2.4,
+ "segments": [
+  {
+   "id": "hook-a",
+   "sec": "hook",
+   "a_in": 72.16,
+   "a_out": 74.18,
+   "text": "Selalunya orang kita ni"
+  },
+  {
+   "id": "hook-b",
+   "sec": "hook",
+   "a_in": 74.76,
+   "a_out": 76.36,
+   "text": "nak jaga aurat,",
+   "punch": 1.12
+  },
+  {
+   "id": "hook-c",
+   "sec": "hook",
+   "a_in": 76.48,
+   "a_out": 78.2,
+   "text": "okey lah untuk rumah ni.",
+   "punch": 1.0
+  },
+  {
+   "id": "intro-a",
+   "sec": "intro",
+   "a_in": 0.58,
+   "a_out": 1.5,
+   "text": "Hai, Assalamualaikum."
+  },
+  {
+   "id": "intro-b",
+   "sec": "intro",
+   "a_in": 2.3,
+   "a_out": 4.22,
+   "text": "Saya sekarang ni di Jalan Nenas, Meru.",
+   "punch": 1.1
+  },
+  {
+   "id": "intro-c",
+   "sec": "intro",
+   "a_in": 4.44,
+   "a_out": 6.94,
+   "text": "Nak site visit satu"
+  },
+  {
+   "id": "intro-d",
+   "sec": "intro",
+   "a_in": 7.12,
+   "a_out": 8.6,
+   "text": "projek perumahan baru ni.",
+   "punch": 1.1
+  },
+  {
+   "id": "intro-e",
+   "sec": "intro",
+   "a_in": 8.72,
+   "a_out": 11.24,
+   "text": "Dia ada teres setingkat dengan semi-D."
+  },
+  {
+   "id": "intro-f",
+   "sec": "intro",
+   "a_in": 11.99,
+   "a_out": 13.52,
+   "text": "Jom kita tengok teres setingkat.",
+   "punch": 1.1
+  },
+  {
+   "id": "est",
+   "sec": "est",
+   "a_in": 14.25,
+   "a_out": 15.55,
+   "text": "",
+   "ambient": true
+  },
+  {
+   "id": "spec",
+   "sec": "spec",
+   "a_in": 15.86,
+   "a_out": 18.4,
+   "text": "Teres setingkat ni ada 4 bilik tidur dan 2 bilik air."
+  },
+  {
+   "id": "spec-lot",
+   "sec": "spec",
+   "a_in": 18.4,
+   "a_out": 20.0,
+   "text": "",
+   "silent": true,
+   "_note": "Picture only. The spoken lot size ('20x67') was wrong; the real lot is 20 x 82, shown on the card."
+  },
+  {
+   "id": "living-a",
+   "sec": "living",
+   "a_in": 21.8,
+   "a_out": 23.2,
+   "text": "Ini kawasan living hall dia."
+  },
+  {
+   "id": "living-b",
+   "sec": "living",
+   "a_in": 25.3,
+   "a_out": 27.44,
+   "text": "Ceiling tinggi, 15 kaki.",
+   "v_in": 23.0
+  },
+  {
+   "id": "living-c",
+   "sec": "living",
+   "a_in": 29.44,
+   "a_out": 33.36,
+   "text": "Ada tingkap untuk ventilation, sliding door."
+  },
+  {
+   "id": "bed-a",
+   "sec": "bed",
+   "a_in": 34.16,
+   "a_out": 35.66,
+   "text": "Ni master bedroom dia.",
+   "v_in": 35.56
+  },
+  {
+   "id": "bed-b",
+   "sec": "bed",
+   "a_in": 38.42,
+   "a_out": 41.96,
+   "text": "Kita tengok ni ada point untuk lampu, untuk kipas."
+  },
+  {
+   "id": "bath-a",
+   "sec": "bath",
+   "a_in": 44.94,
+   "a_out": 47.2,
+   "text": "Ni dia punya master"
+  },
+  {
+   "id": "bath-b",
+   "sec": "bath",
+   "a_in": 48.24,
+   "a_out": 48.84,
+   "text": "bathroom."
+  },
+  {
+   "id": "bath-c",
+   "sec": "bath",
+   "a_in": 49.86,
+   "a_out": 51.94,
+   "text": "Belum pasang toilet bowl dengan sinki."
+  },
+  {
+   "id": "bath-d",
+   "sec": "bath",
+   "a_in": 53.42,
+   "a_out": 55.12,
+   "text": "Ok, ni bilik air nombor 2."
+  },
+  {
+   "id": "rooms",
+   "sec": "rooms",
+   "a_in": 57.2,
+   "a_out": 61.76,
+   "text": "Bilik nombor 2, 3 dan 4 dengan kawasan kitchen dia."
+  },
+  {
+   "id": "usp-a",
+   "sec": "usp",
+   "a_in": 63.36,
+   "a_out": 66.96,
+   "text": "So, dia privasi sikit sebab living hall tak"
+  },
+  {
+   "id": "usp-b",
+   "sec": "usp",
+   "a_in": 67.42,
+   "a_out": 69.38,
+   "text": "bersambung dengan area"
+  },
+  {
+   "id": "usp-c",
+   "sec": "usp",
+   "a_in": 70.17,
+   "a_out": 71.04,
+   "text": "dapur."
+  },
+  {
+   "id": "usp-d",
+   "sec": "usp",
+   "a_in": 78.66,
+   "a_out": 79.6,
+   "text": "Senang sikit.",
+   "punch": 1.1
+  },
+  {
+   "id": "cta-a",
+   "sec": "cta",
+   "a_in": 81.28,
+   "a_out": 85.1,
+   "text": "Kalau berminat dengan projek ni, korang boleh contact saya di 016"
+  },
+  {
+   "id": "cta-b",
+   "sec": "cta",
+   "a_in": 85.52,
+   "a_out": 87.3,
+   "text": "370 8908.",
+   "punch": 1.1
+  }
+ ]
+}

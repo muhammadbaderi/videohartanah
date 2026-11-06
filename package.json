@@ -1,0 +1,22 @@
+{
+  "name": "videohartanah",
+  "version": "1.0.0",
+  "description": "Property video edits made with HyperFrames",
+  "scripts": {
+    "build": "python3 -I scripts/build.py",
+    "preview": "cd video && npx hyperframes preview",
+    "check": "cd video && npx hyperframes check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammadbaderi/videohartanah.git"
+  },
+  "bugs": {
+    "url": "https://github.com/muhammadbaderi/videohartanah/issues"
+  },
+  "homepage": "https://github.com/muhammadbaderi/videohartanah#readme",
+  "devDependencies": {
+    "hyperframes": "0.9.17"
+  },
+  "private": true
+}

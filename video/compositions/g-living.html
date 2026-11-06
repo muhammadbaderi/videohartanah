@@ -1,0 +1,92 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; }
+    .scrim-top { position: absolute; left: 0; top: 0; width: 1080px; height: 640px;
+      background: linear-gradient(to bottom, rgba(6, 8, 14, 0.6), rgba(6, 8, 14, 0)); }
+    .label { position: absolute; left: 64px; top: 200px; }
+    .bar { width: 76px; height: 10px; border-radius: 6px; background: #ffc83d; margin-bottom: 20px; }
+    .t { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 104px; line-height: 0.95; letter-spacing: -0.02em;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45); white-space: nowrap; }
+    .t span { display: inline-block; margin-right: 0.18em; }
+    .s { font-weight: 600; font-size: 40px; margin-top: 16px; text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6); }
+    /* ceiling-height dimension */
+    #lv-shade { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px;
+      background: linear-gradient(to right, rgba(6, 8, 14, 0.66), rgba(6, 8, 14, 0.35) 55%, rgba(6, 8, 14, 0) 85%); }
+    #lv-line { position: absolute; left: 140px; top: 330px; width: 8px; height: 800px; border-radius: 4px; background: #ffc83d;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25); }
+    .tick { position: absolute; left: 108px; width: 72px; height: 8px; border-radius: 4px; background: #ffc83d; }
+    #lv-num { position: absolute; left: 200px; top: 300px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 210px;
+      line-height: 1; letter-spacing: -0.03em; color: #ffc83d; text-shadow: 0 10px 34px rgba(0, 0, 0, 0.45); }
+    #lv-unit { position: absolute; left: 212px; top: 516px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 72px; line-height: 1; }
+    #lv-cap { position: absolute; left: 214px; top: 604px; font-weight: 700; font-size: 42px; opacity: 0.95; }
+    /* feature chips */
+    .chip { position: absolute; left: 64px; display: flex; align-items: center; gap: 18px; padding: 14px 32px 14px 16px; border-radius: 999px;
+      background: rgba(12, 15, 22, 0.82); backdrop-filter: blur(18px); font-weight: 700; font-size: 42px; line-height: 1;
+      white-space: nowrap; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+    .ico { width: 62px; height: 62px; border-radius: 50%; background: #ffc83d; color: #15120a; display: flex; align-items: center; justify-content: center; flex: none; }
+    .ico svg { width: 36px; height: 36px; fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <div id="root" data-composition-id="g-living" data-width="1080" data-height="1920">
+    <div id="lv-scrim" class="scrim-top"></div>
+    <div id="lv-label" class="label">
+      <div id="lv-bar" class="bar"></div>
+      <div class="t"><span id="lv-w1">LIVING</span><span id="lv-w2">HALL</span></div>
+      <div id="lv-sub" class="s">Ruang tamu</div>
+    </div>
+
+    <div id="lv-shade"></div>
+    <div id="lv-tb" class="tick" style="top: 1126px"></div>
+    <div id="lv-line"></div>
+    <div id="lv-tt" class="tick" style="top: 326px"></div>
+    <div id="lv-num">0</div>
+    <div id="lv-unit">KAKI</div>
+    <div id="lv-cap">Siling tinggi</div>
+
+    <div id="lv-c1" class="chip" style="top: 972px">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="1.2" /><path d="M12 3.5v17M4 12h16" /></svg></span>
+      <span>Tingkap ventilasi</span>
+    </div>
+    <div id="lv-c2" class="chip" style="top: 1078px">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="1" /><path d="M12 3.5v17" /><path d="M6 12h4M8 10l-2 2 2 2" /></svg></span>
+      <span>Sliding door</span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // "Ini kawasan living hall dia" -> label, word by word
+    tl.fromTo("#lv-scrim", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.3);
+    tl.fromTo("#lv-bar", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.35, ease: "expo.out" }, 0.36);
+    tl.fromTo("#lv-w1", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power2.out" }, 0.42);
+    tl.fromTo("#lv-w2", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power2.out" }, 0.72);
+    tl.fromTo("#lv-sub", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.82);
+    tl.to(["#lv-label", "#lv-scrim"], { opacity: 0, filter: "blur(8px)", duration: 0.16, ease: "power2.in" }, 1.22);
+    tl.set(["#lv-label", "#lv-scrim"], { visibility: "hidden" }, 1.39);
+
+    // "Ceiling tinggi, 15 kaki" -> the measure grows floor to ceiling and lands on 15
+    tl.fromTo("#lv-shade", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 1.4);
+    tl.fromTo("#lv-tb", { scaleX: 0 }, { scaleX: 1, duration: 0.18, ease: "power3.out" }, 1.42);
+    tl.fromTo("#lv-line", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.67, ease: "power2.inOut" }, 1.47);
+    tl.fromTo("#lv-tt", { scaleX: 0 }, { scaleX: 1, duration: 0.28, ease: "back.out(2.4)" }, 2.12);
+    const h = { v: 0 };
+    tl.fromTo("#lv-num", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none" }, 1.5);
+    tl.fromTo(h, { v: 0 }, { v: 15, duration: 0.64, ease: "power2.inOut",
+      onUpdate: () => { document.getElementById("lv-num").textContent = Math.round(h.v); } }, 1.5);
+    tl.fromTo("#lv-num", { scale: 1 }, { scale: 1.12, duration: 0.1, ease: "power2.out" }, 2.14);
+    tl.to("#lv-num", { scale: 1, duration: 0.35, ease: "back.out(2)" }, 2.24);
+    tl.fromTo(["#lv-unit", "#lv-cap"], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.08 }, 2.16);
+    tl.to(["#lv-tb", "#lv-line", "#lv-tt", "#lv-num", "#lv-unit", "#lv-cap", "#lv-shade"],
+      { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, 3.34);
+    tl.set(["#lv-tb", "#lv-line", "#lv-tt", "#lv-num", "#lv-unit", "#lv-cap", "#lv-shade"], { visibility: "hidden" }, 3.53);
+
+    // "Ada tingkap untuk ventilation, sliding door"
+    const chip = (sel, t) => {
+      tl.fromTo(sel, { opacity: 0, x: -50, scale: 0.92, filter: "blur(6px)" },
+        { opacity: 1, x: 0, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.5)" }, t);
+    };
+    chip("#lv-c1", 3.66);
+    chip("#lv-c2", 5.86);
+    tl.to(["#lv-c1", "#lv-c2"], { opacity: 0, x: 40, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.04 }, 7.1);
+    tl.set(["#lv-c1", "#lv-c2"], { visibility: "hidden" }, 7.38);
+    window.__timelines["g-living"] = tl;
+  </script>
+</template>

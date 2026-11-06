@@ -1,0 +1,9 @@
+node_modules/
+# large / regenerable media (see scripts/prepare_media.sh)
+video/assets/footage/*.mp4
+video/renders/
+video/.hyperframes/
+*.MOV
+*.mov
+# media-use cache (downloaded catalog tracks; the chosen one is in assets/audio)
+video/.media/

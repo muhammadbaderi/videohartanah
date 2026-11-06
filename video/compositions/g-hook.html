@@ -1,0 +1,39 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; }
+    .row { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; }
+    #hk-scrim { position: absolute; left: 0; top: 760px; width: 1080px; height: 640px;
+      background: linear-gradient(to bottom, rgba(6, 8, 14, 0), rgba(6, 8, 14, 0.62) 45%, rgba(6, 8, 14, 0.62) 80%, rgba(6, 8, 14, 0)); }
+    #hk-pill { display: flex; align-items: center; gap: 12px; padding: 14px 26px; border-radius: 999px;
+      background: #ffc83d; color: #15120a; font-weight: 800; font-size: 30px; letter-spacing: 0.08em; }
+    #hk-l1 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 58px; letter-spacing: -0.01em;
+      text-shadow: 0 6px 22px rgba(0, 0, 0, 0.55); }
+    #hk-l2wrap { position: relative; padding: 0 22px; }
+    #hk-mark { position: absolute; left: 0; top: 10px; right: 0; bottom: 4px; background: #ffc83d; border-radius: 16px; }
+    #hk-l2 { position: relative; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 118px; line-height: 1.05;
+      letter-spacing: -0.02em; color: #ffffff; text-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); }
+  </style>
+  <div id="root" data-composition-id="g-hook" data-width="1080" data-height="1920">
+    <div id="hk-scrim"></div>
+    <div class="row" style="top: 885px"><div id="hk-pill">SITE VISIT · RUMAH BARU</div></div>
+    <div class="row" style="top: 962px"><div id="hk-l1">Rumah ni sesuai untuk yang</div></div>
+    <div class="row" style="top: 1032px">
+      <div id="hk-l2wrap"><div id="hk-mark"></div><div id="hk-l2">JAGA AURAT</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 is the thumbnail: the whole hook is already on screen.
+    tl.set(["#hk-scrim", "#hk-pill", "#hk-l1", "#hk-l2wrap"], { opacity: 1 }, 0);
+    tl.fromTo("#hk-mark", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, 2.12);
+    tl.fromTo("#hk-l2", { color: "#ffffff", textShadow: "0 8px 28px rgba(0,0,0,0.45)" },
+      { color: "#15120a", textShadow: "0 0px 0px rgba(0,0,0,0)", duration: 0.12, ease: "none" }, 2.2);
+    tl.fromTo("#hk-l2wrap", { scale: 1 }, { scale: 1.07, duration: 0.12, ease: "power2.out" }, 2.12);
+    tl.to("#hk-l2wrap", { scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.24);
+    // leave clean before the flash into the intro
+    tl.to(["#hk-pill", "#hk-l1", "#hk-l2wrap"], { opacity: 0, y: -12, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.04 }, 5.02);
+    tl.to("#hk-scrim", { opacity: 0, duration: 0.25, ease: "power2.in" }, 5.05);
+    tl.set(["#hk-pill", "#hk-l1", "#hk-l2wrap", "#hk-scrim"], { visibility: "hidden" }, 5.32);
+    window.__timelines["g-hook"] = tl;
+  </script>
+</template>
