@@ -146,6 +146,26 @@ for c in clips:
         continue  # picture only (the spoken words here were cut)
     vol = 0.55 if c.get("ambient") else 1
     w(f'      <audio id="vo-{c["id"]}" class="clip" src="{VOICE}" data-start="{r3(c["start"])}" data-duration="{r3(c["dur"])}" data-media-start="{r3(c["a_in"])}" data-volume="{vol}" data-fade-in="0.012" data-fade-out="0.02" data-track-index="2"></audio>')
+# ---------------------------------------------------------------- MUSIC
+# HeyGen catalog track e819a5365f1c48608d631e6c99191c2c ("light optimistic
+# instrumental, minimal acoustic guitar and soft piano"), 84 s, 125 BPM.
+# It enters on bar 12 (beat 48 = 22.875 s, already the full arrangement) so
+# its own ending lands on the end card. Ducked under the voice, lifted on the
+# beats without speech (establishing shot, lot-size card, end card).
+MUSIC = "assets/audio/music-bed.mp3"
+MUSIC_IN = 22.875
+BED, LIFT, END = 0.14, 0.32, 0.45
+gaps = [(c["start"], c["start"] + c["dur"]) for c in clips if c.get("ambient") or c.get("silent")]
+gaps.append((speech_end, total))
+pts = [(0.0, BED)]
+for g0, g1 in gaps:
+    lvl = END if g1 >= total - 1e-6 else LIFT
+    pts += [(g0 - 0.05, BED), (g0 + 0.3, lvl)]
+    if g1 < total - 1e-6:
+        pts += [(g1 - 0.25, lvl), (g1 + 0.05, BED)]
+lane = ",".join(f'{{&quot;t&quot;:{r3(max(0.0, t))},&quot;v&quot;:{v}}}' for t, v in pts)
+w(f'\n      <!-- MUSIC: warm acoustic bed, ducked under the voice -->')
+w(f'      <audio id="music" class="clip" src="{MUSIC}" data-start="0" data-duration="{r3(total)}" data-media-start="{MUSIC_IN}" data-volume="1" data-fade-in="0.3" data-fade-out="1.4" data-automation="{{&quot;version&quot;:1,&quot;lanes&quot;:[{{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{lane}]}}]}}" data-track-index="5"></audio>')
 w("\n      <!-- SOUND EFFECTS: each one lands one frame after the thing it belongs to -->")
 for i, (tev, kind, why) in enumerate(cues):
     f, peak, vol = SFX[kind]

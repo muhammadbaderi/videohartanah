@@ -1,6 +1,6 @@
 # Edit: Site visit teres setingkat, Meru (IMG_0725.MOV)
 
-Status: **v2 in progress**: real lot size 20 × 82 (the spoken "20x67" was cut) + background music, still to be rendered. v1 FINAL (2026-11-06): `video/renders/FINAL-teres-setingkat-meru.mp4`
+Status: **FINAL v2 rendered** (2026-11-06): `video/renders/FINAL-v2-teres-setingkat-meru.mp4` (1080×1920, 30 fps, 60.7 s, -16.4 LUFS, true peak -2.5 dB, no clipping) and a `-share.mp4` copy. v2 = real lot size 20 × 82 + background music. The render files are not in git (too big).
 (1080×1920, 30 fps, 61.3 s, H.264 delivery quality, -16.7 LUFS, true peak -2.7 dB, no clipping) plus a
 `-share.mp4` copy (64 MB) for uploading. The render files are not in git (too big); render them again with the command below.
 
@@ -15,7 +15,7 @@ Status: **v2 in progress**: real lot size 20 × 82 (the spoken "20x67" was cut) 
 3. **"Selalunya orang kita ni nak jaga aurat"**: Whisper wrote "selanjutnya", but in context it should be "selalunya".
 4. **Lot size: confirmed 20 × 82** (the owner corrected it). The audio said "20x67", so that phrase was cut from the voice and the size is shown only on the card, over 1.6 s of B-roll.
 5. **Phone number 016-370 8908**: checked in 3 separate transcription passes, all consistent.
-6. **Music**: no background music yet (there's no music source in this environment). Send me a track or sign in to HeyGen (free) for the music library.
+6. **Music: added in v2**: warm acoustic guitar + soft piano from the HeyGen catalog (`video/assets/audio/CREDITS.md`). It sits at 0.14 under the voice, lifts to 0.32 on the establishing shot and the lot-size card, then 0.45 on the end card, where the track fades out on its own ending. Three other options are in the `.media` cache if this one isn't right.
 
 ## Hook
 
@@ -58,6 +58,7 @@ The B-roll was rearranged where needed: the room-corner shot sits under "ceiling
 ## Audio
 
 - Voice: high-pass 85 Hz, light noise reduction, gentle compression, loudness **-16 LUFS / -1.5 dBTP**. Preview measured at -16.7 LUFS, true peak -2.7 dB, no clipping.
+- Music: see point 6 above. The mix measures -14 to -15 LUFS while speaking and -16.4 LUFS integrated.
 - SFX: 36 cues from the bundled HyperFrames library (Pixabay licence, attribution not required: `video/assets/sfx/CREDITS.md`). Every sound has a cause on screen, and each one lands one frame after its picture.
 
 ## How to run
