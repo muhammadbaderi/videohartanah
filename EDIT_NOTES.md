@@ -1,12 +1,14 @@
 # Edit: Site visit teres setingkat, Meru (IMG_0725.MOV)
 
-Status: **PREVIEW**. The final render has not been made; it's waiting for your approval.
+Status: **FINAL rendered** (2026-11-06, after the preview was approved): `video/renders/FINAL-teres-setingkat-meru.mp4`
+(1080×1920, 30 fps, 61.3 s, H.264 delivery quality, -16.7 LUFS, true peak -2.7 dB, no clipping) plus a
+`-share.mp4` copy (64 MB) for uploading. The render files are not in git (too big); render them again with the command below.
 
 - Source: `IMG_0725.MOV`, iPhone 4K HDR (Dolby Vision/HLG), portrait, 87.6 s
 - Edit: 1080×1920, 30 fps, **61.3 s** (58.9 s of speech + a 2.4 s end card)
 - Edited in HyperFrames (`video/`), with the cut list in `scripts/edl.json`
 
-## Things to confirm before the final render
+## Points that were rendered with the current choices (change and re-render if any of them is wrong)
 
 1. **Street name.** The audio sounds like "Jalan **Nenas**, Meru" (Whisper also heard "Denas"). It's shown on the location pill and in the captions. You can change it in the Studio *Variables* panel (`location`) and in `video/compositions/captions.html`.
 2. **"dia privasi sikit"**: Whisper heard this as "practice" / "privacy". I chose **privasi** to fit the "jaga aurat" context. If you actually said "praktikal", let me know.
