@@ -1,0 +1,146 @@
+<!doctype html>
+<html
+  lang="ms"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"hookTitle","type":"string","label":"Hook title","default":"SEMI-D"},
+    {"id":"place","type":"string","label":"Location","default":"PULAU INDAH"},
+    {"id":"placeSub","type":"string","label":"Location subtitle","default":"Klang, Selangor"},
+    {"id":"accent","type":"color","label":"Highlighter","default":"#FFE14D"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      :root {
+        --paper: #f2ecdf;
+        --ink: #141414;
+        --accent: #ffe14d;
+        --font-display: "Archivo Black", sans-serif;
+        --font-ui: "Outfit", sans-serif;
+        --font-serif: "Playfair Display", serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #000; }
+
+      /* Paper ground shown behind the shrunken camera card during the plot beat */
+      #paper {
+        position: absolute; inset: 0; z-index: 1;
+        background:
+          radial-gradient(ellipse at 50% 40%, rgba(255,255,255,.55), rgba(0,0,0,0) 70%),
+          repeating-linear-gradient(0deg, rgba(20,20,20,.045) 0 2px, transparent 2px 60px),
+          repeating-linear-gradient(90deg, rgba(20,20,20,.045) 0 2px, transparent 2px 60px),
+          var(--paper);
+      }
+
+      /* Camera wrapper: punch-ins and the card move live here, never on the <video> */
+      #cam {
+        position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 2;
+        transform-origin: 50% 50%;
+      }
+      #cam-inner { position: absolute; inset: 0; overflow: hidden; }
+      #cam-border {
+        position: absolute; inset: 0; border: 0 solid #fff; pointer-events: none;
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+      }
+      #cam video {
+        position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover;
+      }
+
+      .scene-host { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="8.97"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Paper ground for the 41 x 60 diagram beat -->
+      <div id="paper" class="clip" data-start="1.28" data-duration="2.92" data-track-index="0"></div>
+
+      <!-- Footage: reordered and de-paused cuts of one take -->
+      <div id="cam">
+        <div id="cam-inner">
+          <!-- 1. "Semi-D" (hook) -->
+          <video id="v-semid" class="clip" src="assets/footage.mp4" playsinline data-has-audio="true"
+            data-start="0" data-duration="0.56" data-media-start="7.02" data-fade-out="0.02" data-track-index="1"></video>
+          <!-- 2. "lebar dia" (dropped the repeated "kali ni") -->
+          <video id="v-lebar" class="clip" src="assets/footage.mp4" playsinline data-has-audio="true"
+            data-start="0.56" data-duration="0.86" data-media-start="9.06" data-fade-in="0.02" data-fade-out="0.02" data-track-index="1"></video>
+          <!-- 3. "41 x 60" (hesitation before it removed) -->
+          <video id="v-size" class="clip" src="assets/footage.mp4" playsinline data-has-audio="true"
+            data-start="1.42" data-duration="2.06" data-media-start="10.82" data-fade-in="0.02" data-fade-out="0.02" data-track-index="1"></video>
+          <!-- 4. "kali ni kita tengok lagi satu projek di Pulau" (greeting + both "Ok"s cut) -->
+          <video id="v-projek" class="clip" src="assets/footage.mp4" playsinline data-has-audio="true"
+            data-start="3.48" data-duration="2.78" data-media-start="2.08" data-fade-in="0.02" data-fade-out="0.02" data-track-index="1"></video>
+          <!-- 5. "Indah" + short tail for the end card (mid-word gap closed) -->
+          <video id="v-indah" class="clip" src="assets/footage.mp4" playsinline data-has-audio="true"
+            data-start="6.26" data-duration="1.96" data-media-start="5.08" data-fade-in="0.02" data-fade-out="0.02" data-track-index="1"></video>
+          <!-- 6. ambient tail (no speech) so the end card holds -->
+          <video id="v-tail" class="clip" src="assets/footage.mp4" playsinline data-has-audio="true"
+            data-start="8.22" data-duration="0.75" data-media-start="13.3" data-volume="0.7" data-fade-out="0.45" data-track-index="1"></video>
+        </div>
+        <div id="cam-border"></div>
+      </div>
+
+      <!-- Graphics scenes -->
+      <div id="hook" class="scene-host" data-composition-id="hook" data-composition-src="compositions/hook.html"
+        data-start="0" data-duration="1.62" data-track-index="2" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:5"></div>
+      <div id="plot" class="scene-host" data-composition-id="plot" data-composition-src="compositions/plot.html"
+        data-start="1.42" data-duration="2.78" data-track-index="3" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:6"></div>
+      <div id="place" class="scene-host" data-composition-id="place" data-composition-src="compositions/place.html"
+        data-start="6.2" data-duration="2.77" data-track-index="4" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:7"></div>
+      <div id="captions" class="scene-host" data-composition-id="captions" data-composition-src="compositions/captions.html"
+        data-start="3.38" data-duration="5.59" data-track-index="5" data-track-kind="captions"
+        data-width="1080" data-height="1920" style="z-index:8"></div>
+
+      <!-- Sound design: every hit has a cause on screen -->
+      <audio id="sfx-impact" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="0" data-duration="1.4" data-volume="0.32" data-fade-out="0.5" data-track-index="10"></audio>
+      <audio id="sfx-whoosh-in" class="clip" src="assets/sfx/whoosh.mp3" data-start="1.35" data-duration="0.5" data-volume="0.7" data-track-index="11"></audio>
+      <audio id="sfx-pop-41" class="clip" src="assets/sfx/pop.mp3" data-start="1.6" data-duration="0.4" data-volume="0.9" data-track-index="12"></audio>
+      <audio id="sfx-pop-60" class="clip" src="assets/sfx/pop.mp3" data-start="2.53" data-duration="0.4" data-volume="0.75" data-track-index="12"></audio>
+      <audio id="sfx-click-area" class="clip" src="assets/sfx/click-soft.mp3" data-start="2.78" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
+      <audio id="sfx-whoosh-out" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="3.68" data-duration="0.9" data-media-start="2.2" data-volume="0.3" data-fade-out="0.4" data-track-index="11"></audio>
+      <audio id="sfx-pop-pin" class="clip" src="assets/sfx/pop.mp3" data-start="6.33" data-duration="0.4" data-volume="0.85" data-track-index="12"></audio>
+      <audio id="sfx-sparkle" class="clip" src="assets/sfx/sparkle.mp3" data-start="6.55" data-duration="1.2" data-volume="0.16" data-fade-out="0.5" data-track-index="13"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const cam = "#cam";
+
+      // Hook: punched-in face from frame 0, jump cut punches out on "lebar dia"
+      tl.set(cam, { scale: 1.14, x: 0, y: 60, rotation: 0 }, 0);
+      tl.set(cam, { scale: 1.0, y: 0 }, 0.56);
+
+      // Plot beat: camera becomes a tilted paper card, bottom-left, face still visible
+      tl.set("#cam-border", { borderWidth: 0 }, 0);
+      tl.fromTo(cam,
+        { scale: 1.0, x: 0, y: 0, rotation: 0 },
+        { scale: 0.36, x: -290, y: 520, rotation: -3, duration: 0.4, ease: "power3.inOut" }, 1.28);
+      tl.fromTo("#cam-border", { borderWidth: 0 }, { borderWidth: 26, duration: 0.3, ease: "power2.out" }, 1.34);
+
+      // Next sentence starts inside the card, then the card opens back to full frame
+      tl.to(cam, { scale: 1.0, x: 0, y: 0, rotation: 0, duration: 0.42, ease: "power3.inOut" }, 3.75);
+      tl.to("#cam-border", { borderWidth: 0, duration: 0.2, ease: "power2.in" }, 3.87);
+
+      // Emphasis punch on "projek", then on "Indah" for the location card
+      tl.set(cam, { scale: 1.08, y: 40 }, 4.68);
+      tl.set(cam, { scale: 1.0, y: 0 }, 5.32);
+      tl.set(cam, { scale: 1.16, y: 180 }, 6.26);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

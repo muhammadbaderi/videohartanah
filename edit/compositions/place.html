@@ -1,0 +1,58 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #place-card {
+      position: absolute; left: 90px; top: 220px; width: 900px;
+      background: #f2ecdf; padding: 34px 40px 38px 150px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.3);
+      transform-origin: 50% 0%;
+    }
+    #place-pin { position: absolute; left: 38px; top: 30px; width: 90px; height: 120px; }
+    #place-name-wrap { position: relative; display: inline-block; }
+    #place-mark { z-index: 0;
+      position: absolute; left: -10px; right: -10px; top: 38%; height: 56%;
+      background: var(--accent, #ffe14d); transform-origin: 0% 50%;
+    }
+    #place-name {
+      position: relative; z-index: 1; font-family: "Archivo Black", sans-serif; font-size: 92px; line-height: 1;
+      color: #141414; letter-spacing: -0.01em; white-space: nowrap;
+    }
+    #place-sub {
+      margin-top: 14px; font-family: "Playfair Display", serif; font-size: 46px; color: #141414;
+    }
+    #place-chips { margin-top: 22px; display: flex; gap: 14px; }
+    .place-chip {
+      font-family: "Outfit", sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 0.06em;
+      color: #f2ecdf; background: #141414; padding: 6px 18px 8px; border-radius: 4px;
+    }
+  </style>
+  <div id="root" data-composition-id="place" data-width="1080" data-height="1920">
+    <div id="place-card">
+      <svg id="place-pin" viewBox="0 0 90 120">
+        <path d="M45 4 C22 4 6 21 6 43 C6 72 45 114 45 114 C45 114 84 72 84 43 C84 21 68 4 45 4 Z" fill="#141414"></path>
+        <circle cx="45" cy="43" r="15" fill="#ffe14d"></circle>
+      </svg>
+      <div id="place-name-wrap"><div id="place-mark"></div><div id="place-name" data-var-text="place">PULAU INDAH</div></div>
+      <div id="place-sub" data-var-text="placeSub">Klang, Selangor</div>
+      <div id="place-chips">
+        <div class="place-chip" id="place-chip1">SEMI-D</div>
+        <div class="place-chip" id="place-chip2">41' × 60'</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // card lands on the cut to "Indah"
+    tl.fromTo("#place-card", { opacity: 0, y: -60, rotation: 0, filter: "blur(10px)" },
+      { opacity: 1, y: 0, rotation: -2, filter: "blur(0px)", duration: 0.5, ease: "power4.out" }, 0.06);
+    // pin drops in
+    tl.fromTo("#place-pin", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.24, ease: "back.out(2.2)" }, 0.08);
+    // highlighter sweep under the name
+    tl.fromTo("#place-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "expo.out" }, 0.34);
+    tl.fromTo("#place-sub", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16 }, 0.5);
+    // recap chips
+    tl.fromTo("#place-chip1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.25, ease: "power4.out" }, 0.6);
+    tl.fromTo("#place-chip2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.25, ease: "power4.out" }, 0.68);
+    window.__timelines["place"] = tl;
+  </script>
+</template>

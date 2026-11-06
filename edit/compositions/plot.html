@@ -1,0 +1,121 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #plot-kicker {
+      position: absolute; left: 0; width: 1080px; top: 196px; text-align: center;
+      font-family: "Outfit", sans-serif; font-weight: 700; font-size: 34px;
+      letter-spacing: 0.28em; color: #141414;
+    }
+    #plot-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .plot-label {
+      position: absolute; font-family: "Outfit", sans-serif; font-weight: 700;
+      font-size: 46px; color: #141414; background: #f2ecdf; padding: 2px 14px;
+      white-space: nowrap;
+    }
+    #plot-l60 { left: 0; width: 1080px; top: 252px; text-align: center; background: none; }
+    #plot-l60 span { background: #f2ecdf; padding: 2px 14px; }
+    #plot-l41 { left: -12px; top: 600px; transform-origin: 50% 50%; }
+    #plot-area {
+      position: absolute; left: 200px; width: 720px; top: 380px; height: 492px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    #plot-area-num {
+      font-family: "Archivo Black", sans-serif; font-size: 112px; line-height: 1; color: #141414;
+      background: #f2ecdf; padding: 6px 20px 12px;
+    }
+    #plot-area-unit {
+      margin-top: 10px; font-family: "Playfair Display", serif; font-size: 48px; color: #141414;
+      background: #f2ecdf; padding: 0 16px 6px;
+    }
+    #plot-big-wrap { position: absolute; left: 0; width: 1080px; top: 930px; text-align: center; }
+    #plot-big {
+      position: relative; display: inline-block; padding: 8px 30px 18px;
+      font-family: "Archivo Black", sans-serif; font-size: 150px; line-height: 1; color: #141414;
+      letter-spacing: -0.02em;
+    }
+    #plot-big span { display: inline-block; position: relative; }
+    #plot-big-mark {
+      position: absolute; left: 0; top: 34%; width: 100%; height: 58%;
+      background: var(--accent, #ffe14d); transform-origin: 0% 50%; z-index: 0;
+    }
+    #plot-big span { z-index: 1;
+    }
+  </style>
+  <div id="root" data-composition-id="plot" data-width="1080" data-height="1920">
+    <div id="plot-kicker">UKURAN TANAH</div>
+
+    <svg id="plot-svg" viewBox="0 0 1080 1920">
+      <defs>
+        <pattern id="plot-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="26" height="26" fill="#ffe14d" fill-opacity="0.55"></rect>
+          <line x1="0" y1="0" x2="0" y2="26" stroke="#141414" stroke-opacity="0.18" stroke-width="6"></line>
+        </pattern>
+      </defs>
+      <!-- the lot: 60 wide x 41 deep, to scale -->
+      <rect id="plot-fill" x="200" y="380" width="720" height="492" fill="url(#plot-hatch)"></rect>
+      <rect id="plot-rect" x="200" y="380" width="720" height="492" fill="none" stroke="#141414" stroke-width="7"
+        stroke-dasharray="2424" stroke-dashoffset="2424"></rect>
+      <!-- dimension: 60 (top) -->
+      <g id="plot-dim60" stroke="#141414" stroke-width="4">
+        <line id="plot-dim60-line" x1="200" y1="334" x2="920" y2="334" stroke-dasharray="720" stroke-dashoffset="720"></line>
+        <line x1="200" y1="314" x2="200" y2="354"></line>
+        <line x1="920" y1="314" x2="920" y2="354"></line>
+      </g>
+      <!-- dimension: 41 (left) -->
+      <g id="plot-dim41" stroke="#141414" stroke-width="4">
+        <line id="plot-dim41-line" x1="150" y1="380" x2="150" y2="872" stroke-dasharray="492" stroke-dashoffset="492"></line>
+        <line x1="130" y1="380" x2="170" y2="380"></line>
+        <line x1="130" y1="872" x2="170" y2="872"></line>
+      </g>
+    </svg>
+
+    <div id="plot-l60" class="plot-label"><span>60 kaki</span></div>
+    <div id="plot-l41" class="plot-label">41 kaki</div>
+
+    <div id="plot-area">
+      <div id="plot-area-num">2,460</div>
+      <div id="plot-area-unit">kaki persegi</div>
+    </div>
+
+    <div id="plot-big-wrap">
+      <div id="plot-big"><div id="plot-big-mark"></div><span id="plot-n41">41</span> <span id="plot-nx">×</span> <span id="plot-n60">60</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const blurIn = (sel, t) => tl.fromTo(sel, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, ease: "power2.out" }, t);
+
+    tl.fromTo("#plot-kicker", { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" }, 0.1);
+
+    // The lot outline draws itself
+    tl.fromTo("#plot-rect", { strokeDashoffset: 2424 }, { strokeDashoffset: 0, duration: 0.75, ease: "power2.inOut" }, 0.05);
+    tl.fromTo("#plot-fill", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+
+    // "41" spoken
+    blurIn("#plot-n41", 0.06);
+    tl.fromTo("#plot-dim41", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.12);
+    tl.fromTo("#plot-dim41-line", { strokeDashoffset: 492 }, { strokeDashoffset: 0, duration: 0.3, ease: "power3.out" }, 0.14);
+    tl.fromTo("#plot-l41", { opacity: 0, scale: 0.6, rotation: -90 }, { opacity: 1, scale: 1, rotation: -90, duration: 0.3, ease: "back.out(1.6)" }, 0.26);
+
+    // "kali"
+    blurIn("#plot-nx", 0.83);
+
+    // "60" spoken
+    blurIn("#plot-n60", 1.18);
+    tl.fromTo("#plot-dim60", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 1.1);
+    tl.fromTo("#plot-dim60-line", { strokeDashoffset: 720 }, { strokeDashoffset: 0, duration: 0.3, ease: "power3.out" }, 1.12);
+    tl.fromTo("#plot-l60", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)" }, 1.2);
+    tl.fromTo("#plot-big-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 1.26);
+
+    // Area payoff
+    tl.to("#plot-fill", { opacity: 1, duration: 0.25, ease: "power2.out" }, 1.38);
+    tl.fromTo("#plot-area-num", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.4)" }, 1.39);
+    tl.fromTo("#plot-area-unit", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16 }, 1.46);
+
+    // Exit as the camera returns full-frame
+    tl.to("#root > *", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in", stagger: 0.015 }, 2.32);
+    tl.set("#root > *", { opacity: 0 }, 2.7);
+
+    window.__timelines["plot"] = tl;
+  </script>
+</template>

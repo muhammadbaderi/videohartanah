@@ -1,0 +1,55 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #hook-title-wrap {
+      position: absolute; left: 0; width: 1080px; top: 210px; text-align: center;
+    }
+    #hook-title {
+      position: relative; display: inline-block;
+      font-family: "Archivo Black", sans-serif; font-size: 184px; line-height: 1;
+      color: #141414; letter-spacing: -0.02em; padding: 18px 34px 26px;
+    }
+    #hook-mark {
+      position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+      background: var(--accent, #ffe14d); transform-origin: 0% 50%;
+      border-radius: 6px; z-index: 0;
+    }
+    #hook-title-text { position: relative; z-index: 1; }
+    #hook-sub-wrap {
+      position: absolute; left: 0; width: 1080px; top: 470px; text-align: center;
+    }
+    #hook-sub {
+      display: inline-block; background: #f2ecdf; color: #141414;
+      font-family: "Playfair Display", serif; font-size: 66px; line-height: 1;
+      padding: 16px 30px 22px; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    #hook-sub span { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-title-wrap">
+      <div id="hook-title"><div id="hook-mark"></div><span id="hook-title-text" data-var-text="hookTitle">SEMI-D</span></div>
+    </div>
+    <div id="hook-sub-wrap">
+      <div id="hook-sub"><span id="hook-w1">lebar</span> <span id="hook-w2">dia…</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 is the thumbnail: the title is already on screen, the highlighter sweeps under it.
+    tl.fromTo("#hook-title-text", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 0);
+    tl.fromTo("#hook-mark", { scaleX: 1 }, { scaleX: 1, duration: 0.01 }, 0);
+    tl.fromTo("#hook-title", { scale: 1.1 }, { scale: 1, duration: 0.24, ease: "expo.out" }, 0);
+
+    // "lebar dia…" lands per word on the speech
+    tl.fromTo("#hook-sub", { opacity: 0, y: 14, rotation: -2 }, { opacity: 1, y: 0, rotation: -2, duration: 0.22, ease: "power4.out" }, 0.6);
+    tl.fromTo("#hook-w1", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13 }, 0.62);
+    tl.fromTo("#hook-w2", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13 }, 0.98);
+
+    // Exit with the camera move into the diagram
+    tl.to("#hook-title-wrap", { opacity: 0, y: -40, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 1.24);
+    tl.to("#hook-sub-wrap", { opacity: 0, y: -30, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 1.26);
+    tl.set(["#hook-title-wrap", "#hook-sub-wrap"], { opacity: 0 }, 1.46);
+
+    window.__timelines["hook"] = tl;
+  </script>
+</template>
