@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .card { position: absolute; left: 72px; top: 200px; width: 936px; background: #f4efe4; color: #161616; padding: 40px 48px 34px; box-shadow: 0 16px 40px rgba(0,0,0,.28); }
+    .kicker { font-family: "Outfit", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: 0.18em; color: #6b675e; }
+    .row { display: grid; grid-template-columns: 210px 1fr 1fr; column-gap: 28px; align-items: end; padding: 18px 0; border-bottom: 2px solid rgba(22,22,22,.18); }
+    .row:last-child { border-bottom: 0; }
+    .lbl { font-family: "Outfit", sans-serif; font-weight: 600; font-size: 28px; color: #6b675e; }
+    .unit { font-family: "Archivo Black", sans-serif; font-size: 44px; line-height: 1; }
+    .unit small { display: block; margin-top: 6px; font-family: "Outfit", sans-serif; font-weight: 600; font-size: 28px; color: #6b675e; }
+    .val { font-family: "Outfit", sans-serif; font-weight: 700; font-size: 38px; }
+    .pr { position: relative; display: inline-block; font-family: "Archivo Black", sans-serif; font-size: 38px; }
+    .pr span { position: relative; z-index: 1; }
+    .pr-mark { position: absolute; left: -8px; right: -8px; top: 34%; height: 62%; background: var(--accent, #ffd84d); transform-origin: 0 50%; z-index: 0; }
+  </style>
+  <div id="root" data-composition-id="units" data-width="1080" data-height="1920">
+    <div class="card" id="units-card">
+      <div class="kicker">PILIHAN UNIT</div>
+      <div class="row" id="units-r0">
+        <div></div>
+        <div class="unit">RB1<small>2 unit</small></div>
+        <div class="unit">RB2<small>26 unit</small></div>
+      </div>
+      <div class="row" id="units-r1">
+        <div class="lbl">Luas tanah</div>
+        <div class="val">35' × 69'</div>
+        <div class="val">36' × 69'</div>
+      </div>
+      <div class="row" id="units-r2">
+        <div class="lbl">Harga dari</div>
+        <div class="pr"><div class="pr-mark" id="units-mark"></div><span>RM385,000</span></div>
+        <div class="pr"><span>RM395,000</span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#units-card", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }, 0.22);
+    tl.fromTo("#units-r0", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.45);
+    tl.fromTo("#units-r1", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.75);
+    tl.fromTo("#units-r2", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 1.05);
+    tl.fromTo("#units-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 1.45);
+    // blur swap into the package card
+    tl.to("#units-card", { opacity: 0, filter: "blur(8px)", duration: 0.16, ease: "power2.in" }, 4.34);
+    tl.set("#units-card", { opacity: 0 }, 4.52);
+    window.__timelines["units"] = tl;
+  </script>
+</template>

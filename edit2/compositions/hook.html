@@ -1,0 +1,45 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .card {
+      position: absolute; left: 72px; width: 936px; background: #f4efe4; color: #161616;
+      padding: 44px 48px 46px; box-shadow: 0 16px 40px rgba(0,0,0,.28);
+    }
+    .kicker {
+      font-family: "Outfit", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: 0.18em;
+      color: #6b675e; display: flex; align-items: center; gap: 14px;
+    }
+    .kicker i { display: inline-block; width: 16px; height: 16px; background: #ffd84d; outline: 3px solid #161616; }
+    .h1 { font-family: "Archivo Black", sans-serif; font-size: 68px; line-height: 1.04; letter-spacing: -0.01em; margin-top: 18px; }
+    .loc { display: flex; align-items: center; gap: 12px; margin-top: 22px; font-family: "Outfit", sans-serif; font-weight: 600; font-size: 32px; }
+    .loc svg { width: 26px; height: 34px; flex: none; }
+    .rule { height: 3px; background: #161616; margin: 30px 0 24px; transform-origin: 0 50%; }
+    .price-label { font-family: "Outfit", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: 0.18em; color: #6b675e; }
+    .price { position: relative; display: inline-block; margin-top: 8px; padding: 2px 14px 8px; margin-left: -14px; }
+    .price-mark { position: absolute; left: 0; top: 30%; width: 100%; height: 62%; background: var(--accent, #ffd84d); transform-origin: 0 50%; z-index: 0; }
+    .price-num { position: relative; z-index: 1; font-family: "Archivo Black", sans-serif; font-size: 64px; line-height: 1; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-card" class="card" style="top: 200px">
+      <div class="kicker"><i></i><span data-var-text="kicker">PROJEK PERUMAHAN BARU</span></div>
+      <div class="h1" id="hook-title">Rumah Berkembar<br />1-Tingkat</div>
+      <div class="loc" id="hook-loc">
+        <svg viewBox="0 0 26 34"><path d="M13 1C6.4 1 1 6.2 1 12.6 1 21.4 13 33 13 33s12-11.6 12-20.4C25 6.2 19.6 1 13 1z" fill="#161616"/><circle cx="13" cy="12.6" r="4.6" fill="#ffd84d"/></svg>
+        <span data-var-text="location">Persiaran Masjid Sultan, Pulau Indah</span>
+      </div>
+      <div class="rule" id="hook-rule"></div>
+      <div class="price-label">HARGA DARI</div>
+      <div class="price"><div class="price-mark" id="hook-mark"></div><span class="price-num" data-var-text="priceFrom">RM385,000</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 is the thumbnail: title and price already readable.
+    tl.fromTo("#hook-card", { opacity: 1, y: 0 }, { opacity: 1, y: 0, duration: 0.01 }, 0);
+    tl.fromTo("#hook-rule", { scaleX: 0.2 }, { scaleX: 1, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#hook-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "expo.out" }, 0.4);
+    // location lands on "Pulau Indah"
+    tl.fromTo("#hook-loc", { opacity: 0.0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, 1.52);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>
