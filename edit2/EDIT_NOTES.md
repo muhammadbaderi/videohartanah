@@ -39,7 +39,7 @@ Surau Haji Omar, 99 Speedmart, Segi Fresh, Pos Malaysia, Pulau Indah Industrial 
 
 ## Audio
 Voice: highpass + light denoise + loudnorm. SFX are bundled Pixabay files, each tied to a visual action. Mix: −18.3 LUFS integrated (low because the tour has no voice), true peak −1.4 dBTP, no clipping. Measured, not listened to.
-**No music yet**: the 26 s info section feels empty without it. The HeyGen music catalog needs `npx hyperframes auth login`, or provide your own track.
+**No music**, by choice (confirmed by the client): voice + SFX only.
 
 ## Commands
 ```bash
