@@ -1,0 +1,55 @@
+{
+  "enjin": "ElevenLabs",
+  "model": "eleven_multilingual_v2",
+  "suara": "Klon suara sendiri (videohartanah)",
+  "voice_id": "graVYRgsElnbev50WXQ2",
+  "tetapan": {
+    "stability": 0.5,
+    "style": 0.15,
+    "speed": 1.0
+  },
+  "vo": [
+    {
+      "no": 1,
+      "tajuk": "Tujuh Tahun Menyewa",
+      "fail": "vo-01-tujuh-tahun-menyewa.mp3",
+      "durasi_saat": 75.2
+    },
+    {
+      "no": 2,
+      "tajuk": "Azan Subuh",
+      "fail": "vo-02-azan-subuh.mp3",
+      "durasi_saat": 71.2
+    },
+    {
+      "no": 3,
+      "tajuk": "Drama Pagi Sekolah",
+      "fail": "vo-03-drama-pagi-sekolah.mp3",
+      "durasi_saat": 70.8
+    },
+    {
+      "no": 4,
+      "tajuk": "Duit Muka 34 Ribu",
+      "fail": "vo-04-duit-muka-34-ribu.mp3",
+      "durasi_saat": 73.6
+    },
+    {
+      "no": 5,
+      "tajuk": "Lutut Mak",
+      "fail": "vo-05-lutut-mak.mp3",
+      "durasi_saat": 60.3
+    },
+    {
+      "no": 6,
+      "tajuk": "Masa Atas Jalan",
+      "fail": "vo-06-masa-atas-jalan.mp3",
+      "durasi_saat": 70.4
+    },
+    {
+      "no": 7,
+      "tajuk": "Nanti Dulu",
+      "fail": "vo-07-nanti-dulu.mp3",
+      "durasi_saat": 72.5
+    }
+  ]
+}

@@ -7,3 +7,6 @@ video/.hyperframes/
 *.mov
 # media-use cache (downloaded catalog tracks; the chosen one is in assets/audio)
 video/.media/
+
+# voiceover masters (regenerable with scripts/tts_elevenlabs.py; the mp3s are kept)
+copywriting/**/vo/*.wav
