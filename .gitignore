@@ -10,3 +10,4 @@ video/.media/
 
 # voiceover masters (regenerable with scripts/tts_elevenlabs.py; the mp3s are kept)
 copywriting/**/vo/*.wav
+copywriting/**/vo/raw/
