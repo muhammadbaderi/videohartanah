@@ -20,6 +20,9 @@ import requests
 
 API = "https://api.elevenlabs.io/v1"
 MODEL = "eleven_multilingual_v2"
+# eleven_v3 is more expressive and reads audio tags such as [excited], but has
+# no <break> tag (a pause is written as "...") and takes stability 0.0, 0.5 or 1.0.
+V3 = "eleven_v3"
 
 # Written form -> spoken Malay, applied in order. Every digit must be covered:
 # build() stops if one is left, so a price or the phone number is never misread.
@@ -50,7 +53,7 @@ ACRONYMS = ["SPA", "SMK", "SRA", "SK", "KIIP", "ECRL", "WCE", "NKVE"]
 SECTION_BREAK = ' <break time="0.7s" /> '
 
 
-def spoken(parts):
+def spoken(parts, model=MODEL):
     out = []
     for text in parts:
         s = text
@@ -61,13 +64,13 @@ def spoken(parts):
         if re.search(r"\d", s):
             sys.exit(f"Digit left unspoken, add it to SPOKEN: {s!r}")
         out.append(s)
-    return SECTION_BREAK.join(out)
+    return (" ... " if model == V3 else SECTION_BREAK).join(out)
 
 
-def synthesize(text, voice, mp3_path, stability, style, speed):
+def synthesize(text, voice, mp3_path, stability, style, speed, model=MODEL):
     body = {
         "text": text,
-        "model_id": MODEL,
+        "model_id": model,
         "voice_settings": {"stability": stability, "similarity_boost": 0.8,
                            "style": style, "use_speaker_boost": True, "speed": speed},
     }
@@ -97,7 +100,7 @@ def slug(s):
 def cmd_sample(a):
     with tempfile.TemporaryDirectory() as tmp:
         raw = f"{tmp}/raw.mp3"
-        synthesize(spoken([a.text]), a.voice, raw, a.stability, a.style, a.speed)
+        synthesize(spoken([a.text], a.model), a.voice, raw, a.stability, a.style, a.speed, a.model)
         print(f"{finish(raw, a.out.removesuffix('.mp3')):.1f}s")
 
 
@@ -113,14 +116,14 @@ def cmd_build(a):
             if a.only and s["no"] not in a.only:
                 continue
             raw = f"{tmp}/raw-{s['no']}.mp3"
-            synthesize(spoken([s["hook"], s["cerita"], s["cta"]]), a.voice, raw,
-                       a.stability, a.style, a.speed)
+            parts = [s.get("vo_" + k, s[k]) for k in ("hook", "cerita", "cta")]
+            synthesize(spoken(parts, a.model), a.voice, raw, a.stability, a.style, a.speed, a.model)
             base = out / f"vo-{s['no']:02d}-{slug(s['tajuk'])}"
             dur = finish(raw, base)
             results[s["no"]] = {"no": s["no"], "tajuk": s["tajuk"], "fail": base.name + ".mp3",
                                 "durasi_saat": round(dur, 1)}
             print(f"{s['no']}. {s['tajuk']}: {dur:.1f}s")
-    meta = {"enjin": "ElevenLabs", "model": MODEL, "suara": a.voice_name or a.voice,
+    meta = {"enjin": "ElevenLabs", "model": a.model, "suara": a.voice_name or a.voice,
             "voice_id": a.voice, "tetapan": {"stability": a.stability, "style": a.style,
                                              "speed": a.speed},
             "vo": [results[k] for k in sorted(results)]}
@@ -141,6 +144,7 @@ def main():
             sp.add_argument("--only", type=int, nargs="*")
             sp.add_argument("--voice-name", default="")
         sp.add_argument("--voice", required=True, help="ElevenLabs voice_id")
+        sp.add_argument("--model", default=MODEL, help=f"{MODEL} (default) or {V3}")
         sp.add_argument("--stability", type=float, default=0.45)
         sp.add_argument("--style", type=float, default=0.25)
         sp.add_argument("--speed", type=float, default=1.0)
