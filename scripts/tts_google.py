@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Generate the voiceovers for a copywriting file with Google Cloud Text-to-Speech.
 
-The API key is never read here: the session's network proxy adds the
-X-Goog-Api-Key header to requests for texttospeech.googleapis.com.
+The API key comes from one of two places: the session's network proxy adds
+the X-Goog-Api-Key header for texttospeech.googleapis.com (a network secret),
+or, if that is not set up, the GOOGLE_TTS_API_KEY environment variable.
 
     python3 -I scripts/tts_google.py voices                     # list ms-MY voices
     python3 -I scripts/tts_google.py sample "teks" out.mp3 --voice ms-MY-Wavenet-B
@@ -12,6 +13,7 @@ X-Goog-Api-Key header to requests for texttospeech.googleapis.com.
 import argparse
 import base64
 import json
+import os
 import re
 import subprocess
 import sys
@@ -22,6 +24,8 @@ from xml.sax.saxutils import escape
 import requests
 
 API = "https://texttospeech.googleapis.com/v1"
+HEADERS = ({"X-Goog-Api-Key": os.environ["GOOGLE_TTS_API_KEY"]}
+           if os.environ.get("GOOGLE_TTS_API_KEY") else {})
 
 # Written form -> spoken Malay. Applied in order, after XML escaping, so the
 # replacements may hold SSML. Every digit in a script must be covered here:
@@ -87,7 +91,7 @@ def synthesize(ssml, voice, rate, wav_path):
         "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": 24000,
                         "speakingRate": rate},
     }
-    r = requests.post(f"{API}/text:synthesize", json=body, timeout=120)
+    r = requests.post(f"{API}/text:synthesize", json=body, headers=HEADERS, timeout=120)
     if r.status_code != 200:
         sys.exit(f"TTS error {r.status_code}: {r.text[:500]}")
     Path(wav_path).write_bytes(base64.b64decode(r.json()["audioContent"]))
@@ -111,7 +115,7 @@ def slug(s):
 
 
 def cmd_voices(_):
-    r = requests.get(f"{API}/voices", params={"languageCode": "ms-MY"}, timeout=60)
+    r = requests.get(f"{API}/voices", params={"languageCode": "ms-MY"}, headers=HEADERS, timeout=60)
     if r.status_code != 200:
         sys.exit(f"Error {r.status_code}: {r.text[:500]}")
     for v in r.json().get("voices", []):
