@@ -33,15 +33,15 @@
     inUp("#pr", 0 - 0.05, 0.5);
     tl.set("#pr-x", { scaleX: 0, rotation: -6 }, 0);
     tl.set("#pr-b", { opacity: 0 }, 0);
-    tl.to("#pr-x", { scaleX: 1, rotation: -6, duration: 0.35, ease: "power3.out" }, 4.31);
-    tl.to("#pr-old", { opacity: 0.45, duration: 0.3 }, 4.31 + 0.2);
-    tl.to("#pr-b", { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 4.76);
+    tl.to("#pr-x", { scaleX: 1, rotation: -6, duration: 0.35, ease: "power3.out" }, 3.69);
+    tl.to("#pr-old", { opacity: 0.45, duration: 0.3 }, 3.69 + 0.2);
+    tl.to("#pr-b", { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 4.14);
     const p = { v: 299500 };
     tl.fromTo(p, { v: 299500 }, { v: 290500, duration: 1.1, ease: "power3.out",
-      onUpdate: () => { document.getElementById("pr-n").textContent = (Math.round(p.v / 100) * 100).toLocaleString("en-US"); } }, 5.608);
-    tl.fromTo("#pr-now", { scale: 1 }, { scale: 1.08, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out" }, 5.608 + 1.1);
-    tl.fromTo("#pr-sv", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.4)" }, 5.608 + 1.3);
-    out(["#pr", "#pr-b"], 9.266 - 0.25);
+      onUpdate: () => { document.getElementById("pr-n").textContent = (Math.round(p.v / 100) * 100).toLocaleString("en-US"); } }, 5);
+    tl.fromTo("#pr-now", { scale: 1 }, { scale: 1.08, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out" }, 5 + 1.1);
+    tl.fromTo("#pr-sv", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.4)" }, 5 + 1.3);
+    out(["#pr", "#pr-b"], 8.512 - 0.25);
     window.__timelines["g-price"] = tl;
   </script>
 </template>

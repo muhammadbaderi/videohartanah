@@ -65,30 +65,30 @@
 
     tl.fromTo("#mp-l", { scale: 1.7, filter: "blur(6px)" }, { scale: 1, filter: "blur(0px)", duration: 1.5, ease: "expo.out" }, 0);
     inUp("#mp-title", 0.05, 0.5);
-    tl.fromTo("#mp-pin", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "bounce.out" }, 1.416);
-    inPop("#mp-lab", 1.416 + 0.35);
+    tl.fromTo("#mp-pin", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "bounce.out" }, 1.36);
+    inPop("#mp-lab", 1.36 + 0.35);
     const ring = (s, t0) => { tl.set(s, { opacity: 0, scale: 0.3 }, 0); for (let k = 0; k < 7; k++) tl.fromTo(s, { scale: 0.3, opacity: 0.9 }, { scale: 4.2, opacity: 0, duration: 1.6, ease: "power1.out" }, t0 + k * 1.6); };
-    ring("#mp-ring1", 1.416 + 0.5); ring("#mp-ring2", 1.416 + 1.3);
-    inPop("#mp-a0", 3.717);
-    inPop("#mp-a1", 4.309);
-    inPop("#mp-a2", 4.762);
-    inPop("#mp-a3", 5.215);
-    inPop("#mp-a4", 5.911);
-    inPop("#mp-a5", 7.061);
+    ring("#mp-ring1", 1.36 + 0.5); ring("#mp-ring2", 1.36 + 1.3);
+    inPop("#mp-a0", 3.66);
+    inPop("#mp-a1", 4.24);
+    inPop("#mp-a2", 4.68);
+    inPop("#mp-a3", 5.12);
+    inPop("#mp-a4", 5.74);
+    inPop("#mp-a5", 6.9);
     // zoom out to the region: Klang, Pelabuhan Klang and the highways
-    out(["#mp-a0", "#mp-a1", "#mp-a2", "#mp-a3", "#mp-a4", "#mp-a5"], 8.568 - 0.3, 0.2);
-    out("#mp-lab", 8.568 - 0.3, 0.2);
-    out("#mp-title", 8.568 - 0.3, 0.25);
-    tl.to("#mp-l", { scale: 0.125, opacity: 0, duration: 1.2, ease: "power3.inOut" }, 8.568 - 0.1);
-    tl.fromTo("#mp-r", { scale: 8 }, { scale: 1, duration: 1.2, ease: "power3.inOut" }, 8.568 - 0.1);
-    tl.to("#mp-pin", { scale: 0.75, duration: 1.2, ease: "power3.inOut" }, 8.568 - 0.1);
-    tl.fromTo([".mk"], { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.15, ease: "power2.out" }, 8.568 + 0.9);
-    inPop("#mp-r0", 9.369);
-    inPop("#mp-r1", 9.938);
-    inPop("#mp-r2", 10.844);
-    inPop("#mp-r3", 11.61);
-    inPop("#mp-r4", 11.923);
-    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power2.in" }, 13.015 - 0.25);
+    out(["#mp-a0", "#mp-a1", "#mp-a2", "#mp-a3", "#mp-a4", "#mp-a5"], 8.411 - 0.3, 0.2);
+    out("#mp-lab", 8.411 - 0.3, 0.2);
+    out("#mp-title", 8.411 - 0.3, 0.25);
+    tl.to("#mp-l", { scale: 0.125, opacity: 0, duration: 1.2, ease: "power3.inOut" }, 8.411 - 0.1);
+    tl.fromTo("#mp-r", { scale: 8 }, { scale: 1, duration: 1.2, ease: "power3.inOut" }, 8.411 - 0.1);
+    tl.to("#mp-pin", { scale: 0.75, duration: 1.2, ease: "power3.inOut" }, 8.411 - 0.1);
+    tl.fromTo([".mk"], { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.15, ease: "power2.out" }, 8.411 + 0.9);
+    inPop("#mp-r0", 9.191);
+    inPop("#mp-r1", 10.231);
+    inPop("#mp-r2", 10.711);
+    inPop("#mp-r3", 12.331);
+    inPop("#mp-r4", 12.811);
+    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power2.in" }, 13.791 - 0.25);
     window.__timelines["g-map"] = tl;
   </script>
 </template>

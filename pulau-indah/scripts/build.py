@@ -1,12 +1,12 @@
 """Build the Pulau Indah HyperFrames project from the voiceover timing.
 
-Reads  scripts/vo_script.json  + video/assets/audio/vo/*.align.json  (ElevenLabs
-character timestamps) + video/assets/map/map.json, and writes
+Reads  scripts/vo_script.json  + video/assets/audio/vo/*.words.json  (word
+timings measured on the enhanced VO by align_vo.py) + video/assets/map/map.json, and writes
   video/index.html               cut, voice, music, SFX, camera, scene hosts
   video/compositions/*.html      one motion-graphics scene per chapter + captions
 
-Everything is timed to the voice: change a VO line, re-run make_vo.py for it,
-then re-run this. Re-running OVERWRITES every file above.
+Everything is timed to the voice: change a VO line, re-run make_vo.py,
+enhance_vo.py and align_vo.py for it, then re-run this. Re-running OVERWRITES every file above.
 
 Usage: python3 -I pulau-indah/scripts/build.py
 """
@@ -24,14 +24,13 @@ r3 = lambda x: f"{x:.3f}".rstrip("0").rstrip(".") if abs(x) > 1e-9 else "0"
 FOOTAGE = "assets/footage/IMG_1360_1080.mp4"
 
 # =============================================================== VOICE + WORDS
-BREAK = '<break time="0.35s" />'
-TOKEN = re.compile(r"\{([^|}]*)\|([^}]*)\}|\[b\]|(\S+)")
+TOKEN = re.compile(r"\{([^|}]*)\|([^}]*)\}|\[[^\]]*\]|(\S+)")
 
 def parse(text):
     """-> list of words: {sp: spoken word, grp: display-unit index}, and units [{text}]"""
     words, units = [], []
     for m in TOKEN.finditer(text):
-        if m.group(0) == "[b]":
+        if m.group(0).startswith("["):  # [b] pause / eleven_v3 audio tag
             continue
         if m.group(1) is not None:
             units.append({"text": m.group(2)})
@@ -50,29 +49,13 @@ def parse(text):
 GAP_BEFORE = {"hook1": 0.12, "hook2": 0.3, "ans": 0.38, "loc1": 0.45, "loc2": 0.28, "loc3": 0.3, "lot": 0.5,
               "liv": 0.3, "mbr": 0.3, "kit": 0.3, "rooms": 0.3, "eta": 0.35, "price": 0.55, "pkg": 0.35,
               "cash": 0.35, "cta": 0.5}
+GAP_BEFORE["pkg"] = 0.65  # time to read the new price
 END_HOLD = 3.2
 lines, t = {}, 0.0
 for ln in cfg["lines"]:
     lid = ln["id"]
-    al = json.load(open(os.path.join(VID, "assets", "audio", "vo", f"{lid}.align.json")))
-    chars, cs, ce = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
-    joined = "".join(chars)
-    keep = [True] * len(chars)
-    for m in re.finditer(re.escape(BREAK), joined):
-        for k in range(m.start(), m.end()):
-            keep[k] = False
-    aw, cur = [], None
-    for k, ch in enumerate(chars):
-        if not keep[k]:
-            continue
-        if ch.isspace():
-            cur = None
-            continue
-        if cur is None:
-            cur = {"sp": "", "s": cs[k], "e": ce[k]}
-            aw.append(cur)
-        cur["sp"] += ch
-        cur["e"] = ce[k]
+    # word timings measured on the final WAV by align_vo.py
+    aw = json.load(open(os.path.join(VID, "assets", "audio", "vo", f"{lid}.words.json")))
     words, units = parse(ln["text"])
     assert [w["sp"] for w in words] == [w["sp"] for w in aw], (lid, [w["sp"] for w in words], [w["sp"] for w in aw])
     t += GAP_BEFORE[lid]
@@ -81,10 +64,10 @@ for ln in cfg["lines"]:
     for gi, u in enumerate(units):
         ws = [w for w in words if w["grp"] == gi]
         u["s"], u["e"] = ws[0]["s"], ws[-1]["e"]
-    mp3 = os.path.join(VID, "assets", "audio", "vo", f"{lid}.mp3")
-    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", mp3], capture_output=True, text=True).stdout)
+    wav = os.path.join(VID, "assets", "audio", "vo", f"{lid}.wav")
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", wav], capture_output=True, text=True).stdout)
     lines[lid] = {"start": t, "dur": dur, "end": t + aw[-1]["e"], "words": words, "units": units}
-    t += aw[-1]["e"]
+    t += max(aw[-1]["e"], dur - 0.12)   # the WAV keeps ~0.13 s of tail after the last voiced frame
 speech_end = t
 TOTAL = round(speech_end + END_HOLD, 3)
 ORDER = [l["id"] for l in cfg["lines"]]
@@ -117,8 +100,9 @@ SHOTS = [
     ("eta", 80.0, None, 86.2, "back door -> back yard"),
     ("price", 24.0, None, 29.6, "approach to the front opening"),
     ("price", 31.0, ("price", "Sekarang,"), 37.0, "living hall, long"),
-    ("pkg", 0.3, None, 5.3, "exterior row again (dimmed under the card)"),
-    ("pkg", 13.4, ("pkg", "duti"), 17.6, "porch (dimmed)"),
+    ("pkg", 0.0, None, 5.3, "exterior row again (dimmed under the card)"),
+    ("pkg", 13.1, ("pkg", "duti"), 17.6, "porch (dimmed)"),
+    ("pkg", 19.0, ("pkg", "semua"), 23.9, "house front (dimmed)"),
     ("cash", "still", None, None, "blurred exterior still"),
 ]
 shots = []
@@ -198,7 +182,7 @@ def tpl(s, **kw):
 # ------------------------------------------------------------------ g-hook
 s0, s1 = 0.0, L("ans")
 h = lambda x: x - s0
-tA, tB, tC, tD = W("hook1", "Rumah"), W("hook1", "di"), W("hook1", "harga"), L("hook2")
+tA, tB, tC, tD = W("hook1", "Rumah"), W("hook1", "Pulau") - 0.1, W("hook1", "bawah") - 0.25, L("hook2")
 scene("g-hook", s0, s1, tpl("""<template>
   <style>$BASE
     #hk-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.6) 100%); }
@@ -206,12 +190,12 @@ scene("g-hook", s0, s1, tpl("""<template>
     #hk-tag { position: absolute; top: 250px; left: 0; width: 1080px; text-align: center; }
     #hk-tag span { display: inline-block; padding: 14px 30px; border-radius: 999px; white-space: nowrap;
       font-weight: 800; font-size: 30px; letter-spacing: 0.14em; color: #15120a; background: #FFC83D; }
-    .ph { position: absolute; left: 0; width: 1080px; text-align: center; top: 600px; }
-    .l1 { font-size: 104px; } .l2 { font-size: 168px; margin-top: 8px; }
-    #hk-c .l2 { font-size: 228px; text-shadow: 0 0 60px rgba(255,200,61,0.35); }
-    #hk-b svg { width: 120px; height: 120px; color: #FFC83D; stroke-width: 1.8; }
+    .ph { position: absolute; left: 0; width: 1080px; text-align: center; top: 640px; }
+    .l1 { font-size: 68px; } .l2 { font-size: 112px; margin-top: 6px; }
+    #hk-c .l2 { font-size: 148px; text-shadow: 0 0 60px rgba(255,200,61,0.35); }
+    #hk-b svg { width: 84px; height: 84px; color: #FFC83D; stroke-width: 1.8; }
     .sh { text-shadow: 0 8px 30px rgba(0,0,0,0.55); }
-    #hk-d { top: 560px; } #hk-d .l1 { font-size: 150px; } #hk-d .l2 { font-size: 230px; }
+    #hk-d { top: 620px; } #hk-d .l1 { font-size: 96px; } #hk-d .l2 { font-size: 150px; }
     #hk-q { display: inline-block; color: #FFC83D; transform-origin: 50% 85%; }
   </style>
   <div id="root" data-composition-id="g-hook" data-width="1080" data-height="1920">
@@ -219,8 +203,8 @@ scene("g-hook", s0, s1, tpl("""<template>
     <div id="hk-dark"></div>
     <div id="hk-tag"><span>PROJEK BARU · PULAU INDAH</span></div>
     <div id="hk-a" class="ph sh"><div class="hd l1">RUMAH TERES</div><div id="hk-a2" class="hd l2 y">FREEHOLD</div></div>
-    <div id="hk-b" class="ph sh">$PIN<div class="hd l1" style="font-size: 96px; margin-top: 10px">DI PULAU INDAH</div></div>
-    <div id="hk-c" class="ph sh"><div class="hd l1" style="font-size: 80px">HARGA BAWAH</div><div class="hd l2 y">RM300K</div></div>
+    <div id="hk-b" class="ph sh">$PIN<div class="hd l1" style="font-size: 66px; margin-top: 8px">DI PULAU INDAH</div></div>
+    <div id="hk-c" class="ph sh"><div class="hd l1" style="font-size: 56px">HARGA BAWAH</div><div class="hd l2 y">RM300K</div></div>
     <div id="hk-d" class="ph sh"><div id="hk-d1" class="hd l1">MASIH</div><div class="hd l2"><span id="hk-d2">WUJUD</span><span id="hk-q">?</span></div></div>
   </div>
   <script>$JS
@@ -261,8 +245,8 @@ h = lambda x: x - s0
 scene("g-ans", s0, s1, tpl("""<template>
   <style>$BASE
     #an-st { position: absolute; left: 0; width: 1080px; top: 640px; text-align: center; }
-    #an-st span { display: inline-block; transform: rotate(-6deg); padding: 10px 46px 18px; border: 12px solid #FFC83D;
-      border-radius: 26px; color: #FFC83D; font-size: 190px; background: rgba(10,12,18,0.35); text-shadow: 0 6px 30px rgba(0,0,0,0.4); white-space: nowrap; }
+    #an-st span { display: inline-block; transform: rotate(-6deg); padding: 8px 34px 14px; border: 9px solid #FFC83D;
+      border-radius: 22px; color: #FFC83D; font-size: 124px; background: rgba(10,12,18,0.35); text-shadow: 0 6px 30px rgba(0,0,0,0.4); white-space: nowrap; }
     #an-live { position: absolute; left: 60px; top: 230px; display: flex; align-items: center; gap: 16px; padding: 14px 28px 14px 22px; border-radius: 999px;
       font-weight: 800; font-size: 30px; letter-spacing: 0.14em; }
     #an-dot { width: 22px; height: 22px; border-radius: 50%; background: #ff3b3b; box-shadow: 0 0 18px #ff3b3b; }
@@ -821,7 +805,7 @@ c = ["""<template>
     #root { position: absolute; inset: 0; }
     .cg { position: absolute; left: 0; top: 1350px; width: 1080px; height: 110px; }
     .cg-in { position: absolute; left: 40px; right: 40px; top: 0; text-align: center; white-space: nowrap;
-      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 66px; line-height: 1.15; letter-spacing: -0.01em; text-transform: uppercase;
+      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 60px; line-height: 1.15; letter-spacing: -0.01em; text-transform: uppercase;
       color: #ffffff; -webkit-text-stroke: 14px rgba(0,0,0,0.92); paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.45); }
     .cw { display: inline-block; transform-origin: 50% 80%; margin: 0 0.09em; }
   </style>
@@ -893,13 +877,13 @@ w("""        </div>
       <div id="grade"></div>
       <div id="flash"></div>
 
-      <!-- VOICE: ElevenLabs "Mad Serious", one clip per line -->""")
+      <!-- VOICE: ElevenLabs "Mad Serious" (eleven_v3), enhanced by enhance_vo.py, one clip per line -->""")
 for lid in ORDER:
     ln = lines[lid]
-    w(f'      <audio id="vo-{lid}" class="clip" src="assets/audio/vo/{lid}.mp3" data-start="{r3(ln["start"])}" data-duration="{r3(ln["dur"])}" data-volume="1" data-track-index="2"></audio>')
+    w(f'      <audio id="vo-{lid}" class="clip" src="assets/audio/vo/{lid}.wav" data-start="{r3(ln["start"])}" data-duration="{r3(ln["dur"])}" data-volume="1" data-track-index="2"></audio>')
 # music: starts on "Wujud." so its own ending lands on the end card
 MUSIC_AT = W("ans", "Wujud.") - 0.05
-MUSIC_LEN = 69.6
+MUSIC_LEN = 75.5  # music-bed.mp3 after extend_music.py (two bars repeated); the track ends on its own at ~75.5 s
 mdur = min(TOTAL - MUSIC_AT, MUSIC_LEN)
 BED, LIFT = 0.16, 0.34
 pts = [(0.0, 0.0), (0.25, BED)]
@@ -933,7 +917,7 @@ for s in shots:
     if s["src"] == "map":
         continue
     z = 1.14 if s["lid"] in ("hook1", "hook2") else 1.07
-    w(f'      tl.fromTo("#cam-inner", {{ scale: 1 }}, {{ scale: {z}, duration: {r3(s["dur"])}, ease: "none", immediateRender: false }}, {r3(s["start"])});')
+    w(f'      tl.fromTo("#cam-inner", {{ scale: 1 }}, {{ scale: {z}, duration: {r3(s["dur"] - 0.002)}, ease: "none", immediateRender: false }}, {r3(s["start"])});')
 w(f'      tl.set("#cam-inner", {{ scale: 1 }}, {r3(L("cta"))});')
 for tt in [L("ans"), L("lot"), L("price"), L("cta")]:
     w(f'      tl.to("#flash", {{ opacity: 0.7, duration: 0.06, ease: "power2.in" }}, {r3(tt - 0.06)});')

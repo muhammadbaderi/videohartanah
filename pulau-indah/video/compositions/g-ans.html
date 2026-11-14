@@ -9,8 +9,8 @@
     svg.ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     #an-st { position: absolute; left: 0; width: 1080px; top: 640px; text-align: center; }
-    #an-st span { display: inline-block; transform: rotate(-6deg); padding: 10px 46px 18px; border: 12px solid #FFC83D;
-      border-radius: 26px; color: #FFC83D; font-size: 190px; background: rgba(10,12,18,0.35); text-shadow: 0 6px 30px rgba(0,0,0,0.4); white-space: nowrap; }
+    #an-st span { display: inline-block; transform: rotate(-6deg); padding: 8px 34px 14px; border: 9px solid #FFC83D;
+      border-radius: 22px; color: #FFC83D; font-size: 124px; background: rgba(10,12,18,0.35); text-shadow: 0 6px 30px rgba(0,0,0,0.4); white-space: nowrap; }
     #an-live { position: absolute; left: 60px; top: 230px; display: flex; align-items: center; gap: 16px; padding: 14px 28px 14px 22px; border-radius: 999px;
       font-weight: 800; font-size: 30px; letter-spacing: 0.14em; }
     #an-dot { width: 22px; height: 22px; border-radius: 50%; background: #ff3b3b; box-shadow: 0 0 18px #ff3b3b; }
@@ -28,11 +28,11 @@
 
     tl.fromTo("#an-st", { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.in" }, -0.12);
     tl.fromTo("#an-st", { y: 0 }, { y: 8, duration: 0.06, yoyo: true, repeat: 3, ease: "none" }, -0.12 + 0.22);
-    tl.to("#an-st", { opacity: 0, scale: 0.85, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 1.707);
-    tl.set("#an-st", { visibility: "hidden" }, 1.707 + 0.26);
-    inUp("#an-live", 0.894, 0.4);
-    tl.to("#an-dot", { opacity: 0.25, duration: 0.4, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.894 + 0.4);
-    out("#an-live", 3.422 - 0.25);
+    tl.to("#an-st", { opacity: 0, scale: 0.85, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 1.44);
+    tl.set("#an-st", { visibility: "hidden" }, 1.44 + 0.26);
+    inUp("#an-live", 0.42, 0.4);
+    tl.to("#an-dot", { opacity: 0.25, duration: 0.4, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.42 + 0.4);
+    out("#an-live", 3.134 - 0.25);
     window.__timelines["g-ans"] = tl;
   </script>
 </template>
