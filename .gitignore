@@ -11,3 +11,4 @@ video/.media/
 pulau-indah/video/assets/footage/*.mp4
 pulau-indah/video/renders/
 pulau-indah/video/.hyperframes/
+__pycache__/
