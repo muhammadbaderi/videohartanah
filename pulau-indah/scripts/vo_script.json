@@ -1,0 +1,72 @@
+{
+ "voice_id": "SZ0xfPd6MASL0W36QxnX",
+ "voice_name": "Mad Serious",
+ "model_id": "eleven_multilingual_v2",
+ "note": "{spoken|display}: TTS reads the first part, captions show the second. [b] = short break.",
+ "lines": [
+  {
+   "id": "hook1",
+   "text": "Rumah teres {freehold|FREEHOLD} di Pulau Indah, [b] harga bawah {tiga ratus ribu|RM300K}."
+  },
+  {
+   "id": "hook2",
+   "text": "Masih wujud ke?"
+  },
+  {
+   "id": "ans",
+   "text": "Wujud. [b] Dan saya tengah berdiri depan dia sekarang."
+  },
+  {
+   "id": "loc1",
+   "text": "Projek perumahan baru, di Persiaran Masjid Sultan, Pulau Indah."
+  },
+  {
+   "id": "loc2",
+   "text": "Sekolah, masjid, klinik, semua dekat. Halal Hub dan kawasan industri, sebelah je."
+  },
+  {
+   "id": "loc3",
+   "text": "Nak keluar? {Kesas|KESAS}, {S.K.V.E|SKVE}, {W-C-E|WCE}, semua dah sedia."
+  },
+  {
+   "id": "lot",
+   "text": "Teres setingkat. Tanah {dua puluh kali enam puluh empat|20' x 64'} kaki. Porch, muat dua kereta."
+  },
+  {
+   "id": "liv",
+   "text": "Masuk je, ruang tamu memanjang. Lapang."
+  },
+  {
+   "id": "mbr",
+   "text": "Bilik utama, siap dengan bilik air sendiri."
+  },
+  {
+   "id": "kit",
+   "text": "Dapur dan ruang makan di belakang, terpisah dari ruang tamu. Lebih privasi."
+  },
+  {
+   "id": "rooms",
+   "text": "Tiga bilik tidur, dua bilik air. Cukup untuk satu keluarga."
+  },
+  {
+   "id": "eta",
+   "text": "Struktur dah siap. Dijangka siap sepenuhnya, {suku ketiga dua ribu dua puluh tujuh|Q3 2027}."
+  },
+  {
+   "id": "price",
+   "text": "Harga asal, {dua ratus sembilan puluh sembilan ribu lima ratus|RM299,500}. [b] Sekarang, dari {dua ratus sembilan puluh ribu lima ratus ringgit|RM290,500} je."
+  },
+  {
+   "id": "pkg",
+   "text": "Booking, {lima ratus ringgit|RM500}. Legal fee {S.P.A|SPA}, legal fee loan, duti setem, {M.O.T|MOT}, [b] semua percuma."
+  },
+  {
+   "id": "cash",
+   "text": "Pembeli terawal, dapat cashback {sebelas ribu ringgit|RM11,000}."
+  },
+  {
+   "id": "cta",
+   "text": "Freehold. {Ri-zab Melayu|Rizab Melayu}. Unit terhad. [b] WhatsApp saya sekarang, {kosong satu enam, tiga tujuh kosong, lapan sembilan kosong lapan|016-370 8908}."
+  }
+ ]
+}
