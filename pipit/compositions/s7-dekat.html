@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #2b2d31; font-family: "Inter", sans-serif; color: #fff; }
+    #d-cam { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    #d-vid { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #d-scrim { position: absolute; inset: 0; background: rgba(30, 32, 36, 0.66); }
+    #d-k { position: absolute; left: 60px; top: 214px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 80px;
+      line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
+    .d-row { position: absolute; left: 60px; width: 960px; height: 200px; display: flex; align-items: center; gap: 34px;
+      border-top: 3px solid rgba(255, 255, 255, 0.16); }
+    .d-min { flex: none; width: 190px; text-align: center; color: #ffc83d; font-family: "Montserrat", sans-serif; font-weight: 900; line-height: 0.9; }
+    .d-min b { display: block; font-size: 112px; letter-spacing: -0.03em; }
+    .d-min small { display: block; font-size: 34px; letter-spacing: 0.12em; margin-top: 6px; }
+    .d-txt { font-weight: 700; font-size: 44px; line-height: 1.12; white-space: nowrap; }
+    .d-txt small { display: block; font-weight: 500; font-size: 32px; opacity: 0.78; margin-top: 6px; }
+    #d-r1 { top: 340px; }
+    #d-r2 { top: 560px; }
+    #d-r3 { top: 780px; }
+    #d-r4 { top: 1000px; }
+    #d-dip { position: absolute; inset: 0; background: #2b2d31; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s7-dekat" data-width="1080" data-height="1920">
+    <div id="d-cam" data-layout-allow-overflow>
+      <video id="d-vid" class="clip" src="assets/footage/IMG_1307.mp4" muted playsinline data-start="0" data-duration="7.62" data-media-start="3.0" data-track-index="0"></video>
+    </div>
+    <div id="d-scrim"></div>
+    <div id="d-k">DEKAT DENGAN</div>
+    <div id="d-r1" class="d-row"><div class="d-min"><b>5</b><small>MIN</small></div><div class="d-txt">Sek. Keb. Kebun Baharu<small>&amp; Sek. Rendah Agama · 2.9 km</small></div></div>
+    <div id="d-r2" class="d-row"><div class="d-min"><b>6</b><small>MIN</small></div><div class="d-txt">99 Speedmart<small>Tropicana Aman · 4.3 km</small></div></div>
+    <div id="d-r3" class="d-row"><div class="d-min"><b>9</b><small>MIN</small></div><div class="d-txt">Eco Sanctuary<small>6 km</small></div></div>
+    <div id="d-r4" class="d-row"><div class="d-min"><b>19</b><small>MIN</small></div><div class="d-txt">Hospital Columbia Asia<small>Bukit Rimau · 13 km</small></div></div>
+    <div id="d-dip"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // in: the footage drops in from the whip above, blurred, then sharpens
+    tl.fromTo("#d-cam", { y: 420, filter: "blur(16px)" }, { y: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+    tl.fromTo("#d-k", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.2);
+    // one place per 0.9 s: the minutes land first, the name follows 0.08 s later
+    [["#d-r1", 0.5], ["#d-r2", 1.4], ["#d-r3", 2.3], ["#d-r4", 3.2]].forEach(([sel, t]) => {
+      tl.fromTo(sel + " .d-min", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, t);
+      tl.fromTo(sel + " .d-txt", { opacity: 0, x: -50, filter: "blur(6px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, t + 0.08);
+      tl.fromTo(sel, { borderTopColor: "rgba(255,255,255,0)" }, { borderTopColor: "rgba(255,255,255,0.16)", duration: 0.4 }, t);
+    });
+    // out: dip to charcoal over the last 3 frames
+    tl.to("#d-dip", { opacity: 0.9, duration: 0.1, ease: "power2.in" }, 7.52);
+    window.__timelines["s7-dekat"] = tl;
+  </script>
+</template>

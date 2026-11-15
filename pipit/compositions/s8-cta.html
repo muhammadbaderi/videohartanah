@@ -1,0 +1,55 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #2b2d31; font-family: "Inter", sans-serif; color: #fff; }
+    #c-cam { position: absolute; inset: 0; transform-origin: 50% 60%; }
+    #c-img { position: absolute; left: -522px; top: 0; width: 2125px; height: 1920px; }
+    #c-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1000px;
+      background: linear-gradient(180deg, rgba(14, 18, 26, 0.78) 0%, rgba(14, 18, 26, 0.5) 60%, rgba(14, 18, 26, 0) 100%); }
+    #c-cover { position: absolute; inset: 0; background: #2b2d31; }
+    .c-c { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; }
+    #c-k { top: 222px; font-weight: 800; font-size: 46px; letter-spacing: 0.18em; }
+    #c-price { top: 290px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 140px; line-height: 1; letter-spacing: -0.02em;
+      color: #ffc83d; text-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); }
+    #c-sub { top: 466px; font-weight: 700; font-size: 42px; text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5); }
+    #c-sub span { color: #ffc83d; }
+    #c-card { position: absolute; left: 60px; top: 1108px; width: 960px; height: 206px; border-radius: 40px; display: flex; align-items: center;
+      gap: 30px; padding: 0 40px 0 34px; background: rgba(43, 45, 49, 0.95); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45); }
+    #c-ph { width: 128px; height: 128px; border-radius: 50%; background: #ffc83d; color: #2b2d31; display: flex; align-items: center;
+      justify-content: center; flex: none; }
+    #c-ph svg { width: 66px; height: 66px; fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+    #c-hk { font-weight: 800; font-size: 32px; letter-spacing: 0.14em; color: #ffc83d; }
+    #c-num { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 92px; line-height: 1.02; letter-spacing: -0.02em; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="s8-cta" data-width="1080" data-height="1920"
+    data-composition-variables='[{"id":"price","type":"string","label":"Harga dari","default":"RM485,700"},{"id":"phone","type":"string","label":"Nombor telefon","default":"016-370 8908"}]'>
+    <div id="c-cam" data-layout-allow-overflow>
+      <img id="c-img" src="assets/images/render-depan.jpg" alt="Render rumah berkembar 1-tingkat" />
+    </div>
+    <div id="c-scrim"></div>
+    <div id="c-cover"></div>
+    <div id="c-k" class="c-c">HARGA DARI</div>
+    <div id="c-price" class="c-c" data-var-text="price">RM485,700</div>
+    <div id="c-sub" class="c-c">Booking <span>RM1,000</span> · 8 unit sahaja</div>
+    <div id="c-card">
+      <div id="c-ph"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></svg></div>
+      <div>
+        <div id="c-hk">HUBUNGI SAYA</div>
+        <div id="c-num" data-var-text="phone">016-370 8908</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // in: out of the charcoal dip, onto the house again, with a slow push to the end
+    tl.fromTo("#c-cover", { opacity: 0.9 }, { opacity: 0, duration: 0.3, ease: "power2.out" }, 0);
+    tl.fromTo("#c-cam", { scale: 1 }, { scale: 1.05, duration: 7.8, ease: "none" }, 0);
+    // HARGA DARI, then the price lands on the riser's hit
+    tl.fromTo("#c-k", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.35);
+    tl.fromTo("#c-price", { opacity: 0, scale: 1.3, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 1.35);
+    tl.fromTo("#c-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.3);
+    // phone card rises from the bottom of the band, icon pops
+    tl.fromTo("#c-card", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 3.15);
+    tl.fromTo("#c-ph", { scale: 0.5, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.2)" }, 3.2);
+    window.__timelines["s8-cta"] = tl;
+  </script>
+</template>

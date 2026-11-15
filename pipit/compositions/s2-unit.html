@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #2b2d31; font-family: "Inter", sans-serif; color: #fff; }
+    #u-cam { position: absolute; inset: 0; transform-origin: 50% 45%; }
+    #u-img { position: absolute; left: 0; top: 0; width: 1961px; height: 1920px; }
+    #u-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1000px;
+      background: linear-gradient(180deg, rgba(14, 18, 26, 0.55) 0%, rgba(14, 18, 26, 0.3) 60%, rgba(14, 18, 26, 0) 100%); }
+    #u-text { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .u-c { position: absolute; left: 0; width: 1080px; text-align: center; font-family: "Montserrat", sans-serif; font-weight: 900;
+      line-height: 1; letter-spacing: -0.02em; text-shadow: 0 6px 24px rgba(0, 0, 0, 0.4); white-space: nowrap; }
+    #u-k { top: 236px; font-size: 64px; letter-spacing: 0.08em; }
+    #u-n { top: 300px; font-size: 380px; color: #ffc83d; }
+    #u-l { top: 690px; font-size: 96px; }
+    #u-flood { position: absolute; inset: 0; background: #b99c84; clip-path: inset(730px 0px 984px 898px); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s2-unit" data-width="1080" data-height="1920">
+    <div id="u-cam" data-layout-allow-overflow>
+      <img id="u-img" src="assets/images/render-sisi.jpg" alt="Render rumah berkembar 1-tingkat, pandangan sisi" />
+    </div>
+    <div id="u-scrim"></div>
+    <div id="u-text">
+      <div id="u-k" class="u-c">HANYA</div>
+      <div id="u-n" class="u-c">8</div>
+      <div id="u-l" class="u-c">UNIT SAHAJA</div>
+    </div>
+    <div id="u-flood"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // in: lands from the whip, blurred and travelling the same way, then a slow push + dolly right
+    tl.fromTo("#u-img", { x: -80, filter: "blur(16px)" }, { x: -300, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+    tl.fromTo("#u-img", { x: -300 }, { x: -560, duration: 3.0, ease: "power1.inOut", immediateRender: false }, 0.3);
+    tl.fromTo("#u-cam", { scale: 1 }, { scale: 1.06, duration: 3.5, ease: "none" }, 0);
+    // HANYA / 8 / UNIT SAHAJA: per word blur-in, the 8 counts up and pops on landing
+    tl.fromTo("#u-k", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, 0.22);
+    tl.fromTo("#u-n", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.37);
+    const n = { v: 1 };
+    tl.fromTo(n, { v: 1 }, { v: 8, duration: 0.9, ease: "power2.out",
+      onUpdate: () => { document.getElementById("u-n").textContent = Math.round(n.v); } }, 0.37);
+    tl.fromTo("#u-n", { scale: 1.18 }, { scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 1.27);
+    tl.fromTo("#u-l", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, 1.4);
+    // out: text blurs away, then the beige wall panel floods the frame and becomes the next world
+    tl.to("#u-text", { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power3.in" }, 2.86);
+    tl.set("#u-flood", { opacity: 1 }, 2.96);
+    tl.fromTo("#u-flood", { clipPath: "inset(730px 0px 984px 898px)" },
+      { clipPath: "inset(0px 0px 0px 0px)", duration: 0.6, ease: "power2.inOut", immediateRender: false }, 2.96);
+    window.__timelines["s2-unit"] = tl;
+  </script>
+</template>

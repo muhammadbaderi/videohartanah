@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #05070d; font-family: "Inter", sans-serif; color: #fff; }
+    #m-cam { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    #m-vid, #m-hold { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #m-dim { position: absolute; inset: 0; background: rgba(10, 14, 20, 0.22); opacity: 0; }
+    #m-pin { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+    #m-dot { position: absolute; left: -24px; top: -24px; width: 48px; height: 48px; border-radius: 50%; background: #ffc83d;
+      border: 8px solid #2b2d31; box-shadow: 0 0 0 5px #fff, 0 10px 26px rgba(0, 0, 0, 0.5); }
+    #m-site { position: absolute; left: -290px; top: -196px; width: 580px; padding: 20px 26px 22px; border-radius: 24px; text-align: center;
+      background: rgba(43, 45, 49, 0.94); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45); white-space: nowrap; }
+    #m-site b { display: block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 54px; line-height: 1.05; letter-spacing: -0.01em; }
+    #m-site small { display: block; font-weight: 600; font-size: 32px; opacity: 0.85; margin-top: 4px; }
+    .m-city { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+    .m-cdot { position: absolute; left: -11px; top: -11px; width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 5px solid #2b2d31; }
+    .m-pill { position: absolute; display: flex; align-items: baseline; gap: 14px; padding: 12px 24px 14px; border-radius: 999px;
+      background: rgba(43, 45, 49, 0.94); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45); font-weight: 700; font-size: 36px; white-space: nowrap; }
+    .m-pill em { font-style: normal; font-family: "Montserrat", sans-serif; font-weight: 900; color: #ffc83d; }
+    #m-c1 .m-pill { left: 26px; top: -34px; }
+    #m-c2 .m-pill { right: 26px; top: -34px; }
+    #m-c3 .m-pill { left: -150px; top: 26px; }
+    #m-hwy { position: absolute; left: 60px; top: 196px; width: 960px; padding: 22px 30px 26px; border-radius: 28px; background: rgba(43, 45, 49, 0.94);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45); text-align: center; }
+    #m-hwy small { display: block; font-weight: 800; font-size: 30px; letter-spacing: 0.18em; opacity: 0.85; }
+    #m-chips { display: flex; justify-content: center; gap: 18px; margin-top: 14px; }
+    .m-chip { padding: 10px 22px; border-radius: 14px; border: 3px solid #ffc83d; font-family: "Montserrat", sans-serif; font-weight: 900;
+      font-size: 42px; letter-spacing: 0.02em; }
+    #m-credit { position: absolute; left: 40px; top: 1286px; padding: 6px 12px; border-radius: 8px; background: rgba(0, 0, 0, 0.55);
+      font-size: 20px; font-weight: 500; opacity: 0.8; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="s6-peta" data-width="1080" data-height="1920">
+    <div id="m-cam" data-layout-allow-overflow>
+      <video id="m-vid" class="clip" src="assets/footage/map-pullback.mp4" muted playsinline data-start="0" data-duration="7" data-track-index="0"></video>
+      <img id="m-hold" class="clip" src="assets/footage/map-hold.jpg" alt="Peta satelit Lembah Klang" data-start="6.96" data-duration="0.66" data-track-index="1" />
+      <div id="m-dim"></div>
+      <!-- city points: real positions projected by the bake (assets/footage/map-pullback-points.json) -->
+      <div id="m-c1" class="m-city" style="left: 346px; top: 833px"><div class="m-cdot"></div><div class="m-pill">Shah Alam <em>23 min</em></div></div>
+      <div id="m-c2" class="m-city" style="left: 760px; top: 653px"><div class="m-cdot"></div><div class="m-pill">KLCC <em>42 min</em></div></div>
+      <div id="m-c3" class="m-city" style="left: 726px; top: 1147px"><div class="m-cdot"></div><div class="m-pill">Putrajaya <em>41 min</em></div></div>
+      <div id="m-pin" data-layout-allow-overflow>
+        <div id="m-site"><b>JALAN PIPIT</b><small>Telok Panglima Garang</small></div>
+        <div id="m-dot"></div>
+      </div>
+    </div>
+    <div id="m-hwy">
+      <small>AKSES LEBUHRAYA</small>
+      <div id="m-chips"><div class="m-chip">SKVE</div><div class="m-chip">KESAS</div><div class="m-chip">WCE</div><div class="m-chip">LKSA</div></div>
+    </div>
+    <div id="m-credit" data-layout-ignore>Imej satelit: Esri, Maxar, Earthstar Geographics</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // in: arrives from the zoom through the site clip, slightly large, then settles
+    tl.fromTo("#m-cam", { scale: 1.12, filter: "blur(10px)" }, { scale: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0);
+    // the pin rides on the plot: the bake moves the plot from the centre to (330, 1150) with the same
+    // cubic in-out between 0.488 s and 3.274 s
+    tl.set("#m-pin", { x: 540, y: 960 }, 0);
+    tl.to("#m-pin", { x: 330, y: 1150, duration: 2.786, ease: "power2.inOut" }, 0.488);
+    tl.fromTo("#m-dot", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 0.12);
+    tl.fromTo("#m-site", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 0.22);
+    // the region holds: dim a touch, then the cities pop on at their real spots
+    tl.to("#m-dim", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 3.0);
+    [["#m-c1", 3.32], ["#m-c2", 3.82], ["#m-c3", 4.32]].forEach(([sel, t]) => {
+      tl.fromTo(sel + " .m-cdot", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, t);
+      tl.fromTo(sel + " .m-pill", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, t + 0.06);
+    });
+    tl.fromTo("#m-hwy", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 5.1);
+    tl.fromTo("#m-credit", { opacity: 0 }, { opacity: 0.8, duration: 0.3 }, 3.3);
+    // out: vertical whip upward
+    tl.to("#m-cam", { y: -520, filter: "blur(18px)", duration: 0.2, ease: "power3.in" }, 7.42);
+    tl.to(["#m-hwy", "#m-credit"], { y: -300, opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in" }, 7.42);
+    window.__timelines["s6-peta"] = tl;
+  </script>
+</template>

@@ -1,0 +1,36 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #2b2d31; font-family: "Inter", sans-serif; color: #fff; }
+    #t-cam { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    #t-vid { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #t-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 900px;
+      background: linear-gradient(180deg, rgba(14, 18, 26, 0.5) 0%, rgba(14, 18, 26, 0.2) 70%, rgba(14, 18, 26, 0) 100%); }
+    .t-card { position: absolute; left: 60px; padding: 30px 44px 34px; border-radius: 28px; background: rgba(43, 45, 49, 0.92);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); white-space: nowrap; }
+    .t-card small { display: block; font-weight: 700; font-size: 38px; letter-spacing: 0.04em; opacity: 0.85; }
+    .t-card b { display: block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 96px; line-height: 1.02; letter-spacing: -0.02em; }
+    #t-c1 { top: 230px; }
+    #t-c1 small { margin-top: 8px; }
+    #t-c2 { top: 520px; }
+  </style>
+  <div id="root" data-composition-id="s5-tapak" data-width="1080" data-height="1920">
+    <div id="t-cam" data-layout-allow-overflow>
+      <video id="t-vid" class="clip" src="assets/footage/IMG_1308.mp4" muted playsinline data-start="0" data-duration="5.71" data-media-start="2.0" data-track-index="0"></video>
+    </div>
+    <div id="t-scrim"></div>
+    <div id="t-c1" class="t-card"><b>LEASEHOLD</b><small>Rizab Melayu</small></div>
+    <div id="t-c2" class="t-card"><small>Dijangka siap</small><b>Q4 2027</b></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // in: arrives through the plan, slightly large and blurred, then settles
+    tl.fromTo("#t-cam", { scale: 1.18, filter: "blur(12px)" }, { scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 0);
+    // cards are wiped on from the left edge of the card
+    tl.fromTo("#t-c1", { clipPath: "inset(0% 100% 0% 0% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 0.45, ease: "expo.out" }, 0.38);
+    tl.fromTo("#t-c2", { clipPath: "inset(0% 100% 0% 0% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 0.45, ease: "expo.out" }, 2.3);
+    // out: zoom through the footage up into the satellite view
+    tl.to("#t-cam", { scale: 1.3, filter: "blur(14px)", duration: 0.3, ease: "power3.in" }, 5.41);
+    tl.to(["#t-c1", "#t-c2"], { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 5.41);
+    window.__timelines["s5-tapak"] = tl;
+  </script>
+</template>

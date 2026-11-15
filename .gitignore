@@ -7,3 +7,7 @@ video/.hyperframes/
 *.mov
 # media-use cache (downloaded catalog tracks; the chosen one is in assets/audio)
 video/.media/
+# pipit/ project: large / regenerable media (see scripts/pipit/prepare_media.sh)
+pipit/assets/footage/*.mp4
+pipit/renders/
+pipit/.hyperframes/

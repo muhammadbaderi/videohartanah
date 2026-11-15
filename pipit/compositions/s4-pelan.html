@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ffffff; font-family: "Inter", sans-serif; color: #2b2d31; }
+    #l-cam { position: absolute; left: 0; top: 196px; width: 1080px; height: 810px; transform-origin: 50% 55%; }
+    #l-img { position: absolute; left: 0; top: 0; width: 1080px; height: 810px; }
+    #l-facts { position: absolute; left: 60px; top: 1024px; width: 960px; height: 306px; }
+    .l-row { position: absolute; left: 0; width: 960px; height: 102px; display: flex; align-items: center; gap: 28px;
+      border-top: 3px solid rgba(43, 45, 49, 0.14); }
+    .l-v { flex: none; width: 420px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 66px; line-height: 1;
+      letter-spacing: -0.02em; white-space: nowrap; }
+    .l-t { font-weight: 600; font-size: 34px; line-height: 1.15; white-space: nowrap; }
+    .l-t b { font-weight: 800; }
+    #l-r1 { top: 0; }
+    #l-r2 { top: 102px; }
+    #l-r3 { top: 204px; }
+  </style>
+  <div id="root" data-composition-id="s4-pelan" data-width="1080" data-height="1920">
+    <div id="l-cam" data-layout-allow-overflow>
+      <img id="l-img" src="assets/images/pelan.jpg" alt="Pelan lantai rumah berkembar 1-tingkat" />
+    </div>
+    <div id="l-facts">
+      <div id="l-r1" class="l-row"><div class="l-v">4 Bilik</div><div class="l-t"><b>&amp; 2 Bilik Air</b></div></div>
+      <div id="l-r2" class="l-row"><div class="l-v"><span id="l-n2">2,814</span> kps</div><div class="l-t">Saiz tanah<br />44' × 76.7'–78'</div></div>
+      <div id="l-r3" class="l-row"><div class="l-v"><span id="l-n3">1,266</span> kps</div><div class="l-t">Saiz binaan</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // in: the plan is printed onto the white sheet, then a slow push for the rest of the shot
+    tl.fromTo("#l-img", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power4.out" }, 0.05);
+    tl.fromTo("#l-cam", { scale: 1 }, { scale: 1.08, duration: 9.1, ease: "none" }, 0.05);
+    // facts land one per bar: a wipe from the left, then the numbers count up
+    const fact = (row, t) => tl.fromTo(row, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "expo.out" }, t);
+    const count = (id, to, t) => {
+      const o = { v: 0 };
+      tl.fromTo(o, { v: 0 }, { v: to, duration: 0.8, ease: "power2.out", immediateRender: false,
+        onUpdate: () => { document.getElementById(id).textContent = Math.round(o.v).toLocaleString("en-US"); } }, t);
+    };
+    fact("#l-r1", 1.9);
+    fact("#l-r2", 3.8);
+    count("l-n2", 2814, 3.8);
+    fact("#l-r3", 5.7);
+    count("l-n3", 1266, 5.7);
+    // out: zoom through the plan
+    tl.to("#l-cam", { scale: 1.7, filter: "blur(14px)", duration: 0.3, ease: "power3.in" }, 9.23);
+    tl.to("#l-facts", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 9.23);
+    window.__timelines["s4-pelan"] = tl;
+  </script>
+</template>
