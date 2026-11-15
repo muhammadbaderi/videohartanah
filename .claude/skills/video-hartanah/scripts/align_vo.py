@@ -3,15 +3,16 @@
 words; numbers Whisper writes as digits ("RM500", "016-370-8908") are expanded to
 Malay words first, and script words Whisper missed are interpolated.
 Writes vo/<id>.words.json: [{"sp": spoken word, "s": start, "e": end}, ...] in script order.
-Usage: python3 -I pulau-indah/scripts/align_vo.py [line_id ...]"""
+Usage: python3 -I .claude/skills/video-hartanah/scripts/align_vo.py <project-dir> [line_id ...]"""
 import difflib, json, os, re, subprocess, sys
 import numpy as np
 from faster_whisper import WhisperModel
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-VO = os.path.join(HERE, "..", "video", "assets", "audio", "vo")
-cfg = json.load(open(os.path.join(HERE, "vo_script.json")))
-ids = sys.argv[1:] or [l["id"] for l in cfg["lines"]]
+PROJ = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
+cfg = json.load(open(os.path.join(PROJ, "project.json")))
+VO = os.path.join(PROJ, "video", "assets", "audio", "vo")
+os.makedirs(VO, exist_ok=True)
+ids = sys.argv[2:] or [l["id"] for l in cfg["lines"]]
 
 D = "kosong satu dua tiga empat lima enam tujuh lapan sembilan".split()
 def num(n):

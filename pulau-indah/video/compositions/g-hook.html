@@ -14,21 +14,18 @@
     #hk-tag span { display: inline-block; padding: 14px 30px; border-radius: 999px; white-space: nowrap;
       font-weight: 800; font-size: 30px; letter-spacing: 0.14em; color: #15120a; background: #FFC83D; }
     .ph { position: absolute; left: 0; width: 1080px; text-align: center; top: 640px; }
-    .l1 { font-size: 68px; } .l2 { font-size: 112px; margin-top: 6px; }
-    #hk-c .l2 { font-size: 148px; text-shadow: 0 0 60px rgba(255,200,61,0.35); }
-    #hk-b svg { width: 84px; height: 84px; color: #FFC83D; stroke-width: 1.8; }
+    .hk-ic svg { width: 84px; height: 84px; color: #FFC83D; stroke-width: 1.8; }
     .sh { text-shadow: 0 8px 30px rgba(0,0,0,0.55); }
-    #hk-d { top: 620px; } #hk-d .l1 { font-size: 96px; } #hk-d .l2 { font-size: 150px; }
-    #hk-q { display: inline-block; color: #FFC83D; transform-origin: 50% 85%; }
+    .hk-q { display: inline-block; color: #FFC83D; transform-origin: 50% 85%; }
   </style>
   <div id="root" data-composition-id="g-hook" data-width="1080" data-height="1920">
     <div id="hk-shade"></div>
     <div id="hk-dark"></div>
     <div id="hk-tag"><span>PROJEK BARU · PULAU INDAH</span></div>
-    <div id="hk-a" class="ph sh"><div class="hd l1">RUMAH TERES</div><div id="hk-a2" class="hd l2 y">FREEHOLD</div></div>
-    <div id="hk-b" class="ph sh"><svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><div class="hd l1" style="font-size: 66px; margin-top: 8px">DI PULAU INDAH</div></div>
-    <div id="hk-c" class="ph sh"><div class="hd l1" style="font-size: 56px">HARGA BAWAH</div><div class="hd l2 y">RM300K</div></div>
-    <div id="hk-d" class="ph sh"><div id="hk-d1" class="hd l1">MASIH</div><div class="hd l2"><span id="hk-d2">WUJUD</span><span id="hk-q">?</span></div></div>
+    <div id="hk-0" class="ph sh"><div id="hk-0-0" class="hd" style="font-size: 68px;">RUMAH TERES</div><div id="hk-0-1" class="hd y" style="font-size: 112px; margin-top: 6px;">FREEHOLD</div></div>
+    <div id="hk-1" class="ph sh"><div class="hk-ic"><svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg></div><div id="hk-1-0" class="hd" style="font-size: 66px;">DI PULAU INDAH</div></div>
+    <div id="hk-2" class="ph sh"><div id="hk-2-0" class="hd" style="font-size: 56px;">HARGA BAWAH</div><div id="hk-2-1" class="hd y" style="font-size: 148px; margin-top: 6px; text-shadow: 0 0 60px rgba(255,200,61,0.35);">RM300K</div></div>
+    <div id="hk-qq" class="ph sh" style="top: 620px"><div class="hd" style="font-size: 96px"><span id="hk-q0">MASIH</span></div><div class="hd" style="font-size: 150px"><span id="hk-q1">WUJUD</span><span class="hk-q">?</span></div></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -38,23 +35,23 @@
     const out = (s, t, d = 0.22) => { tl.to(s, { opacity: 0, y: -20, filter: "blur(8px)", duration: d, ease: "power2.in" }, t); tl.set(s, { visibility: "hidden" }, t + d + 0.01); };
 
     inPop("#hk-tag", 0.05);
-    inUp("#hk-a", 0.12, 0.4);
-    slam("#hk-a2", 0.86);
-    out("#hk-a", 1.5);
-    inUp("#hk-b", 1.72, 0.4);
-    tl.fromTo("#hk-b svg", { y: -140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }, 1.72);
-    out("#hk-b", 2.87);
-    inUp("#hk-c", 3.09, 0.35);
-    slam("#hk-c .l2", 3.98);
-    tl.fromTo("#hk-c .l2", { x: -14 }, { x: 0, duration: 0.4, ease: "elastic.out(1.2, 0.25)" }, 3.98 + 0.3);
-    out("#hk-c", 4.91);
+    inUp("#hk-0", 0.12, 0.4);
+    slam("#hk-0-1", 0.86);
+    out("#hk-0", 1.5);
+    inUp("#hk-1", 1.72, 0.4);
+    tl.fromTo("#hk-1 .hk-ic", { y: -140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }, 1.72);
+    out("#hk-1", 2.87);
+    inUp("#hk-2", 3.09, 0.4);
+    slam("#hk-2-1", 3.98);
+    tl.fromTo("#hk-2-1", { x: -14 }, { x: 0, duration: 0.4, ease: "elastic.out(1.2, 0.25)" }, 4.28);
+    out("#hk-2", 4.91);
     out("#hk-tag", 4.91);
-    tl.to("#hk-dark", { opacity: 1, duration: 0.25, ease: "power2.out" }, 5.16 - 0.05);
-    slam("#hk-d1", 5.16);
-    slam("#hk-d2", 5.4);
-    tl.fromTo("#hk-q", { opacity: 0, rotation: -25, scale: 0.4 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.5, ease: "back.out(3)" }, 5.4 + 0.12);
-    tl.to("#hk-q", { rotation: 12, duration: 0.18, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.4 + 0.65);
-    tl.to("#hk-d", { scale: 1.12, opacity: 0, filter: "blur(16px)", duration: 0.25, ease: "power2.in" }, 6.277 - 0.25);
+    tl.to("#hk-dark", { opacity: 1, duration: 0.25, ease: "power2.out" }, 5.11);
+    slam("#hk-q0", 5.16);
+    slam("#hk-q1", 5.4);
+    tl.fromTo(".hk-q", { opacity: 0, rotation: -25, scale: 0.4 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.5, ease: "back.out(3)" }, 5.52);
+    tl.to(".hk-q", { rotation: 12, duration: 0.18, ease: "sine.inOut", yoyo: true, repeat: 3 }, 6.05);
+    tl.to("#hk-qq", { scale: 1.12, opacity: 0, filter: "blur(16px)", duration: 0.25, ease: "power2.in" }, 6.027);
     window.__timelines["g-hook"] = tl;
   </script>
 </template>

@@ -9,18 +9,20 @@ For every line: vo/<id>.mp3  ->  vo/<id>.wav
 Word timings are then measured on the final WAV by align_vo.py (eleven_v3's own
 timestamps are off by ~0.2 s, up to 1.7 s).
 
-Usage: python3 -I pulau-indah/scripts/enhance_vo.py [line_id ...]
+Usage: python3 -I .claude/skills/video-hartanah/scripts/enhance_vo.py <project-dir> [line_id ...]
 """
 import json, os, subprocess, sys
 import numpy as np
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-VO = os.path.join(HERE, "..", "video", "assets", "audio", "vo")
-ids = sys.argv[1:] or [l["id"] for l in json.load(open(os.path.join(HERE, "vo_script.json")))["lines"]]
+PROJ = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
+CFG = json.load(open(os.path.join(PROJ, "project.json")))
+VO = os.path.join(PROJ, "video", "assets", "audio", "vo")
+os.makedirs(VO, exist_ok=True)
+ids = sys.argv[2:] or [l["id"] for l in CFG["lines"]]
 SR = 44100
 MAX_GAP, KEEP_GAP = 0.42, 0.32   # s
 LEAD, TAIL = 0.06, 0.15          # s kept before the first / after the last word
-TEMPO = 1.12
+TEMPO = CFG["voice"].get("tempo", 1.12)  # 1.0 for a voice that is already brisk
 SIL_DB = -42.0                  # dBFS, 10 ms frames
 XF = int(0.010 * SR)
 CHAIN = ",".join([

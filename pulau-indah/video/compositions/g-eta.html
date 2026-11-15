@@ -35,14 +35,14 @@
 
     tl.set("#et-fill", { scaleX: 0 }, 0);
     inUp("#et", 0, 0.45);
-    tl.fromTo("#et-r1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, 0 + 0.1);
-    tl.fromTo("#et-d1", { scale: 0.4 }, { scale: 1, duration: 0.45, ease: "back.out(2.4)" }, 0 + 0.15);
-    tl.fromTo("#et-r2", { opacity: 0 }, { opacity: 0.35, duration: 0.3 }, 0 + 0.3);
-    tl.to("#et-fill", { scaleX: 0.72, duration: 1.4, ease: "power2.inOut" }, 1.04 - 0.6);
+    tl.fromTo("#et-r1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, 0.1);
+    tl.fromTo("#et-d1", { scale: 0.4 }, { scale: 1, duration: 0.45, ease: "back.out(2.4)" }, 0.15);
+    tl.fromTo("#et-r2", { opacity: 0 }, { opacity: 0.35, duration: 0.3 }, 0.3);
+    tl.to("#et-fill", { scaleX: 0.72, duration: 1.4, ease: "power2.inOut" }, 0.44);
     tl.to("#et-r2", { opacity: 1, duration: 0.3 }, 1.04);
     tl.fromTo("#et-q", { opacity: 0, scale: 1.6, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "power4.out" }, 2.48);
     tl.set("#et-q", { display: "inline-block", transformOrigin: "0% 60%" }, 0);
-    out("#et", 5.484 - 0.25);
+    out("#et", 5.234);
     window.__timelines["g-eta"] = tl;
   </script>
 </template>

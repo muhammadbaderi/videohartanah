@@ -73,22 +73,28 @@ Pulau Indah are only shown as chips, not spoken.
 - Voice: 16 ElevenLabs eleven_v3 clips (`vo/*.mp3`, raw) → enhanced `vo/*.wav`. The word timings (`vo/*.words.json`,
   measured with Whisper) drive the captions and every graphic cue. `*.align.json` is ElevenLabs' raw alignment (not used).
 - Music: generated with ElevenLabs Music for this edit (`music-bed-orig.mp3`, dark piano and 808, about 80 BPM), extended
-  by two bars with `extend_music.py` (`music-bed.mp3`). It starts on "Wujud." at 0.16 under the voice and lifts on the end card.
+  by two bars with the skill's `extend_music.py` (`music-bed.mp3`). It starts on "Wujud." at 0.16 under the voice and lifts on the end card.
 - SFX: 58 cues. The HyperFrames library sounds are reused from the Meru project (`sfx/CREDITS.md`). boom, kaching,
   riser, stamp and pin were generated with ElevenLabs Sound Effects.
 
 ## How to run
 
+This project is built by the **`video-hartanah` skill** (`.claude/skills/video-hartanah/`); everything specific to it
+is in `pulau-indah/project.json`.
+
 ```bash
-npm install                                                    # hyperframes@0.9.17 (pinned)
-pulau-indah/scripts/prepare_media.sh /path/to/IMG_1360.MOV     # footage (not in git, too big)
-python3 -I pulau-indah/scripts/build.py                        # regenerate index.html + compositions/
-cd pulau-indah/video && npx hyperframes preview                # Studio
+S=.claude/skills/video-hartanah/scripts
+npm install                                                     # hyperframes@0.9.17 (pinned)
+$S/fetch_inputs.sh <scratch-dir> "<video link from project.json inputs>"
+$S/prepare_media.sh <scratch-dir>/source.mov pulau-indah        # footage (not in git, too big)
+python3 -I $S/build.py pulau-indah                              # regenerate index.html + compositions/
+cd pulau-indah/video && npx hyperframes preview                 # Studio
 npx hyperframes render --quality delivery -o renders/FINAL-teres-pulau-indah.mp4   # FINAL, only after approval
 ```
 
-- `scripts/vo_script.json` is the script. `{spoken|display}` means the voice reads the first part and the captions show
+- The script is `lines` in `project.json`. `{spoken|display}` means the voice reads the first part and the captions show
   the second, and `[serious]`-style tags set the eleven_v3 delivery. To change a line: edit it, then run
-  `make_vo.py <id>`, `enhance_vo.py <id>` and `align_vo.py <id>` (all in `pulau-indah/scripts/`, run with `python3 -I`), then `build.py`.
-- `scripts/make_map.py` rebuilds the satellite maps.
+  `make_vo.py pulau-indah <id>`, `enhance_vo.py pulau-indah <id>` and `align_vo.py pulau-indah <id>` (in `$S`, run with
+  `python3 -I`), then `build.py pulau-indah`.
+- `make_map.py pulau-indah` rebuilds the satellite maps. `transcript.json` is the Whisper transcript of the original audio.
 - **Warning:** `build.py` overwrites `video/index.html` and every file in `video/compositions/`.

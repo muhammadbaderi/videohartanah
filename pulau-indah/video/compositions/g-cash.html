@@ -13,7 +13,6 @@
     #cs-k { top: 470px; font-size: 40px; }
     #cs-a { top: 560px; font-size: 120px; }
     #cs-n { top: 700px; font-size: 210px; white-space: nowrap; text-shadow: 0 0 70px rgba(255,200,61,0.45); }
-    #cs-s { top: 950px; font-size: 38px; font-weight: 700; opacity: 0.9; }
     .coin { position: absolute; left: 520px; top: 800px; width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff3c4, #FFC83D 45%, #b8860b); opacity: 0; }
   </style>
   <div id="root" data-composition-id="g-cash" data-width="1080" data-height="1920">
@@ -47,26 +46,26 @@
     tl.fromTo("#cs-bg", { scale: 1.15 }, { scale: 1, duration: 3.436, ease: "none" }, 0);
     inUp("#cs-k", 0.05, 0.4);
     slam("#cs-a", 1.06);
-    inUp("#cs-n", 1.66 - 0.1, 0.3);
+    inUp("#cs-n", 1.56, 0.3);
     const c = { v: 0 };
     tl.fromTo(c, { v: 0 }, { v: 11000, duration: 1.0, ease: "power3.out",
       onUpdate: () => { document.getElementById("cs-v").textContent = (Math.round(c.v / 100) * 100).toLocaleString("en-US"); } }, 1.66);
-    tl.fromTo("#cs-n", { scale: 1 }, { scale: 1.1, duration: 0.14, yoyo: true, repeat: 1 }, 1.66 + 1.0);
-    tl.fromTo("#cn0", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 248, y: 65, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn1", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 218, y: 186, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn2", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 122, y: 304, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn3", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -28, y: 238, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn4", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -204, y: 253, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn5", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -236, y: 194, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn6", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -318, y: 38, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn7", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -343, y: -92, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn8", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -290, y: -152, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn9", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -100, y: -258, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn10", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 23, y: -329, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn11", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 174, y: -210, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn12", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 317, y: -167, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.fromTo("#cn13", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 258, y: -52, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 1.66 + 1.0);
-    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power2.in" }, 3.436 - 0.25);
+    tl.fromTo("#cs-n", { scale: 1 }, { scale: 1.1, duration: 0.14, yoyo: true, repeat: 1 }, 2.66);
+    tl.fromTo("#cn0", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 248, y: 65, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn1", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 218, y: 186, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn2", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 122, y: 304, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn3", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -28, y: 238, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn4", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -204, y: 253, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn5", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -236, y: 194, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn6", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -318, y: 38, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn7", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -343, y: -92, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn8", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -290, y: -152, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn9", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: -100, y: -258, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn10", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 23, y: -329, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn11", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 174, y: -210, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn12", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 317, y: -167, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.fromTo("#cn13", { x: 0, y: 0, opacity: 1, scale: 0.4 }, { x: 258, y: -52, opacity: 0, scale: 1.1, duration: 1.1, ease: "power3.out" }, 2.66);
+    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power2.in" }, 3.186);
     window.__timelines["g-cash"] = tl;
   </script>
 </template>
