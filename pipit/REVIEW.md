@@ -38,7 +38,10 @@ render command at the bottom.
   57.85, 57.95 s.
 - Voice: pitch movement measured per take, and a Whisper read-back of the used audio matched the script
   (`VOICEOVER.md`). **Not heard by anyone**: tone and pronunciation are measured, not listened to.
-- Render numbers: see the delivery note in the commit / reply (loudness measured on the file).
+- Rendered file: 58.10 s, H.264 1080×1920 30 fps + AAC. The render's mix came out at -12.9 LUFS, so the
+  audio was lowered 1.4 dB on the file (video stream copied): **-14.4 LUFS, true peak -2.4 dBTP, LRA 3 LU,
+  no clipping**. `-share.mp4` copy: 28 MB (CRF 21). Frames pulled from the MP4 at 0.5, 7.6, 15.5, 25,
+  29.5, 38, 46.5, 56 s match the Studio snapshots.
 
 ## Weakest shot
 
