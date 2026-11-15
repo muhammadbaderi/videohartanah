@@ -7,3 +7,8 @@ video/.hyperframes/
 *.mov
 # media-use cache (downloaded catalog tracks; the chosen one is in assets/audio)
 video/.media/
+# pulau-indah project
+pulau-indah/video/assets/footage/*.mp4
+pulau-indah/video/renders/
+pulau-indah/video/.hyperframes/
+__pycache__/

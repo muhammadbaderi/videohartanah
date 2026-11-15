@@ -1,0 +1,38 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; overflow: hidden; }
+    .hd { font-family: "Montserrat", sans-serif; font-weight: 900; letter-spacing: -0.02em; line-height: 0.95; }
+    .y { color: #FFC83D; }
+    .glass { background: rgba(10, 12, 18, 0.82); backdrop-filter: blur(18px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    .kick { font-weight: 800; letter-spacing: 0.16em; font-size: 30px; color: #FFC83D; text-transform: uppercase; }
+    .ctr { position: absolute; left: 0; width: 1080px; text-align: center; }
+    svg.ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    #an-st { position: absolute; left: 0; width: 1080px; top: 640px; text-align: center; }
+    #an-st span { display: inline-block; transform: rotate(-6deg); padding: 8px 34px 14px; border: 9px solid #FFC83D;
+      border-radius: 22px; color: #FFC83D; font-size: 124px; background: rgba(10,12,18,0.35); text-shadow: 0 6px 30px rgba(0,0,0,0.4); white-space: nowrap; }
+    #an-live { position: absolute; left: 60px; top: 230px; display: flex; align-items: center; gap: 16px; padding: 14px 28px 14px 22px; border-radius: 999px;
+      font-weight: 800; font-size: 30px; letter-spacing: 0.14em; }
+    #an-dot { width: 22px; height: 22px; border-radius: 50%; background: #ff3b3b; box-shadow: 0 0 18px #ff3b3b; }
+  </style>
+  <div id="root" data-composition-id="g-ans" data-width="1080" data-height="1920">
+    <div id="an-st"><span class="hd">WUJUD.</span></div>
+    <div id="an-live" class="glass"><div id="an-dot"></div>SITE VISIT · PULAU INDAH</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const inUp = (s, t, d = 0.45) => tl.fromTo(s, { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "expo.out" }, t);
+    const inPop = (s, t) => tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.2)" }, t);
+    const slam = (s, t) => tl.fromTo(s, { opacity: 0, scale: 1.9, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power4.out" }, t);
+    const out = (s, t, d = 0.22) => { tl.to(s, { opacity: 0, y: -20, filter: "blur(8px)", duration: d, ease: "power2.in" }, t); tl.set(s, { visibility: "hidden" }, t + d + 0.01); };
+
+    tl.fromTo("#an-st", { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.in" }, -0.12);
+    tl.fromTo("#an-st", { y: 0 }, { y: 8, duration: 0.06, yoyo: true, repeat: 3, ease: "none" }, 0.1);
+    tl.to("#an-st", { opacity: 0, scale: 0.85, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 1.44);
+    tl.set("#an-st", { visibility: "hidden" }, 1.7);
+    inUp("#an-live", 0.42, 0.4);
+    tl.to("#an-dot", { opacity: 0.25, duration: 0.4, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.82);
+    out("#an-live", 2.884);
+    window.__timelines["g-ans"] = tl;
+  </script>
+</template>

@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; overflow: hidden; }
+    .hd { font-family: "Montserrat", sans-serif; font-weight: 900; letter-spacing: -0.02em; line-height: 0.95; }
+    .y { color: #FFC83D; }
+    .glass { background: rgba(10, 12, 18, 0.82); backdrop-filter: blur(18px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    .kick { font-weight: 800; letter-spacing: 0.16em; font-size: 30px; color: #FFC83D; text-transform: uppercase; }
+    .ctr { position: absolute; left: 0; width: 1080px; text-align: center; }
+    svg.ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    #et { position: absolute; left: 60px; right: 60px; top: 300px; padding: 34px 40px 40px; border-radius: 34px; }
+    .row { display: flex; align-items: center; gap: 22px; margin-top: 18px; }
+    .dot { width: 84px; height: 84px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; }
+    .dot svg { width: 52px; height: 52px; stroke-width: 2.6; }
+    #et-d1 { background: #FFC83D; color: #15120a; } #et-d2 { border: 5px solid #FFC83D; color: #FFC83D; }
+    .tx { font-size: 58px; } .tx small { display: block; font-family: "Inter", sans-serif; font-size: 28px; font-weight: 600; letter-spacing: 0; opacity: 0.8; margin-bottom: 6px; }
+    #et-bar { position: relative; height: 14px; border-radius: 7px; background: rgba(255,255,255,0.15); margin: 26px 0 8px 102px; overflow: hidden; }
+    #et-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: #FFC83D; transform-origin: 0 50%; }
+    #et-q { font-size: 120px; }
+  </style>
+  <div id="root" data-composition-id="g-eta" data-width="1080" data-height="1920">
+    <div id="et" class="glass">
+      <div class="kick">Status projek</div>
+      <div id="et-r1" class="row"><div id="et-d1" class="dot"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="hd tx"><small>Sekarang</small>STRUKTUR SIAP</div></div>
+      <div id="et-bar"><div id="et-fill"></div></div>
+      <div id="et-r2" class="row"><div id="et-d2" class="dot"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><div class="hd tx"><small>Dijangka siap sepenuhnya</small><span id="et-q" class="y">Q3 2027</span></div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const inUp = (s, t, d = 0.45) => tl.fromTo(s, { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "expo.out" }, t);
+    const inPop = (s, t) => tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.2)" }, t);
+    const slam = (s, t) => tl.fromTo(s, { opacity: 0, scale: 1.9, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power4.out" }, t);
+    const out = (s, t, d = 0.22) => { tl.to(s, { opacity: 0, y: -20, filter: "blur(8px)", duration: d, ease: "power2.in" }, t); tl.set(s, { visibility: "hidden" }, t + d + 0.01); };
+
+    tl.set("#et-fill", { scaleX: 0 }, 0);
+    inUp("#et", 0, 0.45);
+    tl.fromTo("#et-r1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, 0.1);
+    tl.fromTo("#et-d1", { scale: 0.4 }, { scale: 1, duration: 0.45, ease: "back.out(2.4)" }, 0.15);
+    tl.fromTo("#et-r2", { opacity: 0 }, { opacity: 0.35, duration: 0.3 }, 0.3);
+    tl.to("#et-fill", { scaleX: 0.72, duration: 1.4, ease: "power2.inOut" }, 0.44);
+    tl.to("#et-r2", { opacity: 1, duration: 0.3 }, 1.04);
+    tl.fromTo("#et-q", { opacity: 0, scale: 1.6, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "power4.out" }, 2.48);
+    tl.set("#et-q", { display: "inline-block", transformOrigin: "0% 60%" }, 0);
+    out("#et", 5.234);
+    window.__timelines["g-eta"] = tl;
+  </script>
+</template>

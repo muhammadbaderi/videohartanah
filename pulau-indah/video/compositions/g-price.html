@@ -1,0 +1,47 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; overflow: hidden; }
+    .hd { font-family: "Montserrat", sans-serif; font-weight: 900; letter-spacing: -0.02em; line-height: 0.95; }
+    .y { color: #FFC83D; }
+    .glass { background: rgba(10, 12, 18, 0.82); backdrop-filter: blur(18px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    .kick { font-weight: 800; letter-spacing: 0.16em; font-size: 30px; color: #FFC83D; text-transform: uppercase; }
+    .ctr { position: absolute; left: 0; width: 1080px; text-align: center; }
+    svg.ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    #pr-dim { position: absolute; inset: 0; background: rgba(5,6,10,0.55); }
+    #pr, #pr-b { position: absolute; left: 60px; right: 60px; padding: 36px 44px 40px; border-radius: 36px; text-align: center; }
+    #pr { top: 330px; } #pr-b { top: 640px; }
+    #pr-old { position: relative; display: inline-block; font-size: 112px; margin-top: 8px; }
+    #pr-x { position: absolute; left: -12px; right: -12px; top: 50%; height: 12px; margin-top: -6px; background: #ff4d4d; border-radius: 6px;
+      transform-origin: 0 50%; }
+    #pr-now { font-size: 150px; margin-top: 14px; white-space: nowrap; text-shadow: 0 0 50px rgba(255,200,61,0.35); }
+    #pr-sv { display: inline-block; margin-top: 22px; padding: 14px 30px; border-radius: 999px; background: #2ecc71; color: #06210f; font-weight: 900; font-size: 36px; letter-spacing: 0.06em; }
+  </style>
+  <div id="root" data-composition-id="g-price" data-width="1080" data-height="1920">
+    <div id="pr-dim"></div>
+    <div id="pr" class="glass"><div class="kick" style="color: #fff; opacity: 0.75">Harga asal</div><div id="pr-old" class="hd">RM299,500<div id="pr-x"></div></div></div>
+    <div id="pr-b" class="glass"><div class="kick">Sekarang dari</div><div id="pr-now" class="hd y">RM<span id="pr-n">299,500</span></div><div id="pr-sv">JIMAT RM9,000</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const inUp = (s, t, d = 0.45) => tl.fromTo(s, { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "expo.out" }, t);
+    const inPop = (s, t) => tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.2)" }, t);
+    const slam = (s, t) => tl.fromTo(s, { opacity: 0, scale: 1.9, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power4.out" }, t);
+    const out = (s, t, d = 0.22) => { tl.to(s, { opacity: 0, y: -20, filter: "blur(8px)", duration: d, ease: "power2.in" }, t); tl.set(s, { visibility: "hidden" }, t + d + 0.01); };
+
+    tl.fromTo("#pr-dim", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+    inUp("#pr", -0.05, 0.5);
+    tl.set("#pr-x", { scaleX: 0, rotation: -6 }, 0);
+    tl.to("#pr-x", { scaleX: 1, rotation: -6, duration: 0.35, ease: "power3.out" }, 3.69);
+    tl.to("#pr-old", { opacity: 0.45, duration: 0.3 }, 3.89);
+    tl.set("#pr-b", { opacity: 0 }, 0);
+    tl.to("#pr-b", { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 4.14);
+    const p = { v: 299500 };
+    tl.fromTo(p, { v: 299500 }, { v: 290500, duration: 1.1, ease: "power3.out",
+      onUpdate: () => { document.getElementById("pr-n").textContent = (Math.round(p.v / 100) * 100).toLocaleString("en-US"); } }, 5);
+    tl.fromTo("#pr-now", { scale: 1 }, { scale: 1.08, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out" }, 6.1);
+    tl.fromTo("#pr-sv", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.4)" }, 6.3);
+    out(["#pr", "#pr-b"], 8.262);
+    window.__timelines["g-price"] = tl;
+  </script>
+</template>

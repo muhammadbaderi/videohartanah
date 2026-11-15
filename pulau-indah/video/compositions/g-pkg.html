@@ -1,0 +1,61 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; overflow: hidden; }
+    .hd { font-family: "Montserrat", sans-serif; font-weight: 900; letter-spacing: -0.02em; line-height: 0.95; }
+    .y { color: #FFC83D; }
+    .glass { background: rgba(10, 12, 18, 0.82); backdrop-filter: blur(18px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    .kick { font-weight: 800; letter-spacing: 0.16em; font-size: 30px; color: #FFC83D; text-transform: uppercase; }
+    .ctr { position: absolute; left: 0; width: 1080px; text-align: center; }
+    svg.ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    #pk-dim { position: absolute; inset: 0; background: rgba(5,6,10,0.6); }
+    #pk { position: absolute; left: 60px; right: 60px; top: 280px; padding: 36px 40px 30px; border-radius: 36px; }
+    #pk .hd.t { font-size: 76px; margin: 8px 0 18px; }
+    .it { display: flex; align-items: center; gap: 22px; height: 112px; border-top: 2px solid rgba(255,255,255,0.1); }
+    .ck { width: 68px; height: 68px; border-radius: 50%; background: #FFC83D; color: #15120a; display: flex; align-items: center; justify-content: center; flex: none; }
+    .ck svg { width: 42px; height: 42px; stroke-width: 3; }
+    .tg { padding: 8px 18px; border-radius: 12px; background: #2ecc71; color: #06210f; font-weight: 900; font-size: 30px; letter-spacing: 0.08em; }
+    .tg.bk { background: #fff; color: #15120a; }
+    .nm { font-weight: 800; font-size: 46px; white-space: nowrap; }
+    #pk-st { position: absolute; left: 0; width: 1080px; top: 1010px; text-align: center; }
+    #pk-st span { display: inline-block; transform: rotate(-5deg); padding: 10px 40px 16px; border: 10px solid #2ecc71; border-radius: 22px;
+      color: #2ecc71; font-size: 104px; white-space: nowrap; background: rgba(6,20,12,0.6); }
+  </style>
+  <div id="root" data-composition-id="g-pkg" data-width="1080" data-height="1920">
+    <div id="pk-dim"></div>
+    <div id="pk" class="glass">
+      <div class="kick">Pakej pembeli</div>
+      <div class="hd t">SEMUA DAH COVER</div>
+      <div id="pk-0" class="it"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="tg bk">BOOKING</div><div class="nm">RM500</div></div>
+      <div id="pk-1" class="it"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="tg">FREE</div><div class="nm">Legal fee SPA</div></div>
+      <div id="pk-2" class="it"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="tg">FREE</div><div class="nm">Legal fee loan</div></div>
+      <div id="pk-3" class="it"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="tg">FREE</div><div class="nm">Duti setem loan</div></div>
+      <div id="pk-4" class="it"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="tg">FREE</div><div class="nm">MOT fee</div></div>
+    </div>
+    <div id="pk-st"><span class="hd">SEMUA PERCUMA</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const inUp = (s, t, d = 0.45) => tl.fromTo(s, { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "expo.out" }, t);
+    const inPop = (s, t) => tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.2)" }, t);
+    const slam = (s, t) => tl.fromTo(s, { opacity: 0, scale: 1.9, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power4.out" }, t);
+    const out = (s, t, d = 0.22) => { tl.to(s, { opacity: 0, y: -20, filter: "blur(8px)", duration: d, ease: "power2.in" }, t); tl.set(s, { visibility: "hidden" }, t + d + 0.01); };
+
+    tl.fromTo("#pk-dim", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+    inUp("#pk", 0.02, 0.45);
+    tl.set([".it"], { opacity: 0 }, 0);
+    tl.fromTo("#pk-0", { opacity: 0.0, x: -50 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, -0.05);
+    tl.fromTo("#pk-0 .ck", { scale: 0.3, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, 0);
+    tl.fromTo("#pk-1", { opacity: 0.0, x: -50 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 2.09);
+    tl.fromTo("#pk-1 .ck", { scale: 0.3, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, 2.14);
+    tl.fromTo("#pk-2", { opacity: 0.0, x: -50 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 3.67);
+    tl.fromTo("#pk-2 .ck", { scale: 0.3, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, 3.72);
+    tl.fromTo("#pk-3", { opacity: 0.0, x: -50 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 5.11);
+    tl.fromTo("#pk-3 .ck", { scale: 0.3, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, 5.16);
+    tl.fromTo("#pk-4", { opacity: 0.0, x: -50 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 6.63);
+    tl.fromTo("#pk-4 .ck", { scale: 0.3, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, 6.68);
+    tl.fromTo("#pk-st", { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.in" }, 7.5);
+    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power2.in" }, 9.766);
+    window.__timelines["g-pkg"] = tl;
+  </script>
+</template>

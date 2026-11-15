@@ -1,0 +1,140 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif; overflow: hidden; }
+    .hd { font-family: "Montserrat", sans-serif; font-weight: 900; letter-spacing: -0.02em; line-height: 0.95; }
+    .y { color: #FFC83D; }
+    .glass { background: rgba(10, 12, 18, 0.82); backdrop-filter: blur(18px); box-shadow: 0 18px 50px rgba(0,0,0,0.45); }
+    .kick { font-weight: 800; letter-spacing: 0.16em; font-size: 30px; color: #FFC83D; text-transform: uppercase; }
+    .ctr { position: absolute; left: 0; width: 1080px; text-align: center; }
+    svg.ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    #pl { position: absolute; left: 60px; top: 300px; width: 340px; padding: 20px; border-radius: 30px; transform-origin: 0 0; }
+    #pl-k { font-weight: 800; font-size: 22px; letter-spacing: 0.18em; color: #FFC83D; margin: 0 0 10px 4px; }
+    #pl svg text.lb { fill: #fff; font-family: "Inter", sans-serif; font-weight: 800; opacity: 0.88; }
+    .dl { position: absolute; font-family: "Montserrat", sans-serif; font-weight: 900; color: #FFC83D; font-size: 34px; opacity: 0; }
+    #dl-w { left: 150px; top: 36px; } #dl-d { left: -6px; transform: rotate(-90deg); }
+    #cds { position: absolute; left: 450px; top: 300px; width: 570px; display: flex; flex-direction: column; gap: 22px; }
+    .cd { border-radius: 28px; padding: 26px 30px; }
+    .cd .v { font-size: 104px; margin-top: 6px; white-space: nowrap; }
+    .cd .s { font-size: 30px; font-weight: 600; opacity: 0.85; margin-top: 8px; }
+    .cd-car svg { width: 70px; height: 70px; color: #FFC83D; margin-right: 6px; }
+    #lt { position: absolute; left: 60px; top: 1120px; padding: 22px 34px 24px; border-radius: 26px; max-width: 760px; }
+    #lt .v { font-size: 66px; margin-top: 6px; white-space: nowrap; }
+    .pv { position: absolute; left: 60px; top: 1000px; display: flex; align-items: center; gap: 14px; padding: 14px 26px 14px 18px; border-radius: 999px;
+      background: #FFC83D; color: #15120a; font-weight: 900; font-size: 32px; letter-spacing: 0.08em; opacity: 0; }
+    .pv svg { width: 44px; height: 44px; }
+    .cnt { position: absolute; left: 60px; top: 990px; display: flex; gap: 16px; }
+    .cnt div { padding: 14px 26px; border-radius: 20px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 40px; }
+  </style>
+  <div id="root" data-composition-id="g-plan" data-width="1080" data-height="1920">
+    <div id="pl" class="glass">
+      <div id="pl-k" data-layout-ignore>PELAN LANTAI</div>
+      <div style="position: relative">
+      <svg id="pl-svg" data-layout-ignore viewBox="-300 -300 6696 20108" width="300" height="901">
+      <rect class="rm" x="0" y="0" width="6096" height="1220" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-yard" x="30" y="30" width="6036" height="1160" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="0" y="1220" width="3048" height="3150" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-b3" x="30" y="1250" width="2988" height="3090" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="0" y="4370" width="3048" height="3600" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-b2" x="30" y="4400" width="2988" height="3540" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="0" y="7970" width="3048" height="5442" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-rt" x="30" y="8000" width="2988" height="5382" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="3048" y="1220" width="3048" height="5000" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-dp" x="3078" y="1250" width="2988" height="4940" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="4100" y="6220" width="1996" height="1600" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-ba2" x="4130" y="6250" width="1936" height="1540" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="4100" y="7820" width="1996" height="1380" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-ba1" x="4130" y="7850" width="1936" height="1320" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="3048" y="6220" width="1052" height="2980" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-hall" x="3078" y="6250" width="992" height="2920" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="3048" y="9200" width="3048" height="4212" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-bu" x="3078" y="9230" width="2988" height="4152" fill="#FFC83D" opacity="0"/>
+      <rect class="rm" x="0" y="13412" width="6096" height="6096" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.9)" stroke-width="60"/>
+      <rect id="hl-porch" x="30" y="13442" width="6036" height="6036" fill="#FFC83D" opacity="0"/>
+      <text class="lb" x="1524" y="2942" font-size="420" text-anchor="middle">BILIK 3</text>
+      <text class="lb" x="1524" y="6317" font-size="420" text-anchor="middle">BILIK 2</text>
+      <text class="lb" x="1524" y="10607" font-size="420" text-anchor="middle">RUANG</text>
+      <text class="lb" x="1524" y="11069" font-size="420" text-anchor="middle">TAMU</text>
+      <text class="lb" x="4572" y="3636" font-size="420" text-anchor="middle">DAPUR</text>
+      <text class="lb" x="4572" y="4098" font-size="420" text-anchor="middle">&amp; MAKAN</text>
+      <text class="lb" x="5098" y="7125" font-size="300" text-anchor="middle">B.AIR 2</text>
+      <text class="lb" x="5098" y="8615" font-size="300" text-anchor="middle">B.AIR 1</text>
+      <text class="lb" x="4572" y="11222" font-size="420" text-anchor="middle">BILIK</text>
+      <text class="lb" x="4572" y="11684" font-size="420" text-anchor="middle">UTAMA</text>
+      <text class="lb" x="3048" y="16607" font-size="420" text-anchor="middle">PORCH</text>
+      <g id="nb-bu" opacity="0"><circle cx="5576" cy="9720" r="380" fill="#FFC83D"/><text x="5576" y="9860" font-size="420" text-anchor="middle" fill="#15120a" font-weight="900">1</text></g>
+      <g id="nb-b2" opacity="0"><circle cx="2528" cy="4890" r="380" fill="#FFC83D"/><text x="2528" y="5030" font-size="420" text-anchor="middle" fill="#15120a" font-weight="900">2</text></g>
+      <g id="nb-b3" opacity="0"><circle cx="2528" cy="1740" r="380" fill="#FFC83D"/><text x="2528" y="1880" font-size="420" text-anchor="middle" fill="#15120a" font-weight="900">3</text></g>
+      <g transform="translate(569 14265)"><g id="car0" opacity="0"><rect width="2195" height="4389" rx="505" fill="#FFC83D"/><rect x="241" y="878" width="1712" height="1009" rx="241" fill="#15120a" opacity="0.7"/><rect x="241" y="2897" width="1712" height="790" rx="241" fill="#15120a" opacity="0.7"/></g></g>
+      <g transform="translate(3332 14265)"><g id="car1" opacity="0"><rect width="2195" height="4389" rx="505" fill="#FFC83D"/><rect x="241" y="878" width="1712" height="1009" rx="241" fill="#15120a" opacity="0.7"/><rect x="241" y="2897" width="1712" height="790" rx="241" fill="#15120a" opacity="0.7"/></g></g>
+      <g id="dim-w" stroke="#FFC83D" stroke-width="70" fill="none"><path id="dim-wp" d="M0 -180 H6096" stroke-dasharray="6096" stroke-dashoffset="6096"/></g>
+      <g id="dim-d" stroke="#FFC83D" stroke-width="70" fill="none"><path id="dim-dp" d="M-180 0 V19508" stroke-dasharray="19508" stroke-dashoffset="19508"/></g>
+      </svg>
+      <div id="dl-w" class="dl">20&#x27;</div><div id="dl-d" class="dl" style="top: 520px">64&#x27;</div>
+      </div>
+    </div>
+    <div id="cds"><div id="cd-0" class="cd glass"><div class="kick">Jenis</div><div class="hd v" style="font-size: 58px">TERES 1 TINGKAT</div><div class="s">Freehold · Rizab Melayu</div></div><div id="cd-1" class="cd glass"><div class="kick">Luas tanah</div><div class="hd v"><span id="n-w">20</span>&#x27; × <span id="n-d">64</span>&#x27;</div><div class="s">1,280 kaki persegi<br />Luas binaan 20' × 40'</div></div><div id="cd-2" class="cd glass cd-car"><div class="kick">Porch</div><div class="hd v" style="font-size: 64px; display: flex; align-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M5 16V12l2-5h10l2 5v4"/><path d="M3.5 12h17v4.5h-17z"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg><svg class="ic" viewBox="0 0 24 24"><path d="M5 16V12l2-5h10l2 5v4"/><path d="M3.5 12h17v4.5h-17z"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg> MUAT 2</div></div></div>
+    <div id="lt" class="glass"><div id="lt-k" class="kick"></div><div id="lt-v" class="hd v"></div></div>
+    <div id="pv0" class="pv"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.6-3.4 8-8 9-4.6-1-8-4.4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg> LEBIH PRIVASI</div>
+    <div id="cnt" class="cnt"><div id="cnt0" style="background: #FFC83D; color: #15120a">3 BILIK TIDUR</div><div id="cnt1" class="glass">2 BILIK AIR</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const inUp = (s, t, d = 0.45) => tl.fromTo(s, { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "expo.out" }, t);
+    const inPop = (s, t) => tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.2)" }, t);
+    const slam = (s, t) => tl.fromTo(s, { opacity: 0, scale: 1.9, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.32, ease: "power4.out" }, t);
+    const out = (s, t, d = 0.22) => { tl.to(s, { opacity: 0, y: -20, filter: "blur(8px)", duration: d, ease: "power2.in" }, t); tl.set(s, { visibility: "hidden" }, t + d + 0.01); };
+
+    tl.fromTo("#pl", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 0.05);
+    tl.fromTo(".rm", { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.04, ease: "power1.out" }, 0.15);
+    inUp("#cd-0", 0.05);
+    tl.to("#dim-wp", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 1.3);
+    tl.to("#dim-dp", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 1.5);
+    tl.to(["#dl-w", "#dl-d"], { opacity: 1, duration: 0.3, stagger: 0.2 }, 1.65);
+    const n = { w: 0, d: 0 };
+    tl.fromTo(n, { w: 0, d: 0 }, { w: 20, d: 64, duration: 0.9, ease: "power2.out",
+      onUpdate: () => { document.getElementById("n-w").textContent = Math.round(n.w); document.getElementById("n-d").textContent = Math.round(n.d); } }, 1.3);
+    inUp("#cd-1", 1.3);
+    tl.to("#hl-porch", { opacity: 0.25, duration: 0.25 }, 2.98);
+    tl.fromTo(["#car0", "#car1"], { opacity: 0, y: 1200 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.15, ease: "back.out(1.6)" }, 2.98);
+    inUp("#cd-2", 2.98);
+    out(["#cd-0", "#cd-1", "#cd-2"], 4.594, 0.2);
+    tl.to(["#dl-w", "#dl-d", "#dim-w", "#dim-d", "#car0", "#car1"], { opacity: 0, duration: 0.2 }, 4.594);
+    tl.to("#hl-porch", { opacity: 0, duration: 0.2 }, 4.594);
+    tl.to("#pl", { x: 742, y: -60, scale: 0.6, duration: 0.6, ease: "power3.inOut" }, 4.694);
+    const hl = (k, t, o = 0.62) => tl.to("#hl-" + k, { opacity: o, duration: 0.25, ease: "power2.out" }, t);
+    const un = (ks, t) => tl.to(ks.map(k => "#hl-" + k), { opacity: 0, duration: 0.2 }, t);
+    tl.set("#lt", { opacity: 0 }, 0);
+    const lt = (k, v, t) => { tl.set("#lt-k", { textContent: k }, t); tl.set("#lt-v", { textContent: v }, t);
+      tl.fromTo("#lt", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, t); };
+    hl("rt", 4.994);
+    lt("Masuk je", "RUANG TAMU", 4.994);
+    un(["rt"], 7.483);
+    hl("bu", 7.583);
+    lt("Master", "BILIK UTAMA", 7.583);
+    hl("ba1", 8.843);
+    lt("+ Bilik air sendiri", "BILIK AIR 1", 8.843);
+    un(["bu", "ba1"], 9.779);
+    hl("dp", 9.879);
+    lt("Belakang", "DAPUR & MAKAN", 9.879);
+    tl.to("#hl-rt", { opacity: 0.22, duration: 0.2, yoyo: true, repeat: 3 }, 11.459);
+    tl.fromTo("#pv0", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2.2)" }, 13.439);
+    un(["dp", "rt"], 14.156);
+    out("#lt", 14.006);
+    tl.set("#lt", { visibility: "visible" }, 14.456);
+    out("#pv0", 14.006);
+    hl("bu", 14.256, 0.62);
+    inPop("#nb-bu", 14.256);
+    hl("b2", 14.406, 0.62);
+    inPop("#nb-b2", 14.406);
+    hl("b3", 14.556, 0.62);
+    inPop("#nb-b3", 14.556);
+    inUp("#cnt0", 14.256, 0.4);
+    hl("ba1", 15.216, 0.8);
+    hl("ba2", 15.336, 0.8);
+    tl.set(["#hl-ba1", "#hl-ba2"], { fill: "#5ec8ff" }, 15.216);
+    inUp("#cnt1", 15.216, 0.4);
+    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power2.in" }, 17.696);
+    window.__timelines["g-plan"] = tl;
+  </script>
+</template>

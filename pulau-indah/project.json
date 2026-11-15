@@ -1,0 +1,174 @@
+{
+ "slug": "pulau-indah",
+ "title": "Teres Setingkat Pulau Indah",
+ "inputs": {
+  "video_url": "https://drive.google.com/file/d/1orBcemqtPLmrI86VVIDgxAB7Hdu513OP/view?usp=drivesdk",
+  "floorplan_url": "https://drive.google.com/file/d/1iQT7We02JBDHrghcCNldPiZjgYayicN4/view?usp=drivesdk",
+  "maps_url": "https://maps.app.goo.gl/4LjZqjdJ83anYwnJ8"
+ },
+ "phone": "016-370 8908",
+ "footage": "assets/footage/IMG_1360_1080.mp4",
+ "stills": {"freeze": 4.7, "blur": 2.0},
+ "voice": {"voice_id": "SZ0xfPd6MASL0W36QxnX", "name": "Mad Serious", "model_id": "eleven_v3", "stability": 0.5, "tempo": 1.12},
+ "lines": [
+  {"id": "hook1", "gap": 0.12, "text": "[serious] Rumah teres {freehold|FREEHOLD} di Pulau Indah, [b] harga bawah {tiga ratus ribu|RM300K}."},
+  {"id": "hook2", "gap": 0.3, "text": "[curious] Masih wujud ke?"},
+  {"id": "ans", "gap": 0.38, "text": "[confident] Wujud. [b] Dan saya tengah berdiri depan dia sekarang."},
+  {"id": "loc1", "gap": 0.45, "text": "[warm] Projek perumahan baru, di Persiaran Masjid Sultan, Pulau Indah."},
+  {"id": "loc2", "gap": 0.28, "text": "Sekolah, masjid, klinik, semua dekat. Halal Hub dan kawasan industri, sebelah je."},
+  {"id": "loc3", "gap": 0.3, "text": "[upbeat] Nak keluar? {Kesas|KESAS}, {S.K.V.E|SKVE}, {W-C-E|WCE}, semua dah sedia."},
+  {"id": "lot", "gap": 0.5, "text": "[confident] Teres setingkat. Tanah {dua puluh kali enam puluh empat|20' x 64'} kaki. Porch, muat dua kereta."},
+  {"id": "liv", "gap": 0.3, "text": "[impressed] Masuk je, ruang tamu memanjang. Lapang."},
+  {"id": "mbr", "gap": 0.3, "text": "Bilik utama, siap dengan bilik air sendiri."},
+  {"id": "kit", "gap": 0.3, "text": "Dapur dan ruang makan di belakang, terpisah dari ruang tamu. [warm] Lebih privasi."},
+  {"id": "rooms", "gap": 0.3, "text": "Tiga bilik tidur, dua bilik air. Cukup untuk satu keluarga."},
+  {"id": "eta", "gap": 0.35, "text": "[serious] Struktur dah siap. Dijangka siap sepenuhnya, {suku ketiga dua ribu dua puluh tujuh|Q3 2027}."},
+  {"id": "price", "gap": 0.55, "text": "[serious] Harga asal, {dua ratus sembilan puluh sembilan ribu lima ratus|RM299,500}. [b] [excited] Sekarang, dari {dua ratus sembilan puluh ribu lima ratus ringgit|RM290,500} je!"},
+  {"id": "pkg", "gap": 0.65, "text": "[excited] Booking, {lima ratus ringgit|RM500}. Legal fee {S.P.A|SPA}, legal fee loan, duti setem, {M.O.T|MOT}, [b] semua percuma!"},
+  {"id": "cash", "gap": 0.35, "text": "[excited] Pembeli terawal, dapat cashback {sebelas ribu ringgit|RM11,000}!"},
+  {"id": "cta", "gap": 0.5, "text": "[serious] Freehold. {Ri-zab Melayu|Rizab Melayu}. Unit terhad. [b] [urgent] WhatsApp saya sekarang, {kosong satu enam, tiga tujuh kosong, lapan sembilan kosong lapan|016-370 8908}."}
+ ],
+ "timeline": {"end_hold": 3.2, "flash_cuts": ["ans", "lot", "price", "cta"], "strong_push": ["hook1", "hook2"]},
+ "shots": [
+  {"line": "hook1", "src": 0.0, "max": 5.3, "why": "exterior row, wide"},
+  {"line": "hook2", "src": "freeze", "why": "freeze frame (still) for MASIH WUJUD?"},
+  {"line": "ans", "src": 13.2, "max": 17.6, "why": "walk-up to the porch"},
+  {"line": "loc1", "src": "map", "why": "map scene covers the frame"},
+  {"line": "lot", "src": 18.0, "max": 23.9, "why": "house front, porch roof"},
+  {"line": "lot", "src": 38.4, "switch": "lot:Porch,", "max": 42.6, "why": "looking out through the porch"},
+  {"line": "liv", "src": 29.8, "max": 34.0, "why": "into the living hall"},
+  {"line": "mbr", "src": 49.2, "max": 54.6, "why": "master bedroom"},
+  {"line": "mbr", "src": 55.0, "switch": "mbr:bilik#1", "max": 57.6, "why": "master bathroom"},
+  {"line": "kit", "src": 65.0, "max": 70.2, "why": "kitchen + dining, back door"},
+  {"line": "rooms", "src": 76.5, "max": 78.4, "why": "bedroom with window"},
+  {"line": "rooms", "src": 62.4, "switch": "rooms:dua", "max": 64.8, "why": "bathroom 2 tiles"},
+  {"line": "rooms", "src": 73.0, "switch": "rooms:Cukup", "max": 76.4, "why": "bedroom door"},
+  {"line": "eta", "src": 80.0, "max": 86.2, "why": "back door -> back yard"},
+  {"line": "price", "src": 24.0, "max": 29.6, "why": "approach to the front opening"},
+  {"line": "price", "src": 31.0, "switch": "price:Sekarang,", "max": 37.0, "why": "living hall, long"},
+  {"line": "pkg", "src": 0.0, "max": 5.3, "why": "exterior row again (dimmed under the card)"},
+  {"line": "pkg", "src": 13.1, "switch": "pkg:duti", "max": 17.6, "why": "porch (dimmed)"},
+  {"line": "pkg", "src": 19.0, "switch": "pkg:semua", "max": 23.9, "why": "house front (dimmed)"},
+  {"line": "cash", "src": "still", "why": "blurred exterior still"}
+ ],
+ "map": {
+  "lat": 2.919219, "lon": 101.301938, "local_zoom": 16, "region_zoom": 12,
+  "marks": [{"name": "Klang", "lat": 3.0438, "lon": 101.4456}, {"name": "Pelabuhan Klang", "lat": 2.9996, "lon": 101.3928}]
+ },
+ "scenes": {
+  "hook": {
+   "tag": "PROJEK BARU · PULAU INDAH",
+   "phrases": [
+    {"at": "hook1:Rumah", "lines": [{"text": "RUMAH TERES", "size": 68}, {"text": "FREEHOLD", "size": 112, "accent": true, "slam": "hook1:freehold", "sfx": "boom"}]},
+    {"at": "hook1:Pulau@-0.1", "icon": "pin", "sfx": "pin", "lines": [{"text": "DI PULAU INDAH", "size": 66}]},
+    {"at": "hook1:bawah@-0.25", "lines": [{"text": "HARGA BAWAH", "size": 56}, {"text": "RM300K", "size": 148, "accent": true, "glow": true, "slam": "hook1:tiga", "shake": true, "sfx": "impact"}]}
+   ],
+   "question": {"at": "hook2", "words": [{"text": "MASIH", "at": "hook2:Masih", "size": 96, "sfx": "whoosh"}, {"text": "WUJUD", "at": "hook2:wujud", "size": 150, "q": true, "sfx": "boom"}]}
+  },
+  "answer": {
+   "start": "ans",
+   "stamp": {"text": "WUJUD.", "at": "ans:Wujud.", "out": "ans:berdiri"},
+   "badge": {"text": "SITE VISIT · PULAU INDAH", "at": "ans:Dan"}
+  },
+  "map": {
+   "start": "loc1",
+   "title": {"kicker": "Lokasi", "text": "PERSIARAN MASJID SULTAN", "sub": "Pulau Indah, Klang · Selangor", "at": "loc1:Projek@0.05"},
+   "pin": {"at": "loc1:Persiaran", "label": "PROJEK BARU"},
+   "amenities": [
+    {"icon": "school", "text": "SK · SMK · SRA Pulau Indah", "at": "loc2:Sekolah,"},
+    {"icon": "mosque", "text": "Masjid Sultan Abdul Aziz", "at": "loc2:masjid,"},
+    {"icon": "clinic", "text": "Klinik Kesihatan", "at": "loc2:klinik,"},
+    {"icon": "cart", "text": "99 Speedmart · Segi Fresh", "at": "loc2:semua"},
+    {"icon": "halal", "text": "Selangor Halal Hub", "at": "loc2:Halal"},
+    {"icon": "factory", "text": "Pulau Indah Industrial Park", "at": "loc2:industri,"}
+   ],
+   "zoom_out": "loc3",
+   "roads": [
+    {"text": "KESAS", "at": "loc3:Kesas,", "big": true},
+    {"text": "SKVE", "at": "loc3:S.K.V.E,", "big": true},
+    {"text": "WCE", "at": "loc3:W-C-E,", "big": true},
+    {"text": "Lebuhraya Pulau Indah", "at": "loc3:semua"},
+    {"text": "SHAPADU", "at": "loc3:dah"}
+   ],
+   "credit": "Imej satelit: Esri, Maxar, Earthstar Geographics"
+  },
+  "plan": {
+   "start": "lot",
+   "width_mm": 6096, "depth_mm": 19508,
+   "rooms": {
+    "yard": [0, 0, 6096, 1220], "b3": [0, 1220, 3048, 3150], "b2": [0, 4370, 3048, 3600], "rt": [0, 7970, 3048, 5442],
+    "dp": [3048, 1220, 3048, 5000], "ba2": [4100, 6220, 1996, 1600], "ba1": [4100, 7820, 1996, 1380], "hall": [3048, 6220, 1052, 2980],
+    "bu": [3048, 9200, 3048, 4212], "porch": [0, 13412, 6096, 6096]
+   },
+   "labels": {"b3": "BILIK 3", "b2": "BILIK 2", "rt": "RUANG\nTAMU", "dp": "DAPUR\n& MAKAN", "ba2": "B.AIR 2", "ba1": "B.AIR 1", "bu": "BILIK\nUTAMA", "porch": "PORCH"},
+   "small_labels": ["ba1", "ba2"],
+   "outdoor": ["yard", "porch"],
+   "numbered": [["bu", 1], ["b2", 2], ["b3", 3]],
+   "porch": "porch",
+   "cards": [
+    {"type": "text", "kicker": "Jenis", "value": "TERES 1 TINGKAT", "size": 58, "sub": "Freehold · Rizab Melayu", "at": "lot:Teres", "sfx": "tick"},
+    {"type": "dims", "kicker": "Luas tanah", "w": 20, "d": 64, "unit": "'", "sub": "1,280 kaki persegi<br />Luas binaan 20' × 40'", "at": "lot:dua", "sfx": "pop"},
+    {"type": "cars", "kicker": "Porch", "text": "MUAT 2", "count": 2, "at": "lot:Porch,", "sfx": "pop"}
+   ],
+   "tour_start": "liv",
+   "steps": [
+    {"at": "liv@0.1", "hl": ["rt"], "kicker": "Masuk je", "title": "RUANG TAMU"},
+    {"at": "mbr", "clear": ["rt"], "hl": ["bu"], "kicker": "Master", "title": "BILIK UTAMA", "sfx": "tick"},
+    {"at": "mbr:bilik#1", "hl": ["ba1"], "kicker": "+ Bilik air sendiri", "title": "BILIK AIR 1", "sfx": "tick"},
+    {"at": "kit", "clear": ["bu", "ba1"], "hl": ["dp"], "kicker": "Belakang", "title": "DAPUR & MAKAN", "sfx": "tick"},
+    {"at": "kit:terpisah", "flash": ["rt"]},
+    {"at": "kit:privasi.", "badge": "LEBIH PRIVASI", "icon": "shield", "sfx": "ping"},
+    {"at": "rooms", "clear": ["dp", "rt"], "hide_label": true},
+    {"at": "rooms:Tiga", "hl_seq": ["bu", "b2", "b3"], "numbers": true, "count": "3 BILIK TIDUR", "sfx": "pop"},
+    {"at": "rooms:dua", "hl_seq": ["ba1", "ba2"], "color": "#5ec8ff", "count": "2 BILIK AIR", "sfx": "pop"}
+   ]
+  },
+  "status": {
+   "start": "eta",
+   "kicker": "Status projek",
+   "now": {"small": "Sekarang", "text": "STRUKTUR SIAP", "at": "eta:Struktur"},
+   "next": {"small": "Dijangka siap sepenuhnya", "text": "Q3 2027", "at": "eta:Dijangka", "big_at": "eta:suku"}
+  },
+  "price": {
+   "start": "price", "currency": "RM",
+   "old": {"kicker": "Harga asal", "value": 299500, "at": "price:Harga"},
+   "new": {"kicker": "Sekarang dari", "value": 290500, "at": "price:Sekarang,", "count_at": "price:dua#1"},
+   "save": "JIMAT RM9,000"
+  },
+  "package": {
+   "start": "pkg", "kicker": "Pakej pembeli", "title": "SEMUA DAH COVER",
+   "items": [
+    {"tag": "BOOKING", "text": "RM500", "at": "pkg:Booking,", "light": true},
+    {"tag": "FREE", "text": "Legal fee SPA", "at": "pkg:legal#0"},
+    {"tag": "FREE", "text": "Legal fee loan", "at": "pkg:legal#1"},
+    {"tag": "FREE", "text": "Duti setem loan", "at": "pkg:duti"},
+    {"tag": "FREE", "text": "MOT fee", "at": "pkg:M.O.T,"}
+   ],
+   "stamp": {"text": "SEMUA PERCUMA", "at": "pkg:semua"}
+  },
+  "cashback": {
+   "start": "cash", "kicker": "Pembeli terawal",
+   "title": {"text": "CASHBACK", "at": "cash:cashback"},
+   "value": {"amount": 11000, "prefix": "RM", "at": "cash:sebelas"}
+  },
+  "cta": {
+   "start": "cta",
+   "tags": [
+    {"text": "FREEHOLD", "at": "cta:Freehold.", "style": "accent", "sfx": "pop"},
+    {"text": "RIZAB MELAYU", "at": "cta:Ri-zab", "style": "light", "sfx": "pop"},
+    {"text": "UNIT TERHAD", "at": "cta:Unit", "style": "alert", "pulse": true, "sfx": "impact"}
+   ],
+   "whatsapp": {"kicker": "WHATSAPP SEKARANG", "at": "cta:WhatsApp",
+    "groups": [{"text": "016-", "at": "cta:kosong"}, {"text": "370 ", "at": "cta:tiga"}, {"text": "8908", "at": "cta:lapan"}]},
+   "end_title": "JOM <span class=\"y\">SITE VISIT</span>",
+   "summary": "Teres 1 Tingkat · Pulau Indah · dari <b>RM290,500</b>"
+  }
+ },
+ "captions": {
+  "lines": ["ans", "loc1", "loc2", "loc3", "lot", "liv", "mbr", "kit", "rooms", "eta"],
+  "skip": [["ans", "Wujud."]],
+  "nobreak": [["bilik", "air"], ["bilik", "tidur"], ["satu", "keluarga"], ["halal", "hub"], ["ruang", "tamu"], ["ruang", "makan"], ["pulau", "indah"]],
+  "limit": 22
+ },
+ "music": {"file": "assets/audio/music-bed.mp3", "start": "ans:Wujud.@-0.05", "length": 75.5, "bed": 0.16, "lift": 0.34, "lifts": [["loc3@3.8", "lot"]]}
+}
