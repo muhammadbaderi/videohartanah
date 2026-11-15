@@ -34,7 +34,11 @@ render command at the bottom.
 - `npx hyperframes check`: 0 errors, 0 warnings (lint, runtime, layout, contrast, craft, audio).
 - Looked at: the beat sheet, all 7 seams, the phone sheet, and frames at 6.75–7.2 s (the flood),
   13.5, 23.5, 36.5, 44.5, 52, 53.3 s.
-- Audio: measured on the rendered file, not heard (see the numbers below).
+- Rendered file: 53.57 s, H.264 1080×1920 30 fps + AAC, 88 MB (`-share.mp4` copy: 24 MB, CRF 21).
+  Frames pulled from the MP4 at 0, 7, 12.5, 21.5, 27.5, 33, 36.8, 42.5, 51 s match the Studio snapshots
+  (fonts, baked map playing, labels in place).
+- Audio, measured on the rendered file, **not heard**: -14.1 LUFS integrated, true peak -1.1 dBTP,
+  no clipping. Loudest moment is the bass hit under the price at 47.3 s (short-term -9.3 LUFS), on purpose.
 
 ## Weakest shot
 
