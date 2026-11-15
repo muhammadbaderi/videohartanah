@@ -15,7 +15,7 @@
   </style>
   <div id="root" data-composition-id="s5-tapak" data-width="1080" data-height="1920">
     <div id="t-cam" data-layout-allow-overflow>
-      <video id="t-vid" class="clip" src="assets/footage/IMG_1308.mp4" muted playsinline data-start="0" data-duration="5.71" data-media-start="2.0" data-track-index="0"></video>
+      <video id="t-vid" class="clip" src="assets/footage/IMG_1308.mp4" muted playsinline data-start="0" data-duration="5.72" data-media-start="2.0" data-track-index="0"></video>
     </div>
     <div id="t-scrim"></div>
     <div id="t-c1" class="t-card"><b>LEASEHOLD</b><small>Rizab Melayu</small></div>
@@ -25,12 +25,12 @@
     const tl = gsap.timeline({ paused: true });
     // in: arrives through the plan, slightly large and blurred, then settles
     tl.fromTo("#t-cam", { scale: 1.18, filter: "blur(12px)" }, { scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 0);
-    // cards are wiped on from the left edge of the card
-    tl.fromTo("#t-c1", { clipPath: "inset(0% 100% 0% 0% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 0.45, ease: "expo.out" }, 0.38);
-    tl.fromTo("#t-c2", { clipPath: "inset(0% 100% 0% 0% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 0.45, ease: "expo.out" }, 2.3);
+    // cards are wiped on as the voice says them: "Leasehold, Rizab Melayu" / "Dijangka siap..."
+    tl.fromTo("#t-c1", { clipPath: "inset(0% 100% 0% 0% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 0.45, ease: "expo.out" }, 0.12);
+    tl.fromTo("#t-c2", { clipPath: "inset(0% 100% 0% 0% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 0.45, ease: "expo.out" }, 2.39);
     // out: zoom through the footage up into the satellite view
-    tl.to("#t-cam", { scale: 1.3, filter: "blur(14px)", duration: 0.3, ease: "power3.in" }, 5.41);
-    tl.to(["#t-c1", "#t-c2"], { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 5.41);
+    tl.to("#t-cam", { scale: 1.3, filter: "blur(14px)", duration: 0.3, ease: "power3.in" }, 5.42);
+    tl.to(["#t-c1", "#t-c2"], { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 5.42);
     window.__timelines["s5-tapak"] = tl;
   </script>
 </template>

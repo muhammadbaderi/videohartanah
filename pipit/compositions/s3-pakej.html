@@ -22,26 +22,26 @@
     <div id="p-k">PAKEJ</div>
     <div id="p-book"><small>BOOKING</small><div id="p-amt">RM1,000</div></div>
     <div id="p-r1" class="p-row"><div class="p-free">FREE</div><div class="p-txt">SPA Legal Fee</div></div>
-    <div id="p-r2" class="p-row"><div class="p-free">FREE</div><div class="p-txt">MOT<small>Pembeli rumah pertama</small></div></div>
-    <div id="p-r3" class="p-row"><div class="p-free">FREE</div><div class="p-txt">SPA Disbursements</div></div>
-    <div id="p-sheet"></div>
+    <div id="p-r2" class="p-row"><div class="p-free">FREE</div><div class="p-txt">SPA Disbursements</div></div>
+    <div id="p-r3" class="p-row"><div class="p-free">FREE</div><div class="p-txt">MOT<small>Pembeli rumah pertama</small></div></div>
+    <div id="p-sheet" data-layout-ignore></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-    // the beige ground is already here (the flood of the last shot); the kicker is printed on it
-    tl.fromTo("#p-k", { opacity: 0, y: -36, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0.05);
-    // booking card rises into place, then RM0 counts to RM1,000 and pops
-    tl.fromTo("#p-book", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, 0.2);
+    // the beige ground is already here (the flood of the last shot); the kicker drops onto it
+    tl.fromTo("#p-k", { opacity: 0, y: -36, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0.02);
+    // "Booking? Seribu ringgit je.": the card rises on "Booking", RM0 counts to RM1,000 by "ringgit"
+    tl.fromTo("#p-book", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, 0.1);
     const amt = { v: 0 };
-    tl.fromTo(amt, { v: 0 }, { v: 1000, duration: 0.95, ease: "power2.out",
-      onUpdate: () => { document.getElementById("p-amt").textContent = "RM" + Math.round(amt.v).toLocaleString("en-US"); } }, 0.45);
-    tl.fromTo("#p-amt", { scale: 1.14 }, { scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 1.4);
-    // three FREE lines stamp on, one every 1.3 s
-    [["#p-r1", 2.0], ["#p-r2", 3.3], ["#p-r3", 4.6]].forEach(([sel, t]) => {
+    tl.fromTo(amt, { v: 0 }, { v: 1000, duration: 0.7, ease: "power2.out",
+      onUpdate: () => { document.getElementById("p-amt").textContent = "RM" + Math.round(amt.v).toLocaleString("en-US"); } }, 0.5);
+    tl.fromTo("#p-amt", { scale: 1.14 }, { scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 1.2);
+    // each FREE line stamps on as the voice names it: "Legal fee", "Disbursement", "Rumah pertama"
+    [["#p-r1", 1.78], ["#p-r2", 4.16], ["#p-r3", 5.74]].forEach(([sel, t]) => {
       tl.fromTo(sel, { opacity: 0, scale: 1.35, rotation: -4 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.25, ease: "power4.out" }, t);
     });
     // out: a white sheet (the floor plan's paper) slides up over everything
-    tl.fromTo("#p-sheet", { y: 1920 }, { y: 0, duration: 0.42, ease: "power3.inOut" }, 7.19);
+    tl.fromTo("#p-sheet", { y: 1920 }, { y: 0, duration: 0.42, ease: "power3.inOut" }, 8.55);
     window.__timelines["s3-pakej"] = tl;
   </script>
 </template>

@@ -42,14 +42,15 @@
     const tl = gsap.timeline({ paused: true });
     // in: out of the charcoal dip, onto the house again, with a slow push to the end
     tl.fromTo("#c-cover", { opacity: 0.9 }, { opacity: 0, duration: 0.3, ease: "power2.out" }, 0);
-    tl.fromTo("#c-cam", { scale: 1 }, { scale: 1.05, duration: 7.8, ease: "none" }, 0);
-    // HARGA DARI, then the price lands on the riser's hit
-    tl.fromTo("#c-k", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.35);
-    tl.fromTo("#c-price", { opacity: 0, scale: 1.3, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 1.35);
-    tl.fromTo("#c-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.3);
-    // phone card rises from the bottom of the band, icon pops
-    tl.fromTo("#c-card", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 3.15);
-    tl.fromTo("#c-ph", { scale: 0.5, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.2)" }, 3.2);
+    tl.fromTo("#c-cam", { scale: 1 }, { scale: 1.05, duration: 9.1, ease: "none" }, 0);
+    // "Harga dari empat ratus lapan puluh lima ribu tujuh ratus.": HARGA DARI on "Harga", the price on "empat"
+    tl.fromTo("#c-k", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.05);
+    tl.fromTo("#c-price", { opacity: 0, scale: 1.3, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 0.66);
+    // "Booking seribu je..."
+    tl.fromTo("#c-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 3.58);
+    // "...jom, hubungi saya sekarang!": the phone card rises on "hubungi", icon pops
+    tl.fromTo("#c-card", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 6.1);
+    tl.fromTo("#c-ph", { scale: 0.5, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.2)" }, 6.15);
     window.__timelines["s8-cta"] = tl;
   </script>
 </template>

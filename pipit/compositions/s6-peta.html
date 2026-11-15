@@ -30,8 +30,8 @@
   </style>
   <div id="root" data-composition-id="s6-peta" data-width="1080" data-height="1920">
     <div id="m-cam" data-layout-allow-overflow>
-      <video id="m-vid" class="clip" src="assets/footage/map-pullback.mp4" muted playsinline data-start="0" data-duration="7" data-track-index="0"></video>
-      <img id="m-hold" class="clip" src="assets/footage/map-hold.jpg" alt="Peta satelit Lembah Klang" data-start="6.96" data-duration="0.66" data-track-index="1" />
+      <video id="m-vid" class="clip" src="assets/footage/map-pullback.mp4" muted playsinline data-start="0" data-duration="4" data-playback-rate="1.75" data-track-index="0"></video>
+      <img id="m-hold" class="clip" src="assets/footage/map-hold.jpg" alt="Peta satelit Lembah Klang" data-start="3.96" data-duration="6.6" data-track-index="1" />
       <div id="m-dim"></div>
       <!-- city points: real positions projected by the bake (assets/footage/map-pullback-points.json) -->
       <div id="m-c1" class="m-city" style="left: 346px; top: 833px"><div class="m-cdot"></div><div class="m-pill">Shah Alam <em>23 min</em></div></div>
@@ -52,23 +52,25 @@
     const tl = gsap.timeline({ paused: true });
     // in: arrives from the zoom through the site clip, slightly large, then settles
     tl.fromTo("#m-cam", { scale: 1.12, filter: "blur(10px)" }, { scale: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0);
-    // the pin rides on the plot: the bake moves the plot from the centre to (330, 1150) with the same
-    // cubic in-out between 0.488 s and 3.274 s
+    // the pin rides on the plot: the bake (played at 1.75x) moves the plot from the centre to
+    // (330, 1150) with the same cubic in-out between 0.279 s and 1.871 s
     tl.set("#m-pin", { x: 540, y: 960 }, 0);
-    tl.to("#m-pin", { x: 330, y: 1150, duration: 2.786, ease: "power2.inOut" }, 0.488);
-    tl.fromTo("#m-dot", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 0.12);
-    tl.fromTo("#m-site", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 0.22);
-    // the region holds: dim a touch, then the cities pop on at their real spots
-    tl.to("#m-dim", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 3.0);
-    [["#m-c1", 3.32], ["#m-c2", 3.82], ["#m-c3", 4.32]].forEach(([sel, t]) => {
+    tl.to("#m-pin", { x: 330, y: 1150, duration: 1.592, ease: "power2.inOut" }, 0.279);
+    tl.fromTo("#m-dot", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 0.1);
+    tl.fromTo("#m-site", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 0.18);
+    // the region holds: dim a touch, then each city pops on at its real spot as the voice names it
+    tl.to("#m-dim", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 1.85);
+    [["#m-c1", 1.9], ["#m-c2", 3.87], ["#m-c3", 5.0]].forEach(([sel, t]) => {   // "Shah Alam", "KLCC", (Putrajaya, on screen only)
       tl.fromTo(sel + " .m-cdot", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, t);
       tl.fromTo(sel + " .m-pill", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, t + 0.06);
     });
-    tl.fromTo("#m-hwy", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 5.1);
-    tl.fromTo("#m-credit", { opacity: 0 }, { opacity: 0.8, duration: 0.3 }, 3.3);
+    tl.fromTo("#m-hwy", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 6.39);   // "S K V E, KESAS, W C E"
+    tl.fromTo("#m-credit", { opacity: 0 }, { opacity: 0.8, duration: 0.3 }, 1.9);
+    // the held view gets a very slow push so the long hold isn't a still
+    tl.fromTo("#m-cam", { scale: 1 }, { scale: 1.03, duration: 6.3, ease: "none", immediateRender: false }, 4.0);
     // out: vertical whip upward
-    tl.to("#m-cam", { y: -520, filter: "blur(18px)", duration: 0.2, ease: "power3.in" }, 7.42);
-    tl.to(["#m-hwy", "#m-credit"], { y: -300, opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in" }, 7.42);
+    tl.to("#m-cam", { y: -520, filter: "blur(18px)", duration: 0.2, ease: "power3.in" }, 10.36);
+    tl.to(["#m-hwy", "#m-credit"], { y: -300, opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in" }, 10.36);
     window.__timelines["s6-peta"] = tl;
   </script>
 </template>

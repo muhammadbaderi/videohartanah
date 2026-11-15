@@ -1,5 +1,7 @@
 # Audio credits
 
+- `voiceover.wav`, `voiceover-end.wav`: ElevenLabs TTS in the account owner's own cloned voice
+  ("Suara sendiri (videohartanah)"), script and settings in `../../VOICEOVER.md`.
 - `music-bed.mp3`: the same HeyGen music catalog track as the Meru video (`video/assets/audio/CREDITS.md`),
   track id `e819a5365f1c48608d631e6c99191c2c`, "light optimistic instrumental, minimal acoustic guitar
   and soft piano, warm and professional" (84 s, ~126 BPM). Retrieved earlier under the owner's HeyGen

@@ -14,52 +14,60 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="53.55" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="58.1" data-width="1080" data-height="1920">
       <div id="ground"></div>
 
-      <!-- SCENES: every cut sits on a bar of the music (126 BPM, 1.905 s a bar) -->
-      <div id="s1-hook" class="scene" data-composition-id="s1-hook" data-composition-src="compositions/s1-hook.html" data-start="0" data-duration="3.82" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
-      <div id="s2-unit" class="scene" data-composition-id="s2-unit" data-composition-src="compositions/s2-unit.html" data-start="3.82" data-duration="3.81" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
-      <div id="s3-pakej" class="scene" data-composition-id="s3-pakej" data-composition-src="compositions/s3-pakej.html" data-start="7.63" data-duration="7.61" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
-      <div id="s4-pelan" class="scene" data-composition-id="s4-pelan" data-composition-src="compositions/s4-pelan.html" data-start="15.24" data-duration="9.53" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
-      <div id="s5-tapak" class="scene" data-composition-id="s5-tapak" data-composition-src="compositions/s5-tapak.html" data-start="24.77" data-duration="5.71" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
-      <div id="s6-peta" class="scene" data-composition-id="s6-peta" data-composition-src="compositions/s6-peta.html" data-start="30.48" data-duration="7.62" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
-      <div id="s7-dekat" class="scene" data-composition-id="s7-dekat" data-composition-src="compositions/s7-dekat.html" data-start="38.1" data-duration="7.62" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
-      <div id="s8-cta" class="scene" data-composition-id="s8-cta" data-composition-src="compositions/s8-cta.html" data-start="45.72" data-duration="7.83" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <!-- SCENES: the voice is the clock. Each cut lands ~0.12 s before the line that belongs to it
+           (word times: assets/audio/voiceover-words.json, take time + 0.05 s for s1-s5, + 1.53 s for s6-s7;
+           s8: voiceover-end-words.json + 48.78 s) -->
+      <div id="s1-hook" class="scene" data-composition-id="s1-hook" data-composition-src="compositions/s1-hook.html" data-start="0" data-duration="6.23" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s2-unit" class="scene" data-composition-id="s2-unit" data-composition-src="compositions/s2-unit.html" data-start="6.23" data-duration="2.87" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s3-pakej" class="scene" data-composition-id="s3-pakej" data-composition-src="compositions/s3-pakej.html" data-start="9.1" data-duration="8.97" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s4-pelan" class="scene" data-composition-id="s4-pelan" data-composition-src="compositions/s4-pelan.html" data-start="18.07" data-duration="8.36" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s5-tapak" class="scene" data-composition-id="s5-tapak" data-composition-src="compositions/s5-tapak.html" data-start="26.43" data-duration="5.72" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s6-peta" class="scene" data-composition-id="s6-peta" data-composition-src="compositions/s6-peta.html" data-start="32.15" data-duration="10.56" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s7-dekat" class="scene" data-composition-id="s7-dekat" data-composition-src="compositions/s7-dekat.html" data-start="42.71" data-duration="6.24" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="s8-cta" class="scene" data-composition-id="s8-cta" data-composition-src="compositions/s8-cta.html" data-start="48.95" data-duration="9.15" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
 
-      <!-- MUSIC: HeyGen catalog bed (see assets/audio/CREDITS.md), entered at section C on a beat;
-           the track's own ending lands under the end card -->
-      <audio id="music" class="clip" src="assets/audio/music-bed.mp3" data-start="0" data-duration="53.55" data-media-start="30.485" data-volume="0.62" data-fade-in="0.25" data-track-index="10"></audio>
+      <!-- VOICEOVER: ElevenLabs, the owner's cloned voice, one take (see VOICEOVER.md). Split once, at the
+           silence before the map line, so the satellite pull-back has 1.7 s before "Shah Alam" -->
+      <audio id="vo-a" class="clip" src="assets/audio/voiceover.wav" data-start="0.05" data-duration="32.05" data-media-start="0" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-b" class="clip" src="assets/audio/voiceover.wav" data-start="33.58" data-duration="15.2" data-media-start="32.05" data-volume="1" data-track-index="9"></audio>
+      <!-- the closing line, re-voiced on its own: the one-take version cut off its last word ("sekarang") -->
+      <audio id="vo-c" class="clip" src="assets/audio/voiceover-end.wav" data-start="48.78" data-duration="7.52" data-media-start="0" data-volume="1" data-track-index="9"></audio>
 
-      <!-- SFX: each lands one frame after its picture (offset = the file's measured peak) -->
-      <audio id="sx-price" class="clip" src="assets/sfx/pop.mp3" data-start="1.163" data-duration="0.45" data-volume="1" data-track-index="11"></audio>
-      <audio id="sx-whip1" class="clip" src="assets/sfx/whoosh.mp3" data-start="3.64" data-duration="0.55" data-volume="0.8" data-track-index="12"></audio>
-      <audio id="sx-eight" class="clip" src="assets/sfx/pop.mp3" data-start="5.003" data-duration="0.45" data-volume="1" data-track-index="11"></audio>
-      <audio id="sx-flood" class="clip" src="assets/sfx/whoosh-low.mp3" data-start="6.86" data-duration="0.6" data-volume="0.7" data-track-index="12"></audio>
-      <audio id="sx-book" class="clip" src="assets/sfx/pop.mp3" data-start="8.943" data-duration="0.45" data-volume="1" data-track-index="11"></audio>
-      <audio id="sx-free1" class="clip" src="assets/sfx/click-soft.mp3" data-start="9.84" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-free2" class="clip" src="assets/sfx/pop.mp3" data-start="11.093" data-duration="0.45" data-volume="0.9" data-track-index="11"></audio>
-      <audio id="sx-free3" class="clip" src="assets/sfx/click-soft.mp3" data-start="12.44" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-sheet" class="clip" src="assets/sfx/whoosh.mp3" data-start="14.87" data-duration="0.55" data-volume="0.75" data-track-index="12"></audio>
-      <audio id="sx-fact1" class="clip" src="assets/sfx/click-soft.mp3" data-start="17.1" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-fact2" class="clip" src="assets/sfx/click-soft.mp3" data-start="19" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-fact3" class="clip" src="assets/sfx/click-soft.mp3" data-start="20.9" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-zoom1" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="22.24" data-duration="3.2" data-volume="0.6" data-track-index="14"></audio>
-      <audio id="sx-lease" class="clip" src="assets/sfx/click-soft.mp3" data-start="25.11" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-q4" class="clip" src="assets/sfx/pop.mp3" data-start="26.983" data-duration="0.45" data-volume="0.9" data-track-index="11"></audio>
-      <audio id="sx-zoom2" class="clip" src="assets/sfx/whoosh-low.mp3" data-start="30.25" data-duration="0.6" data-volume="0.8" data-track-index="12"></audio>
-      <audio id="sx-city1" class="clip" src="assets/sfx/pop.mp3" data-start="33.83" data-duration="0.45" data-volume="0.85" data-track-index="11"></audio>
-      <audio id="sx-city2" class="clip" src="assets/sfx/pop.mp3" data-start="34.33" data-duration="0.45" data-volume="0.85" data-track-index="11"></audio>
-      <audio id="sx-city3" class="clip" src="assets/sfx/pop.mp3" data-start="34.83" data-duration="0.45" data-volume="0.85" data-track-index="11"></audio>
-      <audio id="sx-hwy" class="clip" src="assets/sfx/click-soft.mp3" data-start="35.54" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-whip2" class="clip" src="assets/sfx/whoosh.mp3" data-start="37.92" data-duration="0.55" data-volume="0.8" data-track-index="12"></audio>
-      <audio id="sx-row1" class="clip" src="assets/sfx/click-soft.mp3" data-start="38.56" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-row2" class="clip" src="assets/sfx/click-soft.mp3" data-start="39.46" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-row3" class="clip" src="assets/sfx/click-soft.mp3" data-start="40.36" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-row4" class="clip" src="assets/sfx/click-soft.mp3" data-start="41.26" data-duration="0.35" data-volume="1" data-track-index="13"></audio>
-      <audio id="sx-riser" class="clip" src="assets/sfx/riser.mp3" data-start="43.85" data-duration="3.5" data-volume="0.45" data-fade-out="0.3" data-track-index="14"></audio>
-      <audio id="sx-impact" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="47.28" data-duration="2" data-volume="0.8" data-track-index="15"></audio>
-      <audio id="sx-phone" class="clip" src="assets/sfx/pop.mp3" data-start="49.08" data-duration="0.45" data-volume="0.9" data-track-index="11"></audio>
+      <!-- MUSIC: HeyGen catalog bed (assets/audio/CREDITS.md), entered on a beat so the track's own ending
+           lands under the end card; ducked to 0.2 under the voice, up in the map's lead-in and after the last line -->
+      <audio id="music" class="clip" src="assets/audio/music-bed.mp3" data-start="0" data-duration="58.1" data-media-start="25.725" data-volume="1" data-fade-in="0.2" data-track-index="10"
+        data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0.2},{"t":31.9,"v":0.2},{"t":32.3,"v":0.45},{"t":33.4,"v":0.45},{"t":33.75,"v":0.2},{"t":55.95,"v":0.2},{"t":56.5,"v":0.55},{"t":58.1,"v":0.55}]}]}'></audio>
+
+      <!-- SFX: each lands one frame after its picture (offset = the file's measured peak), kept under the voice -->
+      <audio id="sx-price" class="clip" src="assets/sfx/pop.mp3" data-start="1.363" data-duration="0.45" data-volume="0.6" data-track-index="11"></audio>
+      <audio id="sx-whip1" class="clip" src="assets/sfx/whoosh.mp3" data-start="6.05" data-duration="0.55" data-volume="0.55" data-track-index="12"></audio>
+      <audio id="sx-eight" class="clip" src="assets/sfx/pop.mp3" data-start="7.48" data-duration="0.45" data-volume="0.6" data-track-index="11"></audio>
+      <audio id="sx-flood" class="clip" src="assets/sfx/whoosh-low.mp3" data-start="8.62" data-duration="0.6" data-volume="0.5" data-track-index="12"></audio>
+      <audio id="sx-book" class="clip" src="assets/sfx/pop.mp3" data-start="10.21" data-duration="0.45" data-volume="0.6" data-track-index="11"></audio>
+      <audio id="sx-free1" class="clip" src="assets/sfx/click-soft.mp3" data-start="11.09" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-free2" class="clip" src="assets/sfx/pop.mp3" data-start="13.42" data-duration="0.45" data-volume="0.55" data-track-index="11"></audio>
+      <audio id="sx-free3" class="clip" src="assets/sfx/click-soft.mp3" data-start="15.05" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-sheet" class="clip" src="assets/sfx/whoosh.mp3" data-start="17.7" data-duration="0.55" data-volume="0.5" data-track-index="12"></audio>
+      <audio id="sx-fact1" class="clip" src="assets/sfx/click-soft.mp3" data-start="18.15" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-fact2" class="clip" src="assets/sfx/click-soft.mp3" data-start="20.29" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-fact3" class="clip" src="assets/sfx/click-soft.mp3" data-start="23.78" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-zoom1" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="23.9" data-duration="3" data-volume="0.4" data-track-index="14"></audio>
+      <audio id="sx-lease" class="clip" src="assets/sfx/click-soft.mp3" data-start="26.51" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-q4" class="clip" src="assets/sfx/pop.mp3" data-start="28.73" data-duration="0.45" data-volume="0.55" data-track-index="11"></audio>
+      <audio id="sx-zoom2" class="clip" src="assets/sfx/whoosh-low.mp3" data-start="31.95" data-duration="0.6" data-volume="0.6" data-track-index="12"></audio>
+      <audio id="sx-city1" class="clip" src="assets/sfx/pop.mp3" data-start="34.06" data-duration="0.45" data-volume="0.55" data-track-index="11"></audio>
+      <audio id="sx-city2" class="clip" src="assets/sfx/pop.mp3" data-start="36.03" data-duration="0.45" data-volume="0.55" data-track-index="11"></audio>
+      <audio id="sx-city3" class="clip" src="assets/sfx/pop.mp3" data-start="37.16" data-duration="0.45" data-volume="0.55" data-track-index="11"></audio>
+      <audio id="sx-hwy" class="clip" src="assets/sfx/click-soft.mp3" data-start="38.5" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-whip2" class="clip" src="assets/sfx/whoosh.mp3" data-start="42.53" data-duration="0.55" data-volume="0.55" data-track-index="12"></audio>
+      <audio id="sx-row1" class="clip" src="assets/sfx/click-soft.mp3" data-start="42.77" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-row2" class="clip" src="assets/sfx/click-soft.mp3" data-start="44.48" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-row3" class="clip" src="assets/sfx/click-soft.mp3" data-start="46.64" data-duration="0.35" data-volume="0.7" data-track-index="13"></audio>
+      <audio id="sx-impact" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="49.82" data-duration="2" data-volume="0.4" data-track-index="15"></audio>
+      <audio id="sx-phone" class="clip" src="assets/sfx/pop.mp3" data-start="55.31" data-duration="0.45" data-volume="0.6" data-track-index="11"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};

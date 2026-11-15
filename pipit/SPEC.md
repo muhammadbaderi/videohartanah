@@ -2,9 +2,11 @@
 
 GOAL:    a buyer scrolling past stops on the house and price, knows in under a minute what it costs
          to book, what's free, how big it is, where it is, and has the number to call.
-OUTPUT:  HyperFrames, 1080 x 1920, 30 fps, no voiceover, no captions (no speech)
-TIME:    53.55 s x 30 = 1607 frames. Music bed 126 BPM (14.3 frames/beat), entered at 30.485 s
-         (section C, on a beat) so the track's own ending (83.4 s) lands under the end card.
+OUTPUT:  HyperFrames, 1080 x 1920, 30 fps, Malay voiceover (owner's ElevenLabs clone, VOICEOVER.md), no captions
+TIME:    58.1 s x 30 = 1743 frames. v2 (voiceover): the voice is the clock; scene cuts land ~0.12 s
+         before the line they belong to, text lands on the word that says it. Music bed 126 BPM, entered at
+         25.725 s (on a beat) so its own ending lands under the end card; ducked to 0.2 under the voice.
+         (v1, music only, was 53.55 s with every cut on a bar; the bar list below is v1's.)
          Bars (film time): 0, 1.91, 3.82, 5.72, 7.63, 9.53, 11.43, 13.34, 15.24, 17.15, 19.05,
          20.96, 22.86, 24.77, 26.68, 28.58, 30.48, 32.38, 34.29, 36.20, 38.10, 40.01, 41.91,
          43.82, 45.72, 47.62, 49.54, 51.44. Every scene cut sits on a bar.
