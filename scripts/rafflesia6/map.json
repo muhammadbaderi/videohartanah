@@ -1,0 +1,50 @@
+{
+ "_doc": "Map camera for the location chapter (g-loc). bake_map.cjs bakes it to assets/footage/map.mp4 and writes map_coords.json; g-loc.html reproduces zoomAt(t) to keep the pins on their places.",
+ "width": 1080,
+ "height": 1920,
+ "fps": 30,
+ "dur": 9.5,
+ "tiles": "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+ "tint": "#0b2d7a",
+ "raster_opacity": 0.7,
+ "center": [
+  101.558,
+  2.951
+ ],
+ "zstart": 11.3,
+ "zend": 12.85,
+ "hold_t": 1.1,
+ "drift": 0.12,
+ "pois": [
+  {
+   "id": "site",
+   "name": "Taman Rafflesia 6",
+   "lng": 101.5476944,
+   "lat": 2.9717222,
+   "src": "owner's Google Maps pin"
+  },
+  {
+   "id": "qs",
+   "name": "Quayside Mall Rimbayu",
+   "lng": 101.5529743,
+   "lat": 2.9568546,
+   "src": "OpenStreetMap (Nominatim)"
+  },
+  {
+   "id": "bsp",
+   "name": "Bandar Saujana Putra",
+   "lng": 101.5797643,
+   "lat": 2.9522477,
+   "src": "OpenStreetMap (Nominatim)"
+  },
+  {
+   "id": "kk",
+   "name": "Kota Kemuning",
+   "lng": 101.5359803,
+   "lat": 3.0048977,
+   "src": "OpenStreetMap (Nominatim)"
+  }
+ ],
+ "attribution": "Esri, HERE, Garmin, © OpenStreetMap contributors",
+ "raster_contrast": 0.35
+}

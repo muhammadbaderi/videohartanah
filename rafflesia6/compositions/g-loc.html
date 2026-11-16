@@ -3,69 +3,134 @@
     #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
       --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; --line: rgba(92, 194, 255, 0.45); }
     .row { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; }
-    #lc-dim { position: absolute; inset: 0; background: rgba(6, 22, 54, 0.42); }
     .pill { display: flex; align-items: center; gap: 12px; padding: 12px 30px; border-radius: 999px; background: var(--blue); font-weight: 800; font-size: 30px;
-      letter-spacing: 0.16em; box-shadow: 0 10px 28px rgba(29, 92, 255, 0.45); }
+      letter-spacing: 0.16em; box-shadow: 0 10px 28px rgba(29, 92, 255, 0.45); white-space: nowrap; }
     .pill svg { width: 34px; height: 34px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    #lc-card { position: absolute; left: 60px; top: 372px; width: 960px; height: 420px; background: rgba(6, 22, 54, 0.86); border: 2px solid var(--line);
-      border-radius: 36px; backdrop-filter: blur(18px); box-shadow: 0 18px 50px rgba(3, 10, 30, 0.45); }
-    #lc-track { position: absolute; left: 76px; top: 82px; width: 8px; height: 260px; border-radius: 4px; background: rgba(92, 194, 255, 0.2); }
-    #lc-fill { position: absolute; left: 76px; top: 82px; width: 8px; height: 260px; border-radius: 4px; background: linear-gradient(180deg, #5cc2ff, #1d5cff); }
-    .stop { position: absolute; left: 50px; width: 860px; height: 80px; display: flex; align-items: center; }
-    .dot { width: 60px; height: 60px; border-radius: 50%; background: var(--blue); border: 6px solid #5cc2ff; flex: none; box-shadow: 0 0 0 8px rgba(29, 92, 255, 0.2); }
-    .nm { margin-left: 30px; font-weight: 700; font-size: 44px; white-space: nowrap; }
-    .km { margin-left: auto; padding: 8px 22px; border-radius: 999px; background: rgba(92, 194, 255, 0.16); border: 2px solid var(--line);
-      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 40px; color: var(--sky); white-space: nowrap; }
-    .sign { position: absolute; width: 465px; height: 112px; border-radius: 22px; background: #1d5cff; display: flex; align-items: center; justify-content: center;
-      box-shadow: inset 0 0 0 5px #1d5cff, inset 0 0 0 9px #ffffff, 0 14px 34px rgba(3, 10, 30, 0.45);
-      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 58px; letter-spacing: 0.04em; }
+    #lc-lines { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .ln { stroke: #5cc2ff; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 2 14; fill: none; }
+    .at { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+    /* the site pin: tip of the drop sits on the place */
+    #lc-pulse { position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 50%; border: 5px solid #5cc2ff; opacity: 0; }
+    #lc-pulse2 { position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 50%; border: 5px solid #5cc2ff; opacity: 0; }
+    #lc-pin { position: absolute; left: -52px; top: -128px; width: 104px; height: 130px; transform-origin: 50% 100%; }
+    #lc-site-card { position: absolute; left: 66px; top: -150px; padding: 16px 26px 18px; border-radius: 26px; background: #ffffff; color: #061636;
+      box-shadow: 0 16px 40px rgba(3, 10, 30, 0.5); white-space: nowrap; transform-origin: 0% 100%; }
+    #lc-site-card b { display: block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 46px; letter-spacing: -0.01em; line-height: 1.05; }
+    #lc-site-card span { font-weight: 700; font-size: 28px; color: #1d5cff; }
+    .dot { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border-radius: 50%; background: #5cc2ff; border: 6px solid #ffffff;
+      box-shadow: 0 0 0 10px rgba(92, 194, 255, 0.28), 0 8px 20px rgba(3, 10, 30, 0.5); }
+    .lab { position: absolute; display: flex; align-items: center; gap: 14px; padding: 12px 14px 12px 22px; border-radius: 22px; background: rgba(6, 22, 54, 0.9);
+      border: 2px solid var(--line); box-shadow: 0 12px 30px rgba(3, 10, 30, 0.5); white-space: nowrap; }
+    .lab .nm { font-weight: 700; font-size: 34px; }
+    .lab .km { padding: 6px 16px; border-radius: 999px; background: #1d5cff; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 30px; }
+    #lc-kk-lab { left: 40px; top: -36px; transform-origin: 0% 50%; }
+    #lc-qs-lab { left: -250px; top: 36px; transform-origin: 50% 0%; }
+    #lc-bsp-lab { left: -330px; top: -112px; transform-origin: 70% 100%; }
+    #lc-signs { position: absolute; left: 60px; top: 1062px; width: 960px; display: flex; gap: 20px; }
+    .sign { width: 225px; height: 96px; border-radius: 20px; background: #1d5cff; display: flex; align-items: center; justify-content: center;
+      box-shadow: inset 0 0 0 5px #1d5cff, inset 0 0 0 9px #ffffff, 0 14px 34px rgba(3, 10, 30, 0.5);
+      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0.04em; }
+    #lc-credit { position: absolute; right: 24px; top: 1296px; padding: 4px 10px; border-radius: 8px; background: rgba(6, 22, 54, 0.7);
+      font-size: 18px; color: rgba(230, 242, 255, 0.85); white-space: nowrap; }
   </style>
   <div id="root" data-composition-id="g-loc" data-width="1080" data-height="1920">
-    <div id="lc-dim"></div>
-    <div class="row" style="top: 290px"><div id="lc-k" class="pill"><svg viewBox="0 0 24 24"><path d="M12 21.5s-7-6.3-7-11.7a7 7 0 0 1 14 0c0 5.4-7 11.7-7 11.7z" /><circle cx="12" cy="9.8" r="2.6" /></svg>LOKASI STRATEGIK</div></div>
-    <div id="lc-card">
-      <div id="lc-track"></div>
-      <div id="lc-fill"></div>
-      <div id="lc-s1" class="stop" style="top: 42px"><div class="dot"></div><div class="nm">Quayside Mall Rimbayu</div><div class="km">2.8 KM</div></div>
-      <div id="lc-s2" class="stop" style="top: 172px"><div class="dot"></div><div class="nm">Bandar Saujana Putra</div><div class="km">5 KM</div></div>
-      <div id="lc-s3" class="stop" style="top: 302px"><div class="dot"></div><div class="nm">Kota Kemuning</div><div class="km">6 KM</div></div>
+    <svg id="lc-lines" viewBox="0 0 1080 1920" data-layout-allow-overflow>
+      <line id="lc-l-qs" class="ln" x1="0" y1="0" x2="0" y2="0" />
+      <line id="lc-l-bsp" class="ln" x1="0" y1="0" x2="0" y2="0" />
+      <line id="lc-l-kk" class="ln" x1="0" y1="0" x2="0" y2="0" />
+    </svg>
+    <div id="lc-at-kk" class="at" data-layout-allow-overflow>
+      <div id="lc-kk-dot" class="dot"></div>
+      <div id="lc-kk-lab" class="lab"><span class="nm">Kota Kemuning</span><span class="km">6 KM</span></div>
     </div>
-    <div class="row" style="top: 828px"><div id="lc-k2" class="pill" style="background: #fff; color: #0e3bbf; box-shadow: none">AKSES MUDAH</div></div>
-    <div id="lc-h1" class="sign" style="left: 60px; top: 900px">ELITE</div>
-    <div id="lc-h2" class="sign" style="left: 555px; top: 900px">SKVE</div>
-    <div id="lc-h3" class="sign" style="left: 60px; top: 1030px">KESAS</div>
-    <div id="lc-h4" class="sign" style="left: 555px; top: 1030px">LKSA</div>
+    <div id="lc-at-qs" class="at" data-layout-allow-overflow>
+      <div id="lc-qs-dot" class="dot"></div>
+      <div id="lc-qs-lab" class="lab"><span class="nm">Quayside Mall Rimbayu</span><span class="km">2.8 KM</span></div>
+    </div>
+    <div id="lc-at-bsp" class="at" data-layout-allow-overflow>
+      <div id="lc-bsp-dot" class="dot"></div>
+      <div id="lc-bsp-lab" class="lab"><span class="nm">Bandar Saujana Putra</span><span class="km">5 KM</span></div>
+    </div>
+    <div id="lc-at-site" class="at" data-layout-allow-overflow>
+      <div id="lc-pulse"></div>
+      <div id="lc-pulse2"></div>
+      <svg id="lc-pin" viewBox="0 0 104 130">
+        <defs><linearGradient id="lc-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5cc2ff" /><stop offset="1" stop-color="#1d5cff" /></linearGradient></defs>
+        <path d="M52 128C52 128 6 78 6 48a46 46 0 0 1 92 0c0 30-46 80-46 80z" fill="url(#lc-g)" stroke="#ffffff" stroke-width="5" />
+        <circle cx="52" cy="48" r="27" fill="#ffffff" />
+        <path d="M38 52l14-12 14 12M42 49v13h20V49" fill="none" stroke="#1d5cff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div id="lc-site-card"><b>TAMAN RAFFLESIA 6</b><span>Seksyen 29, Shah Alam</span></div>
+    </div>
+    <div class="row" style="top: 196px"><div id="lc-k" class="pill"><svg viewBox="0 0 24 24"><path d="M12 21.5s-7-6.3-7-11.7a7 7 0 0 1 14 0c0 5.4-7 11.7-7 11.7z" /><circle cx="12" cy="9.8" r="2.6" /></svg>LOKASI STRATEGIK</div></div>
+    <div id="lc-signs">
+      <div id="lc-h1" class="sign">ELITE</div>
+      <div id="lc-h2" class="sign">SKVE</div>
+      <div id="lc-h3" class="sign">KESAS</div>
+      <div id="lc-h4" class="sign">LKSA</div>
+    </div>
+    <div id="lc-credit" data-layout-ignore>Peta: Esri, HERE, Garmin, © OpenStreetMap</div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#lc-dim", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
-    tl.fromTo("#lc-k", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.04);
-    tl.fromTo("#lc-card", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.42, ease: "expo.out" }, 0.2);
-    // "Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning."
-    tl.fromTo("#lc-fill", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 0.05, duration: 0.2 }, 0.41);
-    tl.to("#lc-fill", { scaleY: 0.52, duration: 0.99, ease: "power2.inOut" }, 0.61);
-    tl.to("#lc-fill", { scaleY: 1, duration: 1.0, ease: "power2.inOut" }, 1.6);
-    const stop = (sel, t) => {
-      tl.fromTo(sel, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.38, ease: "expo.out" }, t);
-      tl.fromTo(sel + " .dot", { scale: 0.2 }, { scale: 1, duration: 0.45, ease: "back.out(3)" }, t);
-      tl.fromTo(sel + " .km", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, t + 0.18);
+    // ---- the map camera, same curve as scripts/rafflesia6/bake_map.cjs (map.json) ----
+    const CAM = { zstart: 11.3, zend: 12.85, hold: 1.1, drift: 0.12, dur: 9.5, cx: 540, cy: 960 };
+    // pixel offsets from the frame centre at zoom zend (scripts/rafflesia6/map_coords.json)
+    const POI = { site: [-108.2, -217.9], qs: [-52.8, -61.5], bsp: [228.5, -13.1], kk: [-231.2, -566.7] };
+    const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const zoomAt = (t) => t <= CAM.hold ? CAM.zstart + (CAM.zend - CAM.zstart) * ease(Math.max(0, t / CAM.hold))
+      : CAM.zend + CAM.drift * (t - CAM.hold) / (CAM.dur - CAM.hold);
+    const at = (id, t) => { const s = Math.pow(2, zoomAt(t) - CAM.zend); return [CAM.cx + POI[id][0] * s, CAM.cy + POI[id][1] * s]; };
+    const reach = { qs: 0, bsp: 0, kk: 0 };
+    const cam = { t: 0 };
+    const place = () => {
+      const t = cam.t;
+      const S = at("site", t);
+      gsap.set("#lc-at-site", { x: S[0], y: S[1] });
+      for (const id of ["qs", "bsp", "kk"]) {
+        const P = at(id, t);
+        gsap.set("#lc-at-" + id, { x: P[0], y: P[1] });
+        const r = reach[id];
+        const ln = document.getElementById("lc-l-" + id);
+        ln.setAttribute("x1", S[0].toFixed(1)); ln.setAttribute("y1", S[1].toFixed(1));
+        ln.setAttribute("x2", (S[0] + (P[0] - S[0]) * r).toFixed(1)); ln.setAttribute("y2", (S[1] + (P[1] - S[1]) * r).toFixed(1));
+      }
     };
-    stop("#lc-s1", 0.41);
-    stop("#lc-s2", 1.48);
-    stop("#lc-s3", 2.55);
-    // "Akses mudah ke Elite, SKVE, Kesas dan LKSA."
-    tl.fromTo("#lc-k2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.73);
-    const sign = (sel, t) => {
-      tl.fromTo(sel, { opacity: 0, scale: 0.6, rotationX: 70 }, { opacity: 1, scale: 1, rotationX: 0, duration: 0.45, ease: "back.out(1.8)" }, t);
+    tl.fromTo(cam, { t: 0 }, { t: CAM.dur, duration: CAM.dur, ease: "none", onUpdate: place }, 0);
+
+    // ---- the site: pin drops in while the camera dives, then pulses ----
+    tl.fromTo("#lc-k", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.05);
+    tl.fromTo("#lc-pin", { opacity: 0, y: -90, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "bounce.out" }, 0.1);
+    tl.fromTo("#lc-site-card", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.5);
+    for (let k = 0; k < 7; k++) {
+      const t0 = 0.6 + k * 1.25;
+      tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t0);
+      tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t0 + 0.35);
+    }
+    tl.set(["#lc-pulse", "#lc-pulse2"], { opacity: 0 }, 0);
+
+    // ---- "Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning." ----
+    const poi = (id, t) => {
+      tl.fromTo(reach, { [id]: 0 }, { [id]: 1, duration: 0.45, ease: "power2.out" }, t - 0.1);
+      tl.fromTo("#lc-" + id + "-dot", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, t + 0.25);
+      tl.fromTo("#lc-" + id + "-lab", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(2)" }, t + 0.3);
     };
+    poi("qs", 0.41);
+    poi("bsp", 1.48);
+    poi("kk", 2.55);
+
+    // ---- "Akses mudah ke Elite, SKVE, Kesas dan LKSA." ----
+    const sign = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 30, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(2)" }, t);
     sign("#lc-h1", 4.95);
     sign("#lc-h2", 5.6);
     sign("#lc-h3", 7.02);
     sign("#lc-h4", 7.96);
-    const all = ["#lc-k", "#lc-card", "#lc-k2", "#lc-h1", "#lc-h2", "#lc-h3", "#lc-h4"];
-    tl.to(all, { opacity: 0, y: -16, duration: 0.2, ease: "power2.in", stagger: 0.025 }, 9.18);
-    tl.to("#lc-dim", { opacity: 0, duration: 0.25, ease: "power2.in" }, 9.22);
-    tl.set([...all, "#lc-dim"], { visibility: "hidden" }, 9.48);
+    tl.fromTo("#lc-credit", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.2);
+
+    // out before the wipe
+    const all = ["#lc-k", "#lc-signs", "#lc-lines", "#lc-at-qs", "#lc-at-bsp", "#lc-at-kk", "#lc-at-site", "#lc-credit"];
+    tl.to(all, { opacity: 0, duration: 0.2, ease: "power2.in" }, 9.22);
+    tl.set(all, { visibility: "hidden" }, 9.48);
     window.__timelines["g-loc"] = tl;
   </script>
 </template>

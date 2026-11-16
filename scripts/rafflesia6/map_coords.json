@@ -1,0 +1,33 @@
+{
+ "zend": 12.85,
+ "center_px": [
+  540,
+  960
+ ],
+ "pois": [
+  {
+   "id": "site",
+   "name": "Taman Rafflesia 6",
+   "dx": -108.2,
+   "dy": -274.7
+  },
+  {
+   "id": "qs",
+   "name": "Quayside Mall Rimbayu",
+   "dx": -52.8,
+   "dy": -118.3
+  },
+  {
+   "id": "bsp",
+   "name": "Bandar Saujana Putra",
+   "dx": 228.5,
+   "dy": -69.9
+  },
+  {
+   "id": "kk",
+   "name": "Kota Kemuning",
+   "dx": -231.2,
+   "dy": -623.5
+  }
+ ]
+}

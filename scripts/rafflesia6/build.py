@@ -80,9 +80,10 @@ SFX = [
     (25.05, "pop", 0.45, "check: booking RM500"),
     (26.52, "click-soft", 0.6, "check: free legal fee SPA"),
     (28.77, "pop", 0.45, "check: free MOT"),
-    (32.72, "click-soft", 0.55, "stop: Quayside"),
-    (33.79, "pop", 0.4, "stop: Saujana Putra"),
-    (34.86, "click-soft", 0.55, "stop: Kota Kemuning"),
+    (32.58, "pop", 0.5, "map: site pin lands"),
+    (32.93, "click-soft", 0.55, "map: Quayside pin"),
+    (34.00, "click-soft", 0.55, "map: Saujana Putra pin"),
+    (35.07, "click-soft", 0.55, "map: Kota Kemuning pin"),
     (37.26, "pop", 0.4, "sign: ELITE"),
     (37.91, "click-soft", 0.55, "sign: SKVE"),
     (39.33, "pop", 0.4, "sign: KESAS"),
@@ -135,8 +136,8 @@ w("")
 w("      <!-- PICTURE: every shot is a trim of the one phone clip (muted; the voiceover is its own track) -->")
 w('      <div id="cam">')
 w('        <div id="cam-inner" data-layout-allow-overflow>')
-for sid, st, en, src, s0, s1 in E["shots"]:
-    w(f'          <video id="v-{sid}" class="clip" src="{E["footage"]}" muted playsinline data-start="{r3(st)}" data-duration="{r3(en - st)}" data-media-start="{r3(src)}" data-track-index="1"></video>')
+for sid, st, en, src, s0, s1, *f in E["shots"]:
+    w(f'          <video id="v-{sid}" class="clip" src="{f[0] if f else E["footage"]}" muted playsinline data-start="{r3(st)}" data-duration="{r3(en - st)}" data-media-start="{r3(src)}" data-track-index="1"></video>')
 ec = E["endcard"]
 w(f'          <img id="v-endcard" class="clip" src="{ec["src"]}" alt="" data-start="{r3(ec["start"])}" data-duration="{r3(TOTAL - ec["start"])}" data-track-index="1" />')
 w("        </div>")
@@ -215,7 +216,7 @@ w("""    <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
       // each shot drifts in slowly so the walk-through never sits still""")
-for sid, st, en, src, s0, s1 in E["shots"]:
+for sid, st, en, src, s0, s1, *f in E["shots"]:
     w(f'      tl.fromTo("#cam-inner", {{ scale: {s0} }}, {{ scale: {s1}, duration: {r3(en - st)}, ease: "none", immediateRender: false }}, {r3(st)});')
 w(f'      tl.fromTo("#cam-inner", {{ scale: 1.0 }}, {{ scale: 1.06, duration: {r3(TOTAL - ec["start"])}, ease: "none", immediateRender: false }}, {r3(ec["start"])});')
 w("      // chapter cuts: a blue light bar sweeps across and hides the cut")
