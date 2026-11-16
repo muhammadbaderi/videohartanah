@@ -5,7 +5,10 @@ Montserrat for headings and numbers, Inter for small text.
 
 - Source: `IMG_1073.MOV` (iPhone 4K SDR, portrait, 127.8 s) from Google Drive. Only the pictures are used.
 - Voice: a script read by the owner's cloned voice on ElevenLabs (not the voice recorded in the clip).
-- Render: `renders/rafflesia6-v1.mp4` (not in git, too big).
+- Status: **rendered** (2026-11-16): `renders/Taman-Rafflesia-6-FINAL.mp4`, 1080×1920, 30 fps, 56.6 s, H.264 delivery quality,
+  audio mastered to **-14.0 LUFS, true peak -2.1 dBTP** (measured, not listened to). `renders/rafflesia6-v1.mp4` is the raw render
+  (-12.9 LUFS) before that loudness step. The renders are not in git (too big).
+- Music: the track's own ending (last chord around 53.5 s, then its ring-out) carries the end card; the last ~0.5 s is near silent.
 
 ## Script (voiceover)
 
@@ -51,6 +54,7 @@ scripts/rafflesia6/prepare_media.sh /path/to/IMG_1073.MOV   # footage + end-card
 python3 -I scripts/rafflesia6/build.py                  # regenerates index.html + captions.html
 cd rafflesia6 && npx hyperframes preview                # Studio
 npx hyperframes render --quality delivery -o renders/rafflesia6-v1.mp4
+# then -14 LUFS / -1.5 dBTP on the audio only (two-pass ffmpeg loudnorm, video copied) -> renders/Taman-Rafflesia-6-FINAL.mp4
 ```
 
 - Change a word in the voiceover: edit `scripts/rafflesia6/vo_lines.json`, run `python3 -I scripts/rafflesia6/tts.py <line id>`
