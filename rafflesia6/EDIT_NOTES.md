@@ -8,9 +8,11 @@ Montserrat for headings and numbers, Inter for small text.
   **v3: voice "Mad Bi"** (`j2h6UJwjLSvHhJaBXWtF`), `eleven_v3` with an audio tag per line ([excited], [enthusiastic],
   [cheerful], [confident]), best of 3 takes per line (`tts.py --takes 3`, `pick_takes.py`). v2 used the same model with
   the older clone "Suara sendiri"; v1 (eleven_multilingual_v2) was found monotone.
-- Status: **v2 rendered** (2026-11-16): `renders/Taman-Rafflesia-6-FINAL-v2.mp4`, 1080×1920, 30 fps, 54.2 s, H.264 delivery quality,
-  audio mastered to **-14.0 LUFS, true peak -1.8 dBTP** (measured, not listened to). `renders/rafflesia6-v2.mp4` is the raw render
-  (-13.1 LUFS) before that loudness step. v1 (`Taman-Rafflesia-6-FINAL.mp4`, 56.6 s) had the first, flatter voice. The renders are not in git (too big).
+- Status: **v3 rendered** (2026-11-16): `renders/Taman-Rafflesia-6-FINAL-v3-MadBi.mp4`, 1080×1920, 30 fps, 55.6 s, H.264
+  delivery quality (HyperFrames 0.9.56), audio mastered to **-14.0 LUFS, true peak -1.6 dBTP** (measured, not listened to).
+  v2 (`...-FINAL-v2.mp4`, 54.2 s) had the older clone; v1 (`...-FINAL.mp4`, 56.6 s) the flat first voice. Renders are not in git.
+- Known: HyperFrames 0.9.56 `check` gives 12 `outside_safe_zone` warnings (cards out to x 1020, captions at y 1188 run past the
+  TikTok/Reels/Shorts safe area: y 288-1248, x 120-888, x 120-780 below y 840). Left as is for now; fixing means re-laying out the scenes.
 - Music: the track's last chord lands just after the voice ends (52 s); its ring-out carries the end card and fades out by 53.8 s.
 
 ## Script (voiceover)
