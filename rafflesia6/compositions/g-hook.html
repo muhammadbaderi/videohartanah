@@ -1,0 +1,55 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
+      --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; }
+    .row { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; }
+    #hk-scrim { position: absolute; left: 0; top: 540px; width: 1080px; height: 760px;
+      background: linear-gradient(to bottom, rgba(6, 22, 54, 0), rgba(6, 22, 54, 0.72) 26%, rgba(6, 22, 54, 0.72) 78%, rgba(6, 22, 54, 0)); }
+    #hk-pill { padding: 14px 30px; border-radius: 999px; background: var(--blue); color: #fff; font-weight: 800; font-size: 30px;
+      letter-spacing: 0.12em; box-shadow: 0 10px 30px rgba(29, 92, 255, 0.45); }
+    #hk-l1 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 78px; letter-spacing: -0.01em; color: var(--ice);
+      text-shadow: 0 6px 22px rgba(6, 22, 54, 0.6); }
+    #hk-l2 { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 158px; line-height: 1; letter-spacing: -0.03em;
+      color: #fff; text-shadow: 0 10px 34px rgba(6, 22, 54, 0.55); }
+    #hk-l3 { display: flex; align-items: center; gap: 22px; }
+    #hk-under { font-weight: 700; font-size: 58px; color: var(--ice); text-shadow: 0 4px 16px rgba(6, 22, 54, 0.6); }
+    #hk-wrap { position: relative; padding: 4px 26px 8px; }
+    #hk-mark { position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-radius: 20px;
+      background: linear-gradient(100deg, #1d5cff 0%, #2f7bff 60%, #5cc2ff 100%); box-shadow: 0 14px 36px rgba(29, 92, 255, 0.5); }
+    #hk-price { position: relative; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 104px; line-height: 1.05;
+      letter-spacing: -0.02em; color: var(--sky); text-shadow: 0 8px 26px rgba(6, 22, 54, 0.55); }
+    #hk-go { opacity: 0; display: flex; align-items: center; gap: 14px; font-weight: 800; font-size: 34px; letter-spacing: 0.14em; color: var(--sky); }
+    #hk-go svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <div id="root" data-composition-id="g-hook" data-width="1080" data-height="1920">
+    <div id="hk-scrim"></div>
+    <div class="row" style="top: 640px"><div id="hk-pill">PROJEK BARU · SHAH ALAM</div></div>
+    <div class="row" style="top: 728px"><div id="hk-l1">Rumah Teres</div></div>
+    <div class="row" style="top: 828px"><div id="hk-l2">1 TINGKAT</div></div>
+    <div class="row" style="top: 1004px">
+      <div id="hk-l3"><div id="hk-under">bawah</div><div id="hk-wrap"><div id="hk-mark"></div><div id="hk-price">RM500K?</div></div></div>
+    </div>
+    <div class="row" style="top: 1160px">
+      <div id="hk-go">JOM TENGOK <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 is the thumbnail: the title is already on screen; only the price highlight waits for the voice.
+    tl.set(["#hk-scrim", "#hk-pill", "#hk-l1", "#hk-l2", "#hk-l3"], { opacity: 1 }, 0);
+    tl.fromTo("#hk-l2", { scale: 1.0 }, { scale: 1.04, duration: 2.2, ease: "none" }, 0);
+    // "...bawah lima ratus ribu?" -> blue marker sweeps under the price
+    tl.fromTo("#hk-mark", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.32, ease: "power3.out" }, 2.22);
+    tl.fromTo("#hk-price", { color: "#5cc2ff" }, { color: "#ffffff", duration: 0.12, ease: "none" }, 2.3);
+    tl.fromTo("#hk-wrap", { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out" }, 2.24);
+    tl.to("#hk-wrap", { scale: 1, duration: 0.32, ease: "back.out(2.2)" }, 2.36);
+    // "Jom tengok!"
+    tl.fromTo("#hk-go", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 3.36);
+    tl.fromTo("#hk-go svg", { y: -6 }, { y: 6, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
+    // clear out before the blue wipe
+    tl.to(["#hk-pill", "#hk-l1", "#hk-l2", "#hk-l3", "#hk-go"], { opacity: 0, y: -14, duration: 0.2, ease: "power2.in", stagger: 0.03 }, 4.06);
+    tl.to("#hk-scrim", { opacity: 0, duration: 0.24, ease: "power2.in" }, 4.1);
+    tl.set(["#hk-pill", "#hk-l1", "#hk-l2", "#hk-l3", "#hk-go", "#hk-scrim"], { visibility: "hidden" }, 4.38);
+    window.__timelines["g-hook"] = tl;
+  </script>
+</template>

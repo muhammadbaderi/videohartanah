@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
+      --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; --line: rgba(92, 194, 255, 0.45); }
+    .card { position: absolute; background: rgba(6, 22, 54, 0.86); border: 2px solid var(--line); border-radius: 36px; backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(3, 10, 30, 0.45); }
+    .stat { top: 300px; width: 465px; height: 180px; display: flex; align-items: center; gap: 22px; padding: 0 26px; }
+    .sq { width: 112px; height: 112px; border-radius: 28px; background: var(--blue); display: flex; align-items: center; justify-content: center; flex: none; }
+    .sq svg { width: 64px; height: 64px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .num { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 100px; line-height: 1; letter-spacing: -0.03em; }
+    .lab { font-weight: 700; font-size: 36px; line-height: 1.1; color: var(--ice); }
+    #sp-lot { left: 60px; top: 516px; width: 960px; height: 640px; }
+    #sp-svg { position: absolute; left: 40px; top: 30px; width: 260px; height: 590px; overflow: visible; }
+    .eb { font-weight: 800; font-size: 30px; letter-spacing: 0.16em; color: var(--sky); }
+    .big { font-family: "Montserrat", sans-serif; font-weight: 900; line-height: 1; letter-spacing: -0.03em; white-space: nowrap; }
+    .sm { font-weight: 600; font-size: 34px; color: var(--ice); margin-top: 10px; }
+    #sp-t1 { position: absolute; left: 330px; top: 70px; }
+    #sp-t2 { position: absolute; left: 330px; top: 350px; }
+    #sp-land-v { font-size: 92px; }
+    #sp-bu-v { font-size: 120px; color: var(--sky); }
+    .dim { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 30px; fill: var(--sky); }
+  </style>
+  <div id="root" data-composition-id="g-spec" data-width="1080" data-height="1920">
+    <div id="sp-c1" class="card stat" style="left: 60px">
+      <div id="sp-i1" class="sq"><svg viewBox="0 0 24 24"><path d="M3 18v-6.5A2.5 2.5 0 0 1 5.5 9h13a2.5 2.5 0 0 1 2.5 2.5V18M3 14.5h18M3 18v2M21 18v2" /><path d="M6.5 9V7.5A1.5 1.5 0 0 1 8 6h2.5A1.5 1.5 0 0 1 12 7.5V9" /></svg></div>
+      <div class="num">4</div>
+      <div class="lab">Bilik<br />tidur</div>
+    </div>
+    <div id="sp-c2" class="card stat" style="left: 555px">
+      <div id="sp-i2" class="sq"><svg viewBox="0 0 24 24"><path d="M3.5 12h17v1.5A5.5 5.5 0 0 1 15 19H9a5.5 5.5 0 0 1-5.5-5.5z" /><path d="M6 12V5.5a2 2 0 0 1 3.6-1.2" /><path d="M7.5 19l-1 2M16.5 19l1 2" /></svg></div>
+      <div class="num">2</div>
+      <div class="lab">Bilik<br />air</div>
+    </div>
+    <div id="sp-lot" class="card">
+      <!-- lot drawn to scale: 21 x 68 ft land, 21 x 48 ft built-up (front porch and back yard are the rest) -->
+      <svg id="sp-svg" viewBox="0 0 260 590">
+        <rect id="sp-bu" x="46" y="150" width="168" height="384" rx="4" fill="#1d5cff" fill-opacity="0.75" />
+        <rect id="sp-land" x="46" y="30" width="168" height="544" rx="6" fill="none" stroke="#5cc2ff" stroke-width="5" stroke-dasharray="1424" stroke-dashoffset="1424" />
+        <text id="sp-d21" class="dim" x="130" y="14" text-anchor="middle">21'</text>
+        <text id="sp-d68" class="dim" x="0" y="0" text-anchor="middle" transform="translate(24 302) rotate(-90)">68'</text>
+        <text id="sp-dbu" x="130" y="350" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="28" fill="#ffffff">BINAAN</text>
+      </svg>
+      <div id="sp-t1">
+        <div id="sp-e1" class="eb">LUAS TANAH</div>
+        <div id="sp-land-v" class="big"><span id="sp-a">21</span>' × <span id="sp-b">68</span>'</div>
+        <div id="sp-s1" class="sm">1,428 kaki persegi</div>
+      </div>
+      <div id="sp-t2">
+        <div id="sp-e2" class="eb">LUAS BINAAN</div>
+        <div id="sp-bu-v" class="big"><span id="sp-c">924</span></div>
+        <div id="sp-s2" class="sm">kaki persegi (21' × 48')</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const cardIn = (card, icon, t) => {
+      tl.fromTo(card, { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.42, ease: "expo.out" }, t);
+      tl.fromTo(icon, { scale: 0.5, rotation: -14 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.2)" }, t + 0.04);
+    };
+    cardIn("#sp-c1", "#sp-i1", 0.03); // "Empat bilik tidur,"
+    cardIn("#sp-c2", "#sp-i2", 0.98); // "dua bilik air."
+    // "Tanah dua puluh satu kali enam puluh lapan,"
+    tl.fromTo("#sp-lot", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 2.08);
+    tl.fromTo("#sp-e1", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.12);
+    tl.fromTo("#sp-land", { attr: { "stroke-dashoffset": 1424 } }, { attr: { "stroke-dashoffset": 0 }, duration: 1.9, ease: "power1.inOut" }, 2.32);
+    tl.fromTo("#sp-d21", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 2.4);
+    tl.fromTo("#sp-d68", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 3.6);
+    tl.fromTo("#sp-land-v", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.34);
+    const lot = { a: 0, b: 0 };
+    tl.fromTo(lot, { a: 0 }, { a: 21, duration: 0.5, ease: "power2.out",
+      onUpdate: () => { document.getElementById("sp-a").textContent = Math.round(lot.a); } }, 2.36);
+    tl.fromTo(lot, { b: 0 }, { b: 68, duration: 0.7, ease: "power2.out",
+      onUpdate: () => { document.getElementById("sp-b").textContent = Math.round(lot.b); } }, 3.6);
+    tl.fromTo("#sp-s1", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 4.2);
+    // "binaan sembilan ratus dua puluh empat kaki persegi."
+    tl.fromTo("#sp-bu", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.8, ease: "power3.out" }, 4.78);
+    tl.fromTo("#sp-dbu", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 5.3);
+    tl.fromTo("#sp-e2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 4.74);
+    tl.fromTo("#sp-bu-v", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 5.0);
+    const bu = { v: 0 };
+    tl.fromTo(bu, { v: 0 }, { v: 924, duration: 1.3, ease: "power2.out",
+      onUpdate: () => { document.getElementById("sp-c").textContent = Math.round(bu.v); } }, 5.05);
+    tl.fromTo("#sp-s2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 5.6);
+    // out before the porch beat
+    tl.to(["#sp-c1", "#sp-c2", "#sp-lot"], { opacity: 0, y: -16, duration: 0.2, ease: "power2.in", stagger: 0.04 }, 7.5);
+    tl.set(["#sp-c1", "#sp-c2", "#sp-lot"], { visibility: "hidden" }, 7.78);
+    window.__timelines["g-spec"] = tl;
+  </script>
+</template>

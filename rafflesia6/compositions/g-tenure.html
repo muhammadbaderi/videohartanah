@@ -1,0 +1,44 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
+      --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; --line: rgba(92, 194, 255, 0.45); }
+    #tn-tags { position: absolute; left: 0; top: 330px; width: 1080px; display: flex; justify-content: center; gap: 22px; }
+    .tag { padding: 16px 34px; border-radius: 999px; background: rgba(6, 22, 54, 0.86); border: 3px solid #5cc2ff; backdrop-filter: blur(18px);
+      font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 44px; letter-spacing: 0.04em; box-shadow: 0 14px 34px rgba(3, 10, 30, 0.4); }
+    #tn-card { position: absolute; left: 60px; top: 470px; width: 960px; height: 330px; display: flex; align-items: center; gap: 40px; padding: 0 50px;
+      border-radius: 40px; background: linear-gradient(160deg, #1d5cff 0%, #0e3bbf 100%); border: 3px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 24px 60px rgba(29, 92, 255, 0.4); }
+    #tn-ic { width: 170px; height: 170px; border-radius: 40px; background: rgba(255, 255, 255, 0.16); display: flex; align-items: center; justify-content: center; flex: none; }
+    #tn-ic svg { width: 100px; height: 100px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    #tn-k { font-weight: 800; font-size: 34px; letter-spacing: 0.18em; color: var(--ice); }
+    #tn-v { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 150px; line-height: 1; letter-spacing: -0.04em; white-space: nowrap; }
+    #tn-v span { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="g-tenure" data-width="1080" data-height="1920">
+    <div id="tn-tags">
+      <div id="tn-t1" class="tag">LEASEHOLD</div>
+      <div id="tn-t2" class="tag">RIZAB MELAYU</div>
+    </div>
+    <div id="tn-card">
+      <div id="tn-ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.2" /><path d="M3.5 10h17M8 3v4M16 3v4" /><path d="M8.5 15l2.2 2.2 4.8-4.7" /></svg></div>
+      <div>
+        <div id="tn-k">DIJANGKA SIAP</div>
+        <div id="tn-v"><span id="tn-q">Q1</span> <span id="tn-y">2027</span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // "Leasehold, Rizab Melayu."
+    tl.fromTo("#tn-t1", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(2.2)" }, 0.03);
+    tl.fromTo("#tn-t2", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(2.2)" }, 0.86);
+    // "Siap suku pertama, dua ribu dua puluh tujuh."
+    tl.fromTo("#tn-card", { opacity: 0, y: 50, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 1.64);
+    tl.fromTo("#tn-ic", { rotation: -20, scale: 0.5 }, { rotation: 0, scale: 1, duration: 0.5, ease: "back.out(2.4)" }, 1.7);
+    tl.fromTo("#tn-q", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 1.89);
+    tl.fromTo("#tn-y", { opacity: 0, y: 40, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "back.out(2)" }, 2.8);
+    tl.to(["#tn-t1", "#tn-t2", "#tn-card"], { opacity: 0, y: -16, duration: 0.2, ease: "power2.in", stagger: 0.04 }, 4.55);
+    tl.set(["#tn-t1", "#tn-t2", "#tn-card"], { visibility: "hidden" }, 4.84);
+    window.__timelines["g-tenure"] = tl;
+  </script>
+</template>

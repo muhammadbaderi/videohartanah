@@ -1,0 +1,10 @@
+{
+ "_doc": "Caption chunks: each token is [display text, index of the spoken word (in vo_lines 'say') where it starts]. Hook has no captions (the title says it); the phone number is on the CTA card.",
+ "intro":  [[["Projek",0],["baru,",1]], [["Taman",2],["Rafflesia",3],["6,",4]], [["Seksyen",5],["29,",6]], [["Shah",9],["Alam.",10]], [["Terhad",11],["19",12],["unit",14],["je!",15]]],
+ "spec":   [[["4",0],["bilik",1],["tidur,",2]], [["2",3],["bilik",4],["air.",5]], [["Tanah",6],["21",7],["x",10],["68,",11]], [["binaan",14],["924",15]], [["kaki",20],["persegi.",21]]],
+ "porch":  [[["Porch",0],["muat",1],["2",2],["kereta,",3]], [["siling",4],["pun",5],["tinggi.",6]]],
+ "price":  [[["Harga",0],["dari",1]], [["RM455",2],["ribu.",7]], [["Booking",8],["RM500",9],["je,",12]], [["FREE",13],["legal",14],["fee",15],["SPA,",16]], [["dan",19],["FREE",20],["MOT",21]], [["untuk",24],["pembeli",25]], [["rumah",26],["pertama.",27]]],
+ "loc":    [[["Dekat",0],["Quayside",1],["Mall",2]], [["Rimbayu,",3]], [["Saujana",4],["Putra",5]], [["dan",6],["Kota",7],["Kemuning.",8]], [["Akses",9],["mudah",10],["ke",11]], [["ELITE,",12],["SKVE,",13]], [["KESAS",17],["dan",18],["LKSA.",19]]],
+ "tenure": [[["Leasehold,",0]], [["Rizab",1],["Melayu.",2]], [["Siap",3],["suku",4],["pertama,",5]], [["2027.",6]]],
+ "cta":    [[["Unit",0],["terhad!",1]], [["Berminat?",2]]]
+}

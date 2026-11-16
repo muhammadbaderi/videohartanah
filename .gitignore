@@ -7,3 +7,8 @@ video/.hyperframes/
 *.mov
 # media-use cache (downloaded catalog tracks; the chosen one is in assets/audio)
 video/.media/
+# rafflesia6 (see scripts/rafflesia6/prepare_media.sh)
+rafflesia6/assets/footage/*.mp4
+rafflesia6/renders/
+rafflesia6/.hyperframes/
+.media-src/
