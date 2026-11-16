@@ -5,10 +5,10 @@ Montserrat for headings and numbers, Inter for small text.
 
 - Source: `IMG_1073.MOV` (iPhone 4K SDR, portrait, 127.8 s) from Google Drive. Only the pictures are used.
 - Voice: a script read by the owner's cloned voice on ElevenLabs (not the voice recorded in the clip). **v2: `eleven_v3` with an audio tag per line ([excited], [enthusiastic], [cheerful], [confident])**, best of 3 takes per line, after the owner found the first voice monotone. Measured pitch movement: ~12–19 semitones/s per line vs ~6 before.
-- Status: **rendered** (2026-11-16): `renders/Taman-Rafflesia-6-FINAL.mp4`, 1080×1920, 30 fps, 56.6 s, H.264 delivery quality,
-  audio mastered to **-14.0 LUFS, true peak -2.1 dBTP** (measured, not listened to). `renders/rafflesia6-v1.mp4` is the raw render
-  (-12.9 LUFS) before that loudness step. The renders are not in git (too big).
-- Music: the track's own ending (last chord around 53.5 s, then its ring-out) carries the end card; the last ~0.5 s is near silent.
+- Status: **v2 rendered** (2026-11-16): `renders/Taman-Rafflesia-6-FINAL-v2.mp4`, 1080×1920, 30 fps, 54.2 s, H.264 delivery quality,
+  audio mastered to **-14.0 LUFS, true peak -1.8 dBTP** (measured, not listened to). `renders/rafflesia6-v2.mp4` is the raw render
+  (-13.1 LUFS) before that loudness step. v1 (`Taman-Rafflesia-6-FINAL.mp4`, 56.6 s) had the first, flatter voice. The renders are not in git (too big).
+- Music: the track's last chord lands just after the voice ends (52 s); its ring-out carries the end card and fades out by 53.8 s.
 
 ## Script (voiceover)
 
