@@ -13,19 +13,20 @@
     #lc-pulse { position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 50%; border: 5px solid #5cc2ff; opacity: 0; }
     #lc-pulse2 { position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 50%; border: 5px solid #5cc2ff; opacity: 0; }
     #lc-pin { position: absolute; left: -52px; top: -128px; width: 104px; height: 130px; transform-origin: 50% 100%; }
-    #lc-site-card { position: absolute; left: 66px; top: -150px; padding: 16px 26px 18px; border-radius: 26px; background: #ffffff; color: #061636;
+    #lc-site-card { position: absolute; left: 62px; top: -146px; padding: 14px 24px 16px; border-radius: 26px; background: #ffffff; color: #061636;
       box-shadow: 0 16px 40px rgba(3, 10, 30, 0.5); white-space: nowrap; transform-origin: 0% 100%; }
-    #lc-site-card b { display: block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 46px; letter-spacing: -0.01em; line-height: 1.05; }
-    #lc-site-card span { font-weight: 700; font-size: 28px; color: #1d5cff; }
+    #lc-site-card b { display: block; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -0.01em; line-height: 1.05; }
+    #lc-site-card span { font-weight: 700; font-size: 30px; color: #1d5cff; }
     .dot { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border-radius: 50%; background: #5cc2ff; border: 6px solid #ffffff;
       box-shadow: 0 0 0 10px rgba(92, 194, 255, 0.28), 0 8px 20px rgba(3, 10, 30, 0.5); }
-    .lab { position: absolute; display: flex; align-items: center; gap: 14px; padding: 12px 14px 12px 22px; border-radius: 22px; background: rgba(6, 22, 54, 0.9);
+    .lab { position: absolute; display: flex; flex-direction: column; gap: 2px; padding: 10px 20px 12px; border-radius: 20px; background: rgba(6, 22, 54, 0.9);
       border: 2px solid var(--line); box-shadow: 0 12px 30px rgba(3, 10, 30, 0.5); white-space: nowrap; }
-    .lab .nm { font-weight: 700; font-size: 34px; }
-    .lab .km { padding: 6px 16px; border-radius: 999px; background: #1d5cff; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 30px; }
-    #lc-kk-lab { left: 40px; top: -36px; transform-origin: 0% 50%; }
-    #lc-qs-lab { left: -250px; top: 36px; transform-origin: 50% 0%; }
-    #lc-bsp-lab { left: -330px; top: -112px; transform-origin: 70% 100%; }
+    .lab .nm { font-weight: 700; font-size: 29px; line-height: 1.15; }
+    .lab .km { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 28px; line-height: 1.1; color: #5cc2ff; }
+    /* labels sit clear of the connecting lines: Kota Kemuning to the right, the two southern places to the left */
+    #lc-kk-lab { left: 36px; top: -44px; transform-origin: 0% 50%; }
+    #lc-qs-lab { right: 36px; top: -58px; text-align: right; align-items: flex-end; transform-origin: 100% 50%; }
+    #lc-bsp-lab { right: 36px; top: 6px; text-align: right; align-items: flex-end; transform-origin: 100% 0%; }
     #lc-signs { position: absolute; left: 60px; top: 1062px; width: 960px; display: flex; gap: 20px; }
     .sign { width: 225px; height: 96px; border-radius: 20px; background: #1d5cff; display: flex; align-items: center; justify-content: center;
       box-shadow: inset 0 0 0 5px #1d5cff, inset 0 0 0 9px #ffffff, 0 14px 34px rgba(3, 10, 30, 0.5);
@@ -76,12 +77,14 @@
     // ---- the map camera, same curve as scripts/rafflesia6/bake_map.cjs (map.json) ----
     const CAM = { zstart: 11.3, zend: 12.85, hold: 1.1, drift: 0.12, dur: 9.5, cx: 540, cy: 960 };
     // pixel offsets from the frame centre at zoom zend (scripts/rafflesia6/map_coords.json)
-    const POI = { site: [-108.2, -217.9], qs: [-52.8, -61.5], bsp: [228.5, -13.1], kk: [-231.2, -566.7] };
+    const POI = { site: [-108.2, -217.9], qs: [-52.8, -61.6], bsp: [228.5, -13.1], kk: [-231.2, -566.7] };
     const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
     const zoomAt = (t) => t <= CAM.hold ? CAM.zstart + (CAM.zend - CAM.zstart) * ease(Math.max(0, t / CAM.hold))
       : CAM.zend + CAM.drift * (t - CAM.hold) / (CAM.dur - CAM.hold);
     const at = (id, t) => { const s = Math.pow(2, zoomAt(t) - CAM.zend); return [CAM.cx + POI[id][0] * s, CAM.cy + POI[id][1] * s]; };
-    const reach = { qs: 0, bsp: 0, kk: 0 };
+    // each line grows from the site to its place when the place is named (power2.out over 0.45 s)
+    const LINE_AT = { qs: 0.31, bsp: 1.38, kk: 2.45 };
+    const reachAt = (id, t) => { const x = Math.min(1, Math.max(0, (t - LINE_AT[id]) / 0.45)); return 1 - (1 - x) * (1 - x); };
     const cam = { t: 0 };
     const place = () => {
       const t = cam.t;
@@ -90,7 +93,7 @@
       for (const id of ["qs", "bsp", "kk"]) {
         const P = at(id, t);
         gsap.set("#lc-at-" + id, { x: P[0], y: P[1] });
-        const r = reach[id];
+        const r = reachAt(id, t);
         const ln = document.getElementById("lc-l-" + id);
         ln.setAttribute("x1", S[0].toFixed(1)); ln.setAttribute("y1", S[1].toFixed(1));
         ln.setAttribute("x2", (S[0] + (P[0] - S[0]) * r).toFixed(1)); ln.setAttribute("y2", (S[1] + (P[1] - S[1]) * r).toFixed(1));
@@ -102,16 +105,24 @@
     tl.fromTo("#lc-k", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.05);
     tl.fromTo("#lc-pin", { opacity: 0, y: -90, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "bounce.out" }, 0.1);
     tl.fromTo("#lc-site-card", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.5);
-    for (let k = 0; k < 7; k++) {
-      const t0 = 0.6 + k * 1.25;
-      tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t0);
-      tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t0 + 0.35);
-    }
-    tl.set(["#lc-pulse", "#lc-pulse2"], { opacity: 0 }, 0);
+    // a sonar pulse every 1.25 s (each ring fades out before the next starts)
+    tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 0.6);
+    tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 0.95);
+    tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 1.85);
+    tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 2.2);
+    tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 3.1);
+    tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 3.45);
+    tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 4.35);
+    tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 4.7);
+    tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 5.6);
+    tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 5.95);
+    tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 6.85);
+    tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 7.2);
+    tl.fromTo("#lc-pulse", { scale: 0.4, opacity: 0.85 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 8.1);
+    tl.fromTo("#lc-pulse2", { scale: 0.4, opacity: 0.6 }, { scale: 2.4, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, 8.45);
 
     // ---- "Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning." ----
     const poi = (id, t) => {
-      tl.fromTo(reach, { [id]: 0 }, { [id]: 1, duration: 0.45, ease: "power2.out" }, t - 0.1);
       tl.fromTo("#lc-" + id + "-dot", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, t + 0.25);
       tl.fromTo("#lc-" + id + "-lab", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(2)" }, t + 0.3);
     };
