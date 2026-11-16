@@ -17,12 +17,25 @@ Cards: navy 0.86, 2 px sky border, radius 32-40 px, `backdrop-filter: blur(18px)
 Fonts: Montserrat 800/900 for headings and every number, Inter 600-800 for small text (both bundled).
 Readable text is 28 px or larger. No other accent colours; white only for the end-card phone card and FREE badges.
 
-## Frame (1080 x 1920)
+## Frame (1080 x 1920) and the apps' safe area
 
-- Nothing in the top 168 px (status bar); all words between 168 and 1330 px; below 1330 only texture.
-  Keep text off the right ~100 px from y 700 down (the app's action buttons).
-- Captions: one line of 2-4 words at `top: 1188px`, Montserrat 800 62 px, white with a 13 px navy stroke, the
-  spoken word turns sky. Cards sit higher (y 290-1160).
+HyperFrames 0.9.56 `check` warns `outside_safe_zone` for text that TikTok, Instagram Reels or YouTube Shorts
+cover with their own buttons and captions. Where all three are clear:
+
+| Rows | Text may sit in |
+|---|---|
+| y 288 - 840 | x 120 - 888 |
+| y 840 - 1248 | x 120 - 780 (TikTok's like/comment/share rail is on the right) |
+| above 288, below 1248 | nothing readable, only picture and decoration |
+
+(TikTok 720x1280 bands [160-560, x 80-640] and [560-840, x 80-520] scaled x1.5; Reels 14-65 % tall, 6-94 % wide;
+Shorts y 288-1248, x 48-888.) Design every new video inside this from the start: a content column from x 120,
+cards up to x 888 in the upper part and up to x 780 lower down, the caption line centred on x 450 (not 540) with
+its bottom above 1248. The Rafflesia 6 layout predates this check (cards x 60-1020, captions at y 1188), so it
+draws 12 of these warnings; a new project should fix them rather than copy them.
+
+- Captions: one line of 2-4 words, Montserrat 800 ~58-62 px, white with a 13 px navy stroke, the spoken word turns
+  sky. Cards sit above the caption line.
 - Frame 0 is the thumbnail: the hook title is fully on screen at 0 s.
 
 ## Motion

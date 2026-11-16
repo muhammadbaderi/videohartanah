@@ -25,13 +25,13 @@ Tiles: Esri World Dark Gray Canvas tinted blue (`tint` background under `raster_
 ```bash
 (cd /tmp && npm install maplibre-gl@5.24.0)          # jsdelivr/unpkg are blocked; load MapLibre from npm
 export MAPLIBRE=/tmp/node_modules/maplibre-gl/dist
-node scripts/<name>/bake_map.cjs --still             # one frame at the hold view -> .media-src/map_still.png: check framing
+node scripts/<name>/bake_map.cjs --still             # one frame at the hold view -> .media-src/<name>/map_still.png: check framing
 node scripts/<name>/bake_map.cjs                     # ~5 min for 9.5 s; writes <name>/assets/footage/map.mp4 + map_coords.json
 ```
 
-Framing rules for portrait: keep every pin between y 300 and 1000 at the end of the drift (header pill at
-y 196, highway signs at y 1062, captions at y 1188, nothing readable below 1330), and labels away from the
-right edge (the app's action rail). Move `center` to shift the cluster; one degree of latitude is ~111 km and
+Framing rules for portrait: keep every pin and label inside the apps' safe area (`look.md`: y 288-1248,
+x 120-888 above y 840, x 120-780 below it) at the end of the drift, with room for the header pill at the top
+of that area and the highway signs and caption line at the bottom of it. Move `center` to shift the cluster; one degree of latitude is ~111 km and
 there are ~10.6 m per pixel at zoom 12.85.
 
 ## 3. Wire it into g-loc.html

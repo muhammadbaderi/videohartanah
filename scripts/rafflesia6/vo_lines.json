@@ -1,5 +1,5 @@
 {
-  "voice_id": "graVYRgsElnbev50WXQ2",
+  "voice_id": "j2h6UJwjLSvHhJaBXWtF",
   "model_id": "eleven_v3",
   "voice_settings": {
     "stability": 0.5,
@@ -56,5 +56,6 @@
       "tag": "[excited]"
     }
   ],
-  "_takes": "Each line is the best of 3 eleven_v3 takes (Whisper accuracy first, then pitch movement): {\"hook\": \"v3n_3\", \"intro\": \"v3n\", \"spec\": \"v3n\", \"porch\": \"v3n\", \"price\": \"v3n_2\", \"loc\": \"v3n_3\", \"tenure\": \"v3n_3\", \"cta\": \"v3n\"}"
+  "_takes": "best take of each line (pick_takes.py): {\"hook\": \"take2\", \"intro\": \"take1\", \"spec\": \"take2\", \"porch\": \"take1\", \"price\": \"take3\", \"loc\": \"take2\", \"tenure\": \"take1\", \"cta\": \"take3\"}",
+  "voice_name": "Mad Bi"
 }
