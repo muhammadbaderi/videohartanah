@@ -1,280 +1,183 @@
 {
+ "_doc": "Timeline rules for build.py. Line starts follow the voice (gap after the previous line's last word); shots start at a scene start (at=0) or a word ('w7' = 0.05 s before word 7 of that scene's line, optional +/- offset) and run to the next shot.",
  "fps": 30,
- "tempo": 1.05,
- "duration": 56.6,
+ "tempo": 1.0,
+ "end_hold": 2.15,
  "footage": "assets/footage/IMG_1073_1080.mp4",
- "vo": [
+ "gaps": {
+  "default": 0.25,
+  "price": 0.3,
+  "loc": 0.3,
+  "cta": 0.3
+ },
+ "split": {
+  "cta": {
+   "after": 2,
+   "pause": 0.18
+  }
+ },
+ "shots": [
   {
-   "id": "hook",
-   "start": 0.0
+   "id": "hook-a",
+   "scene": "g-hook",
+   "at": 0,
+   "src": 0.0,
+   "s0": 1.0,
+   "s1": 1.05
   },
   {
-   "id": "intro",
-   "start": 4.41
+   "id": "hook-b",
+   "scene": "g-hook",
+   "at": "w7",
+   "src": 25.3,
+   "s0": 1.0,
+   "s1": 1.06
   },
   {
-   "id": "spec",
-   "start": 11.44
+   "id": "intro-a",
+   "scene": "g-intro",
+   "at": 0,
+   "src": 2.4,
+   "s0": 1.0,
+   "s1": 1.05
   },
   {
-   "id": "porch",
-   "start": 19.24
+   "id": "intro-b",
+   "scene": "g-intro",
+   "at": "w3",
+   "src": 27.3,
+   "s0": 1.0,
+   "s1": 1.06
   },
   {
-   "id": "price",
-   "start": 22.11
+   "id": "intro-c",
+   "scene": "g-intro",
+   "at": "w11-0.25",
+   "src": 16.3,
+   "s0": 1.0,
+   "s1": 1.05
   },
   {
-   "id": "loc",
-   "start": 32.27
+   "id": "spec-a",
+   "scene": "g-spec",
+   "at": 0,
+   "src": 40.0,
+   "s0": 1.0,
+   "s1": 1.04
   },
   {
-   "id": "tenure",
-   "start": 41.77
+   "id": "spec-b",
+   "scene": "g-spec",
+   "at": "w3",
+   "src": 73.2,
+   "s0": 1.0,
+   "s1": 1.04
   },
   {
-   "id": "cta",
-   "start": 46.63,
-   "parts": [
-    {
-     "media_in": 0.0,
-     "media_out": 1.62,
-     "start": 46.63
-    },
-    {
-     "media_in": 2.33,
-     "media_out": 8.352,
-     "start": 48.43
-    }
-   ]
+   "id": "spec-c",
+   "scene": "g-spec",
+   "at": "w6",
+   "src": 18.7,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "spec-d",
+   "scene": "g-spec",
+   "at": "w14",
+   "src": 33.0,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "porch-a",
+   "scene": "g-porch",
+   "at": 0,
+   "src": 30.3,
+   "s0": 1.0,
+   "s1": 1.04
+  },
+  {
+   "id": "porch-b",
+   "scene": "g-porch",
+   "at": "w4",
+   "src": 88.4,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "price-a",
+   "scene": "g-price",
+   "at": 0,
+   "src": 41.3,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "price-b",
+   "scene": "g-price",
+   "at": "w8-0.2",
+   "src": 60.2,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "price-c",
+   "scene": "g-price",
+   "at": "w16",
+   "src": 69.4,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "price-d",
+   "scene": "g-price",
+   "at": "w24",
+   "src": 93.5,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "loc-map",
+   "scene": "g-loc",
+   "at": 0,
+   "src": 0.0,
+   "s0": 1.0,
+   "s1": 1.0,
+   "file": "assets/footage/map.mp4"
+  },
+  {
+   "id": "ten-a",
+   "scene": "g-tenure",
+   "at": 0,
+   "src": 44.0,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "ten-b",
+   "scene": "g-tenure",
+   "at": "w5",
+   "src": 83.7,
+   "s0": 1.0,
+   "s1": 1.05
+  },
+  {
+   "id": "cta-a",
+   "scene": "g-cta",
+   "at": 0,
+   "src": 0.4,
+   "s0": 1.1,
+   "s1": 1.16
   }
  ],
- "shots": [
-  [
-   "hook-a",
-   0.0,
-   2.4,
-   0.0,
-   1.0,
-   1.05
-  ],
-  [
-   "hook-b",
-   2.4,
-   4.41,
-   25.3,
-   1.0,
-   1.06
-  ],
-  [
-   "intro-a",
-   4.41,
-   5.91,
-   2.4,
-   1.0,
-   1.05
-  ],
-  [
-   "intro-b",
-   5.91,
-   8.91,
-   27.3,
-   1.0,
-   1.06
-  ],
-  [
-   "intro-c",
-   8.91,
-   11.44,
-   16.3,
-   1.0,
-   1.05
-  ],
-  [
-   "spec-a",
-   11.44,
-   12.45,
-   40.0,
-   1.0,
-   1.04
-  ],
-  [
-   "spec-b",
-   12.45,
-   13.55,
-   73.2,
-   1.0,
-   1.04
-  ],
-  [
-   "spec-c",
-   13.55,
-   16.3,
-   18.7,
-   1.0,
-   1.05
-  ],
-  [
-   "spec-d",
-   16.3,
-   19.24,
-   33.0,
-   1.0,
-   1.05
-  ],
-  [
-   "porch-a",
-   19.24,
-   20.42,
-   30.3,
-   1.0,
-   1.04
-  ],
-  [
-   "porch-b",
-   20.42,
-   22.11,
-   88.4,
-   1.0,
-   1.05
-  ],
-  [
-   "price-a",
-   22.11,
-   24.81,
-   41.3,
-   1.0,
-   1.05
-  ],
-  [
-   "price-b",
-   24.81,
-   27.51,
-   60.2,
-   1.0,
-   1.05
-  ],
-  [
-   "price-c",
-   27.51,
-   30.21,
-   69.4,
-   1.0,
-   1.05
-  ],
-  [
-   "price-d",
-   30.21,
-   32.27,
-   93.5,
-   1.0,
-   1.05
-  ],
-  [
-   "loc-map",
-   32.27,
-   41.77,
-   0.0,
-   1.0,
-   1.0,
-   "assets/footage/map.mp4"
-  ],
-  [
-   "ten-a",
-   41.77,
-   44.17,
-   44.0,
-   1.0,
-   1.05
-  ],
-  [
-   "ten-b",
-   44.17,
-   46.63,
-   83.7,
-   1.0,
-   1.05
-  ],
-  [
-   "cta-a",
-   46.63,
-   48.43,
-   0.4,
-   1.1,
-   1.16
-  ]
- ],
  "endcard": {
-  "src": "assets/footage/endcard_bg.jpg",
-  "start": 48.43
+  "src": "assets/footage/endcard_bg.jpg"
  },
- "wipes": [
-  4.41,
-  11.44,
-  22.11,
-  32.27,
-  41.77,
-  48.43
- ],
- "scenes": [
-  [
-   "g-hook",
-   0.0,
-   4.41
-  ],
-  [
-   "g-intro",
-   4.41,
-   11.44
-  ],
-  [
-   "g-spec",
-   11.44,
-   19.24
-  ],
-  [
-   "g-porch",
-   19.24,
-   22.11
-  ],
-  [
-   "g-price",
-   22.11,
-   32.27
-  ],
-  [
-   "g-loc",
-   32.27,
-   41.77
-  ],
-  [
-   "g-tenure",
-   41.77,
-   46.63
-  ],
-  [
-   "g-cta",
-   46.63,
-   56.6
-  ]
- ],
  "music": {
   "src": "assets/audio/music-bed.mp3",
-  "media_start": 26.69,
+  "media_start": 27.64,
   "base": 0.13,
-  "points": [
-   [
-    0,
-    0.13
-   ],
-   [
-    54.5,
-    0.13
-   ],
-   [
-    54.9,
-    0.34
-   ]
-  ]
+  "end": 0.34
  }
 }

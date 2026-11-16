@@ -1,53 +1,60 @@
 {
   "voice_id": "graVYRgsElnbev50WXQ2",
-  "model_id": "eleven_multilingual_v2",
+  "model_id": "eleven_v3",
   "voice_settings": {
-    "stability": 0.45,
+    "stability": 0.5,
     "similarity_boost": 0.8,
-    "style": 0.15,
-    "use_speaker_boost": true,
-    "speed": 1.08
+    "use_speaker_boost": true
   },
   "lines": [
     {
       "id": "hook",
       "say": "Cari rumah teres setingkat kat Shah Alam, bawah lima ratus ribu? Jom tengok!",
-      "cap": "Cari rumah teres setingkat kat Shah Alam, bawah RM500 ribu? Jom tengok!"
+      "cap": "Cari rumah teres setingkat kat Shah Alam, bawah RM500 ribu? Jom tengok!",
+      "tag": "[excited]"
     },
     {
       "id": "intro",
       "say": "Projek baru, Taman Rafflesia Enam, Seksyen dua puluh sembilan, Shah Alam. Terhad sembilan belas unit je!",
-      "cap": "Projek baru, Taman Rafflesia 6, Seksyen 29, Shah Alam. Terhad 19 unit je!"
+      "cap": "Projek baru, Taman Rafflesia 6, Seksyen 29, Shah Alam. Terhad 19 unit je!",
+      "tag": "[enthusiastic]"
     },
     {
       "id": "spec",
       "say": "Empat bilik tidur, dua bilik air. Tanah dua puluh satu kali enam puluh lapan, binaan sembilan ratus dua puluh empat kaki persegi.",
-      "cap": "4 bilik tidur, 2 bilik air. Tanah 21 x 68, binaan 924 kaki persegi."
+      "cap": "4 bilik tidur, 2 bilik air. Tanah 21 x 68, binaan 924 kaki persegi.",
+      "tag": "[cheerful]"
     },
     {
       "id": "porch",
       "say": "Porch muat dua kereta, siling pun tinggi.",
-      "cap": "Porch muat 2 kereta, siling pun tinggi."
+      "cap": "Porch muat 2 kereta, siling pun tinggi.",
+      "tag": "[cheerful]"
     },
     {
       "id": "price",
       "say": "Harga dari empat ratus lima puluh lima ribu. Booking lima ratus ringgit je, free legal fee S P A, dan free M O T untuk pembeli rumah pertama.",
-      "cap": "Harga dari RM455,120. Booking RM500 je, FREE legal fee SPA, dan FREE MOT untuk pembeli rumah pertama."
+      "cap": "Harga dari RM455,120. Booking RM500 je, FREE legal fee SPA, dan FREE MOT untuk pembeli rumah pertama.",
+      "tag": "[excited]"
     },
     {
       "id": "loc",
       "say": "Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning. Akses mudah ke Elite, S K V E, Kesas dan L K S A.",
-      "cap": "Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning. Akses mudah ke ELITE, SKVE, KESAS dan LKSA."
+      "cap": "Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning. Akses mudah ke ELITE, SKVE, KESAS dan LKSA.",
+      "tag": "[confident]"
     },
     {
       "id": "tenure",
       "say": "Leasehold, Rizab Melayu. Siap suku pertama, dua ribu dua puluh tujuh.",
-      "cap": "Leasehold, Rizab Melayu. Siap Q1 2027."
+      "cap": "Leasehold, Rizab Melayu. Siap Q1 2027.",
+      "tag": "[confident]"
     },
     {
       "id": "cta",
       "say": "Unit terhad! Berminat? Contact saya di kosong satu enam, tiga tujuh kosong, lapan sembilan kosong lapan.",
-      "cap": "Unit terhad! Berminat? Contact saya di 016-370 8908."
+      "cap": "Unit terhad! Berminat? Contact saya di 016-370 8908.",
+      "tag": "[excited]"
     }
-  ]
+  ],
+  "_takes": "Each line is the best of 3 eleven_v3 takes (Whisper accuracy first, then pitch movement): {\"hook\": \"v3n_3\", \"intro\": \"v3n\", \"spec\": \"v3n\", \"porch\": \"v3n\", \"price\": \"v3n_2\", \"loc\": \"v3n_3\", \"tenure\": \"v3n_3\", \"cta\": \"v3n\"}"
 }
