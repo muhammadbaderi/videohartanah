@@ -2,9 +2,9 @@
 // portrait 1080x1920, after the HyperFrames skill's bake-basemap.mjs (live tiles change between
 // renders, so the camera move is frozen to video once).
 //
-//   MAPLIBRE=/path/to/node_modules/maplibre-gl/dist node scripts/rafflesia6/bake_map.cjs [--still]
+//   MAPLIBRE=/path/to/node_modules/maplibre-gl/dist node scripts/<name>/bake_map.cjs [--still]
 //
-// Writes rafflesia6/assets/footage/map.mp4 and scripts/rafflesia6/map_coords.json (each place's
+// Writes <name>/assets/footage/map.mp4 and scripts/rafflesia6/map_coords.json (each place's
 // pixel offset from the frame centre at zoom `zend`). Zoom is a pure scale about the centre
 // (Mercator, no pitch/bearing), so the composition places pins at centre + offset * 2^(zoomAt(t) - zend).
 // --still bakes only the hold frame to map_still.png (for checking the framing).
@@ -15,8 +15,9 @@ const M = JSON.parse(fs.readFileSync(path.join(HERE, "map.json"), "utf8"));
 const LIB = process.env.MAPLIBRE;
 if (!LIB) throw new Error("set MAPLIBRE to maplibre-gl/dist (npm install maplibre-gl@5.24.0)");
 const STILL = process.argv.includes("--still");
-const OUT = path.join(ROOT, "rafflesia6", "assets", "footage");
-const FR = path.join(process.env.FRAMES_DIR || path.join(ROOT, ".media-src", "map-frames"));
+const NAME = path.basename(HERE); // scripts/<name>/ -> <name>/
+const OUT = path.join(ROOT, NAME, "assets", "footage");
+const FR = path.join(process.env.FRAMES_DIR || path.join(ROOT, ".media-src", NAME, "map-frames"));
 fs.mkdirSync(FR, { recursive: true });
 
 const PAGE = `<!doctype html><html><head><style>*{margin:0}html,body{width:${M.width}px;height:${M.height}px;overflow:hidden;background:${M.tint}}
@@ -52,7 +53,7 @@ const zoomAt = (t) => {
     const t = STILL ? M.hold_t : i / M.fps;
     await page.evaluate(({ c, z }) => map.jumpTo({ center: c, zoom: z }), { c: M.center, z: zoomAt(t) });
     if (await page.evaluate(() => waitIdle(12000))) { timeouts++; console.warn("tile timeout at frame", i); }
-    await page.screenshot({ path: STILL ? path.join(HERE, "..", "..", ".media-src", "map_still.png") : path.join(FR, `f${String(i).padStart(4, "0")}.png`) });
+    await page.screenshot({ path: STILL ? path.join(ROOT, ".media-src", NAME, "map_still.png") : path.join(FR, `f${String(i).padStart(4, "0")}.png`) });
     if (i % 30 === 0) console.log(`frame ${i + 1}/${N}`);
   }
   // offsets at the hold zoom

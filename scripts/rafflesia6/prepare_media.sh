@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Rebuild the footage the rafflesia6 project needs from the original phone clip.
 #
-#   scripts/rafflesia6/prepare_media.sh /path/to/IMG_1073.MOV
+#   scripts/<name>/prepare_media.sh /path/to/clip.MOV
 #
 # IMG_1073.MOV is 4K SDR (BT.709) portrait. It is scaled to 1080x1920 with a keyframe
 # every 15 frames (so the Studio can seek it). The end-card stills are exported too.
@@ -9,7 +9,8 @@
 set -euo pipefail
 SRC="${1:?usage: $0 IMG_1073.MOV}"
 HERE="$(cd "$(dirname "$0")/../.." && pwd)"
-OUT="$HERE/rafflesia6/assets/footage"
+NAME="$(basename "$(cd "$(dirname "$0")" && pwd)")"   # scripts/<name>/ -> <name>/
+OUT="$HERE/$NAME/assets/footage"
 mkdir -p "$OUT"
 ffmpeg -hide_banner -loglevel error -y -i "$SRC" -map 0:v:0 -an \
   -vf "scale=1080:1920:flags=lanczos,format=yuv420p" \

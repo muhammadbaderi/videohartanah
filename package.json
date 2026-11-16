@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/muhammadbaderi/videohartanah#readme",
   "devDependencies": {
-    "hyperframes": "0.9.17"
+    "hyperframes": "0.9.56"
   },
   "private": true
 }
