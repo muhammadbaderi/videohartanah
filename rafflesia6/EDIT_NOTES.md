@@ -1,10 +1,10 @@
 # Edit: Taman Rafflesia 6, Seksyen 29 Shah Alam (IMG_1073.MOV)
 
-Marketing video, 1080×1920, 30 fps, **56.6 s**. Blue theme (navy `#061636`, royal blue `#1d5cff`, sky `#5cc2ff`, ice `#e6f2ff`),
+Marketing video, 1080×1920, 30 fps, **54.2 s**. Blue theme (navy `#061636`, royal blue `#1d5cff`, sky `#5cc2ff`, ice `#e6f2ff`),
 Montserrat for headings and numbers, Inter for small text.
 
 - Source: `IMG_1073.MOV` (iPhone 4K SDR, portrait, 127.8 s) from Google Drive. Only the pictures are used.
-- Voice: a script read by the owner's cloned voice on ElevenLabs (not the voice recorded in the clip).
+- Voice: a script read by the owner's cloned voice on ElevenLabs (not the voice recorded in the clip). **v2: `eleven_v3` with an audio tag per line ([excited], [enthusiastic], [cheerful], [confident])**, best of 3 takes per line, after the owner found the first voice monotone. Measured pitch movement: ~12–19 semitones/s per line vs ~6 before.
 - Status: **rendered** (2026-11-16): `renders/Taman-Rafflesia-6-FINAL.mp4`, 1080×1920, 30 fps, 56.6 s, H.264 delivery quality,
   audio mastered to **-14.0 LUFS, true peak -2.1 dBTP** (measured, not listened to). `renders/rafflesia6-v1.mp4` is the raw render
   (-12.9 LUFS) before that loudness step. The renders are not in git (too big).
@@ -12,16 +12,16 @@ Montserrat for headings and numbers, Inter for small text.
 
 ## Script (voiceover)
 
-| Film (s) | Line | On screen |
+| Scene (s) | Line | On screen |
 |---|---|---|
-| 0.00–4.21 | Cari rumah teres setingkat kat Shah Alam, bawah lima ratus ribu? Jom tengok! | Hook from frame 0: "Rumah Teres 1 TINGKAT bawah RM500K?", blue marker on the price |
-| 4.41–11.19 | Projek baru, Taman Rafflesia 6, Seksyen 29, Shah Alam. Terhad 19 unit je! | Location card; badge "TERHAD 19 UNIT SAHAJA" counting up |
-| 11.44–19.09 | 4 bilik tidur, 2 bilik air. Tanah 21 × 68, binaan 924 kaki persegi. | Two stat cards; lot plan drawn to scale (21' × 68' land, 21' × 48' built-up) |
-| 19.24–21.81 | Porch muat 2 kereta, siling pun tinggi. | PORCH: 2 KERETA (two car icons); SILING TINGGI |
-| 22.11–31.97 | Harga dari 455 ribu. Booking RM500 je, free legal fee SPA, dan free MOT untuk pembeli rumah pertama. | Price counts up to **RM455,120**; package with 3 ticks |
-| 32.27–41.56 | Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning. Akses mudah ke ELITE, SKVE, KESAS dan LKSA. | **Map animation**: zooms in on your GPS pin, then a line and a distance label to each of the 3 places as they are named; 4 highway signs |
-| 41.77–46.33 | Leasehold, Rizab Melayu. Siap suku pertama 2027. | Tags LEASEHOLD · RIZAB MELAYU; card DIJANGKA SIAP Q1 2027 |
-| 46.63–54.45 | Unit terhad! Berminat? Contact saya di 016-370 8908. | "UNIT TERHAD!"; end card: your face, 016-370 8908, project name, price |
+| 0.00–4.60 | Cari rumah teres setingkat kat Shah Alam, bawah lima ratus ribu? Jom tengok! | Hook from frame 0: "Rumah Teres 1 TINGKAT bawah RM500K?", blue marker on the price |
+| 4.60–10.40 | Projek baru, Taman Rafflesia 6, Seksyen 29, Shah Alam. Terhad 19 unit je! | Location card; badge "TERHAD 19 UNIT SAHAJA" counting up |
+| 10.40–17.55 | 4 bilik tidur, 2 bilik air. Tanah 21 × 68, binaan 924 kaki persegi. | Two stat cards; lot plan drawn to scale (21' × 68' land, 21' × 48' built-up) |
+| 17.55–20.82 | Porch muat 2 kereta, siling pun tinggi. | PORCH: 2 KERETA (two car icons); SILING TINGGI |
+| 20.82–29.80 | Harga dari 455 ribu. Booking RM500 je, free legal fee SPA, dan free MOT untuk pembeli rumah pertama. | Price counts up to **RM455,120**; package with 3 ticks |
+| 29.80–38.98 | Dekat Quayside Mall Rimbayu, Saujana Putra dan Kota Kemuning. Akses mudah ke ELITE, SKVE, KESAS dan LKSA. | **Map animation**: zooms in on your GPS pin, then a line and a distance label to each of the 3 places as they are named; 4 highway signs |
+| 38.98–43.81 | Leasehold, Rizab Melayu. Siap suku pertama 2027. | Tags LEASEHOLD · RIZAB MELAYU; card DIJANGKA SIAP Q1 2027 |
+| 43.81–54.18 | Unit terhad! Berminat? Contact saya di 016-370 8908. | "UNIT TERHAD!"; end card: your face, 016-370 8908, project name, price |
 
 Not in the video (too much for under a minute): the schools, the mosques, Tropicana Aman, Putra Perdana, Subang Jaya.
 They are in the post caption (`POST_CAPTION.md`).
@@ -58,5 +58,9 @@ npx hyperframes render --quality delivery -o renders/rafflesia6-v1.mp4
 ```
 
 - Change a word in the voiceover: edit `scripts/rafflesia6/vo_lines.json`, run `python3 -I scripts/rafflesia6/tts.py <line id>`
-  (ElevenLabs credits), redo the 1.05x + loudness step (see `assets/audio/CREDITS.md`), adjust `edl.json` timings, then `build.py`.
-- **Warning:** `build.py` overwrites `index.html` and `compositions/captions.html`. The scene files `compositions/g-*.html` are not touched.
+  (ElevenLabs credits), redo the compression/EQ + loudness step (see `assets/audio/CREDITS.md`), then `build.py`.
+- **Everything follows the voice.** `build.py` lays the lines out from ElevenLabs' word timings (`vo_align.json`), anchors shots to words
+  (`edl.json`), times the captions and sound effects, and writes `W` (word starts), `E` (word ends) and `D` (scene length) into the
+  `CUES` block of each `compositions/g-*.html`; the scene animations are written against those (`W[7]` = word 7 of that scene's line).
+  A new take therefore only needs `build.py` to stay in sync, as long as the words stay the same (the caption chunks use word indices).
+- **Warning:** `build.py` overwrites `index.html`, `compositions/captions.html` and the `CUES` blocks. The rest of each scene file is not touched.
