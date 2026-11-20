@@ -1,0 +1,67 @@
+{
+  "voice_id": "j2h6UJwjLSvHhJaBXWtF",
+  "model_id": "eleven_v3",
+  "voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "use_speaker_boost": true
+  },
+  "lines": [
+    {
+      "id": "hook",
+      "say": "Seribu ringgit je? Bukan deposit kereta, bukan sewa rumah. Ini booking untuk rumah landed satu tingkat!",
+      "cap": "RM1,000 je? Bukan deposit kereta, bukan sewa rumah. Ini booking untuk rumah landed satu tingkat!",
+      "tag": "[excited]"
+    },
+    {
+      "id": "yes",
+      "say": "Yes, korang tak salah dengar!",
+      "cap": "Yes, korang tak salah dengar!",
+      "tag": "[excited]"
+    },
+    {
+      "id": "intro",
+      "say": "Sekarang ada projek perumahan baharu di Jalan Nenas, Meru Klang.",
+      "cap": "Sekarang ada projek perumahan baharu di Jalan Nenas, Meru Klang.",
+      "tag": "[enthusiastic]"
+    },
+    {
+      "id": "type",
+      "say": "Ada pilihan rumah teres dan semi D, kedua-duanya dengan empat bilik tidur dan dua bilik air.",
+      "cap": "Ada pilihan rumah teres dan semi-D, kedua-duanya dengan 4 bilik tidur dan 2 bilik air.",
+      "tag": "[cheerful]"
+    },
+    {
+      "id": "loc",
+      "say": "Lokasi memang strategik! Lima minit ke Hospital Kapar, satu minit ke S R A Meru dua, dan dekat dengan pelbagai kemudahan.",
+      "cap": "Lokasi memang strategik! 5 minit ke Hospital Kapar, 1 minit ke SRA Meru 2, dan dekat dengan pelbagai kemudahan.",
+      "tag": "[confident]"
+    },
+    {
+      "id": "tenure",
+      "say": "Paling menarik, rumah ni freehold, Rizab Melayu!",
+      "cap": "Paling menarik, rumah ni FREEHOLD, Rizab Melayu!",
+      "tag": "[excited]"
+    },
+    {
+      "id": "pkg",
+      "say": "Booking hanya seribu ringgit, free S P A legal fee, dan free M O T fee.",
+      "cap": "Booking hanya RM1,000, FREE SPA legal fee, dan FREE MOT fee.",
+      "tag": "[excited]"
+    },
+    {
+      "id": "price",
+      "say": "Rumah teres bermula empat ratus empat puluh satu ribu, manakala semi D bermula lima ratus enam belas ribu.",
+      "cap": "Rumah teres bermula RM441 ribu, manakala semi-D bermula RM516 ribu.",
+      "tag": "[excited]"
+    },
+    {
+      "id": "cta",
+      "say": "Nak tengok rumah ni dengan lebih dekat? WhatsApp aku sekarang. Kita tengok pilihan unit yang sesuai dengan bajet korang!",
+      "cap": "Nak tengok rumah ni dengan lebih dekat? WhatsApp aku sekarang. Kita tengok pilihan unit yang sesuai dengan bajet korang!",
+      "tag": "[excited]"
+    }
+  ],
+  "voice_name": "Mad Bi",
+  "_takes": "takes used (pick_takes.py scores, then process_vo.py overrides): {\"hook\": \"take3\", \"yes\": \"take1\", \"intro\": \"take1\", \"type\": \"take2\", \"loc\": \"take3\", \"tenure\": \"take1\", \"pkg\": \"take3\", \"price\": \"take1\", \"cta\": \"take2\"}"
+}

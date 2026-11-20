@@ -1,0 +1,8 @@
+{
+ "_doc": "Caption chunks: each token is [display text, index of the spoken word (in vo_lines 'say') where it starts]. No captions where the graphics already say the line: hook (title + chips), yes (kinetic type), pkg (checklist), price (price cards), the stamps in tenure, 'lebih dekat?' and 'WhatsApp aku sekarang' in the CTA.",
+ "intro":  [[["Sekarang",0],["ada",1],["projek",2]], [["perumahan",3],["baharu",4]], [["di",5],["Jalan",6],["Nenas,",7]], [["Meru",8],["Klang.",9]]],
+ "type":   [[["Ada",0],["pilihan",1]], [["rumah",2],["teres",3]], [["dan",4],["semi-D,",5]], [["kedua-duanya",7]], [["dengan",8],["4",9],["bilik",10],["tidur",11]], [["dan",12],["2",13],["bilik",14],["air.",15]]],
+ "loc":    [[["Lokasi",0],["memang",1]], [["strategik!",2]], [["5",3],["minit",4],["ke",5]], [["Hospital",6],["Kapar,",7]], [["1",8],["minit",9],["ke",10]], [["SRA",11],["Meru",14],["2,",15]], [["dan",16],["dekat",17],["dengan",18]], [["pelbagai",19]], [["kemudahan.",20]]],
+ "tenure": [[["Paling",0],["menarik,",1]], [["rumah",2],["ni...",3]]],
+ "cta":    [[["Nak",0],["tengok",1]], [["rumah",2],["ni",3]], [["Kita",10],["tengok",11]], [["pilihan",12],["unit",13]], [["yang",14],["sesuai",15]], [["dengan",16],["bajet",17]], [["korang!",18]]]
+}

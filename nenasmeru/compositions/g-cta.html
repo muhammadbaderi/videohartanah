@@ -1,0 +1,104 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
+      --bp: #0a2e84; --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; --pale: #b9e1ff; --line: rgba(185, 225, 255, 0.6); }
+    .mono { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    .hd { font-family: "Archivo Black", sans-serif; }
+    /* part A: viewfinder over the photo montage */
+    #ct-vf { position: absolute; left: 190px; top: 560px; width: 628px; height: 560px; }
+    .vb { position: absolute; width: 90px; height: 90px; border-color: #fff; border-style: solid; border-width: 0; }
+    .vb.a { left: 0; top: 0; border-left-width: 7px; border-top-width: 7px; }
+    .vb.b { right: 0; top: 0; border-right-width: 7px; border-top-width: 7px; }
+    .vb.c { left: 0; bottom: 0; border-left-width: 7px; border-bottom-width: 7px; }
+    .vb.d { right: 0; bottom: 0; border-right-width: 7px; border-bottom-width: 7px; }
+    #ct-vf-x { position: absolute; left: 294px; top: 260px; width: 40px; height: 40px; }
+    #ct-vf-x::before, #ct-vf-x::after { content: ""; position: absolute; background: #fff; }
+    #ct-vf-x::before { left: 18px; top: 0; width: 4px; height: 40px; }
+    #ct-vf-x::after { left: 0; top: 18px; width: 40px; height: 4px; }
+    #ct-ask { position: absolute; left: 120px; top: 760px; width: 768px; text-align: center; font-size: 96px; line-height: 1; white-space: nowrap;
+      text-shadow: 0 8px 30px rgba(3, 12, 40, 0.7); }
+    #ct-ask span { display: inline-block; }
+    /* part B: the end card */
+    #ct-bg { position: absolute; inset: 0; background-color: #0a2e84;
+      background-image: linear-gradient(rgba(185, 225, 255, 0.17) 2px, transparent 2px), linear-gradient(90deg, rgba(185, 225, 255, 0.17) 2px, transparent 2px),
+        linear-gradient(rgba(185, 225, 255, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(185, 225, 255, 0.07) 1px, transparent 1px);
+      background-size: 180px 180px, 180px 180px, 36px 36px, 36px 36px; background-position: 89px 59px, 89px 59px, 17px 23px, 17px 23px; }
+    #ct-av { position: absolute; left: 414px; top: 296px; width: 180px; height: 180px; }
+    #ct-av img { position: absolute; inset: 0; width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; }
+    #ct-ring { position: absolute; left: -22px; top: -22px; width: 224px; height: 224px; border-radius: 50%; border: 4px dashed var(--sky); }
+    #ct-k { position: absolute; left: 120px; top: 500px; width: 768px; text-align: center; font-size: 46px; line-height: 1.1; white-space: nowrap; }
+    #ct-k em { font-style: normal; color: var(--sky); }
+    #ct-btn { position: absolute; left: 120px; top: 586px; width: 768px; height: 156px; border-radius: 78px; background: var(--blue); overflow: hidden;
+      display: flex; align-items: center; gap: 26px; padding: 0 22px; box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.9), 0 24px 56px rgba(3, 12, 40, 0.55); }
+    #ct-ic { width: 112px; height: 112px; flex: none; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+    #ct-ic svg { width: 70px; height: 70px; fill: none; stroke: var(--blue); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+    #ct-num { font-family: "Archivo Black", sans-serif; font-size: 70px; line-height: 1; letter-spacing: 0; white-space: nowrap; }
+    #ct-glint { position: absolute; left: 0; top: 0; width: 140px; height: 156px; background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%); opacity: 0; }
+    #ct-name { position: absolute; left: 120px; top: 790px; width: 660px; text-align: center; font-size: 56px; line-height: 1.05; white-space: nowrap; }
+    #ct-loc { position: absolute; left: 120px; top: 862px; width: 660px; text-align: center; font-size: 28px; letter-spacing: 0.06em; color: var(--pale); white-space: nowrap; }
+    .pills { position: absolute; left: 120px; width: 660px; display: flex; justify-content: center; gap: 16px; }
+    #ct-pr1 { top: 926px; } #ct-pr2 { top: 1004px; }
+    .pl { padding: 12px 20px; border-radius: 12px; border: 2px solid var(--line); background: rgba(6, 22, 54, 0.6); font-size: 28px; letter-spacing: 0.04em; white-space: nowrap; }
+    .pl.hi { background: #fff; color: var(--navy); border-color: #fff; }
+    #ct-elev { position: absolute; left: 224px; top: 1160px; width: 560px; height: 293px; opacity: 0.6; }
+    #ct-elev img { width: 560px; height: 293px; display: block; }
+  </style>
+  <div id="root" data-composition-id="g-cta" data-width="1080" data-height="1920"
+    data-composition-variables='[{"id":"phone","type":"string","label":"Nombor WhatsApp","default":"016-370 8908"}]'>
+    <div id="ct-vf"><div class="vb a"></div><div class="vb b"></div><div class="vb c"></div><div class="vb d"></div><div id="ct-vf-x"></div></div>
+    <div id="ct-ask" class="hd"><span id="ct-a1">LEBIH</span> <span id="ct-a2">DEKAT?</span></div>
+
+    <div id="ct-bg"></div>
+    <div id="ct-elev"><img src="assets/footage/elev_bp.png" alt="" /></div>
+    <div id="ct-av"><div id="ct-ring"></div><img src="assets/footage/agent.jpg" alt="" /></div>
+    <div id="ct-k" class="hd">WHATSAPP <em>AKU</em> SEKARANG</div>
+    <div id="ct-btn">
+      <div id="ct-ic"><svg viewBox="0 0 48 48"><path d="M24 6a18 18 0 0 0-15.6 27L6 42l9.3-2.4A18 18 0 1 0 24 6z" /><path d="M17 15.5h4l2 5-2.5 1.6a10 10 0 0 0 5.4 5.4l1.6-2.5 5 2v4a2 2 0 0 1-2 2A15.5 15.5 0 0 1 15 17.5a2 2 0 0 1 2-2z" /></svg></div>
+      <div id="ct-num" data-var-text="phone">016-370 8908</div>
+      <div id="ct-glint"></div>
+    </div>
+    <div id="ct-name" class="hd">TERES &amp; SEMI-D</div>
+    <div id="ct-loc" class="mono">1 TINGKAT · JALAN NENAS, MERU KLANG</div>
+    <div id="ct-pr1" class="pills"><div id="ct-p1" class="pl hi mono">BOOKING RM1,000</div><div id="ct-p2" class="pl mono">FREEHOLD</div></div>
+    <div id="ct-pr2" class="pills"><div id="ct-p3" class="pl mono">DARI RM441,720</div><div id="ct-p4" class="pl mono">RIZAB MELAYU</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    /* CUES:BEGIN (generated by scripts/nenasmeru/build.py from the voiceover; do not edit by hand) */
+    // words: Nak tengok rumah ni dengan lebih dekat? WhatsApp aku sekarang. Kita tengok pilihan unit yang sesuai dengan bajet korang!
+    const W = [0.12, 0.177, 0.49, 0.785, 0.918, 1.15, 1.389, 2.253, 3.033, 3.228, 3.882, 4.229, 4.636, 5.089, 5.421, 5.617, 6.102, 6.353, 6.655]; // word starts (s, local to this scene)
+    const E = [0.132, 0.433, 0.735, 0.886, 1.113, 1.339, 2.207, 2.976, 3.202, 3.655, 4.183, 4.561, 5.014, 5.391, 5.542, 6.07, 6.297, 6.599, 7.051]; // word ends
+    const D = 9.655; const PB = 2.133;
+    /* CUES:END */
+    // ---- part A: "Nak tengok rumah ni dengan lebih dekat?" (a camera click on each photo) ----
+    const SNAP = [0, W[2] - 0.05, W[4] - 0.05, W[6] - 0.05];
+    SNAP.forEach((t, i) => {
+      tl.fromTo("#ct-vf", { scale: 1.14, opacity: i === 0 ? 0 : 1 }, { scale: 1, opacity: 1, duration: 0.22, ease: "expo.out", immediateRender: i === 0 }, t);
+    });
+    tl.fromTo("#ct-a1", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.24, ease: "back.out(2)" }, W[5] - 0.04);
+    tl.fromTo("#ct-a2", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.24, ease: "back.out(2)" }, W[6] - 0.04);
+    tl.to(["#ct-vf", "#ct-ask"], { scale: 1.6, opacity: 0, duration: 0.3, ease: "power3.in" }, PB - 0.28);
+    tl.set(["#ct-vf", "#ct-ask"], { visibility: "hidden" }, PB + 0.04);
+    // ---- part B: the end card irises open from the middle of the last photo ----
+    tl.fromTo("#ct-bg", { clipPath: "circle(0px at 504px 840px)" }, { clipPath: "circle(1500px at 504px 840px)", duration: 0.55, ease: "power3.inOut", immediateRender: true }, PB - 0.12);
+    tl.fromTo("#ct-av", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, PB + 0.1);
+    tl.fromTo("#ct-ring", { rotation: 0 }, { rotation: 120, duration: D - PB, ease: "none" }, PB);
+    // "WhatsApp aku sekarang."
+    tl.fromTo("#ct-k", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, W[7] - 0.06);
+    tl.fromTo("#ct-btn", { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, W[7] + 0.02);
+    tl.fromTo("#ct-ic", { scale: 0.3, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.4)" }, W[7] + 0.08);
+    tl.fromTo("#ct-num", { clipPath: "inset(0px 100% 0px 0px)" }, { clipPath: "inset(0px 0% 0px 0px)", duration: 0.6, ease: "steps(12)" }, W[7] + 0.3);
+    // "Kita tengok pilihan unit yang sesuai dengan bajet korang!"
+    tl.fromTo("#ct-name", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, W[10] - 0.04);
+    tl.fromTo("#ct-loc", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, W[10] + 0.1);
+    ["#ct-p1", "#ct-p2", "#ct-p3", "#ct-p4"].forEach((s, i) =>
+      tl.fromTo(s, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2)" }, W[12] + i * 0.08));
+    tl.fromTo("#ct-p3", { backgroundColor: "rgba(6, 22, 54, 0.6)", color: "#ffffff" }, { backgroundColor: "#5cc2ff", color: "#061636", duration: 0.15, ease: "none" }, W[17] - 0.02);
+    // outro: the house is drafted one last time under the sign-off, then everything holds still
+    tl.fromTo("#ct-elev", { clipPath: "inset(0px 100% 0px 0px)" }, { clipPath: "inset(0px 0% 0px 0px)", duration: 1.2, ease: "power1.inOut" }, E[18] + 0.25);
+    tl.set("#ct-glint", { opacity: 0 }, 0);
+    tl.fromTo("#ct-glint", { x: -140, opacity: 1 }, { x: 800, opacity: 1, duration: 0.6, ease: "power2.inOut", immediateRender: false }, E[18] + 0.62);
+    tl.set("#ct-glint", { opacity: 0 }, E[18] + 1.24);
+    window.__timelines["g-cta"] = tl;
+  </script>
+</template>

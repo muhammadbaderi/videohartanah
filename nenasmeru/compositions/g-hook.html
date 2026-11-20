@@ -1,0 +1,133 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
+      --bp: #0a2e84; --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; --pale: #b9e1ff; --line: rgba(185, 225, 255, 0.6); }
+    .mono { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    .hd { font-family: "Archivo Black", sans-serif; }
+    #hk-eye { position: absolute; left: 120px; top: 300px; display: flex; align-items: center; gap: 14px; padding: 10px 20px; border: 2px solid var(--sky);
+      border-radius: 10px; font-size: 30px; letter-spacing: 0.12em; color: var(--sky); background: rgba(6, 22, 54, 0.45); white-space: nowrap; }
+    #hk-eye b { display: block; width: 0; height: 0; border-left: 16px solid var(--sky); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+    #hk-price { position: absolute; left: 120px; top: 368px; display: flex; align-items: flex-start; white-space: nowrap; }
+    #hk-rm { font-size: 92px; line-height: 1; margin-top: 26px; margin-right: 10px; color: var(--pale); }
+    #hk-num { font-size: 200px; line-height: 0.92; letter-spacing: -0.02em; color: #fff; text-shadow: 0 10px 40px rgba(3, 12, 40, 0.45); }
+    #hk-dim { position: absolute; left: 124px; top: 580px; width: 460px; height: 30px; }
+    #hk-dim svg { width: 460px; height: 30px; overflow: visible; }
+    #hk-dim line { stroke: var(--pale); stroke-width: 3; }
+    #hk-je { position: absolute; left: 600px; top: 600px; padding: 4px 26px 10px; transform-origin: 0% 50%; }
+    #hk-je-mark { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(100deg, #1d5cff 0%, #2f7bff 60%, #5cc2ff 100%);
+      box-shadow: 0 14px 36px rgba(29, 92, 255, 0.5); transform-origin: 0% 50%; }
+    #hk-je-t { position: relative; font-size: 110px; line-height: 1; color: #fff; }
+    .chip { position: absolute; top: 736px; width: 372px; height: 104px; border-radius: 18px; background: rgba(6, 22, 54, 0.82); border: 2px solid var(--line);
+      display: flex; align-items: center; padding: 0 18px; box-shadow: 0 14px 34px rgba(3, 12, 40, 0.4); }
+    #hk-c1 { left: 120px; } #hk-c2 { left: 516px; }
+    .chip svg.ic { width: 34px; height: 34px; flex: none; fill: none; stroke: var(--pale); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .chip .tx { display: flex; flex-direction: column; gap: 4px; }
+    .chip .tx .lb { display: flex; align-items: center; gap: 10px; }
+    .chip .tx span { font-size: 28px; line-height: 1.1; letter-spacing: 0.1em; color: var(--sky); }
+    .chip .tx b { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 30px; line-height: 1.05; white-space: nowrap; }
+    .strike { position: absolute; left: 14px; right: 14px; top: 66px; height: 6px; border-radius: 3px; background: #fff; box-shadow: 0 0 12px rgba(92, 194, 255, 0.8); transform-origin: 0% 50%; }
+    .x { position: absolute; right: -16px; top: -18px; width: 48px; height: 48px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+    .x svg { width: 26px; height: 26px; stroke: var(--navy); stroke-width: 4; stroke-linecap: round; fill: none; }
+    #hk-board { position: absolute; left: 124px; top: 780px; width: 760px; height: 479px; }
+    #hk-render { position: absolute; inset: 0; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 60px rgba(3, 12, 40, 0.5); }
+    #hk-render img { width: 760px; height: 479px; display: block; }
+    #hk-render-sl { position: absolute; left: 0; top: 0; width: 760px; height: 5px; background: #e6f2ff; box-shadow: 0 0 16px 5px rgba(92, 194, 255, 0.9); opacity: 0; }
+    #hk-frame { position: absolute; inset: -10px; border: 3px solid var(--pale); border-radius: 10px; opacity: 0; }
+    #hk-elev { position: absolute; left: 0; bottom: 0; width: 760px; height: 398px; }
+    #hk-elev img { width: 760px; height: 398px; display: block; }
+    #hk-pen { position: absolute; left: 0; top: 0; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #fff;
+      box-shadow: 0 0 0 6px rgba(92, 194, 255, 0.35), 0 0 22px 6px rgba(92, 194, 255, 0.8); }
+    #hk-tb { position: absolute; left: 124px; top: 1108px; display: flex; align-items: stretch; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 18px 44px rgba(3, 12, 40, 0.55); transform-origin: 0% 100%; }
+    #hk-tb-a { background: #fff; color: var(--navy); padding: 14px 24px 16px; display: flex; flex-direction: column; justify-content: center; }
+    #hk-tb-a span { font-size: 28px; letter-spacing: 0.1em; color: var(--blue); }
+    #hk-tb-a b { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 46px; line-height: 1; white-space: nowrap; }
+    #hk-tb-b { background: var(--blue); padding: 0 26px; display: flex; align-items: center; transform-origin: 0% 50%; }
+    #hk-tb-b b { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 40px; line-height: 1; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="g-hook" data-width="1080" data-height="1920">
+    <div id="hk-board">
+      <div id="hk-render"><img src="assets/footage/render.jpg" alt="" /><div id="hk-render-sl"></div></div>
+      <div id="hk-frame"></div>
+      <div id="hk-elev"><img src="assets/footage/elev_bp.png" alt="" /></div>
+      <div id="hk-pen"></div>
+    </div>
+    <div id="hk-eye" class="mono"><b></b>HARGA BOOKING</div>
+    <div id="hk-price" class="hd"><div id="hk-rm">RM</div><div id="hk-num">1,000</div></div>
+    <div id="hk-dim"><svg viewBox="0 0 460 30">
+      <line id="hk-dl" x1="0" y1="15" x2="460" y2="15" /><line x1="0" y1="2" x2="0" y2="28" /><line x1="460" y1="2" x2="460" y2="28" />
+      <line x1="-8" y1="23" x2="8" y2="7" /><line x1="452" y1="23" x2="468" y2="7" /></svg></div>
+    <div id="hk-je" class="hd"><div id="hk-je-mark"></div><div id="hk-je-t">JE?</div></div>
+    <div id="hk-c1" class="chip">
+      <div class="tx"><div class="lb"><svg class="ic" viewBox="0 0 48 48"><path d="M8 30l3-10a5 5 0 0 1 5-3.6h16a5 5 0 0 1 5 3.6l3 10M6 30h36v8H6zM12 38v4M36 38v4" /><circle cx="14" cy="34" r="1.6" /><circle cx="34" cy="34" r="1.6" /></svg><span class="mono">BUKAN</span></div><b>DEPOSIT KERETA</b></div>
+      <div id="hk-s1" class="strike"></div>
+      <div id="hk-x1" class="x"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg></div>
+    </div>
+    <div id="hk-c2" class="chip">
+      <div class="tx"><div class="lb"><svg class="ic" viewBox="0 0 48 48"><circle cx="16" cy="24" r="8" /><path d="M24 24h18M36 24v6M41 24v5" /></svg><span class="mono">BUKAN</span></div><b>SEWA RUMAH</b></div>
+      <div id="hk-s2" class="strike"></div>
+      <div id="hk-x2" class="x"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg></div>
+    </div>
+    <div id="hk-tb">
+      <div id="hk-tb-a"><span class="mono">INI BOOKING UNTUK</span><b>RUMAH LANDED</b></div>
+      <div id="hk-tb-b"><b>1 TINGKAT</b></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    /* CUES:BEGIN (generated by scripts/nenasmeru/build.py from the voiceover; do not edit by hand) */
+    // words: Seribu ringgit je? Bukan deposit kereta, bukan sewa rumah. Ini booking untuk rumah landed satu tingkat!
+    const W = [0.45, 0.669, 1.026, 1.492, 2.039, 2.473, 3.164, 3.548, 3.85, 4.341, 4.897, 5.265, 5.51, 5.896, 6.329, 6.571]; // word starts (s, local to this scene)
+    const E = [0.624, 0.925, 1.303, 1.982, 2.435, 3.114, 3.492, 3.793, 4.171, 4.85, 5.227, 5.454, 5.831, 6.284, 6.51, 7.114]; // word ends
+    const D = 7.114;
+    /* CUES:END */
+    // Frame 0 is the thumbnail: "HARGA BOOKING / RM1,000 JE?" on the blueprint, the house half drafted.
+    tl.set(["#hk-eye", "#hk-price", "#hk-je"], { opacity: 1 }, 0);
+    tl.fromTo("#hk-dl", { attr: { x2: 90 } }, { attr: { x2: 460 }, duration: 0.6, ease: "power2.out" }, 0);
+    // the elevation is drafted left to right while the hook is spoken; the pen dot rides the edge
+    const draft = { p: 0.5 };
+    const drawAt = () => {
+      const p = draft.p;
+      document.getElementById("hk-elev").style.clipPath = `inset(0px ${(1 - p) * 760}px 0px 0px)`;
+      const y = 81 + 398 * (0.5 + 0.42 * Math.sin(p * 31));
+      gsap.set("#hk-pen", { x: p * 760, y: y });
+    };
+    tl.fromTo(draft, { p: 0.5 }, { p: 1, duration: W[9] - 0.1, ease: "power1.inOut", onUpdate: drawAt, immediateRender: true }, 0);
+    tl.to("#hk-pen", { opacity: 0, scale: 0.4, duration: 0.2, ease: "power2.in" }, W[9] - 0.1);
+    // "Seribu ringgit je?" -> the number settles, the marker sweeps under JE?
+    tl.fromTo("#hk-num", { scale: 1 }, { scale: 1.05, duration: 0.12, ease: "power2.out", transformOrigin: "0% 60%" }, W[0] - 0.02);
+    tl.to("#hk-num", { scale: 1, duration: 0.35, ease: "back.out(2.2)" }, W[0] + 0.1);
+    // the blue marker is already under JE? on frame 0 (the thumbnail); on "je?" it sweeps again
+    tl.fromTo("#hk-je-mark", { scaleX: 1 }, { scaleX: 0.06, duration: 0.1, ease: "power2.in" }, W[2] - 0.16);
+    tl.to("#hk-je-mark", { scaleX: 1, duration: 0.3, ease: "power3.out" }, W[2] - 0.06);
+    tl.fromTo("#hk-je", { rotation: 0, scale: 1 }, { rotation: -4, scale: 1.08, duration: 0.14, ease: "power2.out" }, W[2] - 0.02);
+    tl.to("#hk-je", { scale: 1, duration: 0.3, ease: "back.out(2.4)" }, W[2] + 0.12);
+    // "Bukan deposit kereta, bukan sewa rumah." -> two chips, each struck through on its last word
+    const chip = (c, s, x, tIn, tStrike) => {
+      tl.fromTo(c, { opacity: 0, y: 30, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.42, ease: "expo.out" }, tIn);
+      tl.fromTo(s, { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.inOut" }, tStrike);
+      tl.fromTo(x, { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.38, ease: "back.out(2.6)" }, tStrike + 0.14);
+      tl.to(c + " .tx", { opacity: 0.55, duration: 0.2, ease: "none" }, tStrike + 0.1);
+    };
+    chip("#hk-c1", "#hk-s1", "#hk-x1", W[3] - 0.04, W[5] + 0.1);
+    chip("#hk-c2", "#hk-s2", "#hk-x2", W[6] - 0.04, W[8] + 0.1);
+    // "Ini booking untuk rumah landed satu tingkat!" -> the chips clear, the real render develops under the drawing
+    tl.to(["#hk-c1", "#hk-c2"], { opacity: 0, y: -24, duration: 0.22, ease: "power2.in", stagger: 0.05 }, W[9] - 0.12);
+    tl.set(["#hk-c1", "#hk-c2"], { visibility: "hidden" }, W[9] + 0.2);
+    tl.fromTo("#hk-render", { clipPath: "inset(0px 0px 479px 0px)" }, { clipPath: "inset(0px 0px 0px 0px)", duration: 0.6, ease: "power2.inOut" }, W[9]);
+    tl.fromTo("#hk-render-sl", { y: 0, opacity: 1 }, { y: 479, opacity: 1, duration: 0.6, ease: "power2.inOut" }, W[9]);
+    tl.set("#hk-render-sl", { opacity: 0 }, W[9] + 0.62);
+    tl.fromTo("#hk-frame", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" }, W[9] + 0.3);
+    tl.to("#hk-elev", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, W[9] + 0.5);
+    tl.fromTo("#hk-render img", { scale: 1.0 }, { scale: 1.06, duration: D - W[9], ease: "none", transformOrigin: "50% 60%" }, W[9]);
+    // title block lands on "landed", the blue tab on "satu tingkat"
+    tl.fromTo("#hk-tb", { opacity: 0, scale: 1.25, rotation: -3 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.24, ease: "power3.in" }, W[13] - 0.22);
+    tl.fromTo("#hk-tb-b", { scaleX: 0 }, { scaleX: 1, duration: 0.32, ease: "expo.out" }, W[14] - 0.02);
+    tl.fromTo("#hk-tb-b b", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.25, ease: "power3.out" }, W[14] + 0.06);
+    // clear out for the flash
+    const all = ["#hk-eye", "#hk-price", "#hk-dim", "#hk-je", "#hk-board", "#hk-tb"];
+    tl.to(all, { opacity: 0, duration: 0.16, ease: "power2.in" }, D - 0.2);
+    tl.set(all, { visibility: "hidden" }, D - 0.03);
+    window.__timelines["g-hook"] = tl;
+  </script>
+</template>

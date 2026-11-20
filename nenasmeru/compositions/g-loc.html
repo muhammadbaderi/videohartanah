@@ -1,0 +1,133 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
+      --bp: #0a2e84; --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; --pale: #b9e1ff; --line: rgba(185, 225, 255, 0.6); }
+    .mono { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    .hd { font-family: "Archivo Black", sans-serif; }
+    #lc-grid { position: absolute; inset: 0; opacity: 0.55;
+      background-image: linear-gradient(rgba(185, 225, 255, 0.16) 2px, transparent 2px), linear-gradient(90deg, rgba(185, 225, 255, 0.16) 2px, transparent 2px);
+      background-size: 180px 180px; background-position: 89px 59px; }
+    #lc-k { position: absolute; left: 120px; top: 300px; display: flex; align-items: center; gap: 14px; padding: 12px 26px 12px 18px; border-radius: 14px;
+      background: #fff; color: var(--navy); font-size: 36px; box-shadow: 0 14px 34px rgba(3, 12, 40, 0.45); white-space: nowrap; transform-origin: 0% 50%; }
+    #lc-k svg { width: 40px; height: 40px; fill: none; stroke: var(--blue); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    #lc-lines { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .ln { stroke: #fff; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 3 13; fill: none; }
+    .at { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+    .pulse { position: absolute; left: -64px; top: -64px; width: 128px; height: 128px; border-radius: 50%; border: 5px solid #fff; opacity: 0; }
+    #lc-pin { position: absolute; left: -50px; top: -124px; width: 100px; height: 126px; transform-origin: 50% 100%; }
+    #lc-site { position: absolute; right: 44px; top: -150px; padding: 12px 22px 14px; border-radius: 16px; background: #fff; color: var(--navy);
+      box-shadow: 0 16px 40px rgba(3, 12, 40, 0.5); white-space: nowrap; transform-origin: 100% 100%; text-align: right; }
+    #lc-site b { display: block; font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 40px; line-height: 1.05; }
+    #lc-site span { font-size: 28px; color: var(--blue); }
+    #lc-sra { position: absolute; right: 44px; top: 18px; display: flex; align-items: center; gap: 12px; padding: 8px 18px; border-radius: 12px;
+      background: var(--blue); border: 2px solid #fff; white-space: nowrap; transform-origin: 100% 0%; box-shadow: 0 12px 28px rgba(3, 12, 40, 0.45); }
+    #lc-sra b { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 30px; }
+    #lc-sra span { font-size: 28px; color: var(--ice); }
+    .dot { position: absolute; left: -24px; top: -24px; width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 4px solid var(--sky);
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 9px rgba(92, 194, 255, 0.28), 0 8px 18px rgba(3, 12, 40, 0.5); }
+    .dot svg { width: 28px; height: 28px; fill: none; stroke: var(--blue); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    #lc-hosp-lab { position: absolute; left: -40px; top: 34px; padding: 10px 20px 12px; border-radius: 16px; background: rgba(6, 22, 54, 0.92); border: 2px solid var(--line);
+      box-shadow: 0 12px 30px rgba(3, 12, 40, 0.5); white-space: nowrap; transform-origin: 0% 0%; }
+    #lc-hosp-lab b { display: block; font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 34px; line-height: 1.1; }
+    #lc-hosp-lab span { font-size: 28px; color: var(--sky); }
+    #lc-leg { position: absolute; left: 120px; top: 984px; width: 660px; padding: 10px 22px; border-radius: 18px; background: rgba(6, 22, 54, 0.9); border: 2px solid var(--line);
+      box-shadow: 0 16px 40px rgba(3, 12, 40, 0.5); }
+    .lg { display: flex; align-items: center; gap: 14px; height: 44px; font-size: 28px; white-space: nowrap; }
+    .lg svg { width: 30px; height: 30px; flex: none; fill: none; stroke: var(--sky); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .lg .nm { flex: 1; color: var(--ice); }
+    .lg .tm { color: var(--sky); }
+    #lc-credit { position: absolute; right: 130px; top: 1262px; padding: 4px 10px; border-radius: 8px; background: rgba(6, 22, 54, 0.7);
+      font-size: 18px; color: rgba(230, 242, 255, 0.85); white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="g-loc" data-width="1080" data-height="1920">
+    <div id="lc-grid"></div>
+    <svg id="lc-lines" viewBox="0 0 1080 1920" data-layout-allow-overflow><line id="lc-l-hosp" class="ln" x1="0" y1="0" x2="0" y2="0" /></svg>
+    <div id="lc-at-skm" class="at" data-layout-allow-overflow><div id="lc-skm-dot" class="dot">
+      <svg viewBox="0 0 24 24"><path d="M3 10l9-5 9 5-9 5zM7 12.5V17c3 2 7 2 10 0v-4.5" /></svg></div></div>
+    <div id="lc-at-bomba" class="at" data-layout-allow-overflow><div id="lc-bomba-dot" class="dot">
+      <svg viewBox="0 0 24 24"><path d="M12 3c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4 2-7 2 1 3 3 3 5 1-2 1-6 1-9z" /></svg></div></div>
+    <div id="lc-at-sm99" class="at" data-layout-allow-overflow><div id="lc-sm99-dot" class="dot">
+      <svg viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 8H7M9.5 20a1 1 0 1 0 0-.1M17.5 20a1 1 0 1 0 0-.1" /></svg></div></div>
+    <div id="lc-at-hosp" class="at" data-layout-allow-overflow>
+      <div id="lc-hosp-dot" class="dot"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg></div>
+      <div id="lc-hosp-lab"><b>Hospital Kapar</b><span class="mono">5 MIN · 2.8 KM</span></div>
+    </div>
+    <div id="lc-at-site" class="at" data-layout-allow-overflow>
+      <div id="lc-p1" class="pulse"></div><div id="lc-p2" class="pulse"></div>
+      <svg id="lc-pin" viewBox="0 0 100 126">
+        <path d="M50 124S6 76 6 46a44 44 0 0 1 88 0c0 30-44 78-44 78z" fill="#1d5cff" stroke="#ffffff" stroke-width="5" />
+        <circle cx="50" cy="46" r="26" fill="#ffffff" />
+        <path d="M37 50l13-11 13 11M41 47v12h18V47" fill="none" stroke="#1d5cff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div id="lc-site"><b>JALAN NENAS</b><span class="mono">MERU · KLANG</span></div>
+      <div id="lc-sra"><b>SRA Meru 2</b><span class="mono">1 MIN</span></div>
+    </div>
+    <div id="lc-k" class="hd"><svg viewBox="0 0 24 24"><path d="M12 21.5s-7-6.3-7-11.7a7 7 0 0 1 14 0c0 5.4-7 11.7-7 11.7z" /><circle cx="12" cy="9.8" r="2.6" /></svg>LOKASI STRATEGIK</div>
+    <div id="lc-leg" class="mono">
+      <div id="lc-g1" class="lg"><svg viewBox="0 0 24 24"><path d="M3 10l9-5 9 5-9 5zM7 12.5V17c3 2 7 2 10 0v-4.5" /></svg><span class="nm">SK Meru</span><span class="tm">2 MIN</span></div>
+      <div id="lc-g2" class="lg"><svg viewBox="0 0 24 24"><path d="M12 3c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4 2-7 2 1 3 3 3 5 1-2 1-6 1-9z" /></svg><span class="nm">Balai Bomba Meru</span><span class="tm">3 MIN</span></div>
+      <div id="lc-g3" class="lg"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 8H7M9.5 20a1 1 0 1 0 0-.1M17.5 20a1 1 0 1 0 0-.1" /></svg><span class="nm">99 Speedmart</span><span class="tm">4 MIN</span></div>
+    </div>
+    <div id="lc-credit" data-layout-ignore>Peta: Esri, HERE, Garmin, © OpenStreetMap</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    /* CUES:BEGIN (generated by scripts/nenasmeru/build.py from the voiceover; do not edit by hand) */
+    // words: Lokasi memang strategik! Lima minit ke Hospital Kapar, satu minit ke S R A Meru dua, dan dekat dengan pelbagai kemudahan.
+    const W = [0.12, 0.539, 0.954, 1.863, 2.143, 2.432, 2.532, 2.992, 3.735, 3.973, 4.344, 4.558, 4.746, 4.897, 5.029, 5.331, 5.728, 6.256, 6.59, 6.841, 7.445]; // word starts (s, local to this scene)
+    const E = [0.445, 0.897, 1.803, 2.105, 2.407, 2.482, 2.935, 3.69, 3.916, 4.294, 4.445, 4.671, 4.822, 4.973, 5.275, 5.577, 6.18, 6.558, 6.784, 7.388, 8.067]; // word ends
+    const D = 8.147;
+    /* CUES:END */
+    // ---- the map camera: same curve as scripts/nenasmeru/bake_map.cjs (map.json); the map video starts 0.15 s before this scene ----
+    const CAM = { zstart: 12.3, zend: 14.35, hold: 1.3, drift: 0.12, dur: 9.5, cx: 540, cy: 960, offset: 0.15 };
+    // pixel offsets from the frame centre at zoom zend (scripts/nenasmeru/map_coords.json)
+    const POI = { site: [110.8, -396.7], hosp: [-355.1, -106.1], skm: [10.9, -272.6], bomba: [105, -215.7], sm99: [295, -224.7] };
+    const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const zoomAt = (t) => t <= CAM.hold ? CAM.zstart + (CAM.zend - CAM.zstart) * ease(Math.max(0, t / CAM.hold))
+      : CAM.zend + CAM.drift * (t - CAM.hold) / (CAM.dur - CAM.hold);
+    const at = (id, t) => { const s = Math.pow(2, zoomAt(t + CAM.offset) - CAM.zend); return [CAM.cx + POI[id][0] * s, CAM.cy + POI[id][1] * s]; };
+    const LINE_AT = W[5] - 0.05;
+    const cam = { t: 0 };
+    const place = () => {
+      const t = cam.t;
+      const S = at("site", t);
+      gsap.set("#lc-at-site", { x: S[0], y: S[1] });
+      for (const id of ["hosp", "skm", "bomba", "sm99"]) { const P = at(id, t); gsap.set("#lc-at-" + id, { x: P[0], y: P[1] }); }
+      const H = at("hosp", t);
+      const x = Math.min(1, Math.max(0, (t - LINE_AT) / 0.5)), r = 1 - (1 - x) * (1 - x);
+      const ln = document.getElementById("lc-l-hosp");
+      ln.setAttribute("x1", S[0].toFixed(1)); ln.setAttribute("y1", S[1].toFixed(1));
+      ln.setAttribute("x2", (S[0] + (H[0] - S[0]) * r).toFixed(1)); ln.setAttribute("y2", (S[1] + (H[1] - S[1]) * r).toFixed(1));
+    };
+    tl.fromTo(cam, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate: place, immediateRender: true }, 0);
+    tl.fromTo("#lc-grid", { opacity: 0 }, { opacity: 0.55, duration: 0.4, ease: "none" }, 0);
+
+    // ---- "Lokasi memang strategik!" ----
+    tl.fromTo("#lc-k", { opacity: 0, scaleX: 0.3 }, { opacity: 1, scaleX: 1, duration: 0.4, ease: "expo.out" }, 0.2);
+    tl.fromTo("#lc-pin", { opacity: 0, y: -100, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "bounce.out" }, 0.25);
+    tl.fromTo("#lc-site", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.7);
+    tl.set(["#lc-p1", "#lc-p2"], { opacity: 0 }, 0);
+    [0.8, 2.1, 3.4, 4.7, 6.0].forEach((t) => {
+      tl.fromTo("#lc-p1", { scale: 0.35, opacity: 0.9 }, { scale: 2.3, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t);
+      tl.fromTo("#lc-p2", { scale: 0.35, opacity: 0.6 }, { scale: 2.3, opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t + 0.35);
+    });
+    // ---- "Lima minit ke Hospital Kapar" ----
+    tl.fromTo("#lc-hosp-dot", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, LINE_AT + 0.42);
+    tl.fromTo("#lc-hosp-lab", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(2)" }, W[6] + 0.2);
+    // ---- "satu minit ke SRA Meru 2" ----
+    tl.fromTo("#lc-sra", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(2.2)" }, W[11] - 0.04);
+    // ---- "dan dekat dengan pelbagai kemudahan" ----
+    ["#lc-skm-dot", "#lc-bomba-dot", "#lc-sm99-dot"].forEach((s, i) =>
+      tl.fromTo(s, { scale: 0 }, { scale: 1, duration: 0.36, ease: "back.out(3)" }, W[17] - 0.04 + i * 0.09));
+    tl.fromTo("#lc-leg", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, W[17] + 0.15);
+    ["#lc-g1", "#lc-g2", "#lc-g3"].forEach((s, i) =>
+      tl.fromTo(s, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.25, ease: "power3.out" }, W[17] + 0.22 + i * 0.07));
+    tl.fromTo("#lc-credit", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.3);
+
+    // out before the whip
+    const all = ["#lc-k", "#lc-lines", "#lc-at-hosp", "#lc-at-skm", "#lc-at-bomba", "#lc-at-sm99", "#lc-at-site", "#lc-leg", "#lc-credit", "#lc-grid"];
+    tl.to(all, { opacity: 0, duration: 0.16, ease: "power2.in" }, D - 0.22);
+    tl.set(all, { visibility: "hidden" }, D - 0.02);
+    window.__timelines["g-loc"] = tl;
+  </script>
+</template>

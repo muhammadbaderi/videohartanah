@@ -1,0 +1,166 @@
+{
+ "_doc": "Timeline rules for build.py. Lines start after the previous line's last word plus a gap; the first line starts at lead_in. Shots start at a scene start (at=0, or '0-0.3') or a word ('w7' = 0.05 s before word 7 of that scene's line, optional +/- offset) and run to the next shot. kind: img (photo, panned from x0/s0 to x1/s1), video, board (the blueprint grid). in: how the shot enters (cut, flash, scan, whip, shutter, punch).",
+ "fps": 30,
+ "tempo": 1.06,
+ "lead_in": 0.45,
+ "end_hold": 2.6,
+ "gaps": {
+  "default": 0.2,
+  "yes": 0.12,
+  "intro": 0.16,
+  "loc": 0.25,
+  "price": 0.25,
+  "cta": 0.45
+ },
+ "split": {
+  "cta": {
+   "after": 6,
+   "pause": 0.2
+  }
+ },
+ "shots": [
+  {
+   "id": "hook-bp",
+   "scene": "g-hook",
+   "at": 0,
+   "kind": "board",
+   "in": "cut"
+  },
+  {
+   "id": "luar",
+   "scene": "g-yes",
+   "at": 0,
+   "kind": "img",
+   "src": "assets/footage/luar.jpg",
+   "in": "flash",
+   "x0": -320,
+   "x1": -200,
+   "s0": 1.14,
+   "s1": 1.08,
+   "label": "FOTO SEBENAR \u00b7 LAMAN DEPAN"
+  },
+  {
+   "id": "luar2",
+   "scene": "g-intro",
+   "at": 0,
+   "kind": "img",
+   "src": "assets/footage/luar.jpg",
+   "in": "punch",
+   "x0": 60,
+   "x1": 150,
+   "s0": 1.0,
+   "s1": 1.04,
+   "label": "FOTO SEBENAR \u00b7 LAMAN DEPAN"
+  },
+  {
+   "id": "type-bp",
+   "scene": "g-type",
+   "at": 0,
+   "kind": "board",
+   "in": "scan"
+  },
+  {
+   "id": "map",
+   "scene": "g-loc",
+   "at": "0-0.15",
+   "kind": "video",
+   "src": "assets/footage/map.mp4",
+   "in": "cut"
+  },
+  {
+   "id": "tamu",
+   "scene": "g-tenure",
+   "at": 0,
+   "kind": "img",
+   "src": "assets/footage/tamu.jpg",
+   "in": "whip",
+   "x0": 40,
+   "x1": -40,
+   "s0": 1.0,
+   "s1": 1.06,
+   "label": "RUANG TAMU"
+  },
+  {
+   "id": "makan",
+   "scene": "g-pkg",
+   "at": 0,
+   "kind": "img",
+   "src": "assets/footage/makan.jpg",
+   "in": "whip",
+   "x0": 420,
+   "x1": 180,
+   "s0": 1.02,
+   "s1": 1.06,
+   "label": "RUANG MAKAN \u00b7 DAPUR"
+  },
+  {
+   "id": "price-bp",
+   "scene": "g-price",
+   "at": 0,
+   "kind": "board",
+   "in": "scan"
+  },
+  {
+   "id": "m-bilik",
+   "scene": "g-cta",
+   "at": 0,
+   "kind": "img",
+   "src": "assets/footage/bilik.jpg",
+   "in": "shutter",
+   "x0": 80,
+   "x1": 20,
+   "s0": 1.08,
+   "s1": 1.0,
+   "label": "BILIK TIDUR"
+  },
+  {
+   "id": "m-dapur",
+   "scene": "g-cta",
+   "at": "w2",
+   "kind": "img",
+   "src": "assets/footage/dapur.jpg",
+   "in": "shutter",
+   "x0": -260,
+   "x1": -320,
+   "s0": 1.08,
+   "s1": 1.0,
+   "label": "DAPUR"
+  },
+  {
+   "id": "m-koridor",
+   "scene": "g-cta",
+   "at": "w4",
+   "kind": "img",
+   "src": "assets/footage/koridor.jpg",
+   "in": "shutter",
+   "x0": 0,
+   "x1": -40,
+   "s0": 1.08,
+   "s1": 1.0,
+   "label": "RUANG MAKAN"
+  },
+  {
+   "id": "m-tamu",
+   "scene": "g-cta",
+   "at": "w6",
+   "kind": "img",
+   "src": "assets/footage/tamu.jpg",
+   "in": "shutter",
+   "x0": -60,
+   "x1": -60,
+   "s0": 1.0,
+   "s1": 1.12,
+   "label": "RUANG TAMU",
+   "until": "cta_b+0.6"
+  }
+ ],
+ "music": {
+  "src": "assets/audio/music-bed.mp3",
+  "end_at": 60.3,
+  "bar0": 0.035,
+  "bar": 2.0,
+  "base": 0.13,
+  "lift": 0.3,
+  "end": 0.42
+ }
+}

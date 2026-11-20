@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Teres &amp; Semi-D 1 Tingkat, Jalan Nenas Meru</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0a2e84; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      .bp { background-color: #0a2e84; background-image: linear-gradient(rgba(185, 225, 255, 0.17) 2px, transparent 2px), linear-gradient(90deg, rgba(185, 225, 255, 0.17) 2px, transparent 2px), linear-gradient(rgba(185, 225, 255, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(185, 225, 255, 0.07) 1px, transparent 1px); background-size: 180px 180px, 180px 180px, 36px 36px, 36px 36px; background-position: 89px 59px, 89px 59px, 17px 23px, 17px 23px; }
+      #ground { position: absolute; inset: 0; }
+      #cam { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+      .shot { position: absolute; inset: 0; overflow: hidden; }
+      .rv { position: absolute; inset: 0; overflow: hidden; }
+      .mv { position: absolute; inset: 0; transform-origin: 50% 50%; }
+      .mv img { position: absolute; left: -740px; top: 0; width: 2560px; height: 1920px; }
+      .mv video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .board { position: absolute; inset: 0; }
+      .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6, 22, 54, 0.55) 0%, rgba(6, 22, 54, 0.05) 26%, rgba(6, 22, 54, 0.05) 52%, rgba(6, 22, 54, 0.62) 100%); }
+      .tag { position: absolute; left: 120px; top: 292px; display: flex; align-items: center; gap: 12px; padding: 8px 16px 8px 12px;
+        background: rgba(6, 22, 54, 0.72); border: 2px solid rgba(185, 225, 255, 0.55); border-radius: 10px;
+        font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 28px; letter-spacing: 0.06em; color: #e6f2ff; white-space: nowrap; }
+      .tag i { display: block; width: 14px; height: 14px; border-radius: 50%; background: #5cc2ff; box-shadow: 0 0 0 5px rgba(92, 194, 255, 0.25); }
+      #vig { position: absolute; inset: 0; z-index: 2; pointer-events: none;
+        background: radial-gradient(ellipse 80% 62% at 50% 46%, rgba(4, 16, 52, 0) 55%, rgba(4, 16, 52, 0.5) 100%); }
+      #scan { position: absolute; left: 0; top: 0; width: 1080px; height: 0; z-index: 29; opacity: 0; }
+      #scan-line { position: absolute; left: 0; top: -3px; width: 1080px; height: 6px; background: #e6f2ff;
+        box-shadow: 0 0 18px 6px rgba(92, 194, 255, 0.9), 0 0 60px 20px rgba(29, 92, 255, 0.55); }
+      #scan-band { position: absolute; left: 0; top: -150px; width: 1080px; height: 150px;
+        background: linear-gradient(180deg, rgba(92, 194, 255, 0) 0%, rgba(92, 194, 255, 0.22) 100%); }
+      #flash { position: absolute; inset: 0; z-index: 30; background: #f2f8ff; opacity: 0; pointer-events: none; }
+      #deco { position: absolute; inset: 0; z-index: 25; pointer-events: none; }
+      .cm { position: absolute; width: 54px; height: 54px; border-color: rgba(230, 242, 255, 0.75); border-style: solid; border-width: 0; }
+      .cm.tl { left: 56px; top: 176px; border-left-width: 4px; border-top-width: 4px; }
+      .cm.tr { right: 56px; top: 176px; border-right-width: 4px; border-top-width: 4px; }
+      .cm.bl { left: 56px; bottom: 176px; border-left-width: 4px; border-bottom-width: 4px; }
+      .cm.br { right: 56px; bottom: 176px; border-right-width: 4px; border-bottom-width: 4px; }
+      #coord { position: absolute; left: 124px; bottom: 182px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 20px;
+        letter-spacing: 0.08em; color: rgba(230, 242, 255, 0.7); white-space: nowrap; }
+      .scene { position: absolute; inset: 0; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="50.86" data-width="1080" data-height="1920" data-motion-blur="on">
+      <div id="ground" class="bp"></div>
+
+      <!-- PICTURE: the developer's render, real site photos, the blueprint board and the baked map; each shot enters its own way -->
+      <div id="cam">
+        <div id="sh-hook-bp" class="clip shot" data-start="0" data-duration="7.114" data-track-index="1" style="z-index: 1"><div id="rv-hook-bp" class="rv"><div class="board bp"></div></div></div>
+        <div id="sh-luar" class="clip shot" data-start="7.114" data-duration="1.74" data-track-index="1" style="z-index: 2"><div id="rv-luar" class="rv"><div id="mv-luar" class="mv"><img src="assets/footage/luar.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>FOTO SEBENAR · LAMAN DEPAN</div></div></div>
+        <div id="sh-luar2" class="clip shot" data-start="8.854" data-duration="3.8" data-track-index="1" style="z-index: 3"><div id="rv-luar2" class="rv"><div id="mv-luar2" class="mv"><img src="assets/footage/luar.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>FOTO SEBENAR · LAMAN DEPAN</div></div></div>
+        <div id="sh-type-bp" class="clip shot" data-start="12.174" data-duration="5.852" data-track-index="1" style="z-index: 4"><div id="rv-type-bp" class="rv"><div class="board bp"></div></div></div>
+        <div id="sh-map" class="shot" style="z-index: 5"><div id="rv-map" class="rv"><div id="mv-map" class="mv"><video id="v-map" class="clip" src="assets/footage/map.mp4" muted playsinline data-start="18.026" data-duration="8.437" data-media-start="0" data-track-index="1"></video></div></div></div>
+        <div id="sh-tamu" class="clip shot" data-start="26.203" data-duration="3.555" data-track-index="1" style="z-index: 6"><div id="rv-tamu" class="rv"><div id="mv-tamu" class="mv"><img src="assets/footage/tamu.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>RUANG TAMU</div></div></div>
+        <div id="sh-makan" class="clip shot" data-start="29.498" data-duration="4.003" data-track-index="1" style="z-index: 7"><div id="rv-makan" class="rv"><div id="mv-makan" class="mv"><img src="assets/footage/makan.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>RUANG MAKAN · DAPUR</div></div></div>
+        <div id="sh-price-bp" class="clip shot" data-start="33.021" data-duration="8.184" data-track-index="1" style="z-index: 8"><div id="rv-price-bp" class="rv"><div class="board bp"></div></div></div>
+        <div id="sh-m-bilik" class="clip shot" data-start="41.205" data-duration="0.44" data-track-index="1" style="z-index: 9"><div id="rv-m-bilik" class="rv"><div id="mv-m-bilik" class="mv"><img src="assets/footage/bilik.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>BILIK TIDUR</div></div></div>
+        <div id="sh-m-dapur" class="clip shot" data-start="41.645" data-duration="0.428" data-track-index="1" style="z-index: 10"><div id="rv-m-dapur" class="rv"><div id="mv-m-dapur" class="mv"><img src="assets/footage/dapur.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>DAPUR</div></div></div>
+        <div id="sh-m-koridor" class="clip shot" data-start="42.073" data-duration="0.471" data-track-index="1" style="z-index: 11"><div id="rv-m-koridor" class="rv"><div id="mv-m-koridor" class="mv"><img src="assets/footage/koridor.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>RUANG MAKAN</div></div></div>
+        <div id="sh-m-tamu" class="clip shot" data-start="42.544" data-duration="1.394" data-track-index="1" style="z-index: 12"><div id="rv-m-tamu" class="rv"><div id="mv-m-tamu" class="mv"><img src="assets/footage/tamu.jpg" alt="" /></div><div class="scrim"></div><div class="tag"><i></i>RUANG TAMU</div></div></div>
+      </div>
+      <div id="vig"></div>
+      <div id="scan"><div id="scan-band"></div><div id="scan-line"></div></div>
+      <div id="flash"></div>
+      <div id="deco" data-layout-ignore><div class="cm tl"></div><div class="cm tr"></div><div class="cm bl"></div><div class="cm br"></div><div id="coord">3.1416°N · 101.4117°E · JALAN NENAS, MERU</div></div>
+
+      <!-- VOICE: the owner's cloned voice "Mad Bi" (ElevenLabs eleven_v3), tempo 1.06, -16 LUFS -->
+      <audio id="vo-hook" class="clip" src="assets/audio/vo-hook.wav" data-start="0.322" data-duration="6.52" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-yes" class="clip" src="assets/audio/vo-yes.wav" data-start="6.852" data-duration="1.905" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-intro" class="clip" src="assets/audio/vo-intro.wav" data-start="8.767" data-duration="3.533" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-type" class="clip" src="assets/audio/vo-type.wav" data-start="12.31" data-duration="5.75" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-loc" class="clip" src="assets/audio/vo-loc.wav" data-start="18.168" data-duration="8.039" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-tenure" class="clip" src="assets/audio/vo-tenure.wav" data-start="26.217" data-duration="3.262" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-pkg" class="clip" src="assets/audio/vo-pkg.wav" data-start="29.488" data-duration="3.603" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-price" class="clip" src="assets/audio/vo-price.wav" data-start="33.102" data-duration="7.778" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-cta-a" class="clip" src="assets/audio/vo-cta.wav" data-start="41.261" data-duration="2.231" data-media-start="0" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+      <audio id="vo-cta-b" class="clip" src="assets/audio/vo-cta.wav" data-start="43.692" data-duration="4.571" data-media-start="2.077" data-volume="1" data-fade-in="0.01" data-fade-out="0.03" data-track-index="2"></audio>
+
+      <!-- MUSIC: made for this video with ElevenLabs Music (120 BPM); its ring-out ends with the film -->
+      <audio id="music" class="clip" src="assets/audio/music-bed.mp3" data-start="0" data-duration="50.86" data-media-start="9.285" data-volume="1" data-fade-in="0.05" data-fade-out="1.0" data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.3},{&quot;t&quot;:0.37,&quot;v&quot;:0.3},{&quot;t&quot;:0.57,&quot;v&quot;:0.13},{&quot;t&quot;:48.26,&quot;v&quot;:0.13},{&quot;t&quot;:48.66,&quot;v&quot;:0.42}]}]}" data-track-index="5"></audio>
+
+      <!-- SOUND EFFECTS: each lands one frame after the thing it belongs to -->
+      <audio id="sfx-01" class="clip" src="assets/sfx/pen-draw.mp3" data-start="0.033" data-duration="1.2" data-volume="0.32" data-track-index="3"></audio><!-- blueprint lines start drafting (intro) -->
+      <audio id="sfx-02" class="clip" src="assets/sfx/pop.mp3" data-start="0.969" data-duration="0.72" data-volume="0.45" data-track-index="4"></audio><!-- marker sweeps under JE? -->
+      <audio id="sfx-03" class="clip" src="assets/sfx/click-soft.mp3" data-start="1.52" data-duration="0.366" data-volume="0.55" data-track-index="3"></audio><!-- chip: deposit kereta -->
+      <audio id="sfx-04" class="clip" src="assets/sfx/tick.mp3" data-start="2.606" data-duration="0.48" data-volume="0.5" data-track-index="3"></audio><!-- strike through deposit kereta -->
+      <audio id="sfx-05" class="clip" src="assets/sfx/click-soft.mp3" data-start="3.192" data-duration="0.366" data-volume="0.55" data-track-index="3"></audio><!-- chip: sewa rumah -->
+      <audio id="sfx-06" class="clip" src="assets/sfx/tick.mp3" data-start="3.983" data-duration="0.48" data-volume="0.5" data-track-index="3"></audio><!-- strike through sewa rumah -->
+      <audio id="sfx-07" class="clip" src="assets/sfx/scan.mp3" data-start="4.324" data-duration="0.6" data-volume="0.45" data-track-index="4"></audio><!-- render develops over the drawing -->
+      <audio id="sfx-08" class="clip" src="assets/sfx/stamp.mp3" data-start="5.943" data-duration="0.8" data-volume="0.42" data-track-index="3"></audio><!-- title block: RUMAH LANDED -->
+      <audio id="sfx-09" class="clip" src="assets/sfx/pop.mp3" data-start="6.312" data-duration="0.72" data-volume="0.45" data-track-index="4"></audio><!-- 1 TINGKAT -->
+      <audio id="sfx-10" class="clip" src="assets/sfx/whoosh.mp3" data-start="6.987" data-duration="0.575" data-volume="0.3" data-track-index="3"></audio><!-- flash into luar -->
+      <audio id="sfx-11" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="7.242" data-duration="2.116" data-volume="0.13" data-track-index="4"></audio><!-- YES slams in -->
+      <audio id="sfx-12" class="clip" src="assets/sfx/pop.mp3" data-start="8.287" data-duration="0.72" data-volume="0.45" data-track-index="3"></audio><!-- DENGAR + sound rings -->
+      <audio id="sfx-13" class="clip" src="assets/sfx/click-soft.mp3" data-start="9.399" data-duration="0.366" data-volume="0.55" data-track-index="3"></audio><!-- title block card -->
+      <audio id="sfx-14" class="clip" src="assets/sfx/keys.mp3" data-start="9.584" data-duration="0.777" data-volume="0.3" data-track-index="4"></audio><!-- row PROJEK types in -->
+      <audio id="sfx-15" class="clip" src="assets/sfx/stamp.mp3" data-start="10.381" data-duration="0.8" data-volume="0.35" data-track-index="3"></audio><!-- BAHARU stamp -->
+      <audio id="sfx-16" class="clip" src="assets/sfx/keys.mp3" data-start="10.913" data-duration="0.777" data-volume="0.3" data-track-index="4"></audio><!-- row LOKASI types in -->
+      <audio id="sfx-17" class="clip" src="assets/sfx/pop.mp3" data-start="10.853" data-duration="0.72" data-volume="0.4" data-track-index="8"></audio><!-- pin icon -->
+      <audio id="sfx-18" class="clip" src="assets/sfx/scan.mp3" data-start="12.247" data-duration="0.6" data-volume="0.45" data-track-index="3"></audio><!-- scan into type-bp -->
+      <audio id="sfx-19" class="clip" src="assets/sfx/pop.mp3" data-start="13.348" data-duration="0.72" data-volume="0.45" data-track-index="3"></audio><!-- card TERES -->
+      <audio id="sfx-20" class="clip" src="assets/sfx/click-soft.mp3" data-start="13.979" data-duration="0.366" data-volume="0.6" data-track-index="4"></audio><!-- card SEMI-D -->
+      <audio id="sfx-21" class="clip" src="assets/sfx/pen-draw.mp3" data-start="14.997" data-duration="1.2" data-volume="0.3" data-track-index="3"></audio><!-- floor plan drafts in -->
+      <audio id="sfx-22" class="clip" src="assets/sfx/pop.mp3" data-start="15.886" data-duration="0.72" data-volume="0.45" data-track-index="4"></audio><!-- bedrooms light up 1-4 -->
+      <audio id="sfx-23" class="clip" src="assets/sfx/click-soft.mp3" data-start="16.526" data-duration="0.366" data-volume="0.6" data-track-index="3"></audio><!-- counter 4 BILIK TIDUR -->
+      <audio id="sfx-24" class="clip" src="assets/sfx/pop.mp3" data-start="17.169" data-duration="0.72" data-volume="0.45" data-track-index="3"></audio><!-- bathrooms light up -->
+      <audio id="sfx-25" class="clip" src="assets/sfx/click-soft.mp3" data-start="17.752" data-duration="0.366" data-volume="0.6" data-track-index="4"></audio><!-- counter 2 BILIK AIR -->
+      <audio id="sfx-26" class="clip" src="assets/sfx/whoosh.mp3" data-start="17.849" data-duration="0.575" data-volume="0.3" data-track-index="8"></audio><!-- plan zooms through into the map -->
+      <audio id="sfx-27" class="clip" src="assets/sfx/click-soft.mp3" data-start="18.414" data-duration="0.366" data-volume="0.5" data-track-index="3"></audio><!-- header LOKASI STRATEGIK -->
+      <audio id="sfx-28" class="clip" src="assets/sfx/pop.mp3" data-start="18.649" data-duration="0.72" data-volume="0.5" data-track-index="4"></audio><!-- site pin lands -->
+      <audio id="sfx-29" class="clip" src="assets/sfx/click-soft.mp3" data-start="20.946" data-duration="0.366" data-volume="0.55" data-track-index="3"></audio><!-- line + label Hospital Kapar -->
+      <audio id="sfx-30" class="clip" src="assets/sfx/pop.mp3" data-start="22.707" data-duration="0.72" data-volume="0.45" data-track-index="3"></audio><!-- label SRA Meru 2 -->
+      <audio id="sfx-31" class="clip" src="assets/sfx/click-soft.mp3" data-start="24.47" data-duration="0.366" data-volume="0.55" data-track-index="3"></audio><!-- facility dots -->
+      <audio id="sfx-32" class="clip" src="assets/sfx/pop.mp3" data-start="24.655" data-duration="0.72" data-volume="0.4" data-track-index="4"></audio><!-- legend chips -->
+      <audio id="sfx-33" class="clip" src="assets/sfx/whip.mp3" data-start="26.256" data-duration="0.48" data-volume="0.42" data-track-index="3"></audio><!-- whip into tamu -->
+      <audio id="sfx-34" class="clip" src="assets/sfx/click-soft.mp3" data-start="26.451" data-duration="0.366" data-volume="0.5" data-track-index="4"></audio><!-- PALING MENARIK -->
+      <audio id="sfx-35" class="clip" src="assets/sfx/stamp.mp3" data-start="27.868" data-duration="0.8" data-volume="0.75" data-track-index="3"></audio><!-- FREEHOLD stamp -->
+      <audio id="sfx-36" class="clip" src="assets/sfx/stamp.mp3" data-start="28.683" data-duration="0.8" data-volume="0.55" data-track-index="3"></audio><!-- RIZAB MELAYU stamp -->
+      <audio id="sfx-37" class="clip" src="assets/sfx/whoosh.mp3" data-start="29.551" data-duration="0.575" data-volume="0.3" data-track-index="3"></audio><!-- whip into makan -->
+      <audio id="sfx-38" class="clip" src="assets/sfx/click-soft.mp3" data-start="29.576" data-duration="0.366" data-volume="0.5" data-track-index="4"></audio><!-- DIJANGKA SIAP Q3 2027 -->
+      <audio id="sfx-39" class="clip" src="assets/sfx/pop.mp3" data-start="29.661" data-duration="0.72" data-volume="0.42" data-track-index="8"></audio><!-- package card -->
+      <audio id="sfx-40" class="clip" src="assets/sfx/tick.mp3" data-start="30.108" data-duration="0.48" data-volume="0.55" data-track-index="4"></audio><!-- tick: booking RM1,000 -->
+      <audio id="sfx-41" class="clip" src="assets/sfx/tick.mp3" data-start="30.855" data-duration="0.48" data-volume="0.55" data-track-index="3"></audio><!-- tick: free SPA legal fee -->
+      <audio id="sfx-42" class="clip" src="assets/sfx/tick.mp3" data-start="32.168" data-duration="0.48" data-volume="0.55" data-track-index="3"></audio><!-- tick: free MOT fee -->
+      <audio id="sfx-43" class="clip" src="assets/sfx/scan.mp3" data-start="33.094" data-duration="0.6" data-volume="0.45" data-track-index="3"></audio><!-- scan into price-bp -->
+      <audio id="sfx-44" class="clip" src="assets/sfx/click-soft.mp3" data-start="33.369" data-duration="0.366" data-volume="0.55" data-track-index="4"></audio><!-- row TERES -->
+      <audio id="sfx-45" class="clip" src="assets/sfx/pen-draw.mp3" data-start="33.474" data-duration="1.2" data-volume="0.22" data-track-index="8"></audio><!-- render frame drafts in -->
+      <audio id="sfx-46" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="36.103" data-duration="2.116" data-volume="0.16" data-track-index="3"></audio><!-- RM441,720 lands (the payoff) -->
+      <audio id="sfx-47" class="clip" src="assets/sfx/riser.mp3" data-start="34.828" data-duration="1.36" data-volume="0.4" data-track-index="4"></audio><!-- riser into the first price -->
+      <audio id="sfx-48" class="clip" src="assets/sfx/click-soft.mp3" data-start="36.996" data-duration="0.366" data-volume="0.55" data-track-index="4"></audio><!-- row SEMI-D -->
+      <audio id="sfx-49" class="clip" src="assets/sfx/pop.mp3" data-start="39.656" data-duration="0.72" data-volume="0.5" data-track-index="3"></audio><!-- RM516,420 lands -->
+      <audio id="sfx-50" class="clip" src="assets/sfx/sparkle.mp3" data-start="39.816" data-duration="1.8" data-volume="0.12" data-track-index="4"></audio><!-- price glint -->
+      <audio id="sfx-51" class="clip" src="assets/sfx/shutter.mp3" data-start="41.238" data-duration="0.48" data-volume="0.5" data-track-index="3"></audio><!-- shutter into m-bilik -->
+      <audio id="sfx-52" class="clip" src="assets/sfx/shutter.mp3" data-start="41.678" data-duration="0.48" data-volume="0.5" data-track-index="4"></audio><!-- shutter into m-dapur -->
+      <audio id="sfx-53" class="clip" src="assets/sfx/shutter.mp3" data-start="42.106" data-duration="0.48" data-volume="0.5" data-track-index="3"></audio><!-- shutter into m-koridor -->
+      <audio id="sfx-54" class="clip" src="assets/sfx/click-soft.mp3" data-start="42.363" data-duration="0.366" data-volume="0.5" data-track-index="4"></audio><!-- LEBIH DEKAT? focus brackets -->
+      <audio id="sfx-55" class="clip" src="assets/sfx/shutter.mp3" data-start="42.577" data-duration="0.48" data-volume="0.5" data-track-index="8"></audio><!-- shutter into m-tamu -->
+      <audio id="sfx-56" class="clip" src="assets/sfx/whoosh.mp3" data-start="43.292" data-duration="0.575" data-volume="0.28" data-track-index="3"></audio><!-- iris opens onto the end card -->
+      <audio id="sfx-57" class="clip" src="assets/sfx/pop.mp3" data-start="43.382" data-duration="0.72" data-volume="0.45" data-track-index="4"></audio><!-- avatar ring -->
+      <audio id="sfx-58" class="clip" src="assets/sfx/pop.mp3" data-start="43.481" data-duration="0.72" data-volume="0.5" data-track-index="8"></audio><!-- WhatsApp button -->
+      <audio id="sfx-59" class="clip" src="assets/sfx/keys.mp3" data-start="43.791" data-duration="0.777" data-volume="0.3" data-track-index="9"></audio><!-- phone number types in -->
+      <audio id="sfx-60" class="clip" src="assets/sfx/click-soft.mp3" data-start="45.095" data-duration="0.366" data-volume="0.55" data-track-index="3"></audio><!-- project block -->
+      <audio id="sfx-61" class="clip" src="assets/sfx/pop.mp3" data-start="45.814" data-duration="0.72" data-volume="0.4" data-track-index="3"></audio><!-- pills -->
+      <audio id="sfx-62" class="clip" src="assets/sfx/pen-draw.mp3" data-start="48.539" data-duration="1.2" data-volume="0.25" data-track-index="3"></audio><!-- outro: house outline drafts -->
+      <audio id="sfx-63" class="clip" src="assets/sfx/sparkle.mp3" data-start="48.989" data-duration="1.8" data-volume="0.14" data-track-index="4"></audio><!-- outro: glint on the WhatsApp button -->
+
+      <!-- MOTION GRAPHICS: one scene per line of the voiceover -->
+      <div id="g-hook" class="scene" data-composition-id="g-hook" data-composition-src="compositions/g-hook.html" data-start="0" data-duration="7.114" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-yes" class="scene" data-composition-id="g-yes" data-composition-src="compositions/g-yes.html" data-start="7.114" data-duration="1.74" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-intro" class="scene" data-composition-id="g-intro" data-composition-src="compositions/g-intro.html" data-start="8.854" data-duration="3.54" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-type" class="scene" data-composition-id="g-type" data-composition-src="compositions/g-type.html" data-start="12.394" data-duration="5.782" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-loc" class="scene" data-composition-id="g-loc" data-composition-src="compositions/g-loc.html" data-start="18.176" data-duration="8.147" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-tenure" class="scene" data-composition-id="g-tenure" data-composition-src="compositions/g-tenure.html" data-start="26.323" data-duration="3.295" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-pkg" class="scene" data-composition-id="g-pkg" data-composition-src="compositions/g-pkg.html" data-start="29.618" data-duration="3.623" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-price" class="scene" data-composition-id="g-price" data-composition-src="compositions/g-price.html" data-start="33.241" data-duration="7.964" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="g-cta" class="scene" data-composition-id="g-cta" data-composition-src="compositions/g-cta.html" data-start="41.205" data-duration="9.655" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 10"></div>
+      <div id="captions" class="scene" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="8.914" data-duration="39.532" data-track-index="9" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 20"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      // resting states for the overlays that several transitions share
+      tl.set("#flash", { opacity: 0 }, 0);
+      tl.set("#scan", { opacity: 0 }, 0);
+      // each photo pans slowly across the room (the photos are 4:3; the frame is 9:16)
+      tl.fromTo("#mv-luar", { x: -320, scale: 1.14 }, { x: -200, scale: 1.08, duration: 1.74, ease: "sine.inOut", immediateRender: false }, 7.114);
+      tl.fromTo("#mv-luar2", { x: 60, scale: 1.0 }, { x: 150, scale: 1.04, duration: 3.8, ease: "sine.inOut", immediateRender: false }, 8.854);
+      tl.fromTo("#mv-tamu", { x: 40, scale: 1.0 }, { x: -40, scale: 1.06, duration: 3.555, ease: "sine.inOut", immediateRender: false }, 26.203);
+      tl.fromTo("#mv-makan", { x: 420, scale: 1.02 }, { x: 180, scale: 1.06, duration: 4.003, ease: "sine.inOut", immediateRender: false }, 29.498);
+      tl.fromTo("#mv-m-bilik", { x: 80, scale: 1.08 }, { x: 20, scale: 1.0, duration: 0.44, ease: "sine.inOut", immediateRender: false }, 41.205);
+      tl.fromTo("#mv-m-dapur", { x: -260, scale: 1.08 }, { x: -320, scale: 1.0, duration: 0.428, ease: "sine.inOut", immediateRender: false }, 41.645);
+      tl.fromTo("#mv-m-koridor", { x: 0, scale: 1.08 }, { x: -40, scale: 1.0, duration: 0.471, ease: "sine.inOut", immediateRender: false }, 42.073);
+      tl.fromTo("#mv-m-tamu", { x: -60, scale: 1.0 }, { x: -60, scale: 1.12, duration: 1.394, ease: "sine.inOut", immediateRender: false }, 42.544);
+      // transitions: flash (a hit), scan (the blueprint scanner line), whip (a fast pan), shutter (a camera click), punch (a hard cut closer)
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.92, duration: 0.05, ease: "none", immediateRender: false }, 7.064);
+      tl.to("#flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 7.114);
+      tl.fromTo("#rv-type-bp", { clipPath: "inset(0px 0px 1920px 0px)" }, { clipPath: "inset(0px 0px 0px 0px)", duration: 0.46, ease: "power2.inOut", immediateRender: false }, 12.174);
+      tl.fromTo("#scan", { y: 0, opacity: 1 }, { y: 1920, opacity: 1, duration: 0.46, ease: "power2.inOut", immediateRender: false }, 12.174);
+      tl.set("#scan", { opacity: 0 }, 12.644);
+      tl.fromTo("#rv-map", { x: 0 }, { x: -1180, duration: 0.24, ease: "power3.in", immediateRender: false }, 26.203);
+      tl.fromTo("#rv-tamu", { x: 1180 }, { x: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 26.283);
+      tl.fromTo("#rv-tamu", { x: 0 }, { x: -1180, duration: 0.24, ease: "power3.in", immediateRender: false }, 29.498);
+      tl.fromTo("#rv-makan", { x: 1180 }, { x: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 29.578);
+      tl.fromTo("#rv-price-bp", { clipPath: "inset(0px 0px 1920px 0px)" }, { clipPath: "inset(0px 0px 0px 0px)", duration: 0.46, ease: "power2.inOut", immediateRender: false }, 33.021);
+      tl.fromTo("#scan", { y: 0, opacity: 1 }, { y: 1920, opacity: 1, duration: 0.46, ease: "power2.inOut", immediateRender: false }, 33.021);
+      tl.set("#scan", { opacity: 0 }, 33.491);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.033, ease: "none", immediateRender: false }, 41.172);
+      tl.to("#flash", { opacity: 0, duration: 0.14, ease: "power2.out" }, 41.205);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.033, ease: "none", immediateRender: false }, 41.612);
+      tl.to("#flash", { opacity: 0, duration: 0.14, ease: "power2.out" }, 41.645);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.033, ease: "none", immediateRender: false }, 42.04);
+      tl.to("#flash", { opacity: 0, duration: 0.14, ease: "power2.out" }, 42.073);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.033, ease: "none", immediateRender: false }, 42.511);
+      tl.to("#flash", { opacity: 0, duration: 0.14, ease: "power2.out" }, 42.544);
+      tl.set({}, {}, 50.86);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

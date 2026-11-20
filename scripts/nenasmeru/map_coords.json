@@ -1,0 +1,39 @@
+{
+ "zend": 14.35,
+ "center_px": [
+  540,
+  960
+ ],
+ "pois": [
+  {
+   "id": "site",
+   "name": "Jalan Nenas, Meru",
+   "dx": 110.8,
+   "dy": -396.7
+  },
+  {
+   "id": "hosp",
+   "name": "Hospital Kapar",
+   "dx": -355.1,
+   "dy": -106.1
+  },
+  {
+   "id": "skm",
+   "name": "SK Meru",
+   "dx": 10.9,
+   "dy": -272.6
+  },
+  {
+   "id": "bomba",
+   "name": "Balai Bomba dan Penyelamat (Jalan Meru Setia 9)",
+   "dx": 105,
+   "dy": -215.7
+  },
+  {
+   "id": "sm99",
+   "name": "99 Speedmart Taman Meru Indah",
+   "dx": 295,
+   "dy": -224.7
+  }
+ ]
+}

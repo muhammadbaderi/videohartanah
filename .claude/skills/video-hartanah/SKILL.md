@@ -16,6 +16,13 @@ repo and are the templates:
 | Extras | hook moved to the front, lot size card | GPS map animation, price count-up, package ticks, post caption |
 | How | `references/own-voice-edit.md` | this file + `voice.md`, `map.md`, `look.md` |
 
+A third template, `nenasmeru/` (Teres & Semi-D, Jalan Nenas, Meru), is **photos only** (no clip): the developer's render,
+elevation and floor plan plus site photos, a "blueprint" look (drafting grid, the developer's drawings inverted to white-on-blue,
+JetBrains Mono annotations, Archivo Black), music and 8 sound effects generated with ElevenLabs, and the owner's own script read
+as-is. Use it when the owner sends pictures and a script instead of a video, or asks for something that doesn't look like other
+agents' reels. Its `build.py` adds photo shots (`kind: img` panned with x0/x1, s0/s1), board shots and per-shot transitions
+(`in`: flash, punch, scan, whip, shutter), a `lead_in`, and `process_vo.py` (re-process chosen takes with a tempo, no Whisper).
+
 Read the HyperFrames skill (`/hyperframes`, and `/media-use` for audio) for the framework contract; this skill is
 the house style and the order of work. Default to the Rafflesia 6 way (scripted, Mad Bi, blue, map) unless the
 owner asks for their recorded voice or sends no listing.
@@ -101,3 +108,13 @@ from the listing or from what the owner said on camera; never invent a figure, a
   media-use` installs them. The CLI is pinned in `package.json` (0.9.56); `npm install` first.
 - Kill a running render before changing the project; a render with stale timing wastes 5 minutes.
 - `build.py` overwrites `index.html`, `captions.html` and the CUES blocks; everything else in the scene files is yours.
+- ElevenLabs Music works with the connected key: `POST /v1/music?output_format=mp3_44100_128` with `prompt`,
+  `music_length_ms` (~62000), `model_id: music_v1`, `force_instrumental: true`. Use it for a track nobody else has; then
+  `npx hyperframes audio <file> --json --only onsets,silence,sections,downbeats` to find its ring-out and place it.
+  Sound effects: `POST /v1/sound-generation` (`text`, `duration_seconds`, `prompt_influence`); send them one at a time
+  (parallel calls get 429). Trim the leading silence and find each file's hit time before placing it.
+- Start a render with the Bash tool's `run_in_background`, not `&` inside a command: the render is cancelled
+  (`render_cancelled_parent_exited`) when that command returns. A 51 s draft render takes ~10 min here (one worker).
+- Photos only: the developer's line drawings (black on white) become blueprint art with a luminance-to-alpha pass in PIL
+  (white lines, transparent ground; 2-3x upscale first). The baked map can be graded with an ffmpeg `lutrgb` gradient map
+  (`map.json` `grade`) instead of tinting tiles.

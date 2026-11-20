@@ -1,0 +1,59 @@
+{
+ "_doc": "Map camera for the location chapter (g-loc). bake_map.cjs bakes it to assets/footage/map.mp4 and writes map_coords.json; g-loc.html reproduces zoomAt(t) to keep the pins on their places.",
+ "width": 1080,
+ "height": 1920,
+ "fps": 30,
+ "dur": 9.5,
+ "tiles": "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+ "tint": "#000000",
+ "raster_opacity": 1.0,
+ "center": [
+  101.40792,
+  3.12822
+ ],
+ "zstart": 12.3,
+ "zend": 14.35,
+ "hold_t": 1.3,
+ "drift": 0.12,
+ "pois": [
+  {
+   "id": "site",
+   "name": "Jalan Nenas, Meru",
+   "lng": 101.411652,
+   "lat": 3.1415586,
+   "src": "owner's Google Maps pin (maps.app.goo.gl/nHvGVrfZKcJVbCmR6)"
+  },
+  {
+   "id": "hosp",
+   "name": "Hospital Kapar",
+   "lng": 101.395965,
+   "lat": 3.131788,
+   "src": "OpenStreetMap (Nominatim)"
+  },
+  {
+   "id": "skm",
+   "name": "SK Meru",
+   "lng": 101.408286,
+   "lat": 3.137386,
+   "src": "OpenStreetMap (Nominatim)"
+  },
+  {
+   "id": "bomba",
+   "name": "Balai Bomba dan Penyelamat (Jalan Meru Setia 9)",
+   "lng": 101.411457,
+   "lat": 3.135473,
+   "src": "OpenStreetMap (Nominatim)"
+  },
+  {
+   "id": "sm99",
+   "name": "99 Speedmart Taman Meru Indah",
+   "lng": 101.417853,
+   "lat": 3.135773,
+   "src": "OpenStreetMap (Nominatim)"
+  }
+ ],
+ "attribution": "Esri, HERE, Garmin, \u00a9 OpenStreetMap contributors",
+ "raster_contrast": 0.0,
+ "grade": "format=gbrp,lutrgb=r='10+(185-10)*pow(clip((val-70)/(118-70),0,1),0.75)':g='46+(225-46)*pow(clip((val-70)/(118-70),0,1),0.75)':b='132+(255-132)*pow(clip((val-70)/(118-70),0,1),0.75)',format=yuv420p",
+ "_grade_doc": "ffmpeg gradient map applied when encoding: grey land -> blueprint blue #0a2e84, roads -> pale blue #b9e1ff"
+}

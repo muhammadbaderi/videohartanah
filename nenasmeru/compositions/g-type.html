@@ -1,0 +1,121 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #fff; font-family: "Inter", sans-serif;
+      --bp: #0a2e84; --navy: #061636; --blue: #1d5cff; --sky: #5cc2ff; --ice: #e6f2ff; --pale: #b9e1ff; --line: rgba(185, 225, 255, 0.6); }
+    .mono { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    .hd { font-family: "Archivo Black", sans-serif; }
+    /* part A: the two house types */
+    .card { position: absolute; top: 392px; width: 372px; height: 440px; border: 3px solid var(--pale); border-radius: 18px; background: rgba(6, 22, 54, 0.55);
+      padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 22px 50px rgba(3, 12, 40, 0.45); transform-origin: 50% 100%; }
+    #ty-c1 { left: 120px; } #ty-c2 { left: 516px; }
+    .card .no { font-size: 28px; letter-spacing: 0.12em; color: var(--sky); }
+    .card svg { width: 320px; height: 120px; fill: none; stroke: #fff; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+    .card svg .fl { fill: rgba(92, 194, 255, 0.28); stroke: none; }
+    .card .nm { font-family: "Archivo Black", sans-serif; font-size: 64px; line-height: 1; margin-top: 4px; }
+    .card .sp { font-size: 28px; line-height: 1.35; color: var(--ice); white-space: nowrap; }
+    .card .sp em { font-style: normal; color: var(--sky); }
+    #ty-br { position: absolute; left: 120px; top: 852px; width: 768px; height: 70px; }
+    #ty-br svg { position: absolute; left: 0; top: 0; width: 768px; height: 40px; overflow: visible; fill: none; stroke: var(--pale); stroke-width: 3; }
+    #ty-br-l { position: absolute; left: 260px; top: 22px; width: 248px; padding: 6px 0; border-radius: 10px; background: var(--blue); text-align: center;
+      font-size: 28px; letter-spacing: 0.1em; white-space: nowrap; }
+    /* part B: the floor plan, drawn to the developer's layout */
+    #ty-head { position: absolute; left: 120px; top: 294px; font-size: 28px; letter-spacing: 0.1em; color: var(--sky); white-space: nowrap; }
+    #ty-plan { position: absolute; left: 170px; top: 360px; width: 330px; height: 740px; transform-origin: 50% 45%; }
+    #ty-plan-img { position: absolute; inset: 0; }
+    #ty-plan-img img { width: 330px; height: 740px; display: block; }
+    #ty-dims { position: absolute; left: -30px; top: -26px; width: 360px; height: 770px; overflow: visible; fill: none; stroke: var(--pale); stroke-width: 2.5; }
+    .rm { position: absolute; border: 3px solid var(--sky); background: rgba(92, 194, 255, 0.32); border-radius: 4px; }
+    .bd { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: #fff; color: var(--navy);
+      display: flex; align-items: center; justify-content: center; font-family: "Archivo Black", sans-serif; font-size: 30px; box-shadow: 0 6px 16px rgba(3, 12, 40, 0.45); }
+    .bd.ba { background: var(--blue); color: #fff; width: 46px; height: 46px; margin: -23px 0 0 -23px; font-size: 26px; }
+    .ct { position: absolute; left: 540px; display: flex; flex-direction: column; }
+    .ct .n { font-family: "Archivo Black", sans-serif; font-size: 190px; line-height: 0.9; color: var(--sky); letter-spacing: -0.02em; }
+    .ct .l { font-family: "Archivo Black", sans-serif; font-size: 40px; line-height: 1.05; white-space: nowrap; }
+    #ty-k1 { top: 430px; } #ty-k2 { top: 690px; left: 520px; }
+  </style>
+  <div id="root" data-composition-id="g-type" data-width="1080" data-height="1920">
+    <div id="ty-c1" class="card">
+      <div class="no mono">PILIHAN 01</div>
+      <svg viewBox="0 0 320 120">
+        <path class="fl" d="M10 116V58l50-36 50 36 50-36 50 36 50-36 50 36v58z" />
+        <path d="M10 116V58l50-36 50 36 50-36 50 36 50-36 50 36v58zM110 58v58M210 58v58M4 116h312" />
+        <path d="M44 116V90h32v26M144 116V90h32v26M244 116V90h32v26" />
+      </svg>
+      <div class="nm">TERES</div>
+      <div class="sp mono"><em>TANAH</em> 20' × 82'<br /><em>BINAAN</em> 20' × 47'</div>
+    </div>
+    <div id="ty-c2" class="card">
+      <div class="no mono">PILIHAN 02</div>
+      <svg viewBox="0 0 320 120">
+        <path class="fl" d="M40 116V54l60-38 60 38 60-38 60 38v62z" />
+        <path d="M40 116V54l60-38 60 38 60-38 60 38v62zM160 54v62M30 116h260" />
+        <path d="M82 116V88h36v28M202 116V88h36v28" />
+      </svg>
+      <div class="nm">SEMI-D</div>
+      <div class="sp mono"><em>TANAH</em> 34' × 87'<br /><em>BINAAN</em> 24' × 47'</div>
+    </div>
+    <div id="ty-br">
+      <svg viewBox="0 0 768 40"><path id="ty-br-p" d="M2 0v20h764V0M384 20v14" /></svg>
+      <div id="ty-br-l" class="mono">KEDUA-DUANYA</div>
+    </div>
+
+    <div id="ty-head" class="mono">PELAN LANTAI · TERES 20' × 47'</div>
+    <div id="ty-plan">
+      <svg id="ty-dims" viewBox="0 0 360 770">
+        <path d="M30 10h330M30 2v16M360 2v16M10 26v740M2 26h16M2 766h16" />
+      </svg>
+      <div id="ty-plan-img"><img src="assets/footage/plan_unit_bp.png" alt="" /></div>
+      <div id="ty-r1" class="rm" style="left: 14px; top: 501px; width: 149px; height: 227px"><div class="bd">1</div></div>
+      <div id="ty-r2" class="rm" style="left: 165px; top: 290px; width: 153px; height: 151px"><div class="bd">2</div></div>
+      <div id="ty-r3" class="rm" style="left: 165px; top: 131px; width: 153px; height: 157px"><div class="bd">3</div></div>
+      <div id="ty-r4" class="rm" style="left: 165px; top: 12px; width: 153px; height: 116px"><div class="bd">4</div></div>
+      <div id="ty-m1" class="rm" style="left: 14px; top: 405px; width: 96px; height: 95px"><div class="bd ba">1</div></div>
+      <div id="ty-m2" class="rm" style="left: 14px; top: 316px; width: 96px; height: 88px"><div class="bd ba">2</div></div>
+    </div>
+    <div id="ty-k1" class="ct"><div id="ty-n1" class="n">0</div><div class="l">BILIK TIDUR</div></div>
+    <div id="ty-k2" class="ct"><div id="ty-n2" class="n">0</div><div class="l">BILIK AIR</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    /* CUES:BEGIN (generated by scripts/nenasmeru/build.py from the voiceover; do not edit by hand) */
+    // words: Ada pilihan rumah teres dan semi D, kedua-duanya dengan empat bilik tidur dan dua bilik air.
+    const W = [0.12, 0.18, 0.652, 1.011, 1.388, 1.577, 1.954, 2.52, 3.205, 3.539, 3.822, 4.124, 4.633, 4.822, 5.086, 5.35]; // word starts (s, local to this scene)
+    const E = [0.143, 0.595, 0.973, 1.35, 1.501, 1.878, 2.482, 3.161, 3.463, 3.765, 4.067, 4.595, 4.746, 5.048, 5.275, 5.652]; // word ends
+    const D = 5.782;
+    /* CUES:END */
+    // part A: "Ada pilihan rumah teres dan semi D, kedua-duanya..."
+    tl.fromTo("#ty-c1", { opacity: 0, y: 60, rotation: -3 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "expo.out" }, W[3] - 0.08);
+    tl.fromTo("#ty-c1 svg", { clipPath: "inset(0px 100% 0px 0px)" }, { clipPath: "inset(0px 0% 0px 0px)", duration: 0.5, ease: "power2.out" }, W[3]);
+    tl.fromTo("#ty-c2", { opacity: 0, y: 60, rotation: 3 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "expo.out" }, W[5] - 0.08);
+    tl.fromTo("#ty-c2 svg", { clipPath: "inset(0px 100% 0px 0px)" }, { clipPath: "inset(0px 0% 0px 0px)", duration: 0.5, ease: "power2.out" }, W[5]);
+    tl.fromTo("#ty-br svg", { clipPath: "inset(0px 50% 0px 50%)" }, { clipPath: "inset(0px 0% 0px 0%)", duration: 0.35, ease: "power3.out" }, W[7] - 0.05);
+    tl.fromTo("#ty-br-l", { opacity: 0, y: 10, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(2)" }, W[7] + 0.05);
+    tl.to(["#ty-c1", "#ty-c2", "#ty-br"], { opacity: 0, y: -40, duration: 0.2, ease: "power2.in", stagger: 0.03 }, W[8] - 0.12);
+    tl.set(["#ty-c1", "#ty-c2", "#ty-br"], { visibility: "hidden" }, W[8] + 0.1);
+    // part B: "...dengan empat bilik tidur dan dua bilik air."
+    tl.fromTo("#ty-head", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, W[8] - 0.05);
+    tl.fromTo("#ty-plan-img", { clipPath: "inset(0px 0px 740px 0px)" }, { clipPath: "inset(0px 0px 0px 0px)", duration: 0.5, ease: "power2.inOut" }, W[8] - 0.05);
+    tl.fromTo("#ty-dims", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "none" }, W[8] + 0.2);
+    const room = (s, t) => {
+      tl.fromTo(s, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, t);
+      tl.fromTo(s + " .bd", { scale: 0 }, { scale: 1, duration: 0.32, ease: "back.out(2.6)" }, t + 0.04);
+    };
+    const bedT = [W[9], W[9] + 0.12, W[9] + 0.24, W[9] + 0.36];
+    ["#ty-r1", "#ty-r2", "#ty-r3", "#ty-r4"].forEach((s, i) => room(s, bedT[i] - 0.04));
+    tl.fromTo("#ty-k1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, W[9] - 0.06);
+    const n1 = { v: 0 };
+    tl.fromTo(n1, { v: 0 }, { v: 4, duration: bedT[3] - bedT[0] + 0.05, ease: "none", onUpdate: () => { document.getElementById("ty-n1").textContent = Math.max(1, Math.round(n1.v)); } }, bedT[0]);
+    tl.fromTo("#ty-n1", { scale: 1 }, { scale: 1.15, duration: 0.1, ease: "power2.out", transformOrigin: "0% 70%" }, W[11] - 0.02);
+    tl.to("#ty-n1", { scale: 1, duration: 0.3, ease: "back.out(2.4)" }, W[11] + 0.08);
+    room("#ty-m1", W[13] - 0.02);
+    room("#ty-m2", W[13] + 0.1);
+    tl.fromTo("#ty-k2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, W[13] - 0.06);
+    const n2 = { v: 0 };
+    tl.fromTo(n2, { v: 0 }, { v: 2, duration: 0.18, ease: "none", onUpdate: () => { document.getElementById("ty-n2").textContent = Math.max(1, Math.round(n2.v)); } }, W[13] - 0.02);
+    // zoom through the plan into the map
+    tl.to(["#ty-head", "#ty-k1", "#ty-k2"], { opacity: 0, duration: 0.16, ease: "power2.in" }, D - 0.32);
+    tl.to("#ty-plan", { scale: 4.2, opacity: 0, duration: 0.32, ease: "power3.in" }, D - 0.33);
+    tl.set(["#ty-head", "#ty-k1", "#ty-k2", "#ty-plan"], { visibility: "hidden" }, D - 0.02);
+    window.__timelines["g-type"] = tl;
+  </script>
+</template>

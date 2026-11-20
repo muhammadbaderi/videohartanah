@@ -13,3 +13,7 @@ rafflesia6/renders/
 rafflesia6/.hyperframes/
 .media-src/
 skill-package/
+# nenasmeru (map.mp4 is baked by scripts/nenasmeru/bake_map.cjs)
+nenasmeru/assets/footage/*.mp4
+nenasmeru/renders/
+nenasmeru/.hyperframes/
